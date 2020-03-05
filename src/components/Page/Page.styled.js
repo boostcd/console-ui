@@ -55,6 +55,6 @@ export const Navigation = styled.nav`
 `;
 
 export const Content = styled.div`
-  margin-top: 100px;
-  padding: 0 2rem;
+  padding: 100px 2rem 0;
+  margin: 0 auto;
 `;

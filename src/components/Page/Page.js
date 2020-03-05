@@ -10,7 +10,7 @@ class Page extends React.PureComponent {
     const { children } = this.props;
 
     return (
-      <div>
+      <>
         <Styles.Header>
           <Styles.HeaderContainer>
             <NavLink to='/'>
@@ -25,13 +25,13 @@ class Page extends React.PureComponent {
           </Styles.HeaderContainer>
         </Styles.Header>
         <Styles.Content>{children}</Styles.Content>
-      </div>
+      </>
     );
   }
 }
 
 Page.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Page;

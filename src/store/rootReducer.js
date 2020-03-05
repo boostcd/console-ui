@@ -1,8 +1,7 @@
 import { combineReducers } from 'redux';
 
-const initialState = { foo: 'bar' };
-const foo = (state = initialState) => state;
+import microservices from '../views/Microservices/state/reducer';
 
 export default combineReducers({
-  foo,
+  microservices,
 });

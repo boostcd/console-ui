@@ -5,10 +5,11 @@ import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
 
 import App from './App';
-import store from './store';
+import configureStore from './store';
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 const server = express();
+const store = configureStore();
 
 const isProduction = process.env.NODE_ENV === 'production';
 

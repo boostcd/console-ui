@@ -1,12 +1,16 @@
 {
+  "javascript.implicitProjectConfig.experimentalDecorators": true,
   "cSpell.words": [
     "arrow",
     "boost",
     "build",
+    "compose",
     "console",
     "deps",
+    "devtools",
     "env",
     "estafet",
+    "extension",
     "grid",
     "install",
     "js",
@@ -19,6 +23,7 @@
     "razzle",
     "react",
     "rebass",
+    "redux",
     "server",
     "ui"
   ]
