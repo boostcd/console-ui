@@ -31,6 +31,6 @@
   ],
   "rules": {
     "prettier/prettier": ["error", { "singleQuote": true }],
-    "simple-import-sort/sort": "error"
+    "simple-import-sort/sort": "warn"
   }
 }
