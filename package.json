@@ -1,13 +1,13 @@
 {
   "name": "estafet-openshift-boost-console-ui-react",
   "version": "0.0.1",
-  "license": "UNLICENSED",
   "private": true,
+  "license": "UNLICENSED",
   "scripts": {
-    "start": "razzle build && NODE_ENV=production node build/server.js",
     "build": "razzle build",
-    "test": "razzle test --env=jsdom",
-    "start:dev": "razzle start"
+    "start": "razzle build && NODE_ENV=production node build/server.js",
+    "start:dev": "razzle start",
+    "test": "razzle test --env=jsdom"
   },
   "husky": {
     "hooks": {
@@ -16,8 +16,12 @@
     }
   },
   "dependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-decorators": "^7.8.3",
     "@rebass/grid": "^6.1.0",
     "axios": "^0.19.2",
+    "babel-plugin-styled-components": "^1.10.7",
     "express": "^4.17.1",
     "prop-types": "^15.7.2",
     "razzle": "^3.0.0",
@@ -32,10 +36,6 @@
     "styled-tools": "^1.7.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.7",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/plugin-proposal-decorators": "^7.8.3",
-    "babel-plugin-styled-components": "^1.10.7",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-config-react": "^1.1.7",
