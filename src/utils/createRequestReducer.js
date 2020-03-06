@@ -17,7 +17,7 @@ export default (initialState, stateActions) => {
           ...state,
           data: {
             ...state.data,
-            ...payload.data,
+            ...payload,
           },
           loading: false,
           error: false,

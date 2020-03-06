@@ -1,9 +1,12 @@
 import { applyMiddleware, compose, createStore } from 'redux';
-import logger from 'redux-logger';
+import { createLogger } from 'redux-logger';
 import createSagaMiddleware, { END } from 'redux-saga';
 
-import fetchMicroservicesSaga from '../views/Microservices/state/sagas';
 import rootReducer from './rootReducer';
+
+const logger = createLogger({
+  collapsed: () => true,
+});
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -20,9 +23,7 @@ export default (initialState) => {
     composeEnhancers(applyMiddleware(...middleware))
   );
 
-  // TODO:
-  sagaMiddleware.run(fetchMicroservicesSaga);
-
+  store.runSaga = sagaMiddleware.run;
   store.close = () => store.dispatch(END);
 
   return store;

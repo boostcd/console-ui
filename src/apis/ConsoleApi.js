@@ -1,15 +1,12 @@
-import mock from './mock.json';
-
-async function stall(time) {
-  await new Promise((resolve) => setTimeout(resolve, time));
-}
+import stall from '../utils/stall';
+import microservices from './mocks/microservices.json';
 
 class ConsoleApi {
   // TODO: Temporary mocked the microservices endpoint
   async getMicroservices() {
     await stall(3000);
-    return mock;
+    return microservices;
   }
 }
 
-export default new ConsoleApi();
+export default ConsoleApi;

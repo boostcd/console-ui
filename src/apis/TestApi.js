@@ -16,4 +16,4 @@ class TestApi extends BaseApi {
   }
 }
 
-export default new TestApi(window.boost.TEST_API_SERVICE_URI || process.env.TEST_API_SERVICE_URI);
+export default TestApi;

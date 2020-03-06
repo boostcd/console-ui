@@ -16,4 +16,4 @@ class ProdApi extends BaseApi {
   }
 }
 
-export default new ProdApi(window.boost.PROD_API_SERVICE_URI || process.env.PROD_API_SERVICE_URI);
+export default ProdApi;

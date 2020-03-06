@@ -7,7 +7,7 @@ import {
 
 export const initialState = {
   data: {},
-  loading: false,
+  loading: true,
   error: false,
 };
 

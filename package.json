@@ -20,6 +20,7 @@
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-proposal-decorators": "^7.8.3",
     "@rebass/grid": "^6.1.0",
+    "@styled-icons/fa-solid": "^10.0.0",
     "axios": "^0.19.2",
     "babel-plugin-styled-components": "^1.10.7",
     "express": "^4.17.1",
