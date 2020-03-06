@@ -6,7 +6,6 @@ import Button from '../../components/Button';
 const iconStyles = css`
   width: 1rem;
   height: 1rem;
-  margin-right: 0.5rem;
 `;
 
 const blinkColor = (color) => keyframes`
@@ -37,11 +36,13 @@ export const StageActions = styled.div`
 
 export const Circle = styled(CircleIcon)`
   ${iconStyles};
+  margin-right: 0.5rem;
 `;
 
-export const TestCircle = styled(ExclamationCircle)`
+export const TestExclamationCircle = styled(ExclamationCircle)`
   ${iconStyles};
   color: red;
+  margin-left: 0.5rem;
 `;
 
 export const StagingCircle = styled(Circle)`

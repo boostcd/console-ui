@@ -38,6 +38,16 @@ export default styled.button`
   }
 
   ${ifProp(
+    'hasError',
+    css`
+      pointer-events: none;
+      color: #cca2a6;
+      background: #f3bebe;
+      border-color: #cca2a6;
+    `
+  )};
+
+  ${ifProp(
     'isDisabled',
     css`
       pointer-events: none;

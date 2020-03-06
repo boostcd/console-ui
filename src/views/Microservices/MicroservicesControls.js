@@ -6,6 +6,8 @@ import Button from '../../components/Button';
 import stall from '../../utils/stall';
 import * as Styles from './MicroservicesControls.styled';
 
+const isUntested = (environment) => environment.testStatus === 'Untested';
+
 class MicroservicesControls extends React.PureComponent {
   state = {
     actionsDisabled: false,
@@ -27,7 +29,7 @@ class MicroservicesControls extends React.PureComponent {
 
   render() {
     const { actionsDisabled } = this.state;
-    // const { data } = this.props;
+    const { data } = this.props;
 
     return (
       <Styles.Wrapper>
@@ -45,14 +47,21 @@ class MicroservicesControls extends React.PureComponent {
           </Box>
           <Box width={1 / 4} px={2}>
             <Styles.StageTitle>
-              <Styles.TestCircle />
               <span>Test</span>
+              {isUntested(data.testEnv) && (
+                <Styles.TestExclamationCircle title='Untested or tests failing' />
+              )}
             </Styles.StageTitle>
             <Styles.StageActions>
               <Button type='secondary' isDisabled={actionsDisabled} onClick={() => undefined}>
                 Run tests
               </Button>
-              <Button type='secondary' isDisabled={actionsDisabled} onClick={() => undefined}>
+              <Button
+                type='secondary'
+                isDisabled={actionsDisabled}
+                hasError={isUntested(data.testEnv)}
+                onClick={() => undefined}
+              >
                 Promote all
               </Button>
             </Styles.StageActions>
@@ -61,12 +70,20 @@ class MicroservicesControls extends React.PureComponent {
             <Styles.StageTitle>
               <Styles.StagingCircle />
               <span>Staging</span>
+              {isUntested(data.staging) && (
+                <Styles.TestExclamationCircle title='Untested or tests failing' />
+              )}
             </Styles.StageTitle>
             <Styles.StageActions>
               <Button type='secondary' isDisabled={actionsDisabled} onClick={() => undefined}>
                 Run tests
               </Button>
-              <Button type='secondary' isDisabled={actionsDisabled} onClick={() => undefined}>
+              <Button
+                type='secondary'
+                isDisabled={actionsDisabled}
+                hasError={isUntested(data.staging)}
+                onClick={() => undefined}
+              >
                 Go live!
               </Button>
             </Styles.StageActions>
@@ -76,7 +93,12 @@ class MicroservicesControls extends React.PureComponent {
               <Styles.LiveCircle />
               <span>Live</span>
             </Styles.StageTitle>
-            <Button type='secondary' isDisabled={actionsDisabled} onClick={() => undefined}>
+            <Button
+              type='secondary'
+              isDisabled={actionsDisabled}
+              hasError={isUntested(data.staging)}
+              onClick={() => undefined}
+            >
               Back out!
             </Button>
           </Box>
