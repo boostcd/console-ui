@@ -1,19 +1,19 @@
 import BaseApi from './BaseApi';
 
 class ProdApi extends BaseApi {
-  async runTests() {
+  runTests = async () => {
     return await this.request({
       method: 'POST',
       url: '/tests',
     });
-  }
+  };
 
-  async promoteLive() {
+  promoteLive = async () => {
     return await this.request({
       method: 'POST',
       url: '/promoteToLive',
     });
-  }
+  };
 }
 
-export default ProdApi;
+export default new ProdApi(process.env.PROD_API_SERVICE_URI || window.boost.PROD_API_SERVICE_URI);

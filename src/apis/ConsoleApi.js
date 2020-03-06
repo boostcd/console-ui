@@ -9,4 +9,5 @@ class ConsoleApi {
   }
 }
 
-export default ConsoleApi;
+// window.boost.CONSOLE_API_SERVICE_URI
+export default new ConsoleApi();

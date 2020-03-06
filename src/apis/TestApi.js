@@ -1,19 +1,19 @@
 import BaseApi from './BaseApi';
 
 class TestApi extends BaseApi {
-  async runTests() {
+  runTests = async () => {
     return await this.request({
       method: 'POST',
       url: '/tests',
     });
-  }
+  };
 
-  async promoteAll() {
+  promoteAll = async () => {
     return await this.request({
       method: 'POST',
       url: '/promote/apps',
     });
-  }
+  };
 }
 
-export default TestApi;
+export default new TestApi(process.env.TEST_API_SERVICE_URI || window.boost.TEST_API_SERVICE_URI);

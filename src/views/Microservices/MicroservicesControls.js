@@ -2,8 +2,10 @@ import { Box, Flex } from '@rebass/grid';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import buildApi from '../../apis/BuildApi';
+import prodApi from '../../apis/ProdApi';
+import testApi from '../../apis/TestApi';
 import Button from '../../components/Button';
-import stall from '../../utils/stall';
 import * as Styles from './MicroservicesControls.styled';
 
 const isUntested = (environment) => environment.testStatus === 'Untested';
@@ -14,13 +16,11 @@ class MicroservicesControls extends React.PureComponent {
   };
 
   handleAction = (apiFn) => async () => {
-    console.log('Api call', apiFn);
-
     this.setState({
       actionsDisabled: true,
     });
 
-    await stall(2000);
+    await apiFn();
 
     this.setState({
       actionsDisabled: false,
@@ -37,10 +37,18 @@ class MicroservicesControls extends React.PureComponent {
           <Box width={1 / 4} px={2}>
             <Styles.StageTitle>Build</Styles.StageTitle>
             <Styles.StageActions>
-              <Button type='secondary' isDisabled={actionsDisabled} onClick={this.handleAction()}>
+              <Button
+                type='secondary'
+                isDisabled={actionsDisabled}
+                onClick={this.handleAction(buildApi.buildAll)}
+              >
                 Build all
               </Button>
-              <Button type='secondary' isDisabled={actionsDisabled} onClick={this.handleAction()}>
+              <Button
+                type='secondary'
+                isDisabled={actionsDisabled}
+                onClick={this.handleAction(buildApi.releaseAll)}
+              >
                 Promote all
               </Button>
             </Styles.StageActions>
@@ -53,14 +61,18 @@ class MicroservicesControls extends React.PureComponent {
               )}
             </Styles.StageTitle>
             <Styles.StageActions>
-              <Button type='secondary' isDisabled={actionsDisabled} onClick={() => undefined}>
+              <Button
+                type='secondary'
+                isDisabled={actionsDisabled}
+                onClick={this.handleAction(testApi.runTests)}
+              >
                 Run tests
               </Button>
               <Button
                 type='secondary'
                 isDisabled={actionsDisabled}
                 hasError={isUntested(data.testEnv)}
-                onClick={() => undefined}
+                onClick={this.handleAction(testApi.promoteAll)}
               >
                 Promote all
               </Button>
@@ -68,21 +80,25 @@ class MicroservicesControls extends React.PureComponent {
           </Box>
           <Box width={1 / 4} px={2}>
             <Styles.StageTitle>
-              <Styles.StagingCircle />
+              {/* <Styles.StagingCircle /> */}
               <span>Staging</span>
               {isUntested(data.staging) && (
                 <Styles.TestExclamationCircle title='Untested or tests failing' />
               )}
             </Styles.StageTitle>
             <Styles.StageActions>
-              <Button type='secondary' isDisabled={actionsDisabled} onClick={() => undefined}>
+              <Button
+                type='secondary'
+                isDisabled={actionsDisabled}
+                onClick={this.handleAction(prodApi.runTests)}
+              >
                 Run tests
               </Button>
               <Button
                 type='secondary'
                 isDisabled={actionsDisabled}
                 hasError={isUntested(data.staging)}
-                onClick={() => undefined}
+                onClick={this.handleAction(prodApi.promoteLive)}
               >
                 Go live!
               </Button>
@@ -90,14 +106,14 @@ class MicroservicesControls extends React.PureComponent {
           </Box>
           <Box width={1 / 4} px={2}>
             <Styles.StageTitle>
-              <Styles.LiveCircle />
+              {/* <Styles.LiveCircle /> */}
               <span>Live</span>
             </Styles.StageTitle>
             <Button
               type='secondary'
               isDisabled={actionsDisabled}
               hasError={isUntested(data.staging)}
-              onClick={() => undefined}
+              onClick={this.handleAction(prodApi.promoteLive)}
             >
               Back out!
             </Button>

@@ -1,19 +1,21 @@
 import BaseApi from './BaseApi';
 
 class BuildApi extends BaseApi {
-  async buildAll() {
+  buildAll = async () => {
     return await this.request({
       method: 'POST',
       url: '/build/apps',
     });
-  }
+  };
 
-  async releaseAll() {
+  releaseAll = async () => {
     return await this.request({
       method: 'POST',
       url: '/release/apps',
     });
-  }
+  };
 }
 
-export default BuildApi;
+export default new BuildApi(
+  process.env.BUILD_API_SERVICE_URI || window.boost.BUILD_API_SERVICE_URI
+);

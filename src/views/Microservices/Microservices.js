@@ -3,16 +3,10 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 
-import BuildApi from '../../apis/BuildApi';
 import Loader from '../../components/Loader';
 import MicroservicesApplications from './MicroservicesApplications';
 import MicroservicesControls from './MicroservicesControls';
 import { fetchMicroservices } from './state/actions';
-
-// TODO:
-const apis = {
-  buildApi: new BuildApi('http://console-build-api-blockchain-demo-monitoring.52.56.85.176.xip.io'),
-};
 
 const mapStateToProps = (state) => ({
   data: state.microservices.data,

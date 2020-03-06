@@ -19,7 +19,7 @@ class BaseApi {
       const response = await this.instance.request(config);
       return response;
     } catch (error) {
-      console.error('TODO: Error handling');
+      console.error(`API: ${config.method} Request @ ${config.url} failed with: `, error);
     }
   }
 }
