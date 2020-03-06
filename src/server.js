@@ -18,6 +18,10 @@ const isProduction = process.env.NODE_ENV === 'production';
 server.disable('x-powered-by');
 server.use(express.static(process.env.RAZZLE_PUBLIC_DIR));
 
+server.get('/api/health', (req, res) => {
+  res.status(200).json({ health: '😊' });
+});
+
 // TODO: Clean up and split up all the different logic handling styled-components, variables set on window object, etc
 server.get('/*', (req, res) => {
   const context = {};

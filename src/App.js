@@ -6,7 +6,6 @@ import Page from './components/Page';
 import GlobalStyles from './styles';
 import Environments from './views/Environments';
 import Features from './views/Features';
-import Landing from './views/Landing';
 import Microservices from './views/Microservices';
 
 const App = () => (
@@ -15,7 +14,9 @@ const App = () => (
     <GlobalStyles />
     <Page>
       <Switch>
-        <Route exact path='/' component={Landing} />
+        <Route exact path='/'>
+          <Redirect to='/features' />
+        </Route>
         <Route path='/features' component={Features} />
         <Route path='/microservices' component={Microservices} />
         <Route path='/environments' component={Environments} />
