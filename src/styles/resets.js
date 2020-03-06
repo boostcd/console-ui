@@ -7,10 +7,13 @@ export default css`
 
   body {
     color: #212529;
-    background: white;
-    font-size: 16px;
+    background: #f5f5f5;
+    font-size: 12px;
     font-family: 'Open Sans', sans-serif;
-    background: white;
+
+    @media (min-width: 768px) {
+      font-size: 16px;
+    }
   }
 
   a {

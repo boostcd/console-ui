@@ -34,7 +34,7 @@ class MicroservicesControls extends React.PureComponent {
     return (
       <Styles.Wrapper>
         <Flex>
-          <Box width={1 / 4} px={2}>
+          <Box width={1 / 4} px={3}>
             <Styles.StageTitle>Build</Styles.StageTitle>
             <Styles.StageActions>
               <Button
@@ -53,7 +53,7 @@ class MicroservicesControls extends React.PureComponent {
               </Button>
             </Styles.StageActions>
           </Box>
-          <Box width={1 / 4} px={2}>
+          <Box width={1 / 4} px={3}>
             <Styles.StageTitle>
               <span>Test</span>
               {isUntested(data.testEnv) && (
@@ -78,7 +78,7 @@ class MicroservicesControls extends React.PureComponent {
               </Button>
             </Styles.StageActions>
           </Box>
-          <Box width={1 / 4} px={2}>
+          <Box width={1 / 4} px={3}>
             <Styles.StageTitle>
               {/* <Styles.StagingCircle /> */}
               <span>Staging</span>
@@ -104,7 +104,7 @@ class MicroservicesControls extends React.PureComponent {
               </Button>
             </Styles.StageActions>
           </Box>
-          <Box width={1 / 4} px={2}>
+          <Box width={1 / 4} px={3}>
             <Styles.StageTitle>
               {/* <Styles.LiveCircle /> */}
               <span>Live</span>

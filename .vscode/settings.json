@@ -25,6 +25,7 @@
     "rebass",
     "redux",
     "server",
+    "timeago",
     "ui"
   ]
 }
