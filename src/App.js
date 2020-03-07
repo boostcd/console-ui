@@ -1,12 +1,14 @@
+import loadable from '@loadable/component';
 import React from 'react';
 import Helmet from 'react-helmet';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import Page from './components/Page';
 import GlobalStyles from './styles';
-import Environments from './views/Environments';
-import Features from './views/Features';
-import Microservices from './views/Microservices';
+
+const Features = loadable(() => import('./views/Features'));
+const Microservices = loadable(() => import('./views/Microservices'));
+const Environments = loadable(() => import('./views/Environments'));
 
 const App = () => (
   <>

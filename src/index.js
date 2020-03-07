@@ -1,3 +1,4 @@
+// TODO: Clean up this whole file wih the HMR functionality
 import http from 'http';
 
 let app = require('./server').default;
