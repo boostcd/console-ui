@@ -17,6 +17,7 @@ export default css`
   }
 
   a {
+    color: #212529;
     text-decoration: none;
   }
 `;

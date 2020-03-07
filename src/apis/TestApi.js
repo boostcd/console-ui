@@ -8,6 +8,13 @@ class TestApi extends BaseApi {
     });
   };
 
+  promote = async (appName) => {
+    return await this.request({
+      method: 'POST',
+      url: `promote/app/${appName}`,
+    });
+  };
+
   promoteAll = async () => {
     return await this.request({
       method: 'POST',

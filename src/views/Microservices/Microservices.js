@@ -3,6 +3,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 
+// import LastUpdated from '../../components/LastUpdated';
 import Loader from '../../components/Loader';
 import MicroservicesApplications from './MicroservicesApplications';
 import MicroservicesControls from './MicroservicesControls';
@@ -32,6 +33,7 @@ class Microservices extends React.PureComponent {
       <>
         <Helmet title='Microservices' />
         <MicroservicesControls data={data} />
+        {/* <LastUpdated time='12:00 3/10/2020' /> */}
         <MicroservicesApplications data={data} />
       </>
     );

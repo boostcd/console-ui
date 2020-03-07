@@ -4,6 +4,6 @@ import { normalize } from 'styled-normalize';
 import resets from './resets';
 
 export default createGlobalStyle`
-  ${normalize}
-  ${resets}
+  ${normalize};
+  ${resets};
 `;

@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+// Set default request timeout to 15 seconds
+axios.defaults.timeout = 15000;
+
 // TODO: Think of a better way to load the API urls
 class BaseApi {
   constructor(baseURL) {
