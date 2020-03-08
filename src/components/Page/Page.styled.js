@@ -8,9 +8,13 @@ export const Header = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 70px;
+  height: 40px;
   background: ${baseColor};
-  padding: 0 2rem;
+  padding: 0 1rem;
+
+  @media (min-width: 768px) {
+    height: 70px;
+  }
 `;
 
 export const HeaderContainer = styled.div`
@@ -20,15 +24,24 @@ export const HeaderContainer = styled.div`
 `;
 
 export const Logo = styled.img`
-  height: 40px;
+  height: 20px;
   vertical-align: middle;
+
+  @media (min-width: 768px) {
+    height: 40px;
+  }
 `;
 
 export const Slogan = styled.span`
+  display: none;
   color: white;
-  padding-left: 1rem;
-  font-size: 1.25rem;
+  padding-left: 0.5rem;
+  font-size: 1.1rem;
   vertical-align: middle;
+
+  @media (min-width: 768px) {
+    display: inline-block;
+  }
 `;
 
 export const NavigationItem = styled(NavLink)`
@@ -38,7 +51,7 @@ export const NavigationItem = styled(NavLink)`
   /* Active class provided by react-router's NavLink logic */
   &.active {
     color: white;
-    pointer-events: none;
+    /* pointer-events: none; */
   }
 
   &:hover {
@@ -47,7 +60,7 @@ export const NavigationItem = styled(NavLink)`
 `;
 
 export const Navigation = styled.nav`
-  margin-left: 2rem;
+  margin-left: 1rem;
 
   ${NavigationItem} ~ ${NavigationItem} {
     padding-left: 0.5rem;
@@ -55,6 +68,10 @@ export const Navigation = styled.nav`
 `;
 
 export const Content = styled.div`
-  padding: 100px 2rem 0;
+  padding: 60px 1rem 4rem;
   margin: 0 auto;
+
+  @media (min-width: 768px) {
+    padding-top: 100px;
+  }
 `;

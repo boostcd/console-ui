@@ -6,21 +6,20 @@ import buildApi from '../../apis/BuildApi';
 import prodApi from '../../apis/ProdApi';
 import testApi from '../../apis/TestApi';
 import Button from '../../components/Button';
+import isEnvironmentUntested from '../../utils/domain/isEnvironmentUntested';
 import * as Styles from './MicroservicesControls.styled';
-
-const isUntested = (environment) => environment.testStatus === 'Untested';
 
 class MicroservicesControls extends React.PureComponent {
   state = {
     actionsDisabled: false,
   };
 
-  handleAction = (apiFn) => async () => {
+  handleAction = async (apiAction) => {
     this.setState({
       actionsDisabled: true,
     });
 
-    await apiFn();
+    await apiAction();
 
     this.setState({
       actionsDisabled: false,
@@ -34,29 +33,29 @@ class MicroservicesControls extends React.PureComponent {
     return (
       <Styles.Wrapper>
         <Flex>
-          <Box width={1 / 4} px={3}>
+          <Box width={1 / 4} px={2}>
             <Styles.StageTitle>Build</Styles.StageTitle>
             <Styles.StageActions>
               <Button
                 type='secondary'
                 isDisabled={actionsDisabled}
-                onClick={this.handleAction(buildApi.buildAll)}
+                onClick={this.handleAction.bind(this, buildApi.buildAll)}
               >
                 Build all
               </Button>
               <Button
                 type='secondary'
                 isDisabled={actionsDisabled}
-                onClick={this.handleAction(buildApi.releaseAll)}
+                onClick={this.handleAction.bind(this, buildApi.releaseAll)}
               >
                 Promote all
               </Button>
             </Styles.StageActions>
           </Box>
-          <Box width={1 / 4} px={3}>
+          <Box width={1 / 4} px={2}>
             <Styles.StageTitle>
               <span>Test</span>
-              {isUntested(data.testEnv) && (
+              {isEnvironmentUntested(data.testEnv) && (
                 <Styles.TestExclamationCircle title='Untested or tests failing' />
               )}
             </Styles.StageTitle>
@@ -64,25 +63,25 @@ class MicroservicesControls extends React.PureComponent {
               <Button
                 type='secondary'
                 isDisabled={actionsDisabled}
-                onClick={this.handleAction(testApi.runTests)}
+                onClick={this.handleAction.bind(this, testApi.runTests)}
               >
                 Run tests
               </Button>
               <Button
                 type='secondary'
                 isDisabled={actionsDisabled}
-                hasError={isUntested(data.testEnv)}
-                onClick={this.handleAction(testApi.promoteAll)}
+                hasError={isEnvironmentUntested(data.testEnv)}
+                onClick={this.handleAction.bind(this, testApi.promoteAll)}
               >
                 Promote all
               </Button>
             </Styles.StageActions>
           </Box>
-          <Box width={1 / 4} px={3}>
+          <Box width={1 / 4} px={2}>
             <Styles.StageTitle>
               {/* <Styles.StagingCircle /> */}
               <span>Staging</span>
-              {isUntested(data.staging) && (
+              {isEnvironmentUntested(data.staging) && (
                 <Styles.TestExclamationCircle title='Untested or tests failing' />
               )}
             </Styles.StageTitle>
@@ -90,21 +89,21 @@ class MicroservicesControls extends React.PureComponent {
               <Button
                 type='secondary'
                 isDisabled={actionsDisabled}
-                onClick={this.handleAction(prodApi.runTests)}
+                onClick={this.handleAction.bind(this, prodApi.runTests)}
               >
                 Run tests
               </Button>
               <Button
                 type='secondary'
                 isDisabled={actionsDisabled}
-                hasError={isUntested(data.staging)}
-                onClick={this.handleAction(prodApi.promoteLive)}
+                hasError={isEnvironmentUntested(data.staging)}
+                onClick={this.handleAction.bind(this, prodApi.promoteLive)}
               >
                 Go live!
               </Button>
             </Styles.StageActions>
           </Box>
-          <Box width={1 / 4} px={3}>
+          <Box width={1 / 4} px={2}>
             <Styles.StageTitle>
               {/* <Styles.LiveCircle /> */}
               <span>Live</span>
@@ -112,8 +111,8 @@ class MicroservicesControls extends React.PureComponent {
             <Button
               type='secondary'
               isDisabled={actionsDisabled}
-              hasError={isUntested(data.staging)}
-              onClick={this.handleAction(prodApi.promoteLive)}
+              hasError={isEnvironmentUntested(data.staging)}
+              onClick={this.handleAction.bind(this, prodApi.promoteLive)}
             >
               Back out!
             </Button>

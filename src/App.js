@@ -11,9 +11,11 @@ const Microservices = loadable(() => import('./views/Microservices'));
 const Microservice = loadable(() => import('./views/Microservices/Microservice'));
 const Environments = loadable(() => import('./views/Environments'));
 
+const titleTemplate = `${process.env.PRODUCT_DESCRIPTION || window.boost.PRODUCT_DESCRIPTION} - %s`;
+
 const App = () => (
   <>
-    <Helmet defaultTitle='' titleTemplate='Estafet Boost - %s' />
+    <Helmet titleTemplate={titleTemplate} />
     <GlobalStyles />
     <Page>
       <Switch>

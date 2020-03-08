@@ -47,10 +47,10 @@ export const TestExclamationCircle = styled(ExclamationCircle)`
 
 export const StagingCircle = styled(Circle)`
   color: blue;
-  animation: ${blinkColor('blue')} 3s infinite;
+  /* animation: ${blinkColor('blue')} 3s infinite; */
 `;
 
 export const LiveCircle = styled(Circle)`
   color: green;
-  animation: ${blinkColor('green')} 3s infinite;
+  /* animation: ${blinkColor('green')} 3s infinite; */
 `;

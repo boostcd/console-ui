@@ -68,7 +68,7 @@
         "name": "currency-converter-ms",
         "testStatus": "currency-converter-ms",
         "deployedDate": "2020-02-26T14:43:13Z",
-        "deployed": true
+        "deployed": false
       },
       {
         "version": "0.0.3",

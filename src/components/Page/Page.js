@@ -15,7 +15,9 @@ class Page extends React.PureComponent {
           <Styles.HeaderContainer>
             <NavLink to='/'>
               <Styles.Logo src={logo} alt='Estafet' />
-              <Styles.Slogan>Block Chain Demo</Styles.Slogan>
+              <Styles.Slogan>
+                {process.env.PRODUCT_DESCRIPTION || window.boost.PRODUCT_DESCRIPTION}
+              </Styles.Slogan>
             </NavLink>
             <Styles.Navigation>
               <Styles.NavigationItem to='/features'>Features</Styles.NavigationItem>

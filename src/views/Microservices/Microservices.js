@@ -3,8 +3,8 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 
-// import LastUpdated from '../../components/LastUpdated';
 import Loader from '../../components/Loader';
+import * as Styles from './Microservices.styled';
 import MicroservicesApplications from './MicroservicesApplications';
 import MicroservicesControls from './MicroservicesControls';
 import { fetchMicroservices } from './state/actions';
@@ -30,12 +30,11 @@ class Microservices extends React.PureComponent {
     if (loading) return <Loader />;
 
     return (
-      <>
+      <Styles.Wrapper>
         <Helmet title='Microservices' />
         <MicroservicesControls data={data} />
-        {/* <LastUpdated time='12:00 3/10/2020' /> */}
         <MicroservicesApplications data={data} />
-      </>
+      </Styles.Wrapper>
     );
   }
 }
