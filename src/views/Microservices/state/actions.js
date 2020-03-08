@@ -1,24 +1,29 @@
-export const FETCH_MICROSERVICES_REQUEST = 'FETCH_MICROSERVICES_REQUEST';
-export const FETCH_MICROSERVICES_PENDING = 'FETCH_MICROSERVICES_PENDING';
-export const FETCH_MICROSERVICES_SUCCESS = 'FETCH_MICROSERVICES_SUCCESS';
-export const FETCH_MICROSERVICES_FAILURE = 'FETCH_MICROSERVICES_FAILURE';
+const ACTIONS = {
+  PENDING: 'microservices/PENDING',
+  SUCCESS: 'microservices/SUCCESS',
+  FAILURE: 'microservices/FAILURE',
+  POLL_START: 'microservices/POLL_START',
+  POLL_STOP: 'microservices/POLL_STOP',
+};
 
 export const fetchMicroservices = () => ({
-  type: FETCH_MICROSERVICES_REQUEST,
+  type: ACTIONS.POLL_START,
 });
 
 export const fetchMicroservicesPending = () => ({
-  type: FETCH_MICROSERVICES_PENDING,
+  type: ACTIONS.PENDING,
 });
 
 export const fetchMicroservicesSuccess = (data) => ({
-  type: FETCH_MICROSERVICES_SUCCESS,
+  type: ACTIONS.SUCCESS,
   payload: data,
 });
 
 export const fetchMicroservicesFailure = (error) => ({
-  type: FETCH_MICROSERVICES_FAILURE,
+  type: ACTIONS.FAILURE,
   payload: {
     error,
   },
 });
+
+export default ACTIONS;

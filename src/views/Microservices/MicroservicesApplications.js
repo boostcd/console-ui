@@ -110,7 +110,7 @@ class MicroservicesApplications extends React.PureComponent {
 
     return (
       <Styles.Wrapper>
-        <Flex mt={10}>
+        <Flex>
           <Box width={1 / 4} px={2}>
             {data.buildEnv.buildApps.map(this.renderBuildCard)}
           </Box>

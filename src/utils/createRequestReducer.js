@@ -1,5 +1,5 @@
 export default (initialState, stateActions) => {
-  const [PENDING, SUCCESS, FAILED] = stateActions;
+  const [PENDING, SUCCESS, FAILED, POLL_START, POLL_END] = stateActions;
 
   return (state = initialState, action = {}) => {
     const { type, payload } = action;
@@ -8,8 +8,8 @@ export default (initialState, stateActions) => {
       case PENDING:
         return {
           ...state,
-          loading: true,
           error: false,
+          loading: true,
         };
 
       case SUCCESS:
@@ -19,16 +19,31 @@ export default (initialState, stateActions) => {
             ...state.data,
             ...payload,
           },
-          loading: false,
           error: false,
+          loading: false,
+          lastUpdated: new Date(),
         };
 
       case FAILED:
         return {
           ...state,
           data: payload.error,
-          loading: false,
           error: true,
+          loading: false,
+          polling: false,
+        };
+
+      case POLL_START:
+        return {
+          ...state,
+          polling: true,
+        };
+
+      case POLL_END:
+        return {
+          ...state,
+          polling: false,
+          loading: false,
         };
 
       default:

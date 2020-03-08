@@ -3,6 +3,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 
+import LastUpdated from '../../components/LastUpdated';
 import Loader from '../../components/Loader';
 import * as Styles from './Microservices.styled';
 import MicroservicesApplications from './MicroservicesApplications';
@@ -12,6 +13,7 @@ import { fetchMicroservices } from './state/actions';
 const mapStateToProps = (state) => ({
   data: state.microservices.data,
   loading: state.microservices.loading,
+  lastUpdated: state.microservices.lastUpdated,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -25,7 +27,7 @@ class Microservices extends React.PureComponent {
   }
 
   render() {
-    const { data, loading } = this.props;
+    const { data, loading, lastUpdated } = this.props;
 
     if (loading) return <Loader />;
 
@@ -33,6 +35,7 @@ class Microservices extends React.PureComponent {
       <Styles.Wrapper>
         <Helmet title='Microservices' />
         <MicroservicesControls data={data} />
+        {lastUpdated && <LastUpdated date={lastUpdated} />}
         <MicroservicesApplications data={data} />
       </Styles.Wrapper>
     );
@@ -42,6 +45,7 @@ class Microservices extends React.PureComponent {
 Microservices.propTypes = {
   data: PropTypes.any,
   loading: PropTypes.bool,
+  lastUpdated: PropTypes.instanceOf(Date),
   fetchMicroservices: PropTypes.func,
 };
 
