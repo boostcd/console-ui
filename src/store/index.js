@@ -4,14 +4,16 @@ import createSagaMiddleware, { END } from 'redux-saga';
 
 import rootReducer from './rootReducer';
 
+const sagaMiddleware = createSagaMiddleware();
 const logger = createLogger({
   collapsed: () => true,
 });
 
-const sagaMiddleware = createSagaMiddleware();
-
-// TODO: Disable logging in production
-const middleware = [logger, sagaMiddleware];
+// Add development specific middleware
+let middleware = [sagaMiddleware];
+if (process.env.NODE_ENV === 'development') {
+  middleware.push(logger);
+}
 
 const composeEnhancers =
   (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
