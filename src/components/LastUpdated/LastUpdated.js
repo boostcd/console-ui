@@ -5,14 +5,20 @@ import * as Styles from './LastUpdated.styled';
 
 class LastUpdated extends React.PureComponent {
   render() {
-    const { date } = this.props;
+    const { date, loading } = this.props;
 
-    return <Styles.Wrapper>Last updated: {date.toLocaleString()}</Styles.Wrapper>;
+    return (
+      <Styles.Wrapper>
+        {loading && <Styles.Spinner />}
+        <span>Last updated: {date.toLocaleString()}</span>
+      </Styles.Wrapper>
+    );
   }
 }
 
 LastUpdated.propTypes = {
   date: PropTypes.instanceOf(Date),
+  loading: PropTypes.bool,
 };
 
 export default LastUpdated;

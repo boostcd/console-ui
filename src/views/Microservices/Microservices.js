@@ -13,7 +13,7 @@ import { fetchMicroservices } from './state/actions';
 const mapStateToProps = (state) => ({
   data: state.microservices.data,
   loading: state.microservices.loading,
-  lastUpdated: state.microservices.lastUpdated,
+  polling: state.microservices.polling,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -27,15 +27,16 @@ class Microservices extends React.PureComponent {
   }
 
   render() {
-    const { data, loading, lastUpdated } = this.props;
+    const { data, loading, polling } = this.props;
+    const { count, lastUpdated } = polling;
 
-    if (loading) return <Loader />;
+    if (loading && !count) return <Loader />;
 
     return (
       <Styles.Wrapper>
         <Helmet title='Microservices' />
         <MicroservicesControls data={data} />
-        {lastUpdated && <LastUpdated date={lastUpdated} />}
+        {lastUpdated && <LastUpdated date={lastUpdated} loading={loading} />}
         <MicroservicesApplications data={data} />
       </Styles.Wrapper>
     );
@@ -45,7 +46,10 @@ class Microservices extends React.PureComponent {
 Microservices.propTypes = {
   data: PropTypes.any,
   loading: PropTypes.bool,
-  lastUpdated: PropTypes.instanceOf(Date),
+  polling: PropTypes.shape({
+    count: PropTypes.number,
+    lastUpdated: PropTypes.instanceOf(Date),
+  }),
   fetchMicroservices: PropTypes.func,
 };
 
