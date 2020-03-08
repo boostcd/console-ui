@@ -1,5 +1,6 @@
 const path = require('path');
 const LoadableWebpackPlugin = require('@loadable/webpack-plugin');
+const webpack = require('webpack');
 
 // Modifying the default Webpack config provided by razzle
 // https://github.com/gregberge/loadable-components/tree/master/examples/razzle
@@ -28,6 +29,17 @@ module.exports = {
         },
       });
     }
+
+    // Define the global environment variables used in the project
+    appConfig.plugins.push(
+      new webpack.DefinePlugin({
+        PRODUCT: JSON.stringify(process.env.PRODUCT),
+        PRODUCT_DESCRIPTION: JSON.stringify(process.env.PRODUCT_DESCRIPTION),
+        BUILD_API_SERVICE_URI: JSON.stringify(process.env.BUILD_API_SERVICE_URI),
+        TEST_API_SERVICE_URI: JSON.stringify(process.env.TEST_API_SERVICE_URI),
+        PROD_API_SERVICE_URI: JSON.stringify(process.env.PROD_API_SERVICE_URI),
+      })
+    );
 
     return appConfig;
   },

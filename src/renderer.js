@@ -44,7 +44,7 @@ export default (req, res) => {
       <html lang="">
         <head>
           <meta charset="utf-8" />
-          <title>${process.env.PRODUCT_DESCRIPTION}</title>
+          <title>${PRODUCT_DESCRIPTION}</title>
           <meta name="description" content="" />
           <meta name="theme-color" content="#2BA2B8" />
           <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -57,10 +57,10 @@ export default (req, res) => {
           <script>
             window.__PRELOADED_STATE__ = ${JSON.stringify(store.getState())};
             window.boost = ${JSON.stringify({
-              BUILD_API_SERVICE_URI: process.env.BUILD_API_SERVICE_URI,
-              TEST_API_SERVICE_URI: process.env.TEST_API_SERVICE_URI,
-              PROD_API_SERVICE_URI: process.env.PROD_API_SERVICE_URI,
-              PRODUCT_DESCRIPTION: process.env.PRODUCT_DESCRIPTION,
+              BUILD_API_SERVICE_URI,
+              TEST_API_SERVICE_URI,
+              PROD_API_SERVICE_URI,
+              PRODUCT_DESCRIPTION,
             })};
           </script>
         </body>

@@ -30,6 +30,4 @@ class BuildApi extends BaseApi {
   };
 }
 
-export default new BuildApi(
-  process.env.BUILD_API_SERVICE_URI || window.boost.BUILD_API_SERVICE_URI
-);
+export default new BuildApi(BUILD_API_SERVICE_URI);
