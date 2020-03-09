@@ -17,10 +17,10 @@ yarn install
 
 ### Commands
 
-* build - Bundle the application into the **/build** folder
-* start - Start the applications in production mode
-* start:dev - Start the applications in development mode
-* test - Run the unit test suite using [Jest](https://jestjs.io/)
+* **build** - Bundle the application into the build folder
+* **start** - Start the applications in production mode
+* **start:dev** - Start the applications in development mode
+* **test** - Run the unit test suite using [Jest](https://jestjs.io/)
 
 ### Running locally
 
@@ -41,6 +41,8 @@ npm run start:dev
 OR
 yarn start:dev
 ```
+
+The application will start at [localhost:3000](http://localhost:3000). You can change to a desired port by defining a **PORT** environment variable.
 
 ### Technology
 
