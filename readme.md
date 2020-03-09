@@ -47,11 +47,17 @@ The application will start at [localhost:3000](http://localhost:3000). You can c
 ### Technology
 
 [razzle](https://github.com/jaredpalmer/razzle)
+
 [React](https://reactjs.org/)
+
 [Redux](https://react-redux.js.org/)
+
 [Redux-saga](https://redux-saga.js.org/)
+
 [styled-components](https://styled-components.com/)
+
 [@loadable/server, @loadable/component](https://loadable-components.com/)
+
 ..and much more 🤫
 
 ### Linting and code formatting
