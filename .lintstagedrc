@@ -1,6 +1,7 @@
 {
   "*.{js, jsx}": [
     "prettier --write",
-    "eslint"
+    "eslint",
+    "jest test --bail --findRelatedTests"
   ]
 }
