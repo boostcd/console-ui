@@ -8,7 +8,7 @@ import GlobalStyles from './styles';
 
 const Features = loadable(() => import('./views/Features'));
 const Microservices = loadable(() => import('./views/Microservices'));
-const Microservice = loadable(() => import('./views/Microservices/Microservice'));
+const Microservice = loadable(() => import('./views/Microservice'));
 const Environments = loadable(() => import('./views/Environments'));
 
 const App = () => (
