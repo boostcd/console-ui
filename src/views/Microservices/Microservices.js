@@ -7,7 +7,7 @@ import LastUpdated from '../../components/LastUpdated';
 import Loader from '../../components/Loader';
 import { environmentType } from '../../types/microservices';
 import * as Styles from './Microservices.styled';
-// import MicroservicesApplications from './MicroservicesApplications';
+import MicroservicesApplications from './MicroservicesApplications';
 import MicroservicesControls from './MicroservicesControls';
 import { startPollingMicroservices, stopPollingMicroservices } from './state/actions';
 
@@ -43,7 +43,7 @@ class Microservices extends React.PureComponent {
         <Helmet title='Microservices' />
         <MicroservicesControls data={data} />
         {lastUpdated && <LastUpdated date={lastUpdated} loading={loading} />}
-        {/* <MicroservicesApplications data={data} /> */}
+        <MicroservicesApplications data={data} />
       </Styles.Wrapper>
     );
   }

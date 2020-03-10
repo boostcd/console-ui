@@ -52,7 +52,7 @@ export const Actions = styled.div`
     font-size: 0.65rem;
   }
 
-  * {
+  * ~ * {
     margin-left: 0.1rem;
   }
 `;

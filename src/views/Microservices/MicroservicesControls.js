@@ -8,41 +8,55 @@ import { environmentType } from '../../types/microservices';
 import * as Styles from './MicroservicesControls.styled';
 
 class MicroservicesControls extends React.PureComponent {
-  renderBuildAction(environmentName) {
+  renderBuildAction(environment) {
     return (
-      <Button type='primary' onClick={() => gatewayApi.buildAll(environmentName)}>
+      <Button type='primary' onClick={() => gatewayApi.buildAll(environment.name)}>
         Build all
       </Button>
     );
   }
 
-  renderTestAction(environmentName) {
+  renderTestAction(environment) {
     return (
-      <Button type='primary' onClick={() => gatewayApi.testAll(environmentName)}>
+      <Button type='primary' onClick={() => gatewayApi.testAll(environment.name)}>
         Run tests
       </Button>
     );
   }
 
-  renderPromoteAction(environmentName) {
+  renderPromoteAction(environment) {
     return (
-      <Button type='primary' onClick={() => gatewayApi.promoteAll(environmentName)}>
+      <Button
+        type='primary'
+        hasError={!environment.tested}
+        onClick={() => gatewayApi.promoteAll(environment.name)}
+      >
         Promote all
       </Button>
     );
   }
 
-  renderGoLiveAction(environmentName) {
+  renderGoLiveAction(environment) {
     return (
-      <Button type='primary' onClick={() => gatewayApi.goLive(environmentName)}>
+      <Button
+        type='primary'
+        hasError={!environment.tested}
+        onClick={() => gatewayApi.goLive(environment.name)}
+      >
         Go live!
       </Button>
     );
   }
 
-  renderBackOutAction(environmentName) {
+  renderBackOutAction(environmentName, currentIndex) {
+    const previousEnvironment = this.props.data[currentIndex - 1];
+
     return (
-      <Button type='primary' onClick={() => gatewayApi.backOut(environmentName)}>
+      <Button
+        type='primary'
+        hasError={!previousEnvironment.tested}
+        onClick={() => gatewayApi.backOut(environmentName)}
+      >
         Back out!
       </Button>
     );
@@ -50,7 +64,7 @@ class MicroservicesControls extends React.PureComponent {
 
   renderEnvironment = (environment, index) => {
     const { data } = this.props;
-    const { name, displayName, tested, actions } = environment;
+    const { name, displayName, tested, actions = {} } = environment;
 
     const key = `controls:${name}@${index}`;
     const width = 1 / data.length;
@@ -64,11 +78,11 @@ class MicroservicesControls extends React.PureComponent {
           )}
         </Styles.StageTitle>
         <Styles.StageActions>
-          {actions.build && this.renderBuildAction(name)}
-          {actions.test && this.renderTestAction(name)}
-          {actions.promote && this.renderPromoteAction(name)}
-          {actions.goLive && this.renderGoLiveAction(name)}
-          {actions.backOut && this.renderBackOutAction(name)}
+          {actions.build && this.renderBuildAction(environment)}
+          {actions.test && this.renderTestAction(environment)}
+          {actions.promote && this.renderPromoteAction(environment)}
+          {actions.goLive && this.renderGoLiveAction(environment)}
+          {actions.backOut && this.renderBackOutAction(environment, index)}
         </Styles.StageActions>
       </Box>
     );

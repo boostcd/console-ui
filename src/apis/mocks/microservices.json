@@ -3,6 +3,7 @@
 		"name": "build",
     "displayName": "Build",
     "updatedDate": "2020-03-07T10:59:04Z",
+    "tested": false,
     "actions": {
       "build": true,
       "test": false,
@@ -10,13 +11,69 @@
       "goLive": false,
       "backOut": false
     },
-    "apps": []
+    "apps": [
+      {
+        "version": "1.0.5-SNAPSHOT",
+        "name": "bank-ms",
+        "deployedDate": "2020-03-02T09:26:12Z",
+        "deployed": false,
+        "tested": true,
+        "actions": {
+          "build": true,
+          "promote": true
+        }
+      },
+      {
+        "version": "0.0.5-SNAPSHOT",
+        "name": "blockchain-gateway-ms",
+        "deployedDate": "2020-02-27T12:53:52Z",
+        "deployed": false,
+        "tested": true,
+        "actions": {
+          "build": true,
+          "promote": true
+        }
+      },
+      {
+        "version": "0.0.4-SNAPSHOT",
+        "name": "console-ui",
+        "deployedDate": "2020-02-27T16:03:18Z",
+        "deployed": true,
+        "tested": true,
+        "actions": {
+          "build": true,
+          "promote": true
+        }
+      },
+      {
+        "version": "0.0.3-SNAPSHOT",
+        "name": "currency-converter-ms",
+        "deployedDate": "2020-02-25T14:00:33Z",
+        "deployed": true,
+        "tested": true,
+        "actions": {
+          "build": true,
+          "promote": true
+        }
+      },
+      {
+        "version": "0.0.3-SNAPSHOT",
+        "name": "wallet-ms",
+        "deployedDate": "2020-02-25T13:55:50Z",
+        "deployed": true,
+        "tested": true,
+        "actions": {
+          "build": true,
+          "promote": true
+        }
+      }
+    ]
 	},
   {
     "name": "test",
     "displayName": "Test",
     "updatedDate": "2020-03-07T10:59:04Z",
-    "tested": true,
+    "tested": false,
     "actions": {
       "build": false,
       "test": true,
@@ -24,7 +81,63 @@
       "goLive": false,
       "backOut": false
     },
-    "apps": []
+    "apps": [
+      {
+        "version": "1.0.5-SNAPSHOT",
+        "name": "bank-ms",
+        "deployedDate": "2020-03-02T09:26:12Z",
+        "deployed": true,
+        "tested": true,
+        "actions": {
+          "build": false,
+          "promote": true
+        }
+      },
+      {
+        "version": "0.0.5-SNAPSHOT",
+        "name": "blockchain-gateway-ms",
+        "deployedDate": "2020-02-27T12:53:52Z",
+        "deployed": true,
+        "tested": true,
+        "actions": {
+          "build": false,
+          "promote": true
+        }
+      },
+      {
+        "version": "0.0.4-SNAPSHOT",
+        "name": "console-ui",
+        "deployedDate": "2020-02-27T16:03:18Z",
+        "deployed": true,
+        "tested": true,
+        "actions": {
+          "build": false,
+          "promote": true
+        }
+      },
+      {
+        "version": "0.0.3-SNAPSHOT",
+        "name": "currency-converter-ms",
+        "deployedDate": "2020-02-25T14:00:33Z",
+        "deployed": true,
+        "tested": true,
+        "actions": {
+          "build": false,
+          "promote": true
+        }
+      },
+      {
+        "version": "0.0.3-SNAPSHOT",
+        "name": "wallet-ms",
+        "deployedDate": "2020-02-25T13:55:50Z",
+        "deployed": true,
+        "tested": true,
+        "actions": {
+          "build": false,
+          "promote": true
+        }
+      }
+    ]
   },
   {
     "name": "sit",
@@ -38,7 +151,43 @@
       "goLive": false,
       "backOut": false
     },
-    "apps": []
+    "apps": [
+      {
+        "version": "1.0.5-SNAPSHOT",
+        "name": "bank-ms",
+        "deployedDate": "2020-03-02T09:26:12Z",
+        "deployed": true,
+        "tested": true
+      },
+      {
+        "version": "0.0.5-SNAPSHOT",
+        "name": "blockchain-gateway-ms",
+        "deployedDate": "2020-02-27T12:53:52Z",
+        "deployed": true,
+        "tested": true
+      },
+      {
+        "version": "0.0.4-SNAPSHOT",
+        "name": "console-ui",
+        "deployedDate": "2020-02-27T16:03:18Z",
+        "deployed": true,
+        "tested": true
+      },
+      {
+        "version": "0.0.3-SNAPSHOT",
+        "name": "currency-converter-ms",
+        "deployedDate": "2020-02-25T14:00:33Z",
+        "deployed": true,
+        "tested": true
+      },
+      {
+        "version": "0.0.3-SNAPSHOT",
+        "name": "wallet-ms",
+        "deployedDate": "2020-02-25T13:55:50Z",
+        "deployed": true,
+        "tested": true
+      }
+    ]
   },
   {
     "name": "blue",
@@ -52,7 +201,43 @@
       "goLive": true,
       "backOut": false
     },
-    "apps": []
+    "apps": [
+      {
+        "version": "1.0.5-SNAPSHOT",
+        "name": "bank-ms",
+        "deployedDate": "2020-03-02T09:26:12Z",
+        "deployed": true,
+        "tested": true
+      },
+      {
+        "version": "0.0.5-SNAPSHOT",
+        "name": "blockchain-gateway-ms",
+        "deployedDate": "2020-02-27T12:53:52Z",
+        "deployed": true,
+        "tested": true
+      },
+      {
+        "version": "0.0.4-SNAPSHOT",
+        "name": "console-ui",
+        "deployedDate": "2020-02-27T16:03:18Z",
+        "deployed": true,
+        "tested": true
+      },
+      {
+        "version": "0.0.3-SNAPSHOT",
+        "name": "currency-converter-ms",
+        "deployedDate": "2020-02-25T14:00:33Z",
+        "deployed": true,
+        "tested": true
+      },
+      {
+        "version": "0.0.3-SNAPSHOT",
+        "name": "wallet-ms",
+        "deployedDate": "2020-02-25T13:55:50Z",
+        "deployed": true,
+        "tested": true
+      }
+    ]
   },
   {
     "name": "green",
@@ -65,6 +250,42 @@
       "goLive": false,
       "backOut": true
     },
-    "apps": []
+    "apps": [
+      {
+        "version": "1.0.5-SNAPSHOT",
+        "name": "bank-ms",
+        "deployedDate": "2020-03-02T09:26:12Z",
+        "deployed": true,
+        "tested": true
+      },
+      {
+        "version": "0.0.5-SNAPSHOT",
+        "name": "blockchain-gateway-ms",
+        "deployedDate": "2020-02-27T12:53:52Z",
+        "deployed": true,
+        "tested": true
+      },
+      {
+        "version": "0.0.4-SNAPSHOT",
+        "name": "console-ui",
+        "deployedDate": "2020-02-27T16:03:18Z",
+        "deployed": true,
+        "tested": true
+      },
+      {
+        "version": "0.0.3-SNAPSHOT",
+        "name": "currency-converter-ms",
+        "deployedDate": "2020-02-25T14:00:33Z",
+        "deployed": true,
+        "tested": true
+      },
+      {
+        "version": "0.0.3-SNAPSHOT",
+        "name": "wallet-ms",
+        "deployedDate": "2020-02-25T13:55:50Z",
+        "deployed": true,
+        "tested": true
+      }
+    ]
   }
 ]

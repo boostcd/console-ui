@@ -10,10 +10,11 @@ const actions = PropTypes.shape({
 
 export const serviceType = PropTypes.shape({
   name: PropTypes.string.isRequired,
+  displayName: PropTypes.string.isRequired,
   version: PropTypes.string.isRequired,
   deployed: PropTypes.bool.isRequired,
-  deployedDate: PropTypes.string,
-  displayName: PropTypes.string,
+  deployedDate: PropTypes.string.isRequired,
+  // tested: PropTypes.bool,
   actions: actions.isRequired,
 });
 

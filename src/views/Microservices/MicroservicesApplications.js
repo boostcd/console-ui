@@ -3,46 +3,50 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import buildApi from '../../apis/BuildApi';
-import testApi from '../../apis/TestApi';
+import gatewayApi from '../../apis/GatewayApi';
 import Button from '../../components/Button';
-import Card from '../../components/Card';
-import ENVIRONMENT from '../../constants/environment';
-import isEnvironmentUntested from '../../utils/domain/isEnvironmentUntested';
+import MicroserviceCard from '../../components/MicroserviceCard';
+import { environmentType } from '../../types/microservices';
 import * as Styles from './MicroservicesApplications.styled';
 
 class MicroservicesApplications extends React.PureComponent {
-  handleBuildApp = async (appName) => {
-    await buildApi.build(appName);
-  };
-
-  handlePromoteApp = async (appName) => {
-    await testApi.promote(appName);
-  };
-
-  handleReleaseApp = async (appName) => {
-    await buildApi.release(appName);
-  };
-
-  renderBuildCard = (app, index) => {
+  renderBuildAction(environmentName, appName) {
     return (
-      <Card
-        key={`${ENVIRONMENT.BUILD}-${index}`}
-        app={app}
-        hasError={!app.canRelease || !app.deployed}
+      <Button type='primary' onClick={() => gatewayApi.build(environmentName, appName)}>
+        Build
+      </Button>
+    );
+  }
+
+  renderPromoteAction(environmentName, appName) {
+    return (
+      <Button type='primary' onClick={() => gatewayApi.promote(environmentName, appName)}>
+        Promote
+      </Button>
+    );
+  }
+
+  renderCard = (environment, app, index) => {
+    const { name, displayName, version, deployed, deployedDate, actions } = app;
+    const key = `apps:${environment.name}@${name}@${index}`;
+
+    return (
+      <MicroserviceCard
+        key={key}
+        name={name}
+        version={version}
+        displayName={displayName}
+        deployed={deployed}
+        deployedDate={deployedDate}
         actions={
           <>
-            <Button type='primary' onClick={this.handleBuildApp.bind(this, app.name)}>
-              Build
-            </Button>
-            <Button
-              type='primary'
-              hasError={!app.canRelease}
-              onClick={this.handlePromoteApp.bind(this, app.name)}
-            >
-              Promote
-            </Button>
-            <Link to={`/microservices/${ENVIRONMENT.BUILD}/${app.name}`}>
+            {actions && (
+              <>
+                {actions.build && this.renderBuildAction(environment.name, name)}
+                {actions.promote && this.renderPromoteAction(environment.name, name)}
+              </>
+            )}
+            <Link to={`/microservices/${environment.name}/${app.name}`}>
               <Button type='primary'>View</Button>
             </Link>
           </>
@@ -51,57 +55,16 @@ class MicroservicesApplications extends React.PureComponent {
     );
   };
 
-  renderTestCard = (app, index) => {
-    return (
-      <Card
-        key={`${ENVIRONMENT.TEST}-${index}`}
-        app={app}
-        hasError={!app.deployed}
-        actions={
-          <>
-            <Button
-              type='primary'
-              hasError={isEnvironmentUntested(this.props.data.testEnv)}
-              onClick={this.handlePromoteApp.bind(this, app.name)}
-            >
-              Promote
-            </Button>
-            <Link to={`/microservices/${ENVIRONMENT.TEST}/${app.name}`}>
-              <Button type='primary'>View</Button>
-            </Link>
-          </>
-        }
-      />
-    );
-  };
+  renderEnvironment = (environment, index) => {
+    const { data } = this.props;
 
-  renderStagingCard = (app, index) => {
-    return (
-      <Card
-        key={`${ENVIRONMENT.STAGING}-${index}`}
-        app={app}
-        hasError={!app.deployed}
-        actions={
-          <Link to={`/microservices/${ENVIRONMENT.STAGING}/${app.name}`}>
-            <Button type='primary'>View</Button>
-          </Link>
-        }
-      />
-    );
-  };
+    const width = 1 / data.length;
+    const key = `apps:${environment}@${index}`;
 
-  renderLiveCard = (app, index) => {
     return (
-      <Card
-        key={`${ENVIRONMENT.LIVE}-${index}`}
-        app={app}
-        hasError={!app.deployed}
-        actions={
-          <Link to={`/microservices/${ENVIRONMENT.LIVE}/${app.name}`}>
-            <Button type='primary'>View</Button>
-          </Link>
-        }
-      />
+      <Box key={key} width={width} px={2}>
+        {environment.apps.map(this.renderCard.bind(this, environment))}
+      </Box>
     );
   };
 
@@ -110,27 +73,14 @@ class MicroservicesApplications extends React.PureComponent {
 
     return (
       <Styles.Wrapper>
-        <Flex>
-          <Box width={1 / 4} px={2}>
-            {data.buildEnv.buildApps.map(this.renderBuildCard)}
-          </Box>
-          <Box width={1 / 4} px={2}>
-            {data.testEnv.apps.map(this.renderTestCard)}
-          </Box>
-          <Box width={1 / 4} px={2}>
-            {data.live.apps.map(this.renderStagingCard)}
-          </Box>
-          <Box width={1 / 4} px={2}>
-            {data.live.apps.map(this.renderLiveCard)}
-          </Box>
-        </Flex>
+        <Flex>{data.map(this.renderEnvironment)}</Flex>
       </Styles.Wrapper>
     );
   }
 }
 
 MicroservicesApplications.propTypes = {
-  data: PropTypes.any,
+  data: PropTypes.arrayOf(environmentType),
 };
 
 export default MicroservicesApplications;
