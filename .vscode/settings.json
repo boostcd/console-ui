@@ -5,6 +5,7 @@
     "boost",
     "build",
     "chunkhash",
+    "component",
     "compose",
     "console",
     "deps",
@@ -29,6 +30,8 @@
     "redux",
     "server",
     "timeago",
-    "ui"
+    "ui",
+    "unmount",
+    "will"
   ]
 }

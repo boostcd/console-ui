@@ -5,10 +5,11 @@ import { connect } from 'react-redux';
 
 import LastUpdated from '../../components/LastUpdated';
 import Loader from '../../components/Loader';
+import { environmentType } from '../../types/microservices';
 import * as Styles from './Microservices.styled';
 import MicroservicesApplications from './MicroservicesApplications';
 import MicroservicesControls from './MicroservicesControls';
-import { fetchMicroservices } from './state/actions';
+import { startPollingMicroservices, stopPollingMicroservices } from './state/actions';
 
 const mapStateToProps = (state) => ({
   data: state.microservices.data,
@@ -17,13 +18,18 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchMicroservices: () => dispatch(fetchMicroservices()),
+  startPollingMicroservices: () => dispatch(startPollingMicroservices()),
+  stopPollingMicroservices: () => dispatch(stopPollingMicroservices()),
 });
 
 @connect(mapStateToProps, mapDispatchToProps)
 class Microservices extends React.PureComponent {
   componentDidMount() {
-    this.props.fetchMicroservices();
+    this.props.startPollingMicroservices();
+  }
+
+  componentWillUnmount() {
+    this.props.stopPollingMicroservices();
   }
 
   render() {
@@ -44,13 +50,14 @@ class Microservices extends React.PureComponent {
 }
 
 Microservices.propTypes = {
-  data: PropTypes.any,
+  data: PropTypes.arrayOf(environmentType),
   loading: PropTypes.bool,
   polling: PropTypes.shape({
     count: PropTypes.number,
     lastUpdated: PropTypes.instanceOf(Date),
   }),
-  fetchMicroservices: PropTypes.func,
+  startPollingMicroservices: PropTypes.func,
+  stopPollingMicroservices: PropTypes.func,
 };
 
 export default Microservices;

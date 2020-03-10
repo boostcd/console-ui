@@ -1,13 +1,17 @@
 const ACTIONS = {
+  POLL_START: 'microservices/POLL_START',
+  POLL_STOP: 'microservices/POLL_STOP',
   PENDING: 'microservices/PENDING',
   SUCCESS: 'microservices/SUCCESS',
   FAILURE: 'microservices/FAILURE',
-  POLL_START: 'microservices/POLL_START',
-  POLL_STOP: 'microservices/POLL_STOP',
 };
 
-export const fetchMicroservices = () => ({
+export const startPollingMicroservices = () => ({
   type: ACTIONS.POLL_START,
+});
+
+export const stopPollingMicroservices = () => ({
+  type: ACTIONS.POLL_STOP,
 });
 
 export const fetchMicroservicesPending = () => ({

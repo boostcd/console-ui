@@ -10,26 +10,41 @@ const initialState = {
 };
 
 export default (stateActions) => {
-  const [PENDING, SUCCESS, FAILED, POLL_START, POLL_END] = stateActions;
+  const { start, stop, pending, success, failure } = stateActions;
 
   return (state = initialState, action = {}) => {
     const { type, payload } = action;
 
     switch (type) {
-      case PENDING:
+      case start:
+        return {
+          ...state,
+          polling: {
+            ...state.polling,
+            enabled: true,
+          },
+        };
+
+      case stop:
+        return {
+          ...state,
+          polling: {
+            ...state.polling,
+            enabled: false,
+          },
+        };
+
+      case pending:
         return {
           ...state,
           error: false,
           loading: true,
         };
 
-      case SUCCESS:
+      case success:
         return {
           ...state,
-          data: {
-            ...state.data,
-            ...payload,
-          },
+          data: payload,
           error: false,
           loading: false,
           polling: {
@@ -39,30 +54,12 @@ export default (stateActions) => {
           },
         };
 
-      case FAILED:
+      case failure:
         return {
           ...state,
-          data: payload.error,
+          // data: payload.error,
           error: true,
           loading: false,
-          polling: {
-            ...state.polling,
-            enabled: false,
-          },
-        };
-
-      case POLL_START:
-        return {
-          ...state,
-          polling: {
-            ...state.polling,
-            enabled: true,
-          },
-        };
-
-      case POLL_END:
-        return {
-          ...state,
           polling: {
             ...state.polling,
             enabled: false,
