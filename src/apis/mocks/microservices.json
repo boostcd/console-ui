@@ -1,182 +1,70 @@
-{
-  "buildEnv": {
-    "name": "build",
-    "buildApps": [
-      {
-        "version": "1.0.5-SNAPSHOT",
-        "name": "bank-ms",
-        "deployedDate": "2020-03-02T09:26:12Z",
-        "canRelease": true,
-        "deployed": true
-      },
-      {
-        "version": "0.0.5-SNAPSHOT",
-        "name": "blockchain-gateway-ms",
-        "deployedDate": "2020-02-27T12:53:52Z",
-        "canRelease": true,
-        "deployed": true
-      },
-      {
-        "version": "0.0.4-SNAPSHOT",
-        "name": "console-ui",
-        "deployedDate": "2020-02-27T16:03:18Z",
-        "canRelease": true,
-        "deployed": true
-      },
-      {
-        "version": "0.0.3-SNAPSHOT",
-        "name": "currency-converter-ms",
-        "deployedDate": "2020-02-25T14:00:33Z",
-        "canRelease": true,
-        "deployed": true
-      },
-      {
-        "version": "0.0.3-SNAPSHOT",
-        "name": "wallet-ms",
-        "deployedDate": "2020-02-25T13:55:50Z",
-        "canRelease": true,
-        "deployed": true
-      }
-    ]
-  },
-  "testEnv": {
+[
+	{
+		"name": "build",
+    "displayName": "Build",
+    "updatedDate": "2020-03-07T10:59:04Z",
+    "actions": {
+      "build": true,
+      "test": false,
+      "promote": true,
+      "goLive": false,
+      "backOut": false
+    },
+    "apps": []
+	},
+  {
     "name": "test",
-    "apps": [
-      {
-        "version": "1.0.4",
-        "name": "bank-ms",
-        "testStatus": "bank-ms",
-        "deployedDate": "2020-02-28T15:48:01Z",
-        "deployed": true
-      },
-      {
-        "version": "0.0.5",
-        "name": "blockchain-gateway-ms",
-        "testStatus": "blockchain-gateway-ms",
-        "deployedDate": "2020-02-27T15:28:41Z",
-        "deployed": true
-      },
-      {
-        "version": "0.0.4",
-        "name": "console-ui",
-        "testStatus": "console-ui",
-        "deployedDate": "2020-02-27T16:07:54Z",
-        "deployed": true
-      },
-      {
-        "version": "0.0.3",
-        "name": "currency-converter-ms",
-        "testStatus": "currency-converter-ms",
-        "deployedDate": "2020-02-26T14:43:13Z",
-        "deployed": false
-      },
-      {
-        "version": "0.0.3",
-        "name": "wallet-ms",
-        "testStatus": "wallet-ms",
-        "deployedDate": "2020-02-26T14:38:37Z",
-        "deployed": true
-      }
-    ],
-    "tested": false,
-    "testStatus": "Untested"
+    "displayName": "Test",
+    "updatedDate": "2020-03-07T10:59:04Z",
+    "tested": true,
+    "actions": {
+      "build": false,
+      "test": true,
+      "promote": true,
+      "goLive": false,
+      "backOut": false
+    },
+    "apps": []
   },
-  "staging": {
+  {
+    "name": "sit",
+    "displayName": "SIT",
+    "updatedDate": "2020-03-07T10:59:04Z",
+    "tested": true,
+    "actions": {
+      "build": false,
+      "test": true,
+      "promote": true,
+      "goLive": false,
+      "backOut": false
+    },
+    "apps": []
+  },
+  {
     "name": "blue",
-    "apps": [
-      {
-        "version": "1.0.4",
-        "name": "bluebank-ms",
-        "testStatus": "bluebank-ms",
-        "deployedDate": "2020-03-04T12:03:48Z",
-        "deployed": true,
-        "displayName": "bank-ms"
-      },
-      {
-        "version": "0.0.1",
-        "name": "blueblockchain-gateway-ms",
-        "testStatus": "blueblockchain-gateway-ms",
-        "deployedDate": "2020-01-22T17:10:36Z",
-        "deployed": false,
-        "displayName": "blockchain-gateway-ms"
-      },
-      {
-        "version": "0.0.2",
-        "name": "blueconsole-ui",
-        "testStatus": "blueconsole-ui",
-        "deployedDate": "2020-01-22T17:13:51Z",
-        "deployed": false,
-        "displayName": "console-ui"
-      },
-      {
-        "version": "0.0.2",
-        "name": "bluecurrency-converter-ms",
-        "testStatus": "bluecurrency-converter-ms",
-        "deployedDate": "2020-01-22T17:07:16Z",
-        "deployed": false,
-        "displayName": "currency-converter-ms"
-      },
-      {
-        "version": "0.0.2",
-        "name": "bluewallet-ms",
-        "testStatus": "bluewallet-ms",
-        "deployedDate": "2020-01-22T17:04:27Z",
-        "deployed": false,
-        "displayName": "wallet-ms"
-      }
-    ],
+    "displayName": "Staging",
+    "updatedDate": "2020-03-07T10:59:04Z",
     "tested": false,
-    "live": false,
-    "displayName": "Blue",
-    "testStatus": "Untested"
+    "actions": {
+      "build": false,
+      "test": true,
+      "promote": false,
+      "goLive": true,
+      "backOut": false
+    },
+    "apps": []
   },
-  "live": {
+  {
     "name": "green",
-    "apps": [
-      {
-        "version": "0.0.5",
-        "name": "greenbank-ms",
-        "testStatus": "greenbank-ms",
-        "deployedDate": "2020-02-27T14:59:42Z",
-        "deployed": true,
-        "displayName": "bank-ms"
-      },
-      {
-        "version": "0.0.4",
-        "name": "greenblockchain-gateway-ms",
-        "testStatus": "greenblockchain-gateway-ms",
-        "deployedDate": "2020-02-27T15:01:17Z",
-        "deployed": true,
-        "displayName": "blockchain-gateway-ms"
-      },
-      {
-        "version": "0.0.3",
-        "name": "greenconsole-ui",
-        "testStatus": "greenconsole-ui",
-        "deployedDate": "2020-02-27T15:02:51Z",
-        "deployed": true,
-        "displayName": "console-ui"
-      },
-      {
-        "version": "0.0.3",
-        "name": "greencurrency-converter-ms",
-        "testStatus": "greencurrency-converter-ms",
-        "deployedDate": "2020-02-27T15:05:11Z",
-        "deployed": true,
-        "displayName": "currency-converter-ms"
-      },
-      {
-        "version": "0.0.3",
-        "name": "greenwallet-ms",
-        "testStatus": "greenwallet-ms",
-        "deployedDate": "2020-02-27T15:07:06Z",
-        "deployed": true,
-        "displayName": "wallet-ms"
-      }
-    ],
-    "tested": false,
-    "live": true,
-    "displayName": "Green",
-    "testStatus": "Untested"
+    "displayName": "Live",
+    "updatedDate": "2020-03-07T10:59:04Z",
+    "actions": {
+      "build": false,
+      "test": false,
+      "promote": false,
+      "goLive": false,
+      "backOut": true
+    },
+    "apps": []
   }
-}
+]

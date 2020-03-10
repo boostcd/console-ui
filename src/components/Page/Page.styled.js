@@ -11,6 +11,7 @@ export const Header = styled.div`
   height: 40px;
   background: ${baseColor};
   padding: 0 1rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 
   @media (min-width: 768px) {
     height: 70px;

@@ -56,12 +56,6 @@ export default (req, res) => {
           ${scriptTags}
           <script>
             window.__PRELOADED_STATE__ = ${JSON.stringify(store.getState())};
-            window.boost = ${JSON.stringify({
-              BUILD_API_SERVICE_URI,
-              TEST_API_SERVICE_URI,
-              PROD_API_SERVICE_URI,
-              PRODUCT_DESCRIPTION,
-            })};
           </script>
         </body>
       </html>`

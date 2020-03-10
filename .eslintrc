@@ -10,9 +10,7 @@
   "globals": {
     "PRODUCT": true,
     "PRODUCT_DESCRIPTION": true,
-    "BUILD_API_SERVICE_URI": true,
-    "TEST_API_SERVICE_URI": true,
-    "PROD_API_SERVICE_URI": true
+    "GATEWAY_API_SERVICE_URI": true
   },
   "env": {
     "node": true,

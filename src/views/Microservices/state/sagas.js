@@ -1,6 +1,6 @@
 import { call, delay, put, race, take } from 'redux-saga/effects';
 
-import consoleApi from '../../../apis/ConsoleApi';
+import gatewayApi from '../../../apis/GatewayApi';
 import { POLLING_DELAY } from '../../../constants/polling';
 import ACTIONS, {
   fetchMicroservicesFailure,
@@ -12,7 +12,7 @@ function* pollSagaWorker() {
   while (true) {
     try {
       yield put(fetchMicroservicesPending());
-      const data = yield call(consoleApi.getMicroservices);
+      const data = yield call(gatewayApi.getMicroservices);
       yield put(fetchMicroservicesSuccess(data));
       yield delay(POLLING_DELAY);
     } catch (error) {

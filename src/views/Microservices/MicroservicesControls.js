@@ -2,129 +2,91 @@ import { Box, Flex } from '@rebass/grid';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import buildApi from '../../apis/BuildApi';
-import prodApi from '../../apis/ProdApi';
-import testApi from '../../apis/TestApi';
+import gatewayApi from '../../apis/GatewayApi';
 import Button from '../../components/Button';
-import isEnvironmentUntested from '../../utils/domain/isEnvironmentUntested';
+import { environmentType } from '../../types/microservices';
 import * as Styles from './MicroservicesControls.styled';
 
 class MicroservicesControls extends React.PureComponent {
-  state = {
-    actionsDisabled: false,
-  };
+  renderBuildAction(environmentName) {
+    return (
+      <Button type='primary' onClick={() => gatewayApi.buildAll(environmentName)}>
+        Build all
+      </Button>
+    );
+  }
 
-  handleAction = async (apiAction) => {
-    this.setState({
-      actionsDisabled: true,
-    });
+  renderTestAction(environmentName) {
+    return (
+      <Button type='primary' onClick={() => gatewayApi.testAll(environmentName)}>
+        Run tests
+      </Button>
+    );
+  }
 
-    await apiAction();
+  renderPromoteAction(environmentName) {
+    return (
+      <Button type='primary' onClick={() => gatewayApi.promoteAll(environmentName)}>
+        Promote all
+      </Button>
+    );
+  }
 
-    this.setState({
-      actionsDisabled: false,
-    });
+  renderGoLiveAction(environmentName) {
+    return (
+      <Button type='primary' onClick={() => gatewayApi.goLive(environmentName)}>
+        Go live!
+      </Button>
+    );
+  }
+
+  renderBackOutAction(environmentName) {
+    return (
+      <Button type='primary' onClick={() => gatewayApi.backOut(environmentName)}>
+        Back out!
+      </Button>
+    );
+  }
+
+  renderEnvironment = (environment, index) => {
+    const { data } = this.props;
+    const { name, displayName, tested, actions } = environment;
+
+    const key = `controls:${name}@${index}`;
+    const width = 1 / data.length;
+
+    return (
+      <Box key={key} width={width} px={2}>
+        <Styles.StageTitle>
+          <span>{displayName || name}</span>
+          {actions.test && !tested && (
+            <Styles.TestExclamationCircle title='Untested or tests failing' />
+          )}
+        </Styles.StageTitle>
+        <Styles.StageActions>
+          {actions.build && this.renderBuildAction(name)}
+          {actions.test && this.renderTestAction(name)}
+          {actions.promote && this.renderPromoteAction(name)}
+          {actions.goLive && this.renderGoLiveAction(name)}
+          {actions.backOut && this.renderBackOutAction(name)}
+        </Styles.StageActions>
+      </Box>
+    );
   };
 
   render() {
-    const { actionsDisabled } = this.state;
     const { data } = this.props;
 
     return (
       <Styles.Wrapper>
-        <Flex>
-          <Box width={1 / 4} px={2}>
-            <Styles.StageTitle>Build</Styles.StageTitle>
-            <Styles.StageActions>
-              <Button
-                type='secondary'
-                isDisabled={actionsDisabled}
-                onClick={this.handleAction.bind(this, buildApi.buildAll)}
-              >
-                Build all
-              </Button>
-              <Button
-                type='secondary'
-                isDisabled={actionsDisabled}
-                onClick={this.handleAction.bind(this, buildApi.releaseAll)}
-              >
-                Promote all
-              </Button>
-            </Styles.StageActions>
-          </Box>
-          <Box width={1 / 4} px={2}>
-            <Styles.StageTitle>
-              <span>Test</span>
-              {isEnvironmentUntested(data.testEnv) && (
-                <Styles.TestExclamationCircle title='Untested or tests failing' />
-              )}
-            </Styles.StageTitle>
-            <Styles.StageActions>
-              <Button
-                type='secondary'
-                isDisabled={actionsDisabled}
-                onClick={this.handleAction.bind(this, testApi.runTests)}
-              >
-                Run tests
-              </Button>
-              <Button
-                type='secondary'
-                isDisabled={actionsDisabled}
-                hasError={isEnvironmentUntested(data.testEnv)}
-                onClick={this.handleAction.bind(this, testApi.promoteAll)}
-              >
-                Promote all
-              </Button>
-            </Styles.StageActions>
-          </Box>
-          <Box width={1 / 4} px={2}>
-            <Styles.StageTitle>
-              {/* <Styles.StagingCircle /> */}
-              <span>Staging</span>
-              {isEnvironmentUntested(data.staging) && (
-                <Styles.TestExclamationCircle title='Untested or tests failing' />
-              )}
-            </Styles.StageTitle>
-            <Styles.StageActions>
-              <Button
-                type='secondary'
-                isDisabled={actionsDisabled}
-                onClick={this.handleAction.bind(this, prodApi.runTests)}
-              >
-                Run tests
-              </Button>
-              <Button
-                type='secondary'
-                isDisabled={actionsDisabled}
-                hasError={isEnvironmentUntested(data.staging)}
-                onClick={this.handleAction.bind(this, prodApi.promoteLive)}
-              >
-                Go live!
-              </Button>
-            </Styles.StageActions>
-          </Box>
-          <Box width={1 / 4} px={2}>
-            <Styles.StageTitle>
-              {/* <Styles.LiveCircle /> */}
-              <span>Live</span>
-            </Styles.StageTitle>
-            <Button
-              type='secondary'
-              isDisabled={actionsDisabled}
-              hasError={isEnvironmentUntested(data.staging)}
-              onClick={this.handleAction.bind(this, prodApi.promoteLive)}
-            >
-              Back out!
-            </Button>
-          </Box>
-        </Flex>
+        <Flex>{data.map(this.renderEnvironment)}</Flex>
       </Styles.Wrapper>
     );
   }
 }
 
 MicroservicesControls.propTypes = {
-  data: PropTypes.any,
+  data: PropTypes.arrayOf(environmentType),
 };
 
 export default MicroservicesControls;

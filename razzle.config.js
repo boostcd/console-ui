@@ -35,9 +35,7 @@ module.exports = {
       new webpack.DefinePlugin({
         PRODUCT: JSON.stringify(process.env.PRODUCT),
         PRODUCT_DESCRIPTION: JSON.stringify(process.env.PRODUCT_DESCRIPTION),
-        BUILD_API_SERVICE_URI: JSON.stringify(process.env.BUILD_API_SERVICE_URI),
-        TEST_API_SERVICE_URI: JSON.stringify(process.env.TEST_API_SERVICE_URI),
-        PROD_API_SERVICE_URI: JSON.stringify(process.env.PROD_API_SERVICE_URI),
+        GATEWAY_API_SERVICE_URI: JSON.stringify(process.env.GATEWAY_API_SERVICE_URI),
       })
     );
 
