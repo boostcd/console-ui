@@ -4,6 +4,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 
+import Controls from '../../components/Controls';
 import DataFallback from '../../components/DataFallback';
 import ErrorFallback from '../../components/ErrorFallback';
 import Input from '../../components/Input';
@@ -13,7 +14,6 @@ import { DEBOUNCE_DELAY } from '../../constants/debounce';
 import microservicesType from '../../types/microservices';
 import * as Styles from './Microservices.styled';
 import MicroservicesApplications from './MicroservicesApplications';
-import MicroservicesControls from './MicroservicesControls';
 import {
   searchMicroservices,
   startPollingMicroservices,
@@ -80,7 +80,7 @@ class Microservices extends React.PureComponent {
     return (
       <Styles.Wrapper>
         <Helmet title='Microservices' />
-        <MicroservicesControls data={data} />
+        <Controls data={data} />
         <Styles.Heading>
           <Input
             value={search}

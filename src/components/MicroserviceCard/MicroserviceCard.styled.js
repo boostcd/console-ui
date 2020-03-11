@@ -1,7 +1,7 @@
-import { ExclamationCircle as ExclamationCircleIcon } from '@styled-icons/fa-solid';
 import styled from 'styled-components';
 
 import Button from '../Button';
+import ExclamationIcon from '../ExclamationIcon';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -17,8 +17,7 @@ export const Wrapper = styled.div`
     0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 `;
 
-export const ExclamationCircle = styled(ExclamationCircleIcon)`
-  color: red;
+export const ErrorIcon = styled(ExclamationIcon)`
   width: 0.8rem;
   height: 0.8rem;
   margin-right: 0.25rem;

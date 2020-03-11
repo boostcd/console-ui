@@ -3,6 +3,10 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 
+import Controls from '../../components/Controls';
+import DataFallback from '../../components/DataFallback';
+import ErrorFallback from '../../components/ErrorFallback';
+import Loader from '../../components/Loader';
 import featuresType from '../../types/features';
 import { startPollingFeatures, stopPollingFeatures } from './state/actions';
 
@@ -29,10 +33,17 @@ class Features extends React.PureComponent {
   }
 
   render() {
+    const { data, loading, error, polling } = this.props;
+    const { count } = polling;
+
+    if (error) return <ErrorFallback />;
+    if (loading && !count) return <Loader />;
+    if (data && !data.length) return <DataFallback title='No features available!' />;
+
     return (
       <>
         <Helmet title='Features' />
-        <div>Features: To be implemented</div>
+        <Controls data={data} />
       </>
     );
   }

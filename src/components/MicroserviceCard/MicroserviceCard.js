@@ -16,7 +16,7 @@ class MicroserviceCard extends React.PureComponent {
     return (
       <Styles.Wrapper>
         <Styles.Name title={nameProp}>
-          {!deployed && <Styles.ExclamationCircle />}
+          {!deployed && <Styles.ErrorIcon />}
           <span>{name}</span>
         </Styles.Name>
         <Styles.Version>{version}</Styles.Version>

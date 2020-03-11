@@ -11,23 +11,31 @@ import * as Styles from './MicroservicesApplications.styled';
 
 class MicroservicesApplications extends React.PureComponent {
   renderBuildAction(environment, app) {
+    const { name: environmentName } = environment;
+    const { name: appName, state = {} } = app;
+
     return (
-      <Button type='primary' onClick={() => gatewayApi.build(environment.name, app.name)}>
-        Build
+      <Button type='primary' onClick={() => gatewayApi.build(environmentName, appName)}>
+        <span>Build</span>
+        {state.build && <Styles.StateIcon />}
       </Button>
     );
   }
 
   renderPromoteAction(environment, app) {
-    const hasError = !environment.tested || !app.tested;
+    const { name: environmentName, tested: environmentTested } = environment;
+    const { name: appName, tested: appTested, state = {} } = app;
+
+    const hasError = !environmentTested || !appTested;
 
     return (
       <Button
         type='primary'
         hasError={hasError}
-        onClick={() => gatewayApi.promote(environment.name, app.name)}
+        onClick={() => gatewayApi.promote(environmentName, appName)}
       >
-        Promote
+        <span>Promote</span>
+        {state.promote && <Styles.StateIcon />}
       </Button>
     );
   }
