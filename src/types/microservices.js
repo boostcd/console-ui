@@ -1,27 +1,21 @@
 import PropTypes from 'prop-types';
 
-const actions = {
-  build: PropTypes.bool,
-  test: PropTypes.bool,
-  promote: PropTypes.bool,
-  goLive: PropTypes.bool,
-  backOut: PropTypes.bool,
-};
+import { actionsType, environmentType } from './common';
 
-export const serviceType = {
+export const microserviceType = {
   name: PropTypes.string.isRequired,
-  displayName: PropTypes.string.isRequired,
   version: PropTypes.string.isRequired,
   deployed: PropTypes.bool.isRequired,
   deployedDate: PropTypes.string.isRequired,
-  // tested: PropTypes.bool,
-  actions: PropTypes.shape(actions),
+  // Optional
+  displayName: PropTypes.string,
+  tested: PropTypes.bool,
+  actions: PropTypes.shape(actionsType),
 };
 
-export const environmentType = {
-  name: PropTypes.string.isRequired,
-  displayName: PropTypes.string.isRequired,
-  updatedDate: PropTypes.string.isRequired,
-  actions: actions.isRequired,
-  apps: PropTypes.arrayOf(PropTypes.shape(serviceType)).isRequired,
+const microservicesEnvironmentType = {
+  ...environmentType,
+  apps: PropTypes.arrayOf(PropTypes.shape(microserviceType)).isRequired,
 };
+
+export default PropTypes.arrayOf(PropTypes.shape(microservicesEnvironmentType));

@@ -28,7 +28,7 @@ class BaseApi {
     try {
       const response = await this.instance.request(config);
       console.info(`API: ${config.method} Request @ ${config.url} responded with: `, response);
-      return response;
+      return response.data;
     } catch (error) {
       throw new RequestError(`API: ${config.method} Request @ ${config.url} failed with: `, error);
     }

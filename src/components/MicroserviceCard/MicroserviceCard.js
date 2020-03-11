@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { format } from 'timeago.js';
 
-import { serviceType } from '../../types/microservices';
+import { microserviceType } from '../../types/microservices';
 import * as Styles from './MicroserviceCard.styled';
 
 class MicroserviceCard extends React.PureComponent {
@@ -28,7 +28,7 @@ class MicroserviceCard extends React.PureComponent {
 }
 
 MicroserviceCard.propTypes = {
-  ...serviceType,
+  ...microserviceType,
   actions: PropTypes.node.isRequired,
 };
 

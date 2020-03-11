@@ -1,5 +1,4 @@
 import { Box, Flex } from '@rebass/grid';
-import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -7,7 +6,7 @@ import gatewayApi from '../../apis/GatewayApi';
 import Button from '../../components/Button';
 import DataFallback from '../../components/DataFallback';
 import MicroserviceCard from '../../components/MicroserviceCard';
-import { environmentType } from '../../types/microservices';
+import microservicesType from '../../types/microservices';
 import * as Styles from './MicroservicesApplications.styled';
 
 class MicroservicesApplications extends React.PureComponent {
@@ -90,7 +89,7 @@ class MicroservicesApplications extends React.PureComponent {
 }
 
 MicroservicesApplications.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.shape(environmentType)),
+  data: microservicesType,
 };
 
 export default MicroservicesApplications;

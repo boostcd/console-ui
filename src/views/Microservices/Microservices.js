@@ -10,7 +10,7 @@ import Input from '../../components/Input';
 import LastUpdated from '../../components/LastUpdated';
 import Loader from '../../components/Loader';
 import { DEBOUNCE_DELAY } from '../../constants/debounce';
-import { environmentType } from '../../types/microservices';
+import microservicesType from '../../types/microservices';
 import * as Styles from './Microservices.styled';
 import MicroservicesApplications from './MicroservicesApplications';
 import MicroservicesControls from './MicroservicesControls';
@@ -30,8 +30,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  startPollingMicroservices: () => dispatch(startPollingMicroservices()),
-  stopPollingMicroservices: () => dispatch(stopPollingMicroservices()),
+  startPolling: () => dispatch(startPollingMicroservices()),
+  stopPolling: () => dispatch(stopPollingMicroservices()),
   searchMicroservices: (search) => dispatch(searchMicroservices(search)),
 });
 
@@ -48,11 +48,11 @@ class Microservices extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.props.startPollingMicroservices();
+    this.props.startPolling();
   }
 
   componentWillUnmount() {
-    this.props.stopPollingMicroservices();
+    this.props.stopPolling();
   }
 
   handleSearchChange = (event) => {
@@ -96,7 +96,7 @@ class Microservices extends React.PureComponent {
 }
 
 Microservices.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.shape(environmentType)),
+  data: microservicesType,
   loading: PropTypes.bool,
   error: PropTypes.bool,
   polling: PropTypes.shape({
@@ -104,8 +104,8 @@ Microservices.propTypes = {
     lastUpdated: PropTypes.instanceOf(Date),
   }),
   search: PropTypes.string,
-  startPollingMicroservices: PropTypes.func,
-  stopPollingMicroservices: PropTypes.func,
+  startPolling: PropTypes.func,
+  stopPolling: PropTypes.func,
   searchMicroservices: PropTypes.func,
 };
 

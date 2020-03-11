@@ -1,10 +1,9 @@
 import { Box, Flex } from '@rebass/grid';
-import PropTypes from 'prop-types';
 import React from 'react';
 
 import gatewayApi from '../../apis/GatewayApi';
 import Button from '../../components/Button';
-import { environmentType } from '../../types/microservices';
+import microservicesType from '../../types/microservices';
 import * as Styles from './MicroservicesControls.styled';
 
 class MicroservicesControls extends React.PureComponent {
@@ -100,7 +99,7 @@ class MicroservicesControls extends React.PureComponent {
 }
 
 MicroservicesControls.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.shape(environmentType)),
+  data: microservicesType,
 };
 
 export default MicroservicesControls;

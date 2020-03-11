@@ -1,14 +1,11 @@
 import BaseApi from './BaseApi';
-import microservices from './mocks/microservices.json';
 
 class GatewayApi extends BaseApi {
   getMicroservices = async () => {
-    return microservices;
-
-    // return await this.request({
-    //   method: 'GET',
-    //   url: `/microservices`,
-    // });
+    return await this.request({
+      method: 'GET',
+      url: `/microservices`,
+    });
   };
 
   getFeatures = async () => {
