@@ -7,4 +7,5 @@ export default createRequestReducer({
   pending: ACTIONS.PENDING,
   success: ACTIONS.SUCCESS,
   failure: ACTIONS.FAILURE,
+  search: ACTIONS.SEARCH,
 });

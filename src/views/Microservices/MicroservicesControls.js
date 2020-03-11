@@ -100,7 +100,7 @@ class MicroservicesControls extends React.PureComponent {
 }
 
 MicroservicesControls.propTypes = {
-  data: PropTypes.arrayOf(environmentType),
+  data: PropTypes.arrayOf(PropTypes.shape(environmentType)),
 };
 
 export default MicroservicesControls;

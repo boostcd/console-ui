@@ -5,22 +5,29 @@ import { Link } from 'react-router-dom';
 
 import gatewayApi from '../../apis/GatewayApi';
 import Button from '../../components/Button';
+import DataFallback from '../../components/DataFallback';
 import MicroserviceCard from '../../components/MicroserviceCard';
 import { environmentType } from '../../types/microservices';
 import * as Styles from './MicroservicesApplications.styled';
 
 class MicroservicesApplications extends React.PureComponent {
-  renderBuildAction(environmentName, appName) {
+  renderBuildAction(environment, app) {
     return (
-      <Button type='primary' onClick={() => gatewayApi.build(environmentName, appName)}>
+      <Button type='primary' onClick={() => gatewayApi.build(environment.name, app.name)}>
         Build
       </Button>
     );
   }
 
-  renderPromoteAction(environmentName, appName) {
+  renderPromoteAction(environment, app) {
+    const hasError = !environment.tested || !app.tested;
+
     return (
-      <Button type='primary' onClick={() => gatewayApi.promote(environmentName, appName)}>
+      <Button
+        type='primary'
+        hasError={hasError}
+        onClick={() => gatewayApi.promote(environment.name, app.name)}
+      >
         Promote
       </Button>
     );
@@ -42,8 +49,8 @@ class MicroservicesApplications extends React.PureComponent {
           <>
             {actions && (
               <>
-                {actions.build && this.renderBuildAction(environment.name, name)}
-                {actions.promote && this.renderPromoteAction(environment.name, name)}
+                {actions.build && this.renderBuildAction(environment, app)}
+                {actions.promote && this.renderPromoteAction(environment, app)}
               </>
             )}
             <Link to={`/microservices/${environment.name}/${app.name}`}>
@@ -71,6 +78,9 @@ class MicroservicesApplications extends React.PureComponent {
   render() {
     const { data } = this.props;
 
+    const isEmpty = data.every((env) => env.apps.length === 0);
+    if (isEmpty) return <DataFallback title='No services available!' />;
+
     return (
       <Styles.Wrapper>
         <Flex>{data.map(this.renderEnvironment)}</Flex>
@@ -80,7 +90,7 @@ class MicroservicesApplications extends React.PureComponent {
 }
 
 MicroservicesApplications.propTypes = {
-  data: PropTypes.arrayOf(environmentType),
+  data: PropTypes.arrayOf(PropTypes.shape(environmentType)),
 };
 
 export default MicroservicesApplications;

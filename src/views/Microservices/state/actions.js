@@ -4,6 +4,7 @@ const ACTIONS = {
   PENDING: 'microservices/PENDING',
   SUCCESS: 'microservices/SUCCESS',
   FAILURE: 'microservices/FAILURE',
+  SEARCH: 'microservices/SEARCH',
 };
 
 export const startPollingMicroservices = () => ({
@@ -27,6 +28,13 @@ export const fetchMicroservicesFailure = (error) => ({
   type: ACTIONS.FAILURE,
   payload: {
     error,
+  },
+});
+
+export const searchMicroservices = (search) => ({
+  type: ACTIONS.SEARCH,
+  payload: {
+    search,
   },
 });
 

@@ -53,6 +53,6 @@ export const Actions = styled.div`
   }
 
   * ~ * {
-    margin-left: 0.1rem;
+    margin-left: 0.2rem;
   }
 `;

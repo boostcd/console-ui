@@ -7,10 +7,11 @@ const initialState = {
     count: 0,
     lastUpdated: undefined,
   },
+  search: '',
 };
 
 export default (stateActions) => {
-  const { start, stop, pending, success, failure } = stateActions;
+  const { start, stop, pending, success, failure, search } = stateActions;
 
   return (state = initialState, action = {}) => {
     const { type, payload } = action;
@@ -60,6 +61,12 @@ export default (stateActions) => {
           // data: payload.error,
           error: true,
           loading: false,
+        };
+
+      case search:
+        return {
+          ...state,
+          search: payload.search,
         };
 
       default:

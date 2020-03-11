@@ -5,6 +5,6 @@ export const Wrapper = styled.div`
   justify-content: center;
 `;
 
-export const Title = styled.h3`
+export const Title = styled.h4`
   color: #ff5a5a;
 `;
