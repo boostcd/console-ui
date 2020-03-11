@@ -1,31 +1,19 @@
-import stall from '../utils/stall';
 import BaseApi from './BaseApi';
-import microservices from './mocks/microservices.json';
 
 class GatewayApi extends BaseApi {
-  async getMicroservices() {
-    await stall(3000);
-    return microservices;
-
-    /*
-    TODO: Temporary mocked the microservices endpoint
+  getMicroservices = async () => {
     return await this.request({
       method: 'GET',
       url: `/microservices`,
     });
-    */
-  }
+  };
 
-  async getFeatures() {
-    return [];
-
-    /*
+  getFeatures = async () => {
     return await this.request({
       method: 'GET',
       url: `/features`,
     });
-    */
-  }
+  };
 
   async build(environment, service) {
     return await this.request({

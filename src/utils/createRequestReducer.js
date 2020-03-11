@@ -1,5 +1,5 @@
 const initialState = {
-  data: {},
+  data: [],
   error: false,
   loading: true,
   polling: {
@@ -60,10 +60,6 @@ export default (stateActions) => {
           // data: payload.error,
           error: true,
           loading: false,
-          polling: {
-            ...state.polling,
-            enabled: false,
-          },
         };
 
       default:

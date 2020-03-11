@@ -14,9 +14,10 @@ function* pollSagaWorker() {
       yield put(fetchMicroservicesPending());
       const data = yield call(gatewayApi.getMicroservices);
       yield put(fetchMicroservicesSuccess(data));
-      yield delay(POLLING_DELAY);
     } catch (error) {
       yield put(fetchMicroservicesFailure(error));
+    } finally {
+      yield delay(POLLING_DELAY);
     }
   }
 }

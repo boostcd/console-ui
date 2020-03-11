@@ -3,6 +3,8 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 
+import DataFallback from '../../components/DataFallback';
+import ErrorFallback from '../../components/ErrorFallback';
 import LastUpdated from '../../components/LastUpdated';
 import Loader from '../../components/Loader';
 import { environmentType } from '../../types/microservices';
@@ -14,6 +16,7 @@ import { startPollingMicroservices, stopPollingMicroservices } from './state/act
 const mapStateToProps = (state) => ({
   data: state.microservices.data,
   loading: state.microservices.loading,
+  error: state.microservices.error,
   polling: state.microservices.polling,
 });
 
@@ -33,10 +36,12 @@ class Microservices extends React.PureComponent {
   }
 
   render() {
-    const { data, loading, polling } = this.props;
+    const { data, loading, error, polling } = this.props;
     const { count, lastUpdated } = polling;
 
+    if (error) return <ErrorFallback />;
     if (loading && !count) return <Loader />;
+    if (data && !data.length) return <DataFallback title='No services available!' />;
 
     return (
       <Styles.Wrapper>
@@ -52,6 +57,7 @@ class Microservices extends React.PureComponent {
 Microservices.propTypes = {
   data: PropTypes.arrayOf(environmentType),
   loading: PropTypes.bool,
+  error: PropTypes.bool,
   polling: PropTypes.shape({
     count: PropTypes.number,
     lastUpdated: PropTypes.instanceOf(Date),
