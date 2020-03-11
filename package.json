@@ -27,6 +27,7 @@
     "@styled-icons/fa-solid": "^10.0.0",
     "axios": "^0.19.2",
     "babel-plugin-styled-components": "^1.10.7",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "debounce": "^1.2.0",
     "express": "^4.17.1",
     "helmet": "^3.21.3",
