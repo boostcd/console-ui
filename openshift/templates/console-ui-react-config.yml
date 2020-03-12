@@ -78,7 +78,9 @@ objects:
               - name: PRODUCT
                 value: ${PRODUCT}
               - name: PRODUCT_DESCRIPTION
-                value: ${PRODUCT_DESCRIPTION}                        
+                value: ${PRODUCT_DESCRIPTION}      
+              - name: PORT
+                value: 8080                 
             image: ${DOCKER_REGISTRY}/${DOCKER_NAMESPACE}/${MICROSERVICE}:${DOCKER_IMAGE_LABEL}
             imagePullPolicy: Always
             name: ${MICROSERVICE}
