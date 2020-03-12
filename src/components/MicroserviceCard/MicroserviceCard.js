@@ -25,7 +25,7 @@ class MicroserviceCard extends React.PureComponent {
       : t('common.notDeployed');
 
     const deployedTextAlt = deployed ? deployedDate : undefined;
-    const isActive = state.build || state.promote;
+    const isActive = !!Object.values(state).filter(Boolean).length;
 
     return (
       <Styles.Wrapper>

@@ -47,7 +47,7 @@ class MicroservicesApplications extends React.PureComponent {
   }
 
   renderCard = (environment, app, index) => {
-    const { name, displayName, version, deployed, deployedDate, state, actions } = app;
+    const { name, displayName, version, deployed, deployedDate, state, actions = {} } = app;
     const key = `apps:${environment.name}@${name}@${index}`;
 
     return (
@@ -61,12 +61,8 @@ class MicroservicesApplications extends React.PureComponent {
         state={state}
         actions={
           <>
-            {actions && (
-              <>
-                {actions.build && this.renderBuildAction(environment, app)}
-                {actions.promote && this.renderPromoteAction(environment, app)}
-              </>
-            )}
+            {actions.build && this.renderBuildAction(environment, app)}
+            {actions.promote && this.renderPromoteAction(environment, app)}
             <Link to={`/microservices/${environment.name}/${app.name}`}>
               <Button type='primary'>{t('common.view')}</Button>
             </Link>

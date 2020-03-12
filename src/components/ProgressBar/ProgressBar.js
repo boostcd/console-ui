@@ -40,7 +40,7 @@ class ProgressBar extends React.PureComponent {
     }
 
     if (this.state.isActive) {
-      this.interval = setInterval(this.updateValue, 1000);
+      this.interval = setInterval(this.updateValue, 2400);
     }
   }
 
