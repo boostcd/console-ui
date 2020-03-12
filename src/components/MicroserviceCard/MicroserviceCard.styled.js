@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-flow: column;
   justify-content: space-around;
-  height: 120px;
+  height: 130px;
   background: white;
   border-radius: 4px;
   font-size: 0.85rem;
@@ -24,7 +24,8 @@ export const ErrorIcon = styled(ExclamationIcon)`
 `;
 
 export const Name = styled.div`
-  min-height: 1.1rem;
+  font-size: 0.9rem;
+  min-height: 1rem;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -37,7 +38,7 @@ export const Version = styled.div`
 
 export const Date = styled.div`
   color: #a2a2a2;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
 `;
 
 export const Actions = styled.div`

@@ -47,7 +47,7 @@ class MicroservicesApplications extends React.PureComponent {
   }
 
   renderCard = (environment, app, index) => {
-    const { name, displayName, version, deployed, deployedDate, actions } = app;
+    const { name, displayName, version, deployed, deployedDate, state, actions } = app;
     const key = `apps:${environment.name}@${name}@${index}`;
 
     return (
@@ -58,6 +58,7 @@ class MicroservicesApplications extends React.PureComponent {
         displayName={displayName}
         deployed={deployed}
         deployedDate={deployedDate}
+        state={state}
         actions={
           <>
             {actions && (

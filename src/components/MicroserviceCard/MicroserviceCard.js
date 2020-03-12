@@ -4,11 +4,20 @@ import { format } from 'timeago.js';
 
 import { microserviceType } from '../../types/microservices';
 import t from '../../utils/translate';
+import ProgressBar from '../ProgressBar';
 import * as Styles from './MicroserviceCard.styled';
 
 class MicroserviceCard extends React.PureComponent {
   render() {
-    const { name: nameProp, displayName, version, deployed, deployedDate, actions } = this.props;
+    const {
+      name: nameProp,
+      displayName,
+      version,
+      deployed,
+      deployedDate,
+      state = {},
+      actions = {},
+    } = this.props;
 
     const name = displayName || nameProp;
     const deployedText = deployed
@@ -16,6 +25,7 @@ class MicroserviceCard extends React.PureComponent {
       : t('common.notDeployed');
 
     const deployedTextAlt = deployed ? deployedDate : undefined;
+    const isActive = state.build || state.promote;
 
     return (
       <Styles.Wrapper>
@@ -25,6 +35,7 @@ class MicroserviceCard extends React.PureComponent {
         </Styles.Name>
         <Styles.Version>{version}</Styles.Version>
         <Styles.Date title={deployedTextAlt}>{deployedText}</Styles.Date>
+        <ProgressBar isActive={isActive} />
         <Styles.Actions>{actions}</Styles.Actions>
       </Styles.Wrapper>
     );
