@@ -80,7 +80,7 @@ objects:
               - name: PRODUCT_DESCRIPTION
                 value: ${PRODUCT_DESCRIPTION}      
               - name: PORT
-                value: 8080                 
+                value: '8080'                 
             image: ${DOCKER_REGISTRY}/${DOCKER_NAMESPACE}/${MICROSERVICE}:${DOCKER_IMAGE_LABEL}
             imagePullPolicy: Always
             name: ${MICROSERVICE}
