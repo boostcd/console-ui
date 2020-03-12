@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import t from '../../utils/translate';
 import * as Styles from './LastUpdated.styled';
 
 class LastUpdated extends React.PureComponent {
@@ -10,7 +11,7 @@ class LastUpdated extends React.PureComponent {
     return (
       <Styles.Wrapper>
         {loading && <Styles.Spinner />}
-        <span>Last updated: {date.toLocaleString()}</span>
+        <span>{t('common.lastUpdated', { value: date.toLocaleString() })}</span>
       </Styles.Wrapper>
     );
   }

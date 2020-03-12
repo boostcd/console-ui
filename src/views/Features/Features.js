@@ -8,6 +8,7 @@ import DataFallback from '../../components/DataFallback';
 import ErrorFallback from '../../components/ErrorFallback';
 import Loader from '../../components/Loader';
 import featuresType from '../../types/features';
+import t from '../../utils/translate';
 import { startPollingFeatures, stopPollingFeatures } from './state/actions';
 
 const mapStateToProps = (state) => ({
@@ -38,11 +39,11 @@ class Features extends React.PureComponent {
 
     if (error) return <ErrorFallback />;
     if (loading && !count) return <Loader />;
-    if (data && !data.length) return <DataFallback title='No features available!' />;
+    if (data && !data.length) return <DataFallback title={t('features.dataFallback')} />;
 
     return (
       <>
-        <Helmet title='Features' />
+        <Helmet title={t('features.pageTitle')} />
         <Controls data={data} />
       </>
     );

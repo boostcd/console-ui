@@ -3,6 +3,7 @@ import React from 'react';
 import { format } from 'timeago.js';
 
 import { microserviceType } from '../../types/microservices';
+import t from '../../utils/translate';
 import * as Styles from './MicroserviceCard.styled';
 
 class MicroserviceCard extends React.PureComponent {
@@ -10,7 +11,10 @@ class MicroserviceCard extends React.PureComponent {
     const { name: nameProp, displayName, version, deployed, deployedDate, actions } = this.props;
 
     const name = displayName || nameProp;
-    const deployedText = deployed ? `Deployed ${format(deployedDate)}` : 'Not deployed';
+    const deployedText = deployed
+      ? t('common.deployed', { value: format(deployedDate) })
+      : t('common.notDeployed');
+
     const deployedTextAlt = deployed ? deployedDate : undefined;
 
     return (

@@ -5,6 +5,7 @@ import React from 'react';
 import gatewayApi from '../../apis/GatewayApi';
 import featuresType from '../../types/features';
 import microservicesType from '../../types/microservices';
+import t from '../../utils/translate';
 import Button from '../Button';
 import * as Styles from './Controls.styled';
 
@@ -14,7 +15,7 @@ class Controls extends React.PureComponent {
 
     return (
       <Button type='primary' isDisabled={state.build} onClick={() => gatewayApi.buildAll(name)}>
-        <span>Build all</span>
+        <span>{t('common.buildAll')}</span>
         {state.build && <Styles.StateIcon />}
       </Button>
     );
@@ -25,7 +26,7 @@ class Controls extends React.PureComponent {
 
     return (
       <Button type='primary' isDisabled={state.test} onClick={() => gatewayApi.testAll(name)}>
-        <span>Run tests</span>
+        <span>{t('common.testAll')}</span>
         {state.test && <Styles.StateIcon />}
       </Button>
     );
@@ -34,7 +35,7 @@ class Controls extends React.PureComponent {
   renderPromoteAction(environment) {
     const { name, tested, state = {} } = environment;
     const hasError = !tested;
-    const title = hasError ? 'Untested or tests failing' : '';
+    const title = hasError ? t('common.untested') : '';
 
     return (
       <Button
@@ -44,7 +45,7 @@ class Controls extends React.PureComponent {
         isDisabled={state.promote}
         onClick={() => gatewayApi.promoteAll(name)}
       >
-        <span>Promote all</span>
+        <span>{t('common.promoteAll')}</span>
         {state.promote && <Styles.StateIcon />}
       </Button>
     );
@@ -53,7 +54,7 @@ class Controls extends React.PureComponent {
   renderGoLiveAction(environment) {
     const { name, tested, state = {} } = environment;
     const hasError = !tested;
-    const title = hasError ? 'Untested or tests failing' : '';
+    const title = hasError ? t('common.untested') : '';
 
     return (
       <Button
@@ -63,7 +64,7 @@ class Controls extends React.PureComponent {
         isDisabled={state.goLive}
         onClick={() => gatewayApi.goLive(name)}
       >
-        <span>Go live!</span>
+        <span>{t('common.goLive')}</span>
         {state.goLive && <Styles.StateIcon />}
       </Button>
     );
@@ -74,7 +75,7 @@ class Controls extends React.PureComponent {
 
     const previousEnvironment = this.props.data[currentIndex - 1];
     const hasError = !previousEnvironment.tested;
-    const title = hasError ? 'Untested or tests failing' : '';
+    const title = hasError ? t('common.untested') : '';
 
     return (
       <Button
@@ -84,7 +85,7 @@ class Controls extends React.PureComponent {
         isDisabled={state.backOut}
         onClick={() => gatewayApi.backOut(name)}
       >
-        <span>Back out!</span>
+        <span>{t('common.backOut')}</span>
         {state.backOut && <Styles.StateIcon />}
       </Button>
     );
@@ -100,7 +101,7 @@ class Controls extends React.PureComponent {
     return (
       <Box key={key} width={width} px={2}>
         <Styles.Title>
-          {actions.test && !tested && <Styles.ErrorIcon title='Untested or tests failing' />}
+          {actions.test && !tested && <Styles.ErrorIcon title={t('common.untested')} />}
           <span>{displayName || name}</span>
         </Styles.Title>
         <Styles.Actions>
@@ -116,6 +117,8 @@ class Controls extends React.PureComponent {
 
   render() {
     const { data } = this.props;
+
+    if (!data) return null;
 
     return (
       <Styles.Wrapper>

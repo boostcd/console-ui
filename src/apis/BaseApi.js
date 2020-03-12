@@ -1,20 +1,14 @@
 import axios from 'axios';
 
-// Set default request timeout to 15 seconds
-axios.defaults.timeout = 15000;
-
-class RequestError extends Error {
-  constructor(message) {
-    super(message);
-    this.name = 'RequestError';
-    this.message = message;
-  }
-}
+import { REQUEST_TIMEOUT } from '../constants';
+import RequestError from './RequestError';
 
 class BaseApi {
   constructor(baseURL) {
     this.instance = axios.create({
       baseURL,
+      // Set default request timeout to 15 seconds
+      timeout: REQUEST_TIMEOUT,
       headers: {
         common: {
           Accept: 'application/json',

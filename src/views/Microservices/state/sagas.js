@@ -1,7 +1,7 @@
 import { call, delay, put, race, take } from 'redux-saga/effects';
 
 import gatewayApi from '../../../apis/GatewayApi';
-import { POLLING_DELAY } from '../../../constants/polling';
+import { POLLING_DELAY } from '../../../constants';
 import ACTIONS, {
   fetchMicroservicesFailure,
   fetchMicroservicesPending,

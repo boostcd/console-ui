@@ -7,6 +7,7 @@ import Button from '../../components/Button';
 import DataFallback from '../../components/DataFallback';
 import MicroserviceCard from '../../components/MicroserviceCard';
 import microservicesType from '../../types/microservices';
+import t from '../../utils/translate';
 import * as Styles from './MicroservicesApplications.styled';
 
 class MicroservicesApplications extends React.PureComponent {
@@ -15,8 +16,12 @@ class MicroservicesApplications extends React.PureComponent {
     const { name: appName, state = {} } = app;
 
     return (
-      <Button type='primary' onClick={() => gatewayApi.build(environmentName, appName)}>
-        <span>Build</span>
+      <Button
+        type='primary'
+        isDisabled={state.build}
+        onClick={() => gatewayApi.build(environmentName, appName)}
+      >
+        <span>{t('common.build')}</span>
         {state.build && <Styles.StateIcon />}
       </Button>
     );
@@ -32,9 +37,10 @@ class MicroservicesApplications extends React.PureComponent {
       <Button
         type='primary'
         hasError={hasError}
+        isDisabled={state.promote}
         onClick={() => gatewayApi.promote(environmentName, appName)}
       >
-        <span>Promote</span>
+        <span>{t('common.promote')}</span>
         {state.promote && <Styles.StateIcon />}
       </Button>
     );
@@ -61,7 +67,7 @@ class MicroservicesApplications extends React.PureComponent {
               </>
             )}
             <Link to={`/microservices/${environment.name}/${app.name}`}>
-              <Button type='primary'>View</Button>
+              <Button type='primary'>{t('common.view')}</Button>
             </Link>
           </>
         }
@@ -86,7 +92,7 @@ class MicroservicesApplications extends React.PureComponent {
     const { data } = this.props;
 
     const isEmpty = data.every((env) => env.apps.length === 0);
-    if (isEmpty) return <DataFallback title='No services available!' />;
+    if (isEmpty) return <DataFallback title={t('microservices.dataFallback')} />;
 
     return (
       <Styles.Wrapper>

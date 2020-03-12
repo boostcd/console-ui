@@ -10,8 +10,9 @@ import ErrorFallback from '../../components/ErrorFallback';
 import Input from '../../components/Input';
 import LastUpdated from '../../components/LastUpdated';
 import Loader from '../../components/Loader';
-import { DEBOUNCE_DELAY } from '../../constants/debounce';
+import { DEBOUNCE_DELAY } from '../../constants';
 import microservicesType from '../../types/microservices';
+import t from '../../utils/translate';
 import * as Styles from './Microservices.styled';
 import MicroservicesApplications from './MicroservicesApplications';
 import {
@@ -75,17 +76,17 @@ class Microservices extends React.PureComponent {
 
     if (error) return <ErrorFallback />;
     if (loading && !count) return <Loader />;
-    if (data && !data.length) return <DataFallback title='No services available!' />;
+    if (data && !data.length) return <DataFallback title={t('microservices.dataFallback')} />;
 
     return (
       <Styles.Wrapper>
-        <Helmet title='Microservices' />
+        <Helmet title={t('microservices.pageTitle')} />
         <Controls data={data} />
         <Styles.Heading>
           <Input
             value={search}
             onChange={this.handleSearchChange}
-            placeholder='Search for microservices'
+            placeholder={t('microservices.searchPlaceholder')}
           />
           {lastUpdated && <LastUpdated date={lastUpdated} loading={loading} />}
         </Styles.Heading>

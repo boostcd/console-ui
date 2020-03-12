@@ -29,14 +29,12 @@ class GatewayApi extends BaseApi {
     });
   }
 
-  /*
   async test(environment, service) {
     return await this.request({
       method: 'POST',
       url: `/environment/${environment}/app/${service}/test`,
     });
   }
-  */
 
   async testAll(environment) {
     return await this.request({
