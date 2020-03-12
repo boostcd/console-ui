@@ -34,7 +34,10 @@ parameters:
   required: true     
 - description: Defines the product description that this template is related to
   name: PRODUCT_DESCRIPTION
-  required: true     
+  required: true   
+- description: Defines the host Openshift is running on
+  name: OPENSHIFT_HOST
+  required: true       
 objects:
 - apiVersion: v1
   kind: DeploymentConfig
