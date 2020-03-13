@@ -74,7 +74,7 @@ objects:
         containers:
           - env:
               - name: GATEWAY_API_SERVICE_URI
-                value: 'http://console-gateway-api-blockchain-demo-monitoring.${OPENSHIFT_HOST}'      
+                value: 'http://console-gateway-api-${NAMESPACE}.${OPENSHIFT_HOST}'      
               - name: PRODUCT
                 value: ${PRODUCT}
               - name: PRODUCT_DESCRIPTION
