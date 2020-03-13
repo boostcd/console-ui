@@ -26,11 +26,12 @@ class MicroserviceCard extends React.PureComponent {
 
     const deployedTextAlt = deployed ? deployedDate : undefined;
     const isActive = !!Object.values(state).filter(Boolean).length;
+    const hasError = !deployed && !isActive;
 
     return (
       <Styles.Wrapper>
         <Styles.Name title={nameProp}>
-          {!deployed && <Styles.ErrorIcon />}
+          {hasError && <Styles.ErrorIcon />}
           <span>{name}</span>
         </Styles.Name>
         <Styles.Version>{version}</Styles.Version>
