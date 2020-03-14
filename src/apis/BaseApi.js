@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { REQUEST_TIMEOUT } from '../constants';
-import RequestError from './RequestError';
+import RequestError from '../utils/RequestError';
 
 class BaseApi {
   constructor(baseURL) {

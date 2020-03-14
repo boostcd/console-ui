@@ -1,0 +1,172 @@
+[
+  {
+    "name": "build",
+    "displayName": "Build",
+    "updatedDate": "2020-03-07T10:59:04Z",
+    "tested": false,
+    "actions": {
+      "build": true,
+      "test": false,
+      "promote": true,
+      "goLive": false,
+      "backOut": false
+    },
+    "apps": [
+      {
+        "version": "1.0.5-SNAPSHOT",
+        "name": "bank-ms",
+        "displayName": "bank-ms",
+        "deployedDate": "2020-03-02T09:26:12Z",
+        "deployed": false,
+        "tested": true,
+        "actions": {
+          "build": true,
+          "promote": true
+        }
+      },
+      {
+        "version": "0.0.5-SNAPSHOT",
+        "name": "blockchain-gateway-ms",
+        "displayName": "blockchain-gateway-ms",
+        "deployedDate": "2020-02-27T12:53:52Z",
+        "deployed": false,
+        "tested": true,
+        "actions": {
+          "build": true,
+          "promote": true
+        }
+      }
+    ]
+	},
+  {
+    "name": "test",
+    "displayName": "Test",
+    "updatedDate": "2020-03-07T10:59:04Z",
+    "tested": false,
+    "actions": {
+      "build": false,
+      "test": true,
+      "promote": true,
+      "goLive": false,
+      "backOut": false
+    },
+    "apps": [
+      {
+        "version": "1.0.5-SNAPSHOT",
+        "name": "bank-ms",
+        "displayName": "bank-ms",
+        "deployedDate": "2020-03-02T09:26:12Z",
+        "deployed": true,
+        "tested": true,
+        "actions": {
+          "build": false,
+          "promote": true
+        }
+      },
+      {
+        "version": "0.0.5-SNAPSHOT",
+        "name": "blockchain-gateway-ms",
+        "displayName": "blockchain-gateway-ms",
+        "deployedDate": "2020-02-27T12:53:52Z",
+        "deployed": true,
+        "tested": true,
+        "actions": {
+          "build": false,
+          "promote": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "sit",
+    "displayName": "SIT",
+    "updatedDate": "2020-03-07T10:59:04Z",
+    "tested": true,
+    "actions": {
+      "build": false,
+      "test": true,
+      "promote": true,
+      "goLive": false,
+      "backOut": false
+    },
+    "apps": [
+      {
+        "version": "1.0.5-SNAPSHOT",
+        "name": "bank-ms",
+        "displayName": "bank-ms",
+        "deployedDate": "2020-03-02T09:26:12Z",
+        "deployed": true,
+        "tested": true
+      },
+      {
+        "version": "0.0.5-SNAPSHOT",
+        "name": "blockchain-gateway-ms",
+        "displayName": "blockchain-gateway-ms",
+        "deployedDate": "2020-02-27T12:53:52Z",
+        "deployed": true,
+        "tested": true
+      }
+    ]
+  },
+  {
+    "name": "blue",
+    "displayName": "Staging",
+    "updatedDate": "2020-03-07T10:59:04Z",
+    "tested": false,
+    "actions": {
+      "build": false,
+      "test": true,
+      "promote": false,
+      "goLive": true,
+      "backOut": false
+    },
+    "apps": [
+      {
+        "version": "1.0.5-SNAPSHOT",
+        "name": "blue-bank-ms",
+        "displayName": "bank-ms",
+        "deployedDate": "2020-03-02T09:26:12Z",
+        "deployed": true,
+        "tested": true
+      },
+      {
+        "version": "0.0.5-SNAPSHOT",
+        "name": "blue-blockchain-gateway-ms",
+        "displayName": "blockchain-gateway-ms",
+        "deployedDate": "2020-02-27T12:53:52Z",
+        "deployed": true,
+        "tested": true
+      }
+    ]
+  },
+  {
+    "name": "green",
+    "displayName": "Live",
+    "updatedDate": "2020-03-07T10:59:04Z",
+    "actions": {
+      "build": false,
+      "test": false,
+      "promote": false,
+      "goLive": false,
+      "backOut": true
+    },
+    "apps": [
+      {
+        "version": "1.0.5-SNAPSHOT",
+        "name": "green-bank-ms",
+        "displayName": "bank-ms",
+        "deployedDate": "2020-03-02T09:26:12Z",
+        "deployed": true,
+        "tested": true
+      },
+      {
+        "version": "0.0.5-SNAPSHOT",
+        "name": "green-blockchain-gateway-ms",
+        "displayName": "blockchain-gateway-ms",
+        "deployedDate": "2020-02-27T12:53:52Z",
+        "deployed": true,
+        "tested": true
+      }
+    ]
+  }
+]

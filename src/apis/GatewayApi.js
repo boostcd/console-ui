@@ -1,4 +1,5 @@
 import BaseApi from './BaseApi';
+import mockProjects from './mocks/projects.json';
 
 class GatewayApi extends BaseApi {
   getMicroservices = async () => {
@@ -70,6 +71,15 @@ class GatewayApi extends BaseApi {
       url: `/environment/${environment}/back-out`,
     });
   }
+
+  getProjects = async () => {
+    return mockProjects;
+
+    // return await this.request({
+    //   method: 'GET',
+    //   url: `/projects`,
+    // });
+  };
 }
 
 export default new GatewayApi(GATEWAY_API_SERVICE_URI);

@@ -21,7 +21,7 @@ class Microservice extends React.PureComponent {
 Microservice.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      environment: PropTypes.string,
+      environmentName: PropTypes.string,
       appName: PropTypes.string,
     }),
   }),

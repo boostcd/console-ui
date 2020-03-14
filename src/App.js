@@ -9,7 +9,8 @@ import GlobalStyles from './styles';
 const Features = loadable(() => import('./views/Features'));
 const Microservices = loadable(() => import('./views/Microservices'));
 const Microservice = loadable(() => import('./views/Microservice'));
-const Environments = loadable(() => import('./views/Environments'));
+const Projects = loadable(() => import('./views/Projects'));
+const Project = loadable(() => import('./views/Project'));
 
 const App = () => (
   <>
@@ -21,9 +22,11 @@ const App = () => (
           <Redirect to='/features' />
         </Route>
         <Route path='/features' component={Features} />
-        <Route path='/microservices/:environment/:appName' component={Microservice} />
+        <Route path='/microservices/:environmentName/:appName' component={Microservice} />
         <Route path='/microservices' component={Microservices} />
-        <Route path='/environments' component={Environments} />
+        <Route path='/projects/add' component={Project} />
+        <Route path='/projects/:namespace' component={Project} />
+        <Route path='/projects' component={Projects} />
         <Route path='*'>
           <Redirect to='/' />
         </Route>

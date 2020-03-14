@@ -23,7 +23,7 @@ export default {
     dataFallback: 'No microservices available!',
     searchPlaceholder: 'Search for microservices',
   },
-  environments: {
-    pageTitle: 'Environments',
+  projects: {
+    pageTitle: 'Projects',
   },
 };
