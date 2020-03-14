@@ -4,7 +4,6 @@ import { format } from 'timeago.js';
 
 import microserviceType from '../../types/microservice';
 import t from '../../utils/translate';
-import ProgressBar from '../ProgressBar';
 import * as Styles from './MicroserviceCard.styled';
 
 class MicroserviceCard extends React.PureComponent {
@@ -35,8 +34,8 @@ class MicroserviceCard extends React.PureComponent {
           <span>{name}</span>
         </Styles.Name>
         <Styles.Version>{version}</Styles.Version>
+        {/* TODO */}
         <Styles.Date title={deployedTextAlt}>{deployedText}</Styles.Date>
-        <ProgressBar isActive={isActive} />
         <Styles.Actions>{actions}</Styles.Actions>
       </Styles.Wrapper>
     );
