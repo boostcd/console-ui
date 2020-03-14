@@ -1,0 +1,12 @@
+{
+  "version": "1.0.5-SNAPSHOT",
+  "name": "bank-ms",
+  "displayName": "bank-ms",
+  "deployedDate": "2020-03-02T09:26:12Z",
+  "deployed": false,
+  "tested": true,
+  "actions": {
+    "build": true,
+    "promote": true
+  }
+}

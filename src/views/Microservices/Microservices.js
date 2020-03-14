@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 
 import Controls from '../../components/Controls';
 import DataFallback from '../../components/DataFallback';
-import ErrorFallback from '../../components/ErrorFallback';
 import Input from '../../components/Input';
 import LastUpdated from '../../components/LastUpdated';
 import Loader from '../../components/Loader';
@@ -74,7 +73,7 @@ class Microservices extends React.PureComponent {
     const { data, loading, error, polling } = this.props;
     const { count, lastUpdated } = polling;
 
-    if (error) return <ErrorFallback />;
+    if (error) return null;
     if (loading && !count) return <Loader />;
     if (data && !data.length) return <DataFallback title={t('microservices.dataFallback')} />;
 

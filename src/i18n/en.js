@@ -12,16 +12,20 @@ export default {
     notDeployed: 'Not deployed',
     lastUpdated: 'Last updated: {{value}}',
     untested: 'Untested or tests failing',
-    errorFallback: 'Something went wrong!',
   },
   features: {
     pageTitle: 'Features',
     dataFallback: 'No features available!',
+    errorFallback: 'Failed to load features!',
   },
   microservices: {
     pageTitle: 'Microservices',
     dataFallback: 'No microservices available!',
+    errorFallback: 'Failed to load microservices!',
     searchPlaceholder: 'Search for microservices',
+  },
+  microservice: {
+    errorFallback: 'Failed to load {{appName}} microservice!',
   },
   projects: {
     pageTitle: 'Projects',

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { format } from 'timeago.js';
 
-import { microserviceType } from '../../types/microservices';
+import microserviceType from '../../types/microservice';
 import t from '../../utils/translate';
 import ProgressBar from '../ProgressBar';
 import * as Styles from './MicroserviceCard.styled';

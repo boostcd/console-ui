@@ -30,6 +30,7 @@
     "redux",
     "server",
     "timeago",
+    "toastify",
     "ui",
     "unmount",
     "will"

@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 
 import Controls from '../../components/Controls';
 import DataFallback from '../../components/DataFallback';
-import ErrorFallback from '../../components/ErrorFallback';
 import Loader from '../../components/Loader';
 import featuresType from '../../types/features';
 import t from '../../utils/translate';
@@ -37,7 +36,7 @@ class Features extends React.PureComponent {
     const { data, loading, error, polling } = this.props;
     const { count } = polling;
 
-    if (error) return <ErrorFallback />;
+    if (error) return null;
     if (loading && !count) return <Loader />;
     if (data && !data.length) return <DataFallback title={t('features.dataFallback')} />;
 

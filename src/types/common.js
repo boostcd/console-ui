@@ -15,11 +15,3 @@ export const stateType = {
   goLive: PropTypes.bool,
   backOut: PropTypes.bool,
 };
-
-export const environmentType = {
-  name: PropTypes.string.isRequired,
-  displayName: PropTypes.string.isRequired,
-  updatedDate: PropTypes.string.isRequired,
-  actions: PropTypes.shape(actionsType).isRequired,
-  state: PropTypes.shape(stateType).isRequired,
-};

@@ -1,18 +1,28 @@
 import BaseApi from './BaseApi';
+// import mockMicroservice from './mocks/microservice.json';
 import mockProjects from './mocks/projects.json';
 
 class GatewayApi extends BaseApi {
+  getMicroservice = async (environmentName, appName) => {
+    // return mockMicroservice;
+
+    return await this.request({
+      method: 'GET',
+      url: `/environment/${environmentName}/app/${appName}`,
+    });
+  };
+
   getMicroservices = async () => {
     return await this.request({
       method: 'GET',
-      url: `/microservices`,
+      url: '/microservices',
     });
   };
 
   getFeatures = async () => {
     return await this.request({
       method: 'GET',
-      url: `/features`,
+      url: '/features',
     });
   };
 
@@ -77,7 +87,7 @@ class GatewayApi extends BaseApi {
 
     // return await this.request({
     //   method: 'GET',
-    //   url: `/projects`,
+    //   url: '/projects',
     // });
   };
 }

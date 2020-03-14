@@ -7,12 +7,13 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import configureStore from './store';
 import featuresSaga from './views/Features/state/sagas';
+import microserviceSaga from './views/Microservice/state/sagas';
 import microservicesSaga from './views/Microservices/state/sagas';
 
 const store = configureStore(window.__PRELOADED_STATE__);
 
 // TODO: Figure out a way to prevent sagas to re-run on HMR
-[microservicesSaga, featuresSaga].map(store.runSaga);
+[featuresSaga, microservicesSaga, microserviceSaga].map(store.runSaga);
 
 loadableReady(() => {
   hydrate(

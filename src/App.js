@@ -1,9 +1,13 @@
+import 'react-toastify/dist/ReactToastify.css';
+
 import loadable from '@loadable/component';
 import React from 'react';
 import Helmet from 'react-helmet';
 import { Redirect, Route, Switch } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 import Page from './components/Page';
+import { TOAST_CONFIG } from './constants';
 import GlobalStyles from './styles';
 
 const Features = loadable(() => import('./views/Features'));
@@ -16,6 +20,7 @@ const App = () => (
   <>
     <Helmet titleTemplate={`${PRODUCT_DESCRIPTION} - %s`} />
     <GlobalStyles />
+    <ToastContainer autoClose={TOAST_CONFIG.AUTO_CLOSE} />
     <Page>
       <Switch>
         <Route exact path='/'>
