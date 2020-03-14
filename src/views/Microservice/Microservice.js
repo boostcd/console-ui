@@ -28,17 +28,25 @@ class Microservice extends React.PureComponent {
   }
 
   render() {
-    const { match, data, loading } = this.props;
+    const { match, data, loading, error } = this.props;
     const { params } = match;
     const { environmentName, appName } = params;
 
+    if (error) return null;
     if (loading) return <Loader />;
-    // if (!data) return <DataFallback title={t('microservices.dataFallback')} />;
 
+    // TODO: Implement proper UI for display the data
     return (
       <>
         <Helmet title={`${appName}@${environmentName}`} />
-        <div>Microservice: To be implemented</div>
+        <div>
+          <div>Name: {data.name}</div>
+          <div>Display name: {data.displayName}</div>
+          <div>Version: {data.version}</div>
+          <div>Deployed date: {data.deployed ? data.deployedDate : 'Not deployed'}</div>
+          <div>Tested: {data.tested ? 'Yes' : 'No'}</div>
+          <div>Actions: ...</div>
+        </div>
       </>
     );
   }

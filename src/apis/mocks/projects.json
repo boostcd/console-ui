@@ -36,13 +36,13 @@
   {
     "title": "Nexus",
     "owner": "admin",
-    "namespace": "",
+    "namespace": "blockchain-demo-nexus",
     "apps": ["nexus"]
   },
   {
     "title": "Iliyan Dev",
     "owner": "iliyan.yotov",
-    "namespace": "",
+    "namespace": "iliyan-dev",
     "apps": ["console-ui-react", "console-ui"]
   }
 ]

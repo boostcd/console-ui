@@ -1,20 +1,12 @@
 import styled from 'styled-components';
 
 import Button from '../Button';
+import Card from '../Card';
 import ExclamationIcon from '../ExclamationIcon';
 
-export const Wrapper = styled.div`
-  display: flex;
-  flex-flow: column;
-  justify-content: space-around;
+export const Wrapper = styled(Card)`
   height: 120px;
-  background: white;
-  border-radius: 4px;
-  font-size: 0.85rem;
   margin-top: 0.5rem; //TODO: remove this property
-  padding: 0.5rem;
-  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
-    0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 `;
 
 export const ErrorIcon = styled(ExclamationIcon)`

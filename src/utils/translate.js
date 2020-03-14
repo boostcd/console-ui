@@ -5,7 +5,7 @@ import en from '../i18n/en';
 const placeholderRegex = /{{([^{}]*)}}/g;
 
 export default (key, params) => {
-  const str = get(en, key, `Missing translation: ${key}`);
+  const str = get(en, key, `Missing translation for key: ${key}`);
 
   if (!params) return str;
 
