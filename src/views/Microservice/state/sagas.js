@@ -1,8 +1,6 @@
-import { toast } from 'react-toastify';
 import { call, put, takeEvery } from 'redux-saga/effects';
 
 import gatewayApi from '../../../apis/GatewayApi';
-import t from '../../../utils/translate';
 import ACTIONS, {
   fetchMicroserviceFailure,
   fetchMicroservicePending,
@@ -19,9 +17,6 @@ function* sagaWorker(action) {
     yield put(fetchMicroserviceSuccess(data));
   } catch (error) {
     yield put(fetchMicroserviceFailure(error));
-    toast.error(t('microservice.errorFallback', { appName }), {
-      toastId: `${environmentName}@${appName}`,
-    });
   }
 }
 

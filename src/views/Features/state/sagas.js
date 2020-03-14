@@ -1,9 +1,7 @@
-import { toast } from 'react-toastify';
 import { call, delay, put, race, take } from 'redux-saga/effects';
 
 import gatewayApi from '../../../apis/GatewayApi';
 import { POLLING_DELAY } from '../../../constants';
-import t from '../../../utils/translate';
 import ACTIONS, {
   fetchFeaturesFailure,
   fetchFeaturesPending,
@@ -18,9 +16,6 @@ function* sagaWorker() {
       yield put(fetchFeaturesSuccess(data));
     } catch (error) {
       yield put(fetchFeaturesFailure(error));
-      toast.error(t('features.errorFallback'), {
-        toastId: 'features',
-      });
     } finally {
       yield delay(POLLING_DELAY);
     }

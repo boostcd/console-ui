@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 import { REQUEST_TIMEOUT } from '../constants';
 import RequestError from '../utils/RequestError';
@@ -21,10 +22,12 @@ class BaseApi {
   async request(config) {
     try {
       const response = await this.instance.request(config);
-      console.info(`API: ${config.method} Request @ ${config.url} responded with: `, response);
+      console.info(`${config.method} request to ${config.url} responded with: `, response);
       return response.data;
     } catch (error) {
-      throw new RequestError(`API: ${config.method} Request @ ${config.url} failed with: `, error);
+      const message = `${config.method} request to ${config.url} failed with: ${error.message}`;
+      toast.error(message);
+      throw new RequestError(message);
     }
   }
 }

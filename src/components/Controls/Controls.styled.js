@@ -28,3 +28,7 @@ export const StateIcon = styled(SyncIcon)`
   height: 0.6rem;
   margin: 0 0 0.1rem 0.3rem;
 `;
+
+export const NoActions = styled.span`
+  font-size: 0.7rem;
+`;

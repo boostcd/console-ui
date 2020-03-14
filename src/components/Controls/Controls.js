@@ -97,6 +97,7 @@ class Controls extends React.PureComponent {
 
     const key = `controls:${name}@${index}`;
     const width = 1 / data.length;
+    const hasActions = Object.values(actions).filter(Boolean).length;
 
     return (
       <Box key={key} width={width} px={2}>
@@ -105,11 +106,17 @@ class Controls extends React.PureComponent {
           <span>{displayName || name}</span>
         </Styles.Title>
         <Styles.Actions>
-          {actions.build && this.renderBuildAction(environment)}
-          {actions.test && this.renderTestAction(environment)}
-          {actions.promote && this.renderPromoteAction(environment)}
-          {actions.goLive && this.renderGoLiveAction(environment)}
-          {actions.backOut && this.renderBackOutAction(environment, index)}
+          {hasActions ? (
+            <>
+              {actions.build && this.renderBuildAction(environment)}
+              {actions.test && this.renderTestAction(environment)}
+              {actions.promote && this.renderPromoteAction(environment)}
+              {actions.goLive && this.renderGoLiveAction(environment)}
+              {actions.backOut && this.renderBackOutAction(environment, index)}
+            </>
+          ) : (
+            <Styles.NoActions>No actions enabled!</Styles.NoActions>
+          )}
         </Styles.Actions>
       </Box>
     );

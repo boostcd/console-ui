@@ -19,12 +19,14 @@ class MicroserviceCard extends React.PureComponent {
     } = this.props;
 
     const name = displayName || nameProp;
-    const deployedText = deployed
+    const isActive = !!Object.values(state).filter(Boolean).length;
+    const showDeployed = deployed || (isActive && deployedDate !== undefined);
+
+    const deployedText = showDeployed
       ? t('common.deployed', { value: format(deployedDate) })
       : t('common.notDeployed');
 
-    const deployedTextAlt = deployed ? deployedDate : undefined;
-    const isActive = !!Object.values(state).filter(Boolean).length;
+    const deployedTextAlt = showDeployed ? deployedDate : undefined;
     const hasError = !deployed && !isActive;
 
     return (
@@ -34,7 +36,6 @@ class MicroserviceCard extends React.PureComponent {
           <span>{name}</span>
         </Styles.Name>
         <Styles.Version>{version}</Styles.Version>
-        {/* TODO */}
         <Styles.Date title={deployedTextAlt}>{deployedText}</Styles.Date>
         <Styles.Actions>{actions}</Styles.Actions>
       </Styles.Wrapper>

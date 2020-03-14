@@ -1,15 +1,17 @@
 import BaseApi from './BaseApi';
-// import mockMicroservice from './mocks/microservice.json';
+import mockMicroservice from './mocks/microservice.json';
 import mockProjects from './mocks/projects.json';
 
 class GatewayApi extends BaseApi {
-  getMicroservice = async (environmentName, appName) => {
-    // return mockMicroservice;
+  getMicroservice = async () => {
+    return mockMicroservice;
 
-    return await this.request({
-      method: 'GET',
-      url: `/environment/${environmentName}/app/${appName}`,
-    });
+    // TODO: Un-mock when implemented
+    // (environmentName, appName)
+    // return await this.request({
+    //   method: 'GET',
+    //   url: `/environment/${environmentName}/app/${appName}`,
+    // });
   };
 
   getMicroservices = async () => {
