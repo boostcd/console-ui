@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.input`
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   outline: none;
   background: white;
   height: 2rem;
@@ -12,6 +12,6 @@ export const Wrapper = styled.input`
 
   &::placeholder {
     color: #c8c8c8;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
   }
 `;

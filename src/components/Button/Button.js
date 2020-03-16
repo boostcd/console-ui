@@ -10,7 +10,7 @@ export default styled.button`
   height: 1.8rem;
   line-height: 1.8rem;
   border-radius: 4px;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   padding: 0 0.5rem;
   transition: 150ms all ease-in;
   color: ${switchProp('type', {
@@ -38,22 +38,14 @@ export default styled.button`
   }
 
   ${ifProp(
-    'hasError',
-    css`
-      pointer-events: none;
-      color: #cca2a6;
-      background: #f3bebe;
-      border-color: #cca2a6;
-    `
-  )};
-
-  ${ifProp(
     'isDisabled',
     css`
       pointer-events: none;
+      /*
       color: #bbbbbb;
       background: #dedede;
       border-color: #bbbbbb;
+      */
     `
   )};
 `;

@@ -28,15 +28,12 @@ class MicroservicesApplications extends React.PureComponent {
   }
 
   renderPromoteAction(environment, app) {
-    const { name: environmentName, tested: environmentTested } = environment;
-    const { name: appName, tested: appTested, state = {} } = app;
-
-    const hasError = !environmentTested || !appTested;
+    const { name: environmentName } = environment;
+    const { name: appName, state = {} } = app;
 
     return (
       <Button
         type='primary'
-        hasError={hasError}
         isDisabled={state.promote}
         onClick={() => gatewayApi.promote(environmentName, appName)}
       >

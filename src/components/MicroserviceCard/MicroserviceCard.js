@@ -30,7 +30,7 @@ class MicroserviceCard extends React.PureComponent {
     const deployedTextAlt = showDeployed ? deployedDate : undefined;
 
     return (
-      <Styles.Wrapper>
+      <Styles.Wrapper isActive={isActive}>
         <Styles.Name title={nameProp}>
           <span>{name}</span>
           {tested === false ? (

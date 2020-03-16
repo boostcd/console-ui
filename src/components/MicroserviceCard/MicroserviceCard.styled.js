@@ -1,12 +1,20 @@
 import { CheckCircle, ExclamationCircle } from '@styled-icons/fa-solid';
 import styled, { css } from 'styled-components';
+import { ifProp } from 'styled-tools';
 
-import Button from '../Button';
 import Card from '../Card';
 
 export const Wrapper = styled(Card)`
-  height: 120px;
-  margin-top: 0.5rem; //TODO: remove this property
+  height: 130px;
+  margin-top: 0.5rem;
+  transition: background 200ms linear;
+
+  ${ifProp(
+    'isActive',
+    css`
+      background: #e5f4f7;
+    `
+  )};
 `;
 
 const testIconStyles = css`
@@ -27,8 +35,7 @@ export const TestsFailed = styled(ExclamationCircle)`
 `;
 
 export const Name = styled.div`
-  font-size: 0.9rem;
-  min-height: 1rem;
+  min-height: 1.35rem;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -41,19 +48,13 @@ export const Version = styled.div`
 
 export const Date = styled.div`
   color: #a2a2a2;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 `;
 
 export const Actions = styled.div`
   min-height: 1.5rem;
   display: flex;
   flex-flow: row;
-
-  ${Button} {
-    height: 1.5rem;
-    line-height: 1.5rem;
-    font-size: 0.65rem;
-  }
 
   * ~ * {
     margin-left: 0.2rem;

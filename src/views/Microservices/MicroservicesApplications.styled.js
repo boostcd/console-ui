@@ -8,7 +8,6 @@ export const Wrapper = styled.div`
 
 export const StateIcon = styled(SyncIcon)`
   color: inherit;
-  width: 0.5rem;
-  height: 0.5rem;
-  margin: 0 0 0.1rem 0.2rem;
+  width: 0.75rem;
+  margin: 0 0 0.15rem 0.3rem;
 `;

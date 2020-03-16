@@ -33,18 +33,10 @@ class Controls extends React.PureComponent {
   }
 
   renderPromoteAction(environment) {
-    const { name, tested, state = {} } = environment;
-    const hasError = !tested;
-    const title = hasError ? t('common.untested') : '';
+    const { name, state = {} } = environment;
 
     return (
-      <Button
-        type='primary'
-        title={title}
-        hasError={hasError}
-        isDisabled={state.promote}
-        onClick={() => gatewayApi.promoteAll(name)}
-      >
+      <Button type='primary' isDisabled={state.promote} onClick={() => gatewayApi.promoteAll(name)}>
         <span>{t('common.promoteAll')}</span>
         {state.promote && <Styles.StateIcon />}
       </Button>
@@ -52,39 +44,21 @@ class Controls extends React.PureComponent {
   }
 
   renderGoLiveAction(environment) {
-    const { name, tested, state = {} } = environment;
-    const hasError = !tested;
-    const title = hasError ? t('common.untested') : '';
+    const { name, state = {} } = environment;
 
     return (
-      <Button
-        type='primary'
-        title={title}
-        hasError={hasError}
-        isDisabled={state.goLive}
-        onClick={() => gatewayApi.goLive(name)}
-      >
+      <Button type='primary' isDisabled={state.goLive} onClick={() => gatewayApi.goLive(name)}>
         <span>{t('common.goLive')}</span>
         {state.goLive && <Styles.StateIcon />}
       </Button>
     );
   }
 
-  renderBackOutAction(environment, currentIndex) {
+  renderBackOutAction(environment) {
     const { name, state = {} } = environment;
 
-    const previousEnvironment = this.props.data[currentIndex - 1];
-    const hasError = !previousEnvironment.tested;
-    const title = hasError ? t('common.untested') : '';
-
     return (
-      <Button
-        type='primary'
-        title={title}
-        hasError={hasError}
-        isDisabled={state.backOut}
-        onClick={() => gatewayApi.backOut(name)}
-      >
+      <Button type='primary' isDisabled={state.backOut} onClick={() => gatewayApi.backOut(name)}>
         <span>{t('common.backOut')}</span>
         {state.backOut && <Styles.StateIcon />}
       </Button>
@@ -128,7 +102,7 @@ class Controls extends React.PureComponent {
               {actions.test && this.renderTestAction(environment)}
               {actions.promote && this.renderPromoteAction(environment)}
               {actions.goLive && this.renderGoLiveAction(environment)}
-              {actions.backOut && this.renderBackOutAction(environment, index)}
+              {actions.backOut && this.renderBackOutAction(environment)}
             </>
           ) : (
             <Styles.NoActions>No actions enabled!</Styles.NoActions>
