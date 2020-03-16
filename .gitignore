@@ -37,3 +37,4 @@ yarn-error.log*
 
 # Build output
 /build
+/.tern-project

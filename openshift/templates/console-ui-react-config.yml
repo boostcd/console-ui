@@ -38,6 +38,9 @@ parameters:
 - description: Defines the host Openshift is running on
   name: OPENSHIFT_HOST
   required: true       
+- description: Defines the tasks manager title
+  name: TASK_MANAGEMENT_TITLE
+  required: true         
 objects:
 - apiVersion: v1
   kind: DeploymentConfig
@@ -75,6 +78,8 @@ objects:
           - env:
               - name: GATEWAY_API_SERVICE_URI
                 value: 'http://console-gateway-api-${NAMESPACE}.${OPENSHIFT_HOST}'      
+              - name: TASK_MANAGEMENT_TITLE
+                value: ${TASK_MANAGEMENT_TITLE} 
               - name: PRODUCT
                 value: ${PRODUCT}
               - name: PRODUCT_DESCRIPTION
