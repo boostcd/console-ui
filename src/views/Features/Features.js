@@ -51,8 +51,8 @@ class Features extends React.PureComponent {
 
 Features.propTypes = {
   data: featuresType,
-  loading: PropTypes.bool,
   error: PropTypes.bool,
+  loading: PropTypes.bool,
   polling: PropTypes.shape({
     count: PropTypes.number,
     lastUpdated: PropTypes.instanceOf(Date),

@@ -1,0 +1,13 @@
+{
+  "title": "Build: Estafet Block Chain Demo",
+  "owner": "admin",
+  "namespace": "blockchain-demo-build",
+  "apps": [
+    "bank-ms",
+    "blockchain-gateway-ms",
+    "console-ui",
+    "currency-converter-ms",
+    "go-ethereum",
+    "jaeger"
+  ]
+}

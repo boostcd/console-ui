@@ -30,5 +30,11 @@ export default {
   },
   projects: {
     pageTitle: 'Projects',
+    addButton: 'Add project',
+    tableColumns: {
+      title: 'Title',
+      owner: 'Owner',
+      namespace: 'Namespace',
+    },
   },
 };

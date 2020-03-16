@@ -97,8 +97,8 @@ class Microservices extends React.PureComponent {
 
 Microservices.propTypes = {
   data: microservicesType,
-  loading: PropTypes.bool,
   error: PropTypes.bool,
+  loading: PropTypes.bool,
   polling: PropTypes.shape({
     count: PropTypes.number,
     lastUpdated: PropTypes.instanceOf(Date),
