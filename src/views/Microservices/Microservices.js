@@ -80,7 +80,7 @@ class Microservices extends React.PureComponent {
     return (
       <Styles.Wrapper>
         <Helmet title={t('microservices.pageTitle')} />
-        <Controls data={data} />
+        <Controls data={data} itemAccessor='apps' />
         <Styles.Heading>
           <Input
             value={search}

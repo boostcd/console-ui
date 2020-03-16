@@ -9,4 +9,5 @@ export default {
   actions: PropTypes.shape(actionsType).isRequired,
   state: PropTypes.shape(stateType).isRequired,
   tested: PropTypes.bool,
+  indicatorColour: PropTypes.string,
 };

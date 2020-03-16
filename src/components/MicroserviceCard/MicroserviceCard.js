@@ -20,7 +20,7 @@ class MicroserviceCard extends React.PureComponent {
     } = this.props;
 
     const name = displayName || nameProp;
-    const isActive = !!Object.values(state).filter(Boolean).length;
+    const isActive = Object.values(state).some(Boolean);
     const showDeployed = deployed || (isActive && deployedDate !== undefined);
 
     const deployedText = showDeployed

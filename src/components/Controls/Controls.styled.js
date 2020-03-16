@@ -1,6 +1,8 @@
-import { CheckCircle, ExclamationCircle } from '@styled-icons/fa-solid';
+import { CheckCircle, Circle, ExclamationCircle } from '@styled-icons/fa-solid';
 import styled, { css } from 'styled-components';
+import { ifProp, prop } from 'styled-tools';
 
+import blink from '../../styles/keyframes/blink';
 import Button from '../Button';
 import SyncIcon from '../SyncIcon';
 
@@ -10,17 +12,33 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Title = styled.h3``;
+export const Title = styled.h3`
+  display: flex;
+  align-items: center;
+`;
 
 export const Actions = styled.div`
   margin-top: 0.5rem;
+`;
+
+export const Indicator = styled(Circle)`
+  width: 0.7rem;
+  height: 0.7rem;
+  color: ${prop('colour', '#484848')};
+  margin-right: 0.5rem;
+
+  ${ifProp(
+    'isActive',
+    css`
+      animation: ${blink(prop('colour', '#484848'))} 1s infinite;
+    `
+  )};
 `;
 
 const testIconStyles = css`
   width: 1rem;
   height: 1rem;
   margin-left: 0.5rem;
-  vertical-align: middle;
 `;
 
 export const TestsSuccessful = styled(CheckCircle)`

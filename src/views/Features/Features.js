@@ -43,7 +43,7 @@ class Features extends React.PureComponent {
     return (
       <>
         <Helmet title={TASK_MANAGEMENT_TITLE ? TASK_MANAGEMENT_TITLE : t('features.pageTitle')} />
-        <Controls data={data} />
+        <Controls data={data} itemAccessor='features' />
       </>
     );
   }

@@ -92,16 +92,28 @@ class Controls extends React.PureComponent {
   }
 
   renderEnvironment = (environment, index) => {
-    const { data } = this.props;
-    const { name, displayName, tested, actions = {} } = environment;
+    const { data, itemAccessor } = this.props;
+    const {
+      name,
+      displayName,
+      indicatorColour,
+      tested,
+      actions = {},
+      [itemAccessor]: items,
+    } = environment;
 
     const key = `controls:${name}@${index}`;
     const width = 1 / data.length;
-    const hasActions = Object.values(actions).filter(Boolean).length;
+    const hasActions = Object.values(actions).some(Boolean);
+    const isActive = items.reduce(
+      (state, item) => state || Object.values(item.state || {}).some(Boolean),
+      false
+    );
 
     return (
       <Box key={key} width={width} px={2}>
         <Styles.Title>
+          <Styles.Indicator colour={indicatorColour} isActive={isActive} />
           <span>{displayName || name}</span>
           {tested === false ? (
             <Styles.TestsFailed title={t('common.testsFailed')} />
@@ -140,7 +152,8 @@ class Controls extends React.PureComponent {
 }
 
 Controls.propTypes = {
-  data: PropTypes.oneOfType([microservicesType, featuresType]),
+  data: PropTypes.oneOfType([microservicesType, featuresType]).isRequired,
+  itemAccessor: PropTypes.string.isRequired,
 };
 
 export default Controls;
