@@ -73,16 +73,20 @@ class Controls extends React.PureComponent {
       indicatorColour,
       tested,
       actions = {},
+      state = {},
       [itemAccessor]: items,
     } = environment;
 
     const key = `controls:${name}@${index}`;
     const width = 1 / data.length;
     const hasActions = Object.values(actions).some(Boolean);
-    const isActive = items.reduce(
-      (state, item) => state || Object.values(item.state || {}).some(Boolean),
+
+    const isEnvironmentActive = Object.values(state).some(Boolean);
+    const isAppActive = items.reduce(
+      (value, item) => value || Object.values(item.state || {}).some(Boolean),
       false
     );
+    const isActive = isEnvironmentActive || isAppActive;
 
     return (
       <Box key={key} width={width} px={2}>
