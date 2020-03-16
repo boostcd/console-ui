@@ -33,7 +33,8 @@ export default (req, res) => {
     </ChunkExtractorManager>
   );
 
-  const styleTags = sheet.getStyleTags();
+  const styledComponentsTags = sheet.getStyleTags();
+  const styleTags = extractor.getStyleTags();
   const scriptTags = extractor.getScriptTags();
 
   if (context.url) {
@@ -50,6 +51,7 @@ export default (req, res) => {
           <meta name="viewport" content="width=device-width, initial-scale=1">
           <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
           ${styleTags}
+          ${styledComponentsTags}
         </head>
         <body>
           <div id="root">${html}</div>
