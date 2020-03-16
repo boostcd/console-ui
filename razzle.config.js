@@ -36,6 +36,7 @@ module.exports = {
         PRODUCT: JSON.stringify(process.env.PRODUCT),
         PRODUCT_DESCRIPTION: JSON.stringify(process.env.PRODUCT_DESCRIPTION),
         GATEWAY_API_SERVICE_URI: JSON.stringify(process.env.GATEWAY_API_SERVICE_URI),
+        TASK_MANAGEMENT_TITLE: JSON.stringify(process.env.TASK_MANAGEMENT_TITLE),
       })
     );
 

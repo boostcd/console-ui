@@ -64,7 +64,7 @@ export const Navigation = styled.nav`
   margin-left: 1rem;
 
   ${NavigationItem} ~ ${NavigationItem} {
-    padding-left: 0.5rem;
+    padding-left: 0.8rem;
   }
 `;
 
