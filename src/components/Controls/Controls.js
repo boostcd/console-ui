@@ -102,8 +102,12 @@ class Controls extends React.PureComponent {
     return (
       <Box key={key} width={width} px={2}>
         <Styles.Title>
-          {actions.test && !tested && <Styles.ErrorIcon title={t('common.untested')} />}
           <span>{displayName || name}</span>
+          {tested === false ? (
+            <Styles.TestsFailed title={t('common.testsFailed')} />
+          ) : (
+            <Styles.TestsSuccessful title={t('common.testsSuccessful')} />
+          )}
         </Styles.Title>
         <Styles.Actions>
           {hasActions ? (

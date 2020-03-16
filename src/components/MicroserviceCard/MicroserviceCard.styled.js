@@ -1,18 +1,29 @@
-import styled from 'styled-components';
+import { CheckCircle, ExclamationCircle } from '@styled-icons/fa-solid';
+import styled, { css } from 'styled-components';
 
 import Button from '../Button';
 import Card from '../Card';
-import ExclamationIcon from '../ExclamationIcon';
 
 export const Wrapper = styled(Card)`
   height: 120px;
   margin-top: 0.5rem; //TODO: remove this property
 `;
 
-export const ErrorIcon = styled(ExclamationIcon)`
+const testIconStyles = css`
   width: 0.8rem;
   height: 0.8rem;
-  margin-right: 0.25rem;
+  margin-left: 0.25rem;
+  vertical-align: middle;
+`;
+
+export const TestsSuccessful = styled(CheckCircle)`
+  ${testIconStyles};
+  color: green;
+`;
+
+export const TestsFailed = styled(ExclamationCircle)`
+  ${testIconStyles};
+  color: red;
 `;
 
 export const Name = styled.div`

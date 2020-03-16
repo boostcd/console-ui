@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import { CheckCircle, ExclamationCircle } from '@styled-icons/fa-solid';
+import styled, { css } from 'styled-components';
 
 import Button from '../Button';
-import ExclamationIcon from '../ExclamationIcon';
 import SyncIcon from '../SyncIcon';
 
 export const Wrapper = styled.div`
@@ -16,10 +16,21 @@ export const Actions = styled.div`
   margin-top: 0.5rem;
 `;
 
-export const ErrorIcon = styled(ExclamationIcon)`
+const testIconStyles = css`
   width: 1rem;
   height: 1rem;
-  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+`;
+
+export const TestsSuccessful = styled(CheckCircle)`
+  ${testIconStyles};
+  color: green;
+`;
+
+export const TestsFailed = styled(ExclamationCircle)`
+  ${testIconStyles};
+  color: red;
 `;
 
 export const StateIcon = styled(SyncIcon)`

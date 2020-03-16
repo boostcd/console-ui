@@ -14,6 +14,7 @@ class MicroserviceCard extends React.PureComponent {
       version,
       deployed,
       deployedDate,
+      tested,
       state = {},
       actions = {},
     } = this.props;
@@ -27,13 +28,16 @@ class MicroserviceCard extends React.PureComponent {
       : t('common.notDeployed');
 
     const deployedTextAlt = showDeployed ? deployedDate : undefined;
-    const hasError = !deployed && !isActive;
 
     return (
       <Styles.Wrapper>
         <Styles.Name title={nameProp}>
-          {hasError && <Styles.ErrorIcon />}
           <span>{name}</span>
+          {tested === false ? (
+            <Styles.TestsFailed title={t('common.testsFailed')} />
+          ) : (
+            <Styles.TestsSuccessful title={t('common.testsSuccessful')} />
+          )}
         </Styles.Name>
         <Styles.Version>{version}</Styles.Version>
         <Styles.Date title={deployedTextAlt}>{deployedText}</Styles.Date>

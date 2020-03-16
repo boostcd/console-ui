@@ -8,4 +8,5 @@ export default {
   updatedDate: PropTypes.string.isRequired,
   actions: PropTypes.shape(actionsType).isRequired,
   state: PropTypes.shape(stateType).isRequired,
+  tested: PropTypes.bool,
 };

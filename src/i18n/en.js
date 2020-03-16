@@ -11,7 +11,8 @@ export default {
     deployed: 'Deployed {{value}}',
     notDeployed: 'Not deployed',
     lastUpdated: 'Last updated: {{value}}',
-    untested: 'Untested or tests failing',
+    testsFailed: 'Untested or tests failing',
+    testsSuccessful: 'Tested successfully',
   },
   features: {
     pageTitle: 'Features',
