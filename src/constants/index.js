@@ -7,3 +7,5 @@ export const POLLING_DELAY = 30000;
 export const TOAST_CONFIG = {
   AUTO_CLOSE: 8000,
 };
+
+export const TOAST_MAX_VISIBLE = 3;

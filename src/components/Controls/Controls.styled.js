@@ -59,5 +59,5 @@ export const StateIcon = styled(SyncIcon)`
 `;
 
 export const NoActions = styled.span`
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 `;

@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { toast } from 'react-toastify';
 
 import { REQUEST_TIMEOUT } from '../constants';
 import RequestError from '../utils/RequestError';
+import ToastService from '../utils/ToastService';
 
 class BaseApi {
   constructor(baseURL) {
@@ -26,7 +26,8 @@ class BaseApi {
       return response.data;
     } catch (error) {
       const message = `${config.method} request to ${config.url} failed with: ${error.message}`;
-      toast.error(message);
+
+      ToastService.showError(message);
       throw new RequestError(message);
     }
   }
