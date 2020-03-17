@@ -1,3 +1,4 @@
+import { Box, Flex } from '@rebass/grid';
 import debounce from 'debounce';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -9,6 +10,7 @@ import DataFallback from '../../components/DataFallback';
 import Input from '../../components/Input';
 import LastUpdated from '../../components/LastUpdated';
 import Loader from '../../components/Loader';
+import PageHeading from '../../components/PageHeading';
 import { DEBOUNCE_DELAY } from '../../constants';
 import microservicesType from '../../types/microservices';
 import t from '../../utils/translate';
@@ -78,15 +80,17 @@ class Microservices extends React.PureComponent {
     return (
       <Styles.Wrapper>
         <Helmet title={t('microservices.pageTitle')} />
-        <Controls data={data} itemAccessor='apps' />
-        <Styles.Heading>
+        <PageHeading title={t('microservices.pageTitle')}>
           <Input
             value={search}
             onChange={this.handleSearchChange}
             placeholder={t('microservices.searchPlaceholder')}
           />
-          {lastUpdated && <LastUpdated date={lastUpdated} loading={loading} />}
-        </Styles.Heading>
+        </PageHeading>
+        <Controls data={data} itemAccessor='apps' />
+        <Flex mt={3} flexDirection='column-reverse'>
+          <Box px={2}>{lastUpdated && <LastUpdated date={lastUpdated} loading={loading} />}</Box>
+        </Flex>
         <MicroservicesApplications data={data} />
       </Styles.Wrapper>
     );

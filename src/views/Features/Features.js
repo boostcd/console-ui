@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import Controls from '../../components/Controls';
 import DataFallback from '../../components/DataFallback';
 import Loader from '../../components/Loader';
+import PageHeading from '../../components/PageHeading';
 import featuresType from '../../types/features';
 import t from '../../utils/translate';
 import { startPollingFeatures, stopPollingFeatures } from './state/actions';
@@ -38,9 +39,12 @@ class Features extends React.PureComponent {
     if (loading && !count) return <Loader />;
     if (data && !data.length) return <DataFallback title={t('features.dataFallback')} />;
 
+    const title = TASK_MANAGEMENT_TITLE ? TASK_MANAGEMENT_TITLE : t('features.pageTitle');
+
     return (
       <>
-        <Helmet title={TASK_MANAGEMENT_TITLE ? TASK_MANAGEMENT_TITLE : t('features.pageTitle')} />
+        <Helmet title={title} />
+        <PageHeading title={title}>Search features here</PageHeading>
         <Controls data={data} itemAccessor='features' />
       </>
     );

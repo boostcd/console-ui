@@ -8,11 +8,3 @@ export const Wrapper = styled.div`
     overflow-x: auto;
   }
 `;
-
-export const Heading = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 1rem 0;
-  padding: 0 0.5rem;
-`;
