@@ -20,7 +20,7 @@ const App = () => (
   <>
     <Helmet titleTemplate={`${PRODUCT_DESCRIPTION} - %s`} />
     <GlobalStyles />
-    <ToastContainer autoClose={TOAST_CONFIG.AUTO_CLOSE} />
+    <ToastContainer autoClose={TOAST_CONFIG.AUTO_CLOSE} pauseOnFocusLoss={false} />
     <Page>
       <Switch>
         <Route exact path='/'>

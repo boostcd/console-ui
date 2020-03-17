@@ -22,6 +22,7 @@ export default {
   features: {
     pageTitle: 'Features',
     dataFallback: 'No features available!',
+    searchPlaceholder: 'Search for features',
   },
   microservices: {
     pageTitle: 'Microservices',

@@ -9,6 +9,7 @@ const initialState = {
     count: 0,
     lastUpdated: undefined,
   },
+  search: '',
 };
 
 export default (state = initialState, action = {}) => {
@@ -59,6 +60,12 @@ export default (state = initialState, action = {}) => {
         // data: payload.error,
         error: true,
         loading: false,
+      };
+
+    case ACTIONS.SEARCH:
+      return {
+        ...state,
+        search: payload.search,
       };
 
     default:

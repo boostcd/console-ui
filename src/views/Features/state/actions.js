@@ -4,6 +4,7 @@ const ACTIONS = {
   PENDING: 'features/PENDING',
   SUCCESS: 'features/SUCCESS',
   FAILURE: 'features/FAILURE',
+  SEARCH: 'features/SEARCH',
 };
 
 export const startPollingFeatures = () => ({
@@ -27,6 +28,13 @@ export const fetchFeaturesFailure = (error) => ({
   type: ACTIONS.FAILURE,
   payload: {
     error,
+  },
+});
+
+export const searchFeatures = (search) => ({
+  type: ACTIONS.SEARCH,
+  payload: {
+    search,
   },
 });
 

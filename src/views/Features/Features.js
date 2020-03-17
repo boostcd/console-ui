@@ -1,3 +1,5 @@
+import { Box, Flex } from '@rebass/grid';
+import debounce from 'debounce';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Helmet from 'react-helmet';
@@ -5,25 +7,41 @@ import { connect } from 'react-redux';
 
 import Controls from '../../components/Controls';
 import DataFallback from '../../components/DataFallback';
+import Input from '../../components/Input';
+import LastUpdated from '../../components/LastUpdated';
 import Loader from '../../components/Loader';
 import PageHeading from '../../components/PageHeading';
+import { DEBOUNCE_DELAY } from '../../constants';
 import featuresType from '../../types/features';
 import t from '../../utils/translate';
-import { startPollingFeatures, stopPollingFeatures } from './state/actions';
+import { searchFeatures, startPollingFeatures, stopPollingFeatures } from './state/actions';
+import { getFeaturesSearchSelector, getFeaturesSelector } from './state/selectors';
 
 const mapStateToProps = (state) => ({
-  data: state.features.data,
+  data: getFeaturesSelector(state),
   loading: state.features.loading,
   polling: state.features.polling,
+  search: getFeaturesSearchSelector(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
   startPolling: () => dispatch(startPollingFeatures()),
   stopPolling: () => dispatch(stopPollingFeatures()),
+  searchFeatures: (search) => dispatch(searchFeatures(search)),
 });
 
 @connect(mapStateToProps, mapDispatchToProps)
 class Features extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      search: props.search,
+    };
+
+    this.debounceSearch = debounce(this.debounceSearch, DEBOUNCE_DELAY);
+  }
+
   componentDidMount() {
     this.props.startPolling();
   }
@@ -32,9 +50,23 @@ class Features extends React.PureComponent {
     this.props.stopPolling();
   }
 
+  handleSearchChange = (event) => {
+    this.setState(
+      {
+        search: event.target.value,
+      },
+      this.debounceSearch
+    );
+  };
+
+  debounceSearch = () => {
+    this.props.searchFeatures(this.state.search);
+  };
+
   render() {
+    const { search } = this.state;
     const { data, loading, polling } = this.props;
-    const { count } = polling;
+    const { count, lastUpdated } = polling;
 
     if (loading && !count) return <Loader />;
     if (data && !data.length) return <DataFallback title={t('features.dataFallback')} />;
@@ -44,8 +76,18 @@ class Features extends React.PureComponent {
     return (
       <>
         <Helmet title={title} />
-        <PageHeading title={title}>Search features here</PageHeading>
+        <PageHeading title={title}>
+          <Input
+            value={search}
+            onChange={this.handleSearchChange}
+            placeholder={t('features.searchPlaceholder')}
+          />
+        </PageHeading>
         <Controls data={data} itemAccessor='features' />
+        <Flex mt={3} flexDirection='column-reverse'>
+          <Box px={2}>{lastUpdated && <LastUpdated date={lastUpdated} loading={loading} />}</Box>
+        </Flex>
+        <>features here</>
       </>
     );
   }
@@ -61,6 +103,7 @@ Features.propTypes = {
   search: PropTypes.string,
   startPolling: PropTypes.func,
   stopPolling: PropTypes.func,
+  searchFeatures: PropTypes.func,
 };
 
 export default Features;
