@@ -54,7 +54,7 @@ class Projects extends React.PureComponent {
         <Helmet title={t('projects.pageTitle')} />
         <PageHeading title={t('projects.pageTitle')}>
           <Link to='/projects/add'>
-            <Button type='primary'>{t('projects.addButton')}</Button>
+            <Button type='primary'>{t('projects.actions.add')}</Button>
           </Link>
         </PageHeading>
         {/* <Table columns={columns} data={data} /> */}

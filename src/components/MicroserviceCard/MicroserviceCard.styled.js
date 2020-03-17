@@ -44,6 +44,7 @@ export const Name = styled.div`
 
 export const Version = styled.div`
   font-weight: bold;
+  font-size: 0.9rem;
 `;
 
 export const Date = styled.div`

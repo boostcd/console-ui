@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Title = styled.h3`
+export const Title = styled.h4`
   display: flex;
   align-items: center;
 `;

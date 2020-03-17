@@ -2,9 +2,15 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
+import Button from '../../components/Button';
+import Card from '../../components/Card';
 import Loader from '../../components/Loader';
+import PageHeading from '../../components/PageHeading';
 import microserviceType from '../../types/microservice';
+import t from '../../utils/translate';
+import * as Styles from './Microservice.styled';
 import { fetchMicroservice } from './state/actions';
 
 const mapStateToProps = (state) => ({
@@ -28,26 +34,48 @@ class Microservice extends React.PureComponent {
   }
 
   render() {
-    const { match, data, loading, error } = this.props;
+    const { match, data, error, loading } = this.props;
     const { params } = match;
     const { environmentName, appName } = params;
 
     if (error) return null;
-    if (loading) return <Loader />;
+    if (loading || !data) return <Loader />;
 
-    // TODO: Implement proper UI for display the data
+    const title = t('microservice.pageTitle', { service: `${appName}@${environmentName}` });
+
     return (
-      <>
-        <Helmet title={`${appName}@${environmentName}`} />
-        <div>
-          <div>Name: {data.name}</div>
-          <div>Display name: {data.displayName}</div>
-          <div>Version: {data.version}</div>
-          <div>Deployed date: {data.deployed ? data.deployedDate : 'Not deployed'}</div>
-          <div>Tested: {data.tested ? 'Yes' : 'No'}</div>
-          <div>Actions: ...</div>
-        </div>
-      </>
+      <Styles.Wrapper>
+        <Helmet title={title} />
+        <PageHeading title={title}>
+          <Link to='/microservices'>
+            <Button type='primary'>{t('microservice.actions.backToList')}</Button>
+          </Link>
+        </PageHeading>
+        <Card>
+          <Styles.Detail>
+            <Styles.DetailTitle>{t('common.name')}:</Styles.DetailTitle>
+            <Styles.DetailValue>{data.name}</Styles.DetailValue>
+          </Styles.Detail>
+          <Styles.Detail>
+            <Styles.DetailTitle>{t('common.displayName')}</Styles.DetailTitle>
+            <Styles.DetailValue>{data.displayName}</Styles.DetailValue>
+          </Styles.Detail>
+          <Styles.Detail>
+            <Styles.DetailTitle>{t('common.environment')}:</Styles.DetailTitle>
+            <Styles.DetailValue>{environmentName}</Styles.DetailValue>
+          </Styles.Detail>
+          <Styles.Detail>
+            <Styles.DetailTitle>{t('common.version')}:</Styles.DetailTitle>
+            <Styles.DetailValue>{data.version}</Styles.DetailValue>
+          </Styles.Detail>
+          <Styles.Detail>
+            <Styles.DetailTitle>{t('common.deployedDate')}:</Styles.DetailTitle>
+            <Styles.DetailValue>
+              {data.deployedDate ? new Date(data.deployedDate).toLocaleString() : 'n/a'}
+            </Styles.DetailValue>
+          </Styles.Detail>
+        </Card>
+      </Styles.Wrapper>
     );
   }
 }

@@ -1,5 +1,10 @@
 export default {
   common: {
+    name: 'Name',
+    displayName: 'Display name',
+    environment: 'Environment',
+    version: 'Version',
+    deployedDate: 'Deployed date',
     view: 'View',
     build: 'Build',
     buildAll: 'Build all',
@@ -17,20 +22,23 @@ export default {
   features: {
     pageTitle: 'Features',
     dataFallback: 'No features available!',
-    errorFallback: 'Failed to load features!',
   },
   microservices: {
     pageTitle: 'Microservices',
     dataFallback: 'No microservices available!',
-    errorFallback: 'Failed to load microservices!',
     searchPlaceholder: 'Search for microservices',
   },
   microservice: {
-    errorFallback: 'Failed to load {{appName}} microservice!',
+    pageTitle: 'Microservice: {{service}}',
+    actions: {
+      backToList: 'Back to list',
+    },
   },
   projects: {
     pageTitle: 'Projects',
-    addButton: 'Add project',
+    actions: {
+      add: 'Add project',
+    },
     tableColumns: {
       title: 'Title',
       owner: 'Owner',
