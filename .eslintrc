@@ -34,7 +34,8 @@
     "react",
     "prettier",
     "better-styled-components",
-    "simple-import-sort"
+    "simple-import-sort",
+    "redux-saga"
   ],
   "rules": {
     "prettier/prettier": ["warn", { "singleQuote": true }],
