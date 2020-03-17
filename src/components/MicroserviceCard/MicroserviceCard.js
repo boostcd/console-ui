@@ -20,6 +20,7 @@ class MicroserviceCard extends React.PureComponent {
     } = this.props;
 
     const name = displayName || nameProp;
+    const isTestable = tested !== null && tested !== undefined;
     const isActive = Object.values(state).some(Boolean);
     const showDeployed = deployed || (isActive && deployedDate !== undefined);
 
@@ -33,10 +34,14 @@ class MicroserviceCard extends React.PureComponent {
       <Styles.Wrapper isActive={isActive}>
         <Styles.Name title={nameProp}>
           <span>{name}</span>
-          {tested === false ? (
-            <Styles.TestsFailed title={t('common.testsFailed')} />
-          ) : (
-            <Styles.TestsSuccessful title={t('common.testsSuccessful')} />
+          {isTestable && (
+            <>
+              {tested ? (
+                <Styles.TestsSuccessful title={t('common.testsSuccessful')} />
+              ) : (
+                <Styles.TestsFailed title={t('common.testsFailed')} />
+              )}
+            </>
           )}
         </Styles.Name>
         <Styles.Version>{version}</Styles.Version>

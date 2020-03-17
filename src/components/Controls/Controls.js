@@ -81,6 +81,7 @@ class Controls extends React.PureComponent {
     const width = 1 / data.length;
     const hasActions = Object.values(actions).some(Boolean);
 
+    const isTestable = tested !== null && tested !== undefined;
     const isEnvironmentActive = Object.values(state).some(Boolean);
     const isAppActive = items.reduce(
       (value, item) => value || Object.values(item.state || {}).some(Boolean),
@@ -93,10 +94,14 @@ class Controls extends React.PureComponent {
         <Styles.Title>
           <Styles.Indicator colour={indicatorColour} isActive={isActive} />
           <span>{displayName || name}</span>
-          {tested === false ? (
-            <Styles.TestsFailed title={t('common.testsFailed')} />
-          ) : (
-            <Styles.TestsSuccessful title={t('common.testsSuccessful')} />
+          {isTestable && (
+            <>
+              {tested ? (
+                <Styles.TestsSuccessful title={t('common.testsSuccessful')} />
+              ) : (
+                <Styles.TestsFailed title={t('common.testsFailed')} />
+              )}
+            </>
           )}
         </Styles.Title>
         <Styles.Actions>
