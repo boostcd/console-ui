@@ -10,7 +10,7 @@ class PageHeading extends React.PureComponent {
     return (
       <Styles.Wrapper>
         <Styles.Title>{title}</Styles.Title>
-        <Styles.Actions>{children}</Styles.Actions>
+        {children && <Styles.Actions>{children}</Styles.Actions>}
       </Styles.Wrapper>
     );
   }
@@ -18,7 +18,7 @@ class PageHeading extends React.PureComponent {
 
 PageHeading.propTypes = {
   title: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 export default PageHeading;

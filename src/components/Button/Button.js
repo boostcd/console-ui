@@ -9,7 +9,7 @@ export default styled.button`
   border: 0;
   height: 1.8rem;
   line-height: 1.8rem;
-  border-radius: 4px;
+  border-radius: 3px;
   font-size: 0.9rem;
   padding: 0 0.5rem;
   transition: 150ms all ease-in;

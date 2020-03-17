@@ -8,7 +8,7 @@ export const Wrapper = styled.input`
   line-height: 2rem;
   padding: 0 0.5rem;
   border: 1px solid #ced4da;
-  border-radius: 0.25rem;
+  border-radius: 3px;
 
   &::placeholder {
     color: #c8c8c8;

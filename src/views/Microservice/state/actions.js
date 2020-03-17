@@ -1,6 +1,5 @@
 const ACTIONS = {
   FETCH: 'microservice/FETCH',
-  POLL_STOP: 'microservice/POLL_STOP',
   PENDING: 'microservice/PENDING',
   SUCCESS: 'microservice/SUCCESS',
   FAILURE: 'microservice/FAILURE',
