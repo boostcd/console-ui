@@ -13,7 +13,6 @@ import { startPollingFeatures, stopPollingFeatures } from './state/actions';
 const mapStateToProps = (state) => ({
   data: state.features.data,
   loading: state.features.loading,
-  error: state.features.error,
   polling: state.features.polling,
 });
 
@@ -33,10 +32,9 @@ class Features extends React.PureComponent {
   }
 
   render() {
-    const { data, loading, error, polling } = this.props;
+    const { data, loading, polling } = this.props;
     const { count } = polling;
 
-    if (error) return null;
     if (loading && !count) return <Loader />;
     if (data && !data.length) return <DataFallback title={t('features.dataFallback')} />;
 
@@ -51,7 +49,6 @@ class Features extends React.PureComponent {
 
 Features.propTypes = {
   data: featuresType,
-  error: PropTypes.bool,
   loading: PropTypes.bool,
   polling: PropTypes.shape({
     count: PropTypes.number,

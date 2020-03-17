@@ -24,7 +24,6 @@ import { getMicroservices, getMicroservicesSearch } from './state/selectors';
 const mapStateToProps = (state) => ({
   data: getMicroservices(state),
   loading: state.microservices.loading,
-  error: state.microservices.error,
   polling: state.microservices.polling,
   search: getMicroservicesSearch(state),
 });
@@ -70,10 +69,9 @@ class Microservices extends React.PureComponent {
 
   render() {
     const { search } = this.state;
-    const { data, loading, error, polling } = this.props;
+    const { data, loading, polling } = this.props;
     const { count, lastUpdated } = polling;
 
-    if (error) return null;
     if (loading && !count) return <Loader />;
     if (data && !data.length) return <DataFallback title={t('microservices.dataFallback')} />;
 
@@ -97,7 +95,6 @@ class Microservices extends React.PureComponent {
 
 Microservices.propTypes = {
   data: microservicesType,
-  error: PropTypes.bool,
   loading: PropTypes.bool,
   polling: PropTypes.shape({
     count: PropTypes.number,

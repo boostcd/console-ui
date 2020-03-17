@@ -16,7 +16,6 @@ import { fetchMicroservice } from './state/actions';
 const mapStateToProps = (state) => ({
   data: state.microservice.data,
   loading: state.microservice.loading,
-  error: state.microservice.error,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -34,11 +33,10 @@ class Microservice extends React.PureComponent {
   }
 
   render() {
-    const { match, data, error, loading } = this.props;
+    const { match, data, loading } = this.props;
     const { params } = match;
     const { environmentName, appName } = params;
 
-    if (error) return null;
     if (loading || !data) return <Loader />;
 
     const title = t('microservice.pageTitle', { service: `${appName}@${environmentName}` });
@@ -89,7 +87,6 @@ Microservice.propTypes = {
   }),
   data: PropTypes.shape(microserviceType),
   loading: PropTypes.bool,
-  error: PropTypes.bool,
   fetchMicroservice: PropTypes.func,
 };
 

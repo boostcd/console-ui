@@ -30,7 +30,6 @@ import { fetchProjects } from './state/actions';
 const mapStateToProps = (state) => ({
   data: state.projects.data,
   loading: state.projects.loading,
-  error: state.projects.error,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -44,9 +43,8 @@ class Projects extends React.PureComponent {
   }
 
   render() {
-    const { data, loading, error } = this.props;
+    const { loading } = this.props; // data
 
-    if (error) return null;
     if (loading) return <Loader />;
 
     return (
@@ -65,7 +63,6 @@ class Projects extends React.PureComponent {
 
 Projects.propTypes = {
   data: projectsType,
-  error: PropTypes.bool,
   loading: PropTypes.bool,
   fetchProjects: PropTypes.func,
 };
