@@ -14,20 +14,23 @@ class FeatureCard extends React.PureComponent {
   }
 
   render() {
-    const { featureId, title, status, url, waitingSince } = this.props; //description, promoted
+    const { featureId, title, status, url, promoted, waitingSince } = this.props; //description
+    const isActive = !promoted;
     const icon = this.getIconByUrl(url);
 
     return (
-      <Styles.Wrapper>
+      <Styles.Wrapper isActive={isActive}>
         <Styles.IdSection>
           <span>{icon}</span>
           <Styles.Id>{featureId}</Styles.Id>
         </Styles.IdSection>
         <Styles.Title>{title}</Styles.Title>
         <Styles.Status>{t('features.status', { value: status })}</Styles.Status>
-        <Styles.WaitingSince>
-          {t('features.waitingSince', { value: format(waitingSince) })}
-        </Styles.WaitingSince>
+        {waitingSince && (
+          <Styles.WaitingSince>
+            {t('features.waitingSince', { value: format(waitingSince) })}
+          </Styles.WaitingSince>
+        )}
       </Styles.Wrapper>
     );
   }

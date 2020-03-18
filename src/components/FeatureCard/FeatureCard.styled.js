@@ -1,17 +1,16 @@
 import { Jira, Trello } from '@styled-icons/fa-brands';
 import { TicketAlt } from '@styled-icons/fa-solid';
 import styled, { css } from 'styled-components';
+import { ifProp } from 'styled-tools';
 
 import { baseColor } from '../../styles/variables/colors';
 import Card from '../Card';
 
 export const Wrapper = styled(Card)`
-  /* height: 200px; */
   margin-top: 0.5rem;
-  transition: 200ms background linear;
 
   &:hover {
-    background: #efefef;
+    background: ${ifProp('isActive', '#d9f9ff', '#efefef')};
   }
 `;
 
