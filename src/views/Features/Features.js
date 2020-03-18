@@ -51,6 +51,14 @@ class Features extends React.PureComponent {
     this.props.stopPolling();
   }
 
+  // Temporary restarting the polling in order to update the loading state of the actions
+  handleStateChange = async (apiFn, ...params) => {
+    await apiFn(...params);
+
+    this.props.stopPolling();
+    this.props.startPolling();
+  };
+
   handleSearchChange = (event) => {
     this.setState(
       {
@@ -84,7 +92,7 @@ class Features extends React.PureComponent {
             placeholder={t('features.searchPlaceholder')}
           />
         </PageHeading>
-        <Controls data={data} itemAccessor='features' />
+        <Controls data={data} itemAccessor='features' onStateChange={this.handleStateChange} />
         <Flex mt={3} flexDirection='column-reverse'>
           <Box px={2}>{lastUpdated && <LastUpdated date={lastUpdated} loading={loading} />}</Box>
         </Flex>

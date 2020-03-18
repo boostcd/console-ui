@@ -55,6 +55,14 @@ class Microservices extends React.PureComponent {
     this.props.stopPolling();
   }
 
+  // Temporary restarting the polling in order to update the loading state of the actions
+  handleStateChange = async (apiFn, ...params) => {
+    await apiFn(...params);
+
+    this.props.stopPolling();
+    this.props.startPolling();
+  };
+
   handleSearchChange = (event) => {
     this.setState(
       {
@@ -86,11 +94,11 @@ class Microservices extends React.PureComponent {
             placeholder={t('microservices.searchPlaceholder')}
           />
         </PageHeading>
-        <Controls data={data} itemAccessor='apps' />
+        <Controls data={data} itemAccessor='apps' onStateChange={this.handleStateChange} />
         <Flex mt={3} flexDirection='column-reverse'>
           <Box px={2}>{lastUpdated && <LastUpdated date={lastUpdated} loading={loading} />}</Box>
         </Flex>
-        <MicroservicesApplications data={data} />
+        <MicroservicesApplications data={data} onStateChange={this.handleStateChange} />
       </>
     );
   }

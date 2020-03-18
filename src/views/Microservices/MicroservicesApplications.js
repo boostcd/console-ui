@@ -1,4 +1,5 @@
 import { Box, Flex } from '@rebass/grid';
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -19,7 +20,7 @@ class MicroservicesApplications extends React.PureComponent {
       <Button
         type='primary'
         isDisabled={state.build}
-        onClick={() => gatewayApi.build(environmentName, appName)}
+        onClick={this.props.onStateChange.bind(null, gatewayApi.build, environmentName, appName)}
       >
         <span>{t('common.build')}</span>
         {state.build && <Styles.StateIcon />}
@@ -35,7 +36,7 @@ class MicroservicesApplications extends React.PureComponent {
       <Button
         type='primary'
         isDisabled={state.promote}
-        onClick={() => gatewayApi.promote(environmentName, appName)}
+        onClick={this.props.onStateChange.bind(null, gatewayApi.promote, environmentName, appName)}
       >
         <span>{t('common.promote')}</span>
         {state.promote && <Styles.StateIcon />}
@@ -99,6 +100,7 @@ class MicroservicesApplications extends React.PureComponent {
 
 MicroservicesApplications.propTypes = {
   data: microservicesType,
+  onStateChange: PropTypes.func.isRequired,
 };
 
 export default MicroservicesApplications;

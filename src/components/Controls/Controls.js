@@ -14,7 +14,11 @@ class Controls extends React.PureComponent {
     const { name, state = {} } = environment;
 
     return (
-      <Button type='primary' isDisabled={state.build} onClick={() => gatewayApi.buildAll(name)}>
+      <Button
+        type='primary'
+        isDisabled={state.build}
+        onClick={this.props.onStateChange.bind(null, gatewayApi.buildAll, name)}
+      >
         <span>{t('common.buildAll')}</span>
         {state.build && <Styles.StateIcon />}
       </Button>
@@ -25,7 +29,11 @@ class Controls extends React.PureComponent {
     const { name, state = {} } = environment;
 
     return (
-      <Button type='primary' isDisabled={state.test} onClick={() => gatewayApi.testAll(name)}>
+      <Button
+        type='primary'
+        isDisabled={state.test}
+        onClick={this.props.onStateChange.bind(null, gatewayApi.testAll, name)}
+      >
         <span>{t('common.testAll')}</span>
         {state.test && <Styles.StateIcon />}
       </Button>
@@ -36,7 +44,11 @@ class Controls extends React.PureComponent {
     const { name, state = {} } = environment;
 
     return (
-      <Button type='primary' isDisabled={state.promote} onClick={() => gatewayApi.promoteAll(name)}>
+      <Button
+        type='primary'
+        isDisabled={state.promote}
+        onClick={this.props.onStateChange.bind(null, gatewayApi.promoteAll, name)}
+      >
         <span>{t('common.promoteAll')}</span>
         {state.promote && <Styles.StateIcon />}
       </Button>
@@ -47,7 +59,11 @@ class Controls extends React.PureComponent {
     const { name, state = {} } = environment;
 
     return (
-      <Button type='primary' isDisabled={state.goLive} onClick={() => gatewayApi.goLive(name)}>
+      <Button
+        type='primary'
+        isDisabled={state.goLive}
+        onClick={this.props.onStateChange.bind(null, gatewayApi.goLive, name)}
+      >
         <span>{t('common.goLive')}</span>
         {state.goLive && <Styles.StateIcon />}
       </Button>
@@ -58,7 +74,11 @@ class Controls extends React.PureComponent {
     const { name, state = {} } = environment;
 
     return (
-      <Button type='primary' isDisabled={state.backOut} onClick={() => gatewayApi.backOut(name)}>
+      <Button
+        type='primary'
+        isDisabled={state.backOut}
+        onClick={this.props.onStateChange.bind(null, gatewayApi.backOut, name)}
+      >
         <span>{t('common.backOut')}</span>
         {state.backOut && <Styles.StateIcon />}
       </Button>
@@ -137,6 +157,7 @@ class Controls extends React.PureComponent {
 Controls.propTypes = {
   data: PropTypes.oneOfType([microservicesType, featuresType]).isRequired,
   itemAccessor: PropTypes.string.isRequired,
+  onStateChange: PropTypes.func.isRequired,
 };
 
 export default Controls;

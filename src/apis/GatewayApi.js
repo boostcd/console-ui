@@ -28,61 +28,61 @@ class GatewayApi extends BaseApi {
     });
   };
 
-  async build(environment, service) {
+  build = async (environment, service) => {
     return await this.request({
       method: 'POST',
       url: `/environment/${environment}/app/${service}/build`,
     });
-  }
+  };
 
-  async buildAll(environment) {
+  buildAll = async (environment) => {
     return await this.request({
       method: 'POST',
       url: `/environment/${environment}/build`,
     });
-  }
+  };
 
-  async test(environment, service) {
+  test = async (environment, service) => {
     return await this.request({
       method: 'POST',
       url: `/environment/${environment}/app/${service}/test`,
     });
-  }
+  };
 
-  async testAll(environment) {
+  testAll = async (environment) => {
     return await this.request({
       method: 'POST',
       url: `/environment/${environment}/test`,
     });
-  }
+  };
 
-  async promote(environment, service) {
+  promote = async (environment, service) => {
     return await this.request({
       method: 'POST',
       url: `/environment/${environment}/app/${service}/promote`,
     });
-  }
+  };
 
-  async promoteAll(environment) {
+  promoteAll = async (environment) => {
     return await this.request({
       method: 'POST',
       url: `/environment/${environment}/promote`,
     });
-  }
+  };
 
-  async goLive(environment) {
+  goLive = async (environment) => {
     return await this.request({
       method: 'POST',
       url: `/environment/${environment}/go-live`,
     });
-  }
+  };
 
-  async backOut(environment) {
+  backOut = async (environment) => {
     return await this.request({
       method: 'POST',
       url: `/environment/${environment}/back-out`,
     });
-  }
+  };
 
   getProjects = async () => {
     return mockProjects;
