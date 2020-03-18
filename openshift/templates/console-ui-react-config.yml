@@ -14,33 +14,33 @@ parameters:
 - description: Defines max memory
   name: MAX_MEMORY
   value: 600Mi
-  required: true  
+  required: true
 - description: Defines min memory
   name: MIN_MEMORY
   value: 100Mi
   required: true
 - description: Defines the namespace for the image stream
   name: DOCKER_NAMESPACE
-  required: true  
+  required: true
 - description: Defines docker registry
   name: DOCKER_REGISTRY
   value: docker-registry.default.svc:5000
-  required: true      
+  required: true
 - description: Defines docker registry
   name: DOCKER_IMAGE_LABEL
-  required: true    
+  required: true
 - description: Defines the product that this template is related to
   name: PRODUCT
-  required: true     
+  required: true
 - description: Defines the product description that this template is related to
   name: PRODUCT_DESCRIPTION
-  required: true   
+  required: true
 - description: Defines the host Openshift is running on
   name: OPENSHIFT_HOST
-  required: true       
+  required: true
 - description: Defines the tasks manager title
   name: TASK_MANAGEMENT_TITLE
-  required: true         
+  required: true
 objects:
 - apiVersion: v1
   kind: DeploymentConfig
@@ -77,15 +77,15 @@ objects:
         containers:
           - env:
               - name: GATEWAY_API_SERVICE_URI
-                value: 'http://console-gateway-api-${NAMESPACE}.${OPENSHIFT_HOST}'      
+                value: 'http://console-gateway-api-${NAMESPACE}.${OPENSHIFT_HOST}'
               - name: TASK_MANAGEMENT_TITLE
-                value: ${TASK_MANAGEMENT_TITLE} 
+                value: ${TASK_MANAGEMENT_TITLE}
               - name: PRODUCT
                 value: ${PRODUCT}
               - name: PRODUCT_DESCRIPTION
-                value: ${PRODUCT_DESCRIPTION}      
+                value: ${PRODUCT_DESCRIPTION}
               - name: PORT
-                value: '8080'                 
+                value: '8080'
             image: ${DOCKER_REGISTRY}/${DOCKER_NAMESPACE}/${MICROSERVICE}:${DOCKER_IMAGE_LABEL}
             imagePullPolicy: Always
             name: ${MICROSERVICE}

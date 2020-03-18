@@ -10,7 +10,7 @@ parameters:
 - description: Defines the namespace for the image stream for builder image
   name: IMAGESTREAM_NAMESPACE
   value: openshift
-  required: true       
+  required: true
 - description: Defines the location of the estafet github (change this if you have forked and want to use another github)
   name: GITHUB
   required: true
@@ -29,17 +29,17 @@ parameters:
 - description: Defines docker registry
   name: DOCKER_REGISTRY
   value: docker-registry.default.svc:5000
-  required: true    
+  required: true
 - description: Defines docker image label
   name: DOCKER_IMAGE_LABEL
-  required: true        
+  required: true
 - description: Defines the product that this template is related to
   name: PRODUCT
-  required: true     
+  required: true
 - description: Maven mirror url
   name: MAVEN_MIRROR_URL
   value: http://nexus.nexus.svc:8081/nexus/content/groups/public
-  required: true       
+  required: true
 objects:
 - apiVersion: v1
   kind: ImageStream
@@ -86,7 +86,7 @@ objects:
       sourceStrategy:
         env:
         - name: MAVEN_MIRROR_URL
-          value: ${MAVEN_MIRROR_URL}       
+          value: ${MAVEN_MIRROR_URL}
         from:
           kind: ImageStreamTag
           name: 'nodejs:10'
