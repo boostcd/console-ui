@@ -22,7 +22,7 @@ class BaseApi {
   async request(config) {
     try {
       const response = await this.instance.request(config);
-      console.info(`${config.method} request to ${config.url} responded with: `, response);
+      // console.info(`${config.method} request to ${config.url} responded with: `, response);
       return response.data;
     } catch (error) {
       const message = `${config.method} request to ${config.url} failed with: ${error.message}`;

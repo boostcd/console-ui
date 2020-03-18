@@ -8,15 +8,16 @@ export const getFeaturesSelector = createSelector(
   getFeaturesSearchSelector,
   (data, search) => {
     if (!search) return data;
+
     const trimmedSearch = search.trim();
 
-    // Partial match by the name/displayName
+    // Partial match by the title/description
     return data.map((environment) => ({
       ...environment,
       features: environment.features.filter(
-        (app) =>
-          (app.name && !app.name.indexOf(trimmedSearch)) ||
-          (app.displayName && !app.displayName.indexOf(trimmedSearch))
+        (feature) =>
+          (feature.title && !feature.title.indexOf(trimmedSearch)) ||
+          (feature.description && !feature.description.indexOf(trimmedSearch))
       ),
     }));
   }

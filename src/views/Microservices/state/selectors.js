@@ -8,6 +8,7 @@ export const getMicroservicesSelector = createSelector(
   getMicroservicesSearchSelector,
   (data, search) => {
     if (!search) return data;
+
     const trimmedSearch = search.trim();
 
     // Partial match by the name/displayName
