@@ -1,3 +1,4 @@
+import { includes } from 'ignore-case';
 import { createSelector } from 'reselect';
 
 export const getMicroservicesDataSelector = (state) => state.microservices.data;
@@ -15,9 +16,7 @@ export const getMicroservicesSelector = createSelector(
     return data.map((environment) => ({
       ...environment,
       apps: environment.apps.filter(
-        (app) =>
-          (app.name && !app.name.indexOf(trimmedSearch)) ||
-          (app.displayName && !app.displayName.indexOf(trimmedSearch))
+        (app) => includes(app.name, trimmedSearch) || includes(app.displayName, trimmedSearch)
       ),
     }));
   }

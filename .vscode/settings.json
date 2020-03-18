@@ -16,6 +16,7 @@
     "extension",
     "grid",
     "install",
+    "jira",
     "js",
     "microservice",
     "microservices",
@@ -31,6 +32,7 @@
     "server",
     "timeago",
     "toastify",
+    "trello",
     "ui",
     "unmount",
     "will"

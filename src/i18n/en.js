@@ -23,6 +23,8 @@ export default {
     pageTitle: 'Features',
     dataFallback: 'No features available!',
     searchPlaceholder: 'Search for features',
+    status: 'Status: {{value}}',
+    waitingSince: 'Waiting since: {{value}}',
   },
   microservices: {
     pageTitle: 'Microservices',

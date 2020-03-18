@@ -14,6 +14,7 @@ import PageHeading from '../../components/PageHeading';
 import { DEBOUNCE_DELAY } from '../../constants';
 import featuresType from '../../types/features';
 import t from '../../utils/translate';
+import FeaturesItems from './FeaturesItems';
 import { searchFeatures, startPollingFeatures, stopPollingFeatures } from './state/actions';
 import { getFeaturesSearchSelector, getFeaturesSelector } from './state/selectors';
 
@@ -87,7 +88,7 @@ class Features extends React.PureComponent {
         <Flex mt={3} flexDirection='column-reverse'>
           <Box px={2}>{lastUpdated && <LastUpdated date={lastUpdated} loading={loading} />}</Box>
         </Flex>
-        <>features here</>
+        <FeaturesItems data={data} />
       </>
     );
   }

@@ -5,7 +5,7 @@ import { ifProp } from 'styled-tools';
 import Card from '../Card';
 
 export const Wrapper = styled(Card)`
-  height: 130px;
+  height: 120px;
   margin-top: 0.5rem;
   transition: background 200ms linear;
 

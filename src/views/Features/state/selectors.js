@@ -1,3 +1,4 @@
+import { includes } from 'ignore-case';
 import { createSelector } from 'reselect';
 
 export const getFeaturesDataSelector = (state) => state.features.data;
@@ -11,14 +12,10 @@ export const getFeaturesSelector = createSelector(
 
     const trimmedSearch = search.trim();
 
-    // Partial match by the title/description
+    // Partial match by the title
     return data.map((environment) => ({
       ...environment,
-      features: environment.features.filter(
-        (feature) =>
-          (feature.title && !feature.title.indexOf(trimmedSearch)) ||
-          (feature.description && !feature.description.indexOf(trimmedSearch))
-      ),
+      features: environment.features.filter((feature) => includes(feature.title, trimmedSearch)),
     }));
   }
 );
