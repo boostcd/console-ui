@@ -30,7 +30,7 @@ const App = () => (
         <Route path='/microservices/:environmentName/:appName' component={Microservice} />
         <Route path='/microservices' component={Microservices} />
         <Route path='/projects/add' component={Project} />
-        <Route path='/projects/:namespace' component={Project} />
+        <Route path='/projects/:namespace/edit' component={Project} />
         <Route path='/projects' component={Projects} />
         <Route path='*'>
           <Redirect to='/' />

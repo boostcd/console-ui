@@ -11,7 +11,7 @@ import PageHeading from '../../components/PageHeading';
 import Table from '../../components/Table';
 import projectsType from '../../types/projects';
 import t from '../../utils/translate';
-import { fetchProjects } from './state/actions';
+import { startPollingProjects, stopPollingProjects } from './state/actions';
 
 const columns = [
   {
@@ -26,6 +26,19 @@ const columns = [
     header: t('projects.tableColumns.namespace'),
     accessor: 'namespace',
   },
+  // {
+  //   header: t('projects.tableColumns.actions'),
+  //   render: (itemData) => {
+  //     return (
+  //       <>
+  //         <Link to={`/projects/${itemData.namespace}/edit`}>
+  //           <Button type='secondary'>Edit</Button>
+  //         </Link>
+  //         <Button type='secondary'>Delete</Button>
+  //       </>
+  //     );
+  //   },
+  // },
 ];
 
 const mapStateToProps = (state) => ({
@@ -34,13 +47,18 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchProjects: () => dispatch(fetchProjects()),
+  startPolling: () => dispatch(startPollingProjects()),
+  stopPolling: () => dispatch(stopPollingProjects()),
 });
 
 @connect(mapStateToProps, mapDispatchToProps)
 class Projects extends React.PureComponent {
   componentDidMount() {
-    this.props.fetchProjects();
+    this.props.startPolling();
+  }
+
+  componentWillUnmount() {
+    this.props.stopPolling();
   }
 
   render() {
@@ -67,7 +85,8 @@ class Projects extends React.PureComponent {
 Projects.propTypes = {
   data: projectsType,
   loading: PropTypes.bool,
-  fetchProjects: PropTypes.func,
+  startPolling: PropTypes.func,
+  stopPolling: PropTypes.func,
 };
 
 export default Projects;

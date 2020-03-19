@@ -1,12 +1,17 @@
 const ACTIONS = {
-  FETCH: 'projects/FETCH',
+  POLL_START: 'projects/POLL_START',
+  POLL_STOP: 'projects/POLL_STOP',
   PENDING: 'projects/PENDING',
   SUCCESS: 'projects/SUCCESS',
   FAILURE: 'projects/FAILURE',
 };
 
-export const fetchProjects = () => ({
-  type: ACTIONS.FETCH,
+export const startPollingProjects = () => ({
+  type: ACTIONS.POLL_START,
+});
+
+export const stopPollingProjects = () => ({
+  type: ACTIONS.POLL_STOP,
 });
 
 export const fetchProjectsPending = () => ({

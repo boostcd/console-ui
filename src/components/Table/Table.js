@@ -12,7 +12,13 @@ class Table extends React.PureComponent {
     const { columns } = this.props;
 
     return columns
-      .map((column) => dataItem[column.accessor])
+      .map((column) => {
+        if (typeof column.render === 'function') {
+          return column.render(dataItem);
+        }
+
+        return dataItem[column.accessor];
+      })
       .filter((columnData) => columnData !== undefined);
   }
 
@@ -46,6 +52,7 @@ Table.propTypes = {
     PropTypes.shape({
       header: PropTypes.string,
       accessor: PropTypes.string,
+      render: PropTypes.func,
     })
   ).isRequired,
 };

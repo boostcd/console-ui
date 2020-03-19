@@ -46,6 +46,7 @@ export default {
       title: 'Title',
       owner: 'Owner',
       namespace: 'Namespace',
+      actions: 'Actions',
     },
   },
 };

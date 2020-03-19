@@ -1,6 +1,7 @@
 import BaseApi from './BaseApi';
 import mockMicroservice from './mocks/microservice.json';
 import mockProjects from './mocks/projects.json';
+import mockUsers from './mocks/users.json';
 
 class GatewayApi extends BaseApi {
   getFeatures = async () => {
@@ -34,6 +35,38 @@ class GatewayApi extends BaseApi {
     // return await this.request({
     //   method: 'GET',
     //   url: '/projects',
+    // });
+  };
+
+  createProject = async (data) => {
+    return await this.request({
+      method: 'POST',
+      url: `/project`,
+      data,
+    });
+  };
+
+  editProject = async (namespace, data) => {
+    return await this.request({
+      method: 'PUT',
+      url: `/project/${namespace}`,
+      data,
+    });
+  };
+
+  deleteProject = async (namespace) => {
+    return await this.request({
+      method: 'DELETE',
+      url: `/project/${namespace}`,
+    });
+  };
+
+  getUsers = async () => {
+    return mockUsers;
+
+    // return await this.request({
+    //   method: 'GET',
+    //   url: '/users',
     // });
   };
 
