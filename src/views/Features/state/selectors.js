@@ -13,9 +13,13 @@ export const getFeaturesSelector = createSelector(
     const trimmedSearch = search.trim();
 
     // Partial match by the title
-    return data.map((environment) => ({
-      ...environment,
-      features: environment.features.filter((feature) => includes(feature.title, trimmedSearch)),
-    }));
+    return data.map((environment) => {
+      if (!environment.features) return environment;
+
+      return {
+        ...environment,
+        features: environment.features.filter((feature) => includes(feature.title, trimmedSearch)),
+      };
+    });
   }
 );

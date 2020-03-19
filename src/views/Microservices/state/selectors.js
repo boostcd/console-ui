@@ -13,11 +13,15 @@ export const getMicroservicesSelector = createSelector(
     const trimmedSearch = search.trim();
 
     // Partial match by the name/displayName
-    return data.map((environment) => ({
-      ...environment,
-      apps: environment.apps.filter(
-        (app) => includes(app.name, trimmedSearch) || includes(app.displayName, trimmedSearch)
-      ),
-    }));
+    return data.map((environment) => {
+      if (!environment.apps) return environment;
+
+      return {
+        ...environment,
+        apps: environment.apps.filter(
+          (app) => includes(app.name, trimmedSearch) || includes(app.displayName, trimmedSearch)
+        ),
+      };
+    });
   }
 );

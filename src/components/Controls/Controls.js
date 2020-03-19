@@ -94,7 +94,7 @@ class Controls extends React.PureComponent {
       tested,
       actions = {},
       state = {},
-      [itemAccessor]: items,
+      [itemAccessor]: items = [],
     } = environment;
 
     const key = `controls:${name}@${index}`;

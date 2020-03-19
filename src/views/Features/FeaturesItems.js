@@ -47,7 +47,7 @@ class FeaturesItems extends React.PureComponent {
 
   render() {
     const { data } = this.props;
-    const isEmpty = data.every((env) => env.features.length === 0);
+    const isEmpty = data.every((env) => (env.features ? env.features.length === 0 : true));
 
     if (isEmpty) return <DataFallback title={t('features.dataFallback')} />;
 

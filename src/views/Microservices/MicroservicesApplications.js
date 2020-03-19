@@ -86,7 +86,7 @@ class MicroservicesApplications extends React.PureComponent {
 
   render() {
     const { data } = this.props;
-    const isEmpty = data.every((env) => env.apps.length === 0);
+    const isEmpty = data.every((env) => (env.apps ? env.apps.length === 0 : true));
 
     if (isEmpty) return <DataFallback title={t('microservices.dataFallback')} />;
 
