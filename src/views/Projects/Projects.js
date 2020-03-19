@@ -5,27 +5,28 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import Button from '../../components/Button';
+import Card from '../../components/Card';
 import Loader from '../../components/Loader';
 import PageHeading from '../../components/PageHeading';
-// import Table from '../../components/Table';
+import Table from '../../components/Table';
 import projectsType from '../../types/projects';
 import t from '../../utils/translate';
 import { fetchProjects } from './state/actions';
 
-// const columns = [
-//   {
-//     Header: t('projects.tableColumns.title'),
-//     accessor: 'title',
-//   },
-//   {
-//     Header: t('projects.tableColumns.owner'),
-//     accessor: 'owner',
-//   },
-//   {
-//     Header: t('projects.tableColumns.namespace'),
-//     accessor: 'namespace',
-//   },
-// ];
+const columns = [
+  {
+    header: t('projects.tableColumns.title'),
+    accessor: 'title',
+  },
+  {
+    header: t('projects.tableColumns.owner'),
+    accessor: 'owner',
+  },
+  {
+    header: t('projects.tableColumns.namespace'),
+    accessor: 'namespace',
+  },
+];
 
 const mapStateToProps = (state) => ({
   data: state.projects.data,
@@ -43,7 +44,7 @@ class Projects extends React.PureComponent {
   }
 
   render() {
-    const { loading } = this.props; // data
+    const { data, loading } = this.props;
 
     if (loading) return <Loader />;
 
@@ -55,7 +56,9 @@ class Projects extends React.PureComponent {
             <Button type='primary'>{t('projects.actions.add')}</Button>
           </Link>
         </PageHeading>
-        {/* <Table columns={columns} data={data} /> */}
+        <Card>
+          <Table columns={columns} data={data} />
+        </Card>
       </>
     );
   }

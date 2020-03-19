@@ -2,47 +2,26 @@
   {
     "title": "Build: Estafet Block Chain Demo",
     "owner": "admin",
-    "namespace": "blockchain-demo-build",
-    "apps": [
-      "bank-ms",
-      "blockchain-gateway-ms",
-      "console-ui",
-      "currency-converter-ms",
-      "go-ethereum",
-      "jaeger"
-    ]
+    "namespace": "blockchain-demo-build"
   },
   {
     "title": "Test: Estafet Block Chain Demo",
     "owner": "admin",
-    "namespace": "blockchain-demo-test",
-    "apps": [
-      "bank-ms",
-      "blockchain-gateway-ms",
-      "console-ui",
-      "currency-converter-ms",
-      "go-ethereum",
-      "jaeger"
-    ]
+    "namespace": "blockchain-demo-test"
   },
   {
     "title": "CI/CD: Estafet Block Chain Demo",
     "owner": "admin",
-    "namespace": "blockchain-demo-cicd",
-    "apps": [
-      "jenkins"
-    ]
+    "namespace": "blockchain-demo-cicd"
   },
   {
     "title": "Nexus",
     "owner": "admin",
-    "namespace": "blockchain-demo-nexus",
-    "apps": ["nexus"]
+    "namespace": "blockchain-demo-nexus"
   },
   {
     "title": "Iliyan Dev",
     "owner": "iliyan.yotov",
-    "namespace": "iliyan-dev",
-    "apps": ["console-ui-react", "console-ui"]
+    "namespace": "iliyan-dev"
   }
 ]

@@ -3,6 +3,13 @@ import mockMicroservice from './mocks/microservice.json';
 import mockProjects from './mocks/projects.json';
 
 class GatewayApi extends BaseApi {
+  getFeatures = async () => {
+    return await this.request({
+      method: 'GET',
+      url: '/features',
+    });
+  };
+
   getMicroservice = async () => {
     return mockMicroservice;
 
@@ -21,11 +28,13 @@ class GatewayApi extends BaseApi {
     });
   };
 
-  getFeatures = async () => {
-    return await this.request({
-      method: 'GET',
-      url: '/features',
-    });
+  getProjects = async () => {
+    return mockProjects;
+
+    // return await this.request({
+    //   method: 'GET',
+    //   url: '/projects',
+    // });
   };
 
   build = async (environment, service) => {
@@ -82,15 +91,6 @@ class GatewayApi extends BaseApi {
       method: 'POST',
       url: `/environment/${environment}/back-out`,
     });
-  };
-
-  getProjects = async () => {
-    return mockProjects;
-
-    // return await this.request({
-    //   method: 'GET',
-    //   url: '/projects',
-    // });
   };
 }
 
