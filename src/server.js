@@ -11,7 +11,11 @@ server.use(helmet());
 server.use(morgan('dev'));
 
 server.get('/api/health', (req, res) => {
-  res.status(200).json({ health: '😊' });
+  res.status(200).json({ message: '😊' });
+});
+
+server.get('/api/*', (req, res) => {
+  res.status(404).json({ message: 'API endpoint not found! ' });
 });
 
 server.get('/*', renderer);
