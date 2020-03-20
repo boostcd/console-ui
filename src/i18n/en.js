@@ -1,11 +1,8 @@
 export default {
   common: {
-    name: 'Name',
-    displayName: 'Display name',
-    environment: 'Environment',
-    version: 'Version',
-    deployedDate: 'Deployed date',
     view: 'View',
+    edit: 'Edit',
+    delete: 'Delete',
     build: 'Build',
     buildAll: 'Build all',
     testAll: 'Run tests',
@@ -13,6 +10,11 @@ export default {
     promoteAll: 'Promote all',
     goLive: 'Go live!',
     backOut: 'Back out!',
+    name: 'Name',
+    displayName: 'Display name',
+    environment: 'Environment',
+    version: 'Version',
+    deployedDate: 'Deployed date',
     deployed: 'Deployed {{value}}',
     notDeployed: 'Not deployed',
     lastUpdated: 'Last updated: {{value}}',
@@ -39,6 +41,7 @@ export default {
   },
   projects: {
     pageTitle: 'Projects',
+    dataFallback: 'No projects available!',
     actions: {
       add: 'Add project',
     },
@@ -48,5 +51,6 @@ export default {
       namespace: 'Namespace',
       actions: 'Actions',
     },
+    deleteSuccess: 'Successfully deleted project with namespace {{namespace}}!',
   },
 };

@@ -3,43 +3,19 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
+import gatewayApi from '../../apis/GatewayApi';
 import Button from '../../components/Button';
 import Card from '../../components/Card';
+import DataFallback from '../../components/DataFallback';
 import Loader from '../../components/Loader';
 import PageHeading from '../../components/PageHeading';
 import Table from '../../components/Table';
 import projectsType from '../../types/projects';
 import t from '../../utils/translate';
+import * as Styles from './Projects.styled';
 import { startPollingProjects, stopPollingProjects } from './state/actions';
-
-const columns = [
-  {
-    header: t('projects.tableColumns.title'),
-    accessor: 'title',
-  },
-  {
-    header: t('projects.tableColumns.owner'),
-    accessor: 'owner',
-  },
-  {
-    header: t('projects.tableColumns.namespace'),
-    accessor: 'namespace',
-  },
-  // {
-  //   header: t('projects.tableColumns.actions'),
-  //   render: (itemData) => {
-  //     return (
-  //       <>
-  //         <Link to={`/projects/${itemData.namespace}/edit`}>
-  //           <Button type='secondary'>Edit</Button>
-  //         </Link>
-  //         <Button type='secondary'>Delete</Button>
-  //       </>
-  //     );
-  //   },
-  // },
-];
 
 const mapStateToProps = (state) => ({
   data: state.projects.data,
@@ -53,6 +29,37 @@ const mapDispatchToProps = (dispatch) => ({
 
 @connect(mapStateToProps, mapDispatchToProps)
 class Projects extends React.PureComponent {
+  columns = [
+    {
+      header: t('projects.tableColumns.title'),
+      accessor: 'title',
+    },
+    {
+      header: t('projects.tableColumns.owner'),
+      accessor: 'owner',
+    },
+    {
+      header: t('projects.tableColumns.namespace'),
+      accessor: 'namespace',
+    },
+    {
+      header: t('projects.tableColumns.actions'),
+      // eslint-disable-next-line react/display-name
+      render: (itemData) => {
+        return (
+          <Styles.TableActions>
+            <Link to={`/projects/${itemData.namespace}/edit`}>
+              <Button type='secondary'>{t('common.edit')}</Button>
+            </Link>
+            <Button type='secondary' onClick={this.handleDelete.bind(this, itemData.namespace)}>
+              {t('common.delete')}
+            </Button>
+          </Styles.TableActions>
+        );
+      },
+    },
+  ];
+
   componentDidMount() {
     this.props.startPolling();
   }
@@ -61,10 +68,16 @@ class Projects extends React.PureComponent {
     this.props.stopPolling();
   }
 
+  handleDelete = async (namespace) => {
+    await gatewayApi.deleteProject(namespace);
+    toast.success(t('projects.deleteSuccess', { namespace }));
+  };
+
   render() {
     const { data, loading } = this.props;
 
     if (loading) return <Loader />;
+    if (data && !data.length) return <DataFallback title={t('projects.dataFallback')} />;
 
     return (
       <>
@@ -75,7 +88,7 @@ class Projects extends React.PureComponent {
           </Link>
         </PageHeading>
         <Card>
-          <Table columns={columns} data={data} />
+          <Table columns={this.columns} data={data} />
         </Card>
       </>
     );
