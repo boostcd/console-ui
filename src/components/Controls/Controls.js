@@ -15,7 +15,7 @@ class Controls extends React.PureComponent {
 
     return (
       <Button
-        type='primary'
+        variant='primary'
         isDisabled={state.build}
         onClick={this.props.onStateChange.bind(null, gatewayApi.buildAll, name)}
       >
@@ -30,7 +30,7 @@ class Controls extends React.PureComponent {
 
     return (
       <Button
-        type='primary'
+        variant='primary'
         isDisabled={state.test}
         onClick={this.props.onStateChange.bind(null, gatewayApi.testAll, name)}
       >
@@ -45,7 +45,7 @@ class Controls extends React.PureComponent {
 
     return (
       <Button
-        type='primary'
+        variant='primary'
         isDisabled={state.promote}
         onClick={this.props.onStateChange.bind(null, gatewayApi.promoteAll, name)}
       >
@@ -60,7 +60,7 @@ class Controls extends React.PureComponent {
 
     return (
       <Button
-        type='primary'
+        variant='primary'
         isDisabled={state.goLive}
         onClick={this.props.onStateChange.bind(null, gatewayApi.goLive, name)}
       >
@@ -75,7 +75,7 @@ class Controls extends React.PureComponent {
 
     return (
       <Button
-        type='primary'
+        variant='primary'
         isDisabled={state.backOut}
         onClick={this.props.onStateChange.bind(null, gatewayApi.backOut, name)}
       >

@@ -53,4 +53,15 @@ export default {
     },
     deleteSuccess: 'Successfully deleted project with namespace {{namespace}}!',
   },
+  project: {
+    actions: {
+      backToList: 'Back to list',
+    },
+    add: {
+      pageTitle: 'Add project',
+    },
+    edit: {
+      pageTitle: 'Edit project {{namespace}}',
+    },
+  },
 };

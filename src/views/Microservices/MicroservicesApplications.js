@@ -18,7 +18,7 @@ class MicroservicesApplications extends React.PureComponent {
 
     return (
       <Button
-        type='primary'
+        variant='primary'
         isDisabled={state.build}
         onClick={this.props.onStateChange.bind(null, gatewayApi.build, environmentName, appName)}
       >
@@ -34,7 +34,7 @@ class MicroservicesApplications extends React.PureComponent {
 
     return (
       <Button
-        type='primary'
+        variant='primary'
         isDisabled={state.promote}
         onClick={this.props.onStateChange.bind(null, gatewayApi.promote, environmentName, appName)}
       >
@@ -63,7 +63,7 @@ class MicroservicesApplications extends React.PureComponent {
             {actions.build && this.renderBuildAction(environment, app)}
             {actions.promote && this.renderPromoteAction(environment, app)}
             <Link to={`/microservices/${environment.name}/${app.name}`}>
-              <Button type='primary'>{t('common.view')}</Button>
+              <Button variant='primary'>{t('common.view')}</Button>
             </Link>
           </>
         }

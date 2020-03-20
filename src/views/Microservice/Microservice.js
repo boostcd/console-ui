@@ -46,7 +46,7 @@ class Microservice extends React.PureComponent {
         <Helmet title={title} />
         <PageHeading title={title}>
           <Link to='/microservices'>
-            <Button type='primary'>{t('microservice.actions.backToList')}</Button>
+            <Button variant='primary'>{t('microservice.actions.backToList')}</Button>
           </Link>
         </PageHeading>
         <Card>

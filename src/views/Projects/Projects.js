@@ -49,9 +49,9 @@ class Projects extends React.PureComponent {
         return (
           <Styles.TableActions>
             <Link to={`/projects/${itemData.namespace}/edit`}>
-              <Button type='secondary'>{t('common.edit')}</Button>
+              <Button variant='secondary'>{t('common.edit')}</Button>
             </Link>
-            <Button type='secondary' onClick={this.handleDelete.bind(this, itemData.namespace)}>
+            <Button variant='secondary' onClick={this.handleDelete.bind(this, itemData.namespace)}>
               {t('common.delete')}
             </Button>
           </Styles.TableActions>
@@ -84,7 +84,7 @@ class Projects extends React.PureComponent {
         <Helmet title={t('projects.pageTitle')} />
         <PageHeading title={t('projects.pageTitle')}>
           <Link to='/projects/add'>
-            <Button type='primary'>{t('projects.actions.add')}</Button>
+            <Button variant='primary'>{t('projects.actions.add')}</Button>
           </Link>
         </PageHeading>
         <Card>

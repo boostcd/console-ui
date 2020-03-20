@@ -13,16 +13,16 @@ export default styled.button`
   font-size: 0.9rem;
   padding: 0 0.5rem;
   transition: 150ms all ease-in;
-  color: ${switchProp('type', {
+  color: ${switchProp('variant', {
     primary: 'white',
     secondary: baseColor,
   })};
-  background: ${switchProp('type', {
+  background: ${switchProp('variant', {
     primary: baseColor,
     secondary: 'transparent',
   })};
   border: ${withProp(
-    switchProp('type', {
+    switchProp('variant', {
       primary: 'transparent',
       secondary: baseColor,
     }),
@@ -31,7 +31,7 @@ export default styled.button`
 
   &:hover {
     color: white;
-    background: ${switchProp('type', {
+    background: ${switchProp('variant', {
       primary: '#138496',
       secondary: baseColor,
     })};
