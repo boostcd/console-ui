@@ -41,7 +41,7 @@ OR
 yarn start:dev
 ```
 
-The application will start at [localhost:8080](http://localhost:8080).
+The application will start at [localhost:8080](http://localhost:8080) by default. You can change to a desired port by defining a **PORT** (process.env.PORT) environment variable by [creating a .env file](https://github.com/jaredpalmer/razzle#adding-environment-variables-in-env) inside the root folder.
 
 ### Technology
 
