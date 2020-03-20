@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.input`
+  width: 100%;
   font-size: 0.9rem;
   outline: none;
   background: white;
