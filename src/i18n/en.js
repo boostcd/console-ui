@@ -4,7 +4,6 @@ export default {
     edit: 'Edit',
     delete: 'Delete',
     submit: 'Submit',
-    reset: 'Reset',
     build: 'Build',
     buildAll: 'Build all',
     testAll: 'Run tests',

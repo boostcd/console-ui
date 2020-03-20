@@ -69,7 +69,7 @@ class Microservice extends React.PureComponent {
           <Styles.Detail>
             <Styles.DetailTitle>{t('common.deployedDate')}:</Styles.DetailTitle>
             <Styles.DetailValue>
-              {data.deployedDate ? new Date(data.deployedDate).toLocaleString() : 'n/a'}
+              {data.deployedDate ? new Date(data.deployedDate).toLocaleString() : '-'}
             </Styles.DetailValue>
           </Styles.Detail>
         </Card>

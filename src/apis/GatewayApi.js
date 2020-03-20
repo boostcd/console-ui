@@ -1,5 +1,6 @@
 import BaseApi from './BaseApi';
 import mockMicroservice from './mocks/microservice.json';
+import mockProject from './mocks/project.json';
 import mockProjects from './mocks/projects.json';
 import mockUsers from './mocks/users.json';
 
@@ -38,11 +39,14 @@ class GatewayApi extends BaseApi {
     // });
   };
 
-  getProject = async (namespace) => {
-    return await this.request({
-      method: 'GET',
-      url: `/project/${namespace}`,
-    });
+  getProject = async () => {
+    // namespace
+    return mockProject;
+
+    // return await this.request({
+    //   method: 'GET',
+    //   url: `/project/${namespace}`,
+    // });
   };
 
   createProject = async (data) => {

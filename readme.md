@@ -41,7 +41,7 @@ OR
 yarn start:dev
 ```
 
-The application will start at [localhost:3000](http://localhost:3000). You can change to a desired port by defining a **PORT** environment variable.
+The application will start at [localhost:8080](http://localhost:8080).
 
 ### Technology
 
