@@ -8,7 +8,7 @@ class BaseApi {
   constructor(baseURL) {
     this.instance = axios.create({
       baseURL,
-      // Set default request timeout to 15 seconds
+      // Set default request timeout to 10 seconds
       timeout: REQUEST_TIMEOUT,
       headers: {
         common: {

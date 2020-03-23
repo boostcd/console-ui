@@ -6,6 +6,7 @@ import microservices from '../views/Microservices/state/reducer';
 import project from '../views/Project/state/reducer';
 import projects from '../views/Projects/state/reducer';
 
+// Pass new reducers to the combineReducers call
 export default combineReducers({
   features,
   microservice,

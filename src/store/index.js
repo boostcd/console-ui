@@ -26,5 +26,13 @@ export default (initialState) => {
   store.runSaga = sagaMiddleware.run;
   store.close = () => store.dispatch(END);
 
+  // Hot reload the root reducer
+  if (module.hot) {
+    module.hot.accept('./rootReducer', () => {
+      const nextReducer = require('./rootReducer').default;
+      store.replaceReducer(nextReducer);
+    });
+  }
+
   return store;
 };
