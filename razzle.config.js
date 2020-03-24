@@ -33,6 +33,7 @@ module.exports = {
     // Define the global environment variables used in the project
     appConfig.plugins.push(
       new webpack.DefinePlugin({
+        PORT: JSON.stringify(process.env.PORT),
         PRODUCT: JSON.stringify(process.env.PRODUCT),
         PRODUCT_DESCRIPTION: JSON.stringify(process.env.PRODUCT_DESCRIPTION),
         GATEWAY_API_SERVICE_URI: JSON.stringify(process.env.GATEWAY_API_SERVICE_URI),

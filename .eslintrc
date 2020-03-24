@@ -8,6 +8,7 @@
     }
   },
   "globals": {
+    "PORT": true,
     "PRODUCT": true,
     "PRODUCT_DESCRIPTION": true,
     "GATEWAY_API_SERVICE_URI": true,

@@ -8,7 +8,7 @@ const server = express();
 
 server.use(express.static(process.env.RAZZLE_PUBLIC_DIR));
 server.use(helmet());
-server.use(morgan('dev'));
+server.use(morgan(':date[iso] :method :url :status :response-time ms'));
 
 server.get('/api/health', (req, res) => {
   res.status(200).json({ message: '😊' });

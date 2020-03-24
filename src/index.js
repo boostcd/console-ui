@@ -5,7 +5,7 @@ let app = require('./server').default;
 const server = http.createServer(app);
 let currentApp = app;
 
-const port = process.env.PORT || 8080;
+const port = PORT || 8080;
 
 server.listen(port, (error) => {
   if (error) {
