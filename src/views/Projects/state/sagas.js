@@ -8,7 +8,7 @@ import ACTIONS, {
   fetchProjectsSuccess,
 } from './actions';
 
-function* sagaWorker() {
+function* fetchProjects() {
   while (true) {
     try {
       yield put(fetchProjectsPending());
@@ -22,9 +22,9 @@ function* sagaWorker() {
   }
 }
 
-export default function*() {
+export default function* watchFetchProjects() {
   while (true) {
     yield take(ACTIONS.POLL_START);
-    yield race([call(sagaWorker), take(ACTIONS.POLL_STOP)]);
+    yield race([call(fetchProjects), take(ACTIONS.POLL_STOP)]);
   }
 }

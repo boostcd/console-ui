@@ -7,7 +7,7 @@ import ACTIONS, {
   fetchMicroserviceSuccess,
 } from './actions';
 
-function* sagaWorker(action) {
+function* fetchMicroservice(action) {
   const { payload } = action;
   const { environmentName, appName } = payload;
 
@@ -20,6 +20,6 @@ function* sagaWorker(action) {
   }
 }
 
-export default function*() {
-  yield takeEvery(ACTIONS.FETCH, sagaWorker);
+export default function* watchFetchMicroservice() {
+  yield takeEvery(ACTIONS.FETCH, fetchMicroservice);
 }

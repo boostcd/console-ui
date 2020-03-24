@@ -8,7 +8,7 @@ import ACTIONS, {
   fetchFeaturesSuccess,
 } from './actions';
 
-function* sagaWorker() {
+function* fetchFeatures() {
   while (true) {
     try {
       yield put(fetchFeaturesPending());
@@ -22,9 +22,9 @@ function* sagaWorker() {
   }
 }
 
-export default function*() {
+export default function* watchFetchFeatures() {
   while (true) {
     yield take(ACTIONS.POLL_START);
-    yield race([call(sagaWorker), take(ACTIONS.POLL_STOP)]);
+    yield race([call(fetchFeatures), take(ACTIONS.POLL_STOP)]);
   }
 }

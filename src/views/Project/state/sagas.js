@@ -3,7 +3,7 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import gatewayApi from '../../../apis/GatewayApi';
 import ACTIONS, { fetchProjectFailure, fetchProjectPending, fetchProjectSuccess } from './actions';
 
-function* sagaWorker(action) {
+function* fetchProject(action) {
   const { payload } = action;
 
   try {
@@ -15,6 +15,6 @@ function* sagaWorker(action) {
   }
 }
 
-export default function*() {
-  yield takeEvery(ACTIONS.FETCH, sagaWorker);
+export default function* watchFetchProject() {
+  yield takeEvery(ACTIONS.FETCH, fetchProject);
 }

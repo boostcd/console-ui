@@ -8,7 +8,7 @@ import ACTIONS, {
   fetchMicroservicesSuccess,
 } from './actions';
 
-function* sagaWorker() {
+function* fetchMicroservices() {
   while (true) {
     try {
       yield put(fetchMicroservicesPending());
@@ -22,9 +22,9 @@ function* sagaWorker() {
   }
 }
 
-export default function*() {
+export default function* watchFetchMicroservices() {
   while (true) {
     yield take(ACTIONS.POLL_START);
-    yield race([call(sagaWorker), take(ACTIONS.POLL_STOP)]);
+    yield race([call(fetchMicroservices), take(ACTIONS.POLL_STOP)]);
   }
 }

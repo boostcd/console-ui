@@ -10,7 +10,7 @@ import rootSaga from './store/rootSaga';
 
 const store = configureStore(window.__PRELOADED_STATE__);
 
-rootSaga.map(store.runSaga);
+store.runSaga(rootSaga);
 
 loadableReady(() => {
   hydrate(
