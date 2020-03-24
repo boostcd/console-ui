@@ -12,7 +12,6 @@
     "production": {
       "plugins": [
         "transform-react-remove-prop-types",
-        ["transform-remove-console", { "exclude": [ "error" ] }],
         ["babel-plugin-styled-components", { "displayName": false }]
       ]
     }

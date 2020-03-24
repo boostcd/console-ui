@@ -103,4 +103,8 @@ MicroservicesApplications.propTypes = {
   onStateChange: PropTypes.func.isRequired,
 };
 
+MicroservicesApplications.defaultProps = {
+  data: [],
+};
+
 export default MicroservicesApplications;

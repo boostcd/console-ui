@@ -5,12 +5,14 @@ let app = require('./server').default;
 const server = http.createServer(app);
 let currentApp = app;
 
-server.listen(process.env.PORT || 8080, (error) => {
+const port = process.env.PORT || 8080;
+
+server.listen(port, (error) => {
   if (error) {
-    console.log(error);
+    console.log('Server failed to start with error: ', error);
   }
 
-  console.log('🚀 started');
+  console.log(`🚀 Server has started at port ${port}!`);
 });
 
 if (module.hot) {

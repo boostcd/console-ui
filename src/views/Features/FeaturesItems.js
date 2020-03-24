@@ -59,4 +59,8 @@ FeaturesItems.propTypes = {
   data: featuresType,
 };
 
+FeaturesItems.defaultProps = {
+  data: [],
+};
+
 export default FeaturesItems;
