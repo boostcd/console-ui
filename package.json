@@ -16,6 +16,12 @@
       "post-merge": "install-deps-postmerge"
     }
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "<rootDir>/src/**/*.js",
+      "!<rootDir>/src/**/*.styled.js"
+    ]
+  },
   "resolutions": {
     "react-side-effect": "^2.1.0"
   },

@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`i18n: EN should match the snapshot 1`] = `
+Object {
+  "common": Object {
+    "backOut": "Back out!",
+    "build": "Build",
+    "buildAll": "Build all",
+    "delete": "Delete",
+    "deployed": "Deployed {{value}}",
+    "deployedDate": "Deployed date",
+    "displayName": "Display name",
+    "edit": "Edit",
+    "environment": "Environment",
+    "goLive": "Go live!",
+    "lastUpdated": "Last updated: {{value}}",
+    "name": "Name",
+    "notDeployed": "Not deployed",
+    "promote": "Promote",
+    "promoteAll": "Promote all",
+    "submit": "Submit",
+    "testAll": "Run tests",
+    "testsFailed": "Untested or tests failing",
+    "testsSuccessful": "Tested successfully",
+    "version": "Version",
+    "view": "View",
+  },
+  "features": Object {
+    "dataFallback": "No features available!",
+    "pageTitle": "Features",
+    "searchPlaceholder": "Search for features",
+    "status": "Status: {{value}}",
+    "waitingSince": "Waiting since: {{value}}",
+  },
+  "microservice": Object {
+    "actions": Object {
+      "backToList": "Back to list",
+    },
+    "pageTitle": "Microservice: {{service}}",
+  },
+  "microservices": Object {
+    "dataFallback": "No microservices available!",
+    "pageTitle": "Microservices",
+    "searchPlaceholder": "Search for microservices",
+  },
+  "project": Object {
+    "actions": Object {
+      "backToList": "Back to list",
+    },
+    "add": Object {
+      "pageTitle": "Add project",
+    },
+    "edit": Object {
+      "pageTitle": "Edit project {{namespace}}",
+    },
+  },
+  "projects": Object {
+    "actions": Object {
+      "add": "Add project",
+    },
+    "dataFallback": "No projects available!",
+    "deleteSuccess": "Successfully deleted project with namespace {{namespace}}!",
+    "pageTitle": "Projects",
+    "tableColumns": Object {
+      "actions": "Actions",
+      "namespace": "Namespace",
+      "owner": "Owner",
+      "title": "Title",
+    },
+  },
+}
+`;
