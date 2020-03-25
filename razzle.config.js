@@ -1,6 +1,7 @@
 const path = require('path');
-const LoadableWebpackPlugin = require('@loadable/webpack-plugin');
 const webpack = require('webpack');
+const LoadableWebpackPlugin = require('@loadable/webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 // Modifying the default Webpack config provided by razzle
 // https://github.com/gregberge/loadable-components/tree/master/examples/razzle
@@ -8,6 +9,7 @@ module.exports = {
   modify: (config, { dev, target }) => {
     const appConfig = Object.assign({}, config);
 
+    // @loadable support
     if (target === 'web') {
       const filename = path.resolve(__dirname, 'build');
 
@@ -40,6 +42,11 @@ module.exports = {
         TASK_MANAGEMENT_TITLE: JSON.stringify(process.env.TASK_MANAGEMENT_TITLE),
       })
     );
+
+    // Push the bundle analyzer plugin if the environment variable is set
+    if (process.env.BUNDLE_ANALYZE) {
+      appConfig.plugins.push(new BundleAnalyzerPlugin());
+    }
 
     return appConfig;
   },
