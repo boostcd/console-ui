@@ -9,7 +9,7 @@ class PageHeading extends React.PureComponent {
 
     return (
       <Styles.Wrapper>
-        <Styles.Title>{title}</Styles.Title>
+        <h2>{title}</h2>
         {children && <Styles.Actions>{children}</Styles.Actions>}
       </Styles.Wrapper>
     );

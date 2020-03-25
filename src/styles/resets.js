@@ -20,4 +20,14 @@ export default css`
     color: #212529;
     text-decoration: none;
   }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
 `;

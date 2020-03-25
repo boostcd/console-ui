@@ -1,8 +1,9 @@
-import { Box, Flex } from '@rebass/grid';
+import { Flex } from '@rebass/grid';
 import React from 'react';
 
 import DataFallback from '../../components/DataFallback';
 import FeatureCard from '../../components/FeatureCard';
+import FixedWidthBox from '../../components/FixedWidthBox';
 import featuresType from '../../types/features';
 import t from '../../utils/translate';
 
@@ -39,9 +40,9 @@ class FeaturesItems extends React.PureComponent {
     const key = `features:${environment.name}@${index}`;
 
     return (
-      <Box key={key} width={width} px={2}>
+      <FixedWidthBox key={key} width={width} px={2}>
         {environment.features.map(this.renderCard.bind(this, environment))}
-      </Box>
+      </FixedWidthBox>
     );
   };
 

@@ -1,4 +1,4 @@
-import { Box, Flex } from '@rebass/grid';
+import { Flex } from '@rebass/grid';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -7,6 +7,7 @@ import featuresType from '../../types/features';
 import microservicesType from '../../types/microservices';
 import t from '../../utils/translate';
 import Button from '../Button';
+import FixedWidthBox from '../FixedWidthBox';
 import * as Styles from './Controls.styled';
 
 class Controls extends React.PureComponent {
@@ -110,7 +111,7 @@ class Controls extends React.PureComponent {
     const isActive = isEnvironmentActive || isAppActive;
 
     return (
-      <Box key={key} width={width} px={2}>
+      <FixedWidthBox key={key} width={width} px={2}>
         <Styles.Title>
           <Styles.Indicator colour={indicatorColour} isActive={isActive} />
           <span>{displayName || name}</span>
@@ -137,7 +138,7 @@ class Controls extends React.PureComponent {
             <Styles.NoActions>No actions enabled!</Styles.NoActions>
           )}
         </Styles.Actions>
-      </Box>
+      </FixedWidthBox>
     );
   };
 

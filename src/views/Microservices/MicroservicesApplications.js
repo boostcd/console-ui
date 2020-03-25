@@ -1,4 +1,4 @@
-import { Box, Flex } from '@rebass/grid';
+import { Flex } from '@rebass/grid';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import gatewayApi from '../../apis/GatewayApi';
 import Button from '../../components/Button';
 import DataFallback from '../../components/DataFallback';
+import FixedWidthBox from '../../components/FixedWidthBox';
 import MicroserviceCard from '../../components/MicroserviceCard';
 import microservicesType from '../../types/microservices';
 import t from '../../utils/translate';
@@ -78,9 +79,9 @@ class MicroservicesApplications extends React.PureComponent {
     const key = `apps:${environment}@${index}`;
 
     return (
-      <Box key={key} width={width} px={2}>
+      <FixedWidthBox key={key} width={width} px={2}>
         {environment.apps.map(this.renderCard.bind(this, environment))}
-      </Box>
+      </FixedWidthBox>
     );
   };
 

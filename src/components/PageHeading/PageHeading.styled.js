@@ -2,10 +2,9 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  margin: 1.5rem 0;
 `;
 
-export const Title = styled.h2``;
-
-export const Actions = styled.div``;
+export const Actions = styled.div`
+  margin-left: 2rem;
+`;

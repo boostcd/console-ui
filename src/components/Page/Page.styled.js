@@ -73,7 +73,6 @@ export const Content = styled.div`
   margin: 0 auto;
 
   @media (min-width: 768px) {
-    max-width: 1100px;
     margin: 0;
     padding-top: 100px;
   }
