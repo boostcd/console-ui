@@ -1,6 +1,6 @@
 import ACTIONS from './actions';
 
-const initialState = {
+export const initialState = {
   data: [],
   error: false,
   loading: true,
@@ -43,9 +43,14 @@ export default (state = initialState, action = {}) => {
     case ACTIONS.SUCCESS:
       return {
         ...state,
-        data: payload,
+        data: payload.data,
         error: false,
         loading: false,
+        polling: {
+          ...state.polling,
+          count: state.polling.count + 1,
+          lastUpdated: new Date(),
+        },
       };
 
     case ACTIONS.FAILURE:

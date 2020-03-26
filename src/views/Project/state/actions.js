@@ -18,7 +18,9 @@ export const fetchProjectPending = () => ({
 
 export const fetchProjectSuccess = (data) => ({
   type: ACTIONS.SUCCESS,
-  payload: data,
+  payload: {
+    data,
+  },
 });
 
 export const fetchProjectFailure = (error) => ({

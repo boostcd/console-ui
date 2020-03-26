@@ -20,7 +20,9 @@ export const fetchProjectsPending = () => ({
 
 export const fetchProjectsSuccess = (data) => ({
   type: ACTIONS.SUCCESS,
-  payload: data,
+  payload: {
+    data,
+  },
 });
 
 export const fetchProjectsFailure = (error) => ({
