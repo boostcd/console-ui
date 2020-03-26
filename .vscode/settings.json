@@ -10,6 +10,7 @@
     "compose",
     "console",
     "deps",
+    "devtool",
     "devtools",
     "e",
     "entrypoints",

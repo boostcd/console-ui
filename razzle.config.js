@@ -7,23 +7,23 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 // https://github.com/gregberge/loadable-components/tree/master/examples/razzle
 module.exports = {
   modify: (config, { dev, target }) => {
-    const appConfig = Object.assign({}, config);
+    config.devtool = dev ? 'source-map' : false;
 
     // @loadable support
     if (target === 'web') {
       const filename = path.resolve(__dirname, 'build');
 
-      appConfig.plugins = [
-        ...appConfig.plugins,
+      config.plugins = [
+        ...config.plugins,
         new LoadableWebpackPlugin({
           outputAsset: false,
           writeToDisk: { filename },
         }),
       ];
 
-      appConfig.output.filename = dev ? 'static/js/[name].js' : 'static/js/[name].[chunkhash:8].js';
+      config.output.filename = dev ? 'static/js/[name].js' : 'static/js/[name].[chunkhash:8].js';
 
-      appConfig.optimization = Object.assign({}, appConfig.optimization, {
+      config.optimization = Object.assign({}, config.optimization, {
         runtimeChunk: true,
         splitChunks: {
           chunks: 'all',
@@ -33,7 +33,7 @@ module.exports = {
     }
 
     // Define the global environment variables used in the project
-    appConfig.plugins.push(
+    config.plugins.push(
       new webpack.DefinePlugin({
         PORT: JSON.stringify(process.env.PORT),
         PRODUCT: JSON.stringify(process.env.PRODUCT),
@@ -45,9 +45,9 @@ module.exports = {
 
     // Push the bundle analyzer plugin if the environment variable is set
     if (process.env.BUNDLE_ANALYZE) {
-      appConfig.plugins.push(new BundleAnalyzerPlugin());
+      config.plugins.push(new BundleAnalyzerPlugin());
     }
 
-    return appConfig;
+    return config;
   },
 };
