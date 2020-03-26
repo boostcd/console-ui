@@ -1,18 +1,95 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Helmet from 'react-helmet';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
+import gatewayApi from '../../apis/GatewayApi';
+import Button from '../../components/Button/Button';
+import Loader from '../../components/Loader/Loader';
+import PageHeading from '../../components/PageHeading/PageHeading';
+import { fetchUsers } from '../../store/users/actions';
+import projectType from '../../types/project';
+import usersType from '../../types/users';
+import t from '../../utils/translate';
+import ProjectForm from './ProjectForm';
+import { fetchProject } from './state/actions';
+
+const mapStateToProps = (state) => ({
+  users: state.users.data,
+  usersLoading: state.users.loading,
+  project: state.project.data,
+  projectLoading: state.project.loading,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchUsers: () => dispatch(fetchUsers()),
+  fetchProject: (namespace) => dispatch(fetchProject(namespace)),
+});
+
+@connect(mapStateToProps, mapDispatchToProps)
 class Project extends React.PureComponent {
-  render() {
-    const {
-      match: { params },
-    } = this.props;
+  constructor(props) {
+    super(props);
+
+    const { match } = props;
+    const { params } = match;
     const { namespace } = params;
 
+    this.isEditing = namespace !== undefined;
+    this.namespace = params.namespace;
+  }
+
+  componentDidMount() {
+    this.props.fetchUsers();
+
+    if (this.isEditing) {
+      this.props.fetchProject(this.namespace);
+    }
+  }
+
+  handleSubmit = async () => {
+    const { history } = this.props;
+
+    const data = {}; // todo: pass the actual data from the form
+
+    if (this.isEditing) {
+      await gatewayApi.editProject(this.namespace, data);
+      toast.success(t('project.edit.successMessage'));
+    } else {
+      await gatewayApi.createProject(data);
+      toast.success(t('project.add.successMessage'));
+    }
+
+    // Redirect back to the list page
+    history.push('/projects');
+  };
+
+  render() {
+    const { users, usersLoading, project, projectLoading } = this.props;
+
+    const pageTitle = this.isEditing
+      ? t('project.edit.pageTitle', { namespace: this.namespace })
+      : t('project.add.pageTitle');
+
+    if (usersLoading || (projectLoading && this.isEditing)) return <Loader />;
+
+    console.log(users, project);
     return (
       <>
-        <Helmet title={namespace} />
-        <div>Project: To be implemented</div>
+        <Helmet title={pageTitle} />
+        <PageHeading title={pageTitle}>
+          <Link to='/projects'>
+            <Button variant='primary'>{t('project.actions.backToList')}</Button>
+          </Link>
+        </PageHeading>
+        <ProjectForm
+          project={project}
+          users={users}
+          isEditing={this.isEditing}
+          handleSubmit={this.handleSubmit}
+        />
       </>
     );
   }
@@ -24,6 +101,15 @@ Project.propTypes = {
       namespace: PropTypes.string,
     }),
   }),
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
+  users: usersType,
+  usersLoading: PropTypes.bool,
+  project: PropTypes.shape(projectType),
+  projectLoading: PropTypes.bool,
+  fetchUsers: PropTypes.func,
+  fetchProject: PropTypes.func,
 };
 
 export default Project;

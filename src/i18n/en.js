@@ -61,9 +61,11 @@ export default {
     },
     add: {
       pageTitle: 'Add project',
+      successMessage: 'Successfully added a new project!',
     },
     edit: {
       pageTitle: 'Edit project: {{namespace}}',
+      successMessage: 'Successfully edited a project!',
     },
   },
 };

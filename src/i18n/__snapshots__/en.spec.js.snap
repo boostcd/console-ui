@@ -50,9 +50,11 @@ Object {
     },
     "add": Object {
       "pageTitle": "Add project",
+      "successMessage": "Successfully added a new project!",
     },
     "edit": Object {
       "pageTitle": "Edit project: {{namespace}}",
+      "successMessage": "Successfully edited a project!",
     },
   },
   "projects": Object {
