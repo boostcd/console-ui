@@ -1,7 +1,6 @@
 import BaseApi from './BaseApi';
 import mockMicroservice from './mocks/microservice.json';
 import mockProject from './mocks/project.json';
-import mockProjects from './mocks/projects.json';
 import mockUsers from './mocks/users.json';
 
 class GatewayApi extends BaseApi {
@@ -31,12 +30,10 @@ class GatewayApi extends BaseApi {
   };
 
   getProjects = async () => {
-    return mockProjects;
-
-    // return await this.request({
-    //   method: 'GET',
-    //   url: '/projects',
-    // });
+    return await this.request({
+      method: 'GET',
+      url: '/projects',
+    });
   };
 
   getProject = async () => {

@@ -69,7 +69,7 @@ export const Navigation = styled.nav`
 `;
 
 export const Content = styled.div`
-  padding: 60px 1rem 4rem;
+  padding: 60px 1rem 0.5rem;
   margin: 0 auto;
 
   @media (min-width: 768px) {

@@ -5,7 +5,6 @@ import rotate from '../../styles/keyframes/rotate';
 
 export const Wrapper = styled.div`
   color: #666;
-  text-align: right;
   font-size: 0.7rem;
 `;
 

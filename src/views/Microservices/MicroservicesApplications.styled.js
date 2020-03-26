@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import SyncIcon from '../../components/SyncIcon';
 
 export const Wrapper = styled.div`
-  padding-bottom: 0.5rem; // Keep the card shadow
+  /* Keep the card shadow */
+  padding-bottom: 0.5rem;
 `;
 
 export const StateIcon = styled(SyncIcon)`
