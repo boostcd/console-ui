@@ -1,7 +1,4 @@
 import BaseApi from './BaseApi';
-import mockMicroservice from './mocks/microservice.json';
-import mockProject from './mocks/project.json';
-import mockUsers from './mocks/users.json';
 
 class GatewayApi extends BaseApi {
   getFeatures = async () => {
@@ -11,15 +8,11 @@ class GatewayApi extends BaseApi {
     });
   };
 
-  getMicroservice = async () => {
-    return mockMicroservice;
-
-    // TODO: Un-mock when implemented
-    // (environmentName, appName)
-    // return await this.request({
-    //   method: 'GET',
-    //   url: `/environment/${environmentName}/app/${appName}`,
-    // });
+  getMicroservice = async (environmentName, appName) => {
+    return await this.request({
+      method: 'GET',
+      url: `/environment/${environmentName}/app/${appName}`,
+    });
   };
 
   getMicroservices = async () => {
@@ -36,14 +29,11 @@ class GatewayApi extends BaseApi {
     });
   };
 
-  getProject = async () => {
-    // namespace
-    return mockProject;
-
-    // return await this.request({
-    //   method: 'GET',
-    //   url: `/project/${namespace}`,
-    // });
+  getProject = async (namespace) => {
+    return await this.request({
+      method: 'GET',
+      url: `/project/${namespace}`,
+    });
   };
 
   createProject = async (data) => {
@@ -70,12 +60,10 @@ class GatewayApi extends BaseApi {
   };
 
   getUsers = async () => {
-    return mockUsers;
-
-    // return await this.request({
-    //   method: 'GET',
-    //   url: '/users',
-    // });
+    return await this.request({
+      method: 'GET',
+      url: '/users',
+    });
   };
 
   build = async (environment, service) => {

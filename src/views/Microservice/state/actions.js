@@ -19,7 +19,9 @@ export const fetchMicroservicePending = () => ({
 
 export const fetchMicroserviceSuccess = (data) => ({
   type: ACTIONS.SUCCESS,
-  payload: data,
+  payload: {
+    data,
+  },
 });
 
 export const fetchMicroserviceFailure = (error) => ({

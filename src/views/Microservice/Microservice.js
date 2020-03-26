@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 import Button from '../../components/Button';
 import Card from '../../components/Card';
+import DataFallback from '../../components/DataFallback';
 import Loader from '../../components/Loader';
 import PageHeading from '../../components/PageHeading';
 import microserviceType from '../../types/microservice';
@@ -37,7 +38,8 @@ class Microservice extends React.PureComponent {
     const { params } = match;
     const { environmentName, appName } = params;
 
-    if (loading || !data) return <Loader />;
+    if (loading) return <Loader />;
+    if (!data) return <DataFallback title={t('microservice.dataFallback')} />;
 
     const title = t('microservice.pageTitle', { service: `${appName}@${environmentName}` });
 

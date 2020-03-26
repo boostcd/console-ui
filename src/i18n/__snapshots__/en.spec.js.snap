@@ -36,6 +36,7 @@ Object {
     "actions": Object {
       "backToList": "Back to list",
     },
+    "dataFallback": "Microservice data not available!",
     "pageTitle": "Microservice: {{service}}",
   },
   "microservices": Object {

@@ -1,7 +1,7 @@
 import ACTIONS from './actions';
 
 const initialState = {
-  data: {},
+  data: undefined,
   error: false,
   loading: true,
 };
@@ -20,7 +20,7 @@ export default (state = initialState, action = {}) => {
     case ACTIONS.SUCCESS:
       return {
         ...state,
-        data: payload,
+        data: payload.data,
         error: false,
         loading: false,
       };

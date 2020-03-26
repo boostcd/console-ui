@@ -36,6 +36,7 @@ export default {
   },
   microservice: {
     pageTitle: 'Microservice: {{service}}',
+    dataFallback: 'Microservice data not available!',
     actions: {
       backToList: 'Back to list',
     },
