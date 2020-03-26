@@ -5,12 +5,12 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 
-import Controls from '../../components/Controls';
-import DataFallback from '../../components/DataFallback';
-import Input from '../../components/Input';
-import LastUpdated from '../../components/LastUpdated';
-import Loader from '../../components/Loader';
-import PageHeading from '../../components/PageHeading';
+import Controls from '../../components/Controls/Controls';
+import DataFallback from '../../components/DataFallback/DataFallback';
+import Input from '../../components/Input/Input';
+import LastUpdated from '../../components/LastUpdated/LastUpdated';
+import Loader from '../../components/Loader/Loader';
+import PageHeading from '../../components/PageHeading/PageHeading';
 import { DEBOUNCE_DELAY } from '../../constants';
 import featuresType from '../../types/features';
 import t from '../../utils/translate';

@@ -3,8 +3,8 @@ import styled, { css } from 'styled-components';
 import { ifProp, prop } from 'styled-tools';
 
 import blink from '../../styles/keyframes/blink';
-import Button from '../Button';
-import SyncIcon from '../SyncIcon';
+import Button from '../Button/Button';
+import SyncIcon from '../SyncIcon/SyncIcon';
 
 export const Wrapper = styled.div`
   ${Button} ~ ${Button} {

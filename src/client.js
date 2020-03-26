@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
-import configureStore from './store';
+import configureStore from './store/configureStore';
 import rootSaga from './store/rootSaga';
 
 const store = configureStore(window.__PRELOADED_STATE__);

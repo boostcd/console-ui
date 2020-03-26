@@ -8,7 +8,7 @@ import { StaticRouter } from 'react-router-dom';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 
 import App from './App';
-import configureStore from './store';
+import configureStore from './store/configureStore';
 
 const store = configureStore();
 const sheet = new ServerStyleSheet();

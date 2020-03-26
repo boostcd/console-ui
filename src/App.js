@@ -6,15 +6,15 @@ import Helmet from 'react-helmet';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
-import Page from './components/Page';
+import Page from './components/Page/Page';
 import { TOAST_CONFIG } from './constants';
-import GlobalStyles from './styles';
+import GlobalStyles from './styles/globalStyles';
 
-const Features = loadable(() => import('./views/Features'));
-const Microservices = loadable(() => import('./views/Microservices'));
-const Microservice = loadable(() => import('./views/Microservice'));
-const Projects = loadable(() => import('./views/Projects'));
-const Project = loadable(() => import('./views/Project'));
+const Features = loadable(() => import('./views/Features/Features'));
+const Microservices = loadable(() => import('./views/Microservices/Microservices'));
+const Microservice = loadable(() => import('./views/Microservice/Microservice'));
+const Projects = loadable(() => import('./views/Projects/Projects'));
+const Project = loadable(() => import('./views/Project/Project'));
 
 const App = () => (
   <>

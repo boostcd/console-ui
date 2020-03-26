@@ -1,7 +1,7 @@
 import { CheckCircle, ExclamationCircle } from '@styled-icons/fa-solid';
 import styled, { css } from 'styled-components';
 
-import Card from '../Card';
+import Card from '../Card/Card';
 
 export const Wrapper = styled(Card)`
   height: 120px;

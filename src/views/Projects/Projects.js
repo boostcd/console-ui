@@ -6,12 +6,12 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import gatewayApi from '../../apis/GatewayApi';
-import Button from '../../components/Button';
-import Card from '../../components/Card';
-import DataFallback from '../../components/DataFallback';
-import Loader from '../../components/Loader';
-import PageHeading from '../../components/PageHeading';
-import Table from '../../components/Table';
+import Button from '../../components/Button/Button';
+import Card from '../../components/Card/Card';
+import DataFallback from '../../components/DataFallback/DataFallback';
+import Loader from '../../components/Loader/Loader';
+import PageHeading from '../../components/PageHeading/PageHeading';
+import Table from '../../components/Table/Table';
 import projectsType from '../../types/projects';
 import t from '../../utils/translate';
 import * as Styles from './Projects.styled';

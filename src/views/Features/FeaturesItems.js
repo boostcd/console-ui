@@ -1,9 +1,9 @@
 import { Flex } from '@rebass/grid';
 import React from 'react';
 
-import DataFallback from '../../components/DataFallback';
-import FeatureCard from '../../components/FeatureCard';
-import FixedWidthBox from '../../components/FixedWidthBox';
+import DataFallback from '../../components/DataFallback/DataFallback';
+import FeatureCard from '../../components/FeatureCard/FeatureCard';
+import FixedWidthBox from '../../components/FixedWidthBox/FixedWidthBox';
 import featuresType from '../../types/features';
 import t from '../../utils/translate';
 

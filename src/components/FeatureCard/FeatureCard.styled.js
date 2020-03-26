@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import { ifProp } from 'styled-tools';
 
 import { baseColor } from '../../styles/variables/colors';
-import Card from '../Card';
+import Card from '../Card/Card';
 
 export const Wrapper = styled(Card)`
   margin-top: 0.5rem;

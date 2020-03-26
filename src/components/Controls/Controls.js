@@ -6,8 +6,8 @@ import gatewayApi from '../../apis/GatewayApi';
 import featuresType from '../../types/features';
 import microservicesType from '../../types/microservices';
 import t from '../../utils/translate';
-import Button from '../Button';
-import FixedWidthBox from '../FixedWidthBox';
+import Button from '../Button/Button';
+import FixedWidthBox from '../FixedWidthBox/FixedWidthBox';
 import * as Styles from './Controls.styled';
 
 class Controls extends React.PureComponent {

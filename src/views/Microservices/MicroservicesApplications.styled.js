@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import SyncIcon from '../../components/SyncIcon';
+import SyncIcon from '../../components/SyncIcon/SyncIcon';
 
 export const Wrapper = styled.div`
   /* Keep the card shadow */

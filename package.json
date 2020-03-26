@@ -13,7 +13,8 @@
   "jest": {
     "collectCoverageFrom": [
       "<rootDir>/src/**/*.js",
-      "!<rootDir>/src/**/*.styled.js"
+      "!<rootDir>/src/**/*.styled.js",
+      "!<rootDir>/src/styles/**/*.js"
     ]
   },
   "resolutions": {

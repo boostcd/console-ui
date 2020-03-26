@@ -4,11 +4,11 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import Button from '../../components/Button';
-import Card from '../../components/Card';
-import DataFallback from '../../components/DataFallback';
-import Loader from '../../components/Loader';
-import PageHeading from '../../components/PageHeading';
+import Button from '../../components/Button/Button';
+import Card from '../../components/Card/Card';
+import DataFallback from '../../components/DataFallback/DataFallback';
+import Loader from '../../components/Loader/Loader';
+import PageHeading from '../../components/PageHeading/PageHeading';
 import microserviceType from '../../types/microservice';
 import t from '../../utils/translate';
 import * as Styles from './Microservice.styled';

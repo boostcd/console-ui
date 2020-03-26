@@ -4,10 +4,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import gatewayApi from '../../apis/GatewayApi';
-import Button from '../../components/Button';
-import DataFallback from '../../components/DataFallback';
-import FixedWidthBox from '../../components/FixedWidthBox';
-import MicroserviceCard from '../../components/MicroserviceCard';
+import Button from '../../components/Button/Button';
+import DataFallback from '../../components/DataFallback/DataFallback';
+import FixedWidthBox from '../../components/FixedWidthBox/FixedWidthBox';
+import MicroserviceCard from '../../components/MicroserviceCard/MicroserviceCard';
 import microservicesType from '../../types/microservices';
 import t from '../../utils/translate';
 import * as Styles from './MicroservicesApplications.styled';
