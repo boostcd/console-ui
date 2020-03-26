@@ -1,16 +1,16 @@
 import { includes } from 'ignore-case';
 import { createSelector } from 'reselect';
 
-export const getFeaturesDataSelector = (state) => state.features.data;
-export const getFeaturesSearchSelector = (state) => state.features.search;
+const getFeaturesDataSelector = (state) => state.features.data;
+const getFeaturesSearchQuerySelector = (state) => state.features.searchQuery;
 
 export const getFeaturesSelector = createSelector(
   getFeaturesDataSelector,
-  getFeaturesSearchSelector,
-  (data, search) => {
-    if (!search) return data;
+  getFeaturesSearchQuerySelector,
+  (data, searchQuery) => {
+    if (!searchQuery) return data;
 
-    const trimmedSearch = search.trim();
+    const trimmedSearchQuery = searchQuery.trim();
 
     // Partial match by the title
     return data.map((environment) => {
@@ -18,7 +18,9 @@ export const getFeaturesSelector = createSelector(
 
       return {
         ...environment,
-        features: environment.features.filter((feature) => includes(feature.title, trimmedSearch)),
+        features: environment.features.filter((feature) =>
+          includes(feature.title, trimmedSearchQuery)
+        ),
       };
     });
   }

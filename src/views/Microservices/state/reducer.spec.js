@@ -1,14 +1,15 @@
 import MockDate from '../../../utils/MockDate';
 import {
-  fetchProjectsFailure,
-  fetchProjectsPending,
-  fetchProjectsSuccess,
-  startPollingProjects,
-  stopPollingProjects,
+  startPollingMicroservices,
+  stopPollingMicroservices,
+  fetchMicroservicesSuccess,
+  fetchMicroservicesFailure,
+  searchMicroservices,
+  fetchMicroservicesPending,
 } from './actions';
 import reducer, { initialState } from './reducer';
 
-describe('Projects: state/reducer', () => {
+describe('Microservices: state/reducer', () => {
   it('should have an initial state', () => {
     expect(reducer()).toEqual(initialState);
   });
@@ -23,7 +24,7 @@ describe('Projects: state/reducer', () => {
 
   describe('POLL_START', () => {
     it('should handle the action', () => {
-      const action = startPollingProjects();
+      const action = startPollingMicroservices();
 
       expect(reducer(undefined, action)).toEqual({
         ...initialState,
@@ -45,7 +46,7 @@ describe('Projects: state/reducer', () => {
         },
       };
 
-      const action = stopPollingProjects();
+      const action = stopPollingMicroservices();
 
       expect(reducer(state, action)).toEqual({
         ...initialState,
@@ -65,7 +66,7 @@ describe('Projects: state/reducer', () => {
         loading: false,
       };
 
-      const action = fetchProjectsPending();
+      const action = fetchMicroservicesPending();
 
       expect(reducer(state, action)).toEqual({
         ...initialState,
@@ -93,13 +94,13 @@ describe('Projects: state/reducer', () => {
         loading: true,
         polling: {
           ...initialState.polling,
-          count: 12,
+          count: 5,
           lastUpdated: new MockDate(),
         },
       };
 
       const data = [{ foo: 'bar' }];
-      const action = fetchProjectsSuccess(data);
+      const action = fetchMicroservicesSuccess(data);
 
       expect(reducer(state, action)).toEqual({
         ...initialState,
@@ -108,7 +109,7 @@ describe('Projects: state/reducer', () => {
         loading: false,
         polling: {
           ...initialState.polling,
-          count: 13,
+          count: 6,
           lastUpdated: new MockDate(),
         },
       });
@@ -123,12 +124,24 @@ describe('Projects: state/reducer', () => {
         loading: true,
       };
 
-      const action = fetchProjectsFailure();
+      const action = fetchMicroservicesFailure();
 
       expect(reducer(state, action)).toEqual({
         ...initialState,
         error: true,
         loading: false,
+      });
+    });
+  });
+
+  describe('SEARCH', () => {
+    it('should handle the action', () => {
+      const searchQuery = 'foo bar';
+      const action = searchMicroservices(searchQuery);
+
+      expect(reducer(undefined, action)).toEqual({
+        ...initialState,
+        searchQuery,
       });
     });
   });

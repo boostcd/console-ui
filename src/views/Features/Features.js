@@ -16,19 +16,19 @@ import featuresType from '../../types/features';
 import t from '../../utils/translate';
 import FeaturesItems from './FeaturesItems';
 import { searchFeatures, startPollingFeatures, stopPollingFeatures } from './state/actions';
-import { getFeaturesSearchSelector, getFeaturesSelector } from './state/selectors';
+import { getFeaturesSelector } from './state/selectors';
 
 const mapStateToProps = (state) => ({
   data: getFeaturesSelector(state),
   loading: state.features.loading,
   polling: state.features.polling,
-  search: getFeaturesSearchSelector(state),
+  searchQuery: state.features.searchQuery,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   startPolling: () => dispatch(startPollingFeatures()),
   stopPolling: () => dispatch(stopPollingFeatures()),
-  searchFeatures: (search) => dispatch(searchFeatures(search)),
+  searchFeatures: (searchQuery) => dispatch(searchFeatures(searchQuery)),
 });
 
 @connect(mapStateToProps, mapDispatchToProps)
@@ -37,7 +37,7 @@ class Features extends React.PureComponent {
     super(props);
 
     this.state = {
-      search: props.search,
+      searchQuery: props.searchQuery,
     };
 
     this.debounceSearch = debounce(this.debounceSearch, DEBOUNCE_DELAY);
@@ -62,18 +62,18 @@ class Features extends React.PureComponent {
   handleSearchChange = (event) => {
     this.setState(
       {
-        search: event.target.value,
+        searchQuery: event.target.value,
       },
       this.debounceSearch
     );
   };
 
   debounceSearch = () => {
-    this.props.searchFeatures(this.state.search);
+    this.props.searchFeatures(this.state.searchQuery);
   };
 
   render() {
-    const { search } = this.state;
+    const { searchQuery } = this.state;
     const { data, loading, polling } = this.props;
     const { count, lastUpdated } = polling;
 
@@ -87,7 +87,7 @@ class Features extends React.PureComponent {
         <Helmet title={title} />
         <PageHeading title={title}>
           <Input
-            value={search}
+            value={searchQuery}
             onChange={this.handleSearchChange}
             placeholder={t('features.searchPlaceholder')}
           />
@@ -109,7 +109,7 @@ Features.propTypes = {
     count: PropTypes.number,
     lastUpdated: PropTypes.instanceOf(Date),
   }),
-  search: PropTypes.string,
+  searchQuery: PropTypes.string,
   startPolling: PropTypes.func,
   stopPolling: PropTypes.func,
   searchFeatures: PropTypes.func,

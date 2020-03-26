@@ -21,7 +21,9 @@ export const fetchMicroservicesPending = () => ({
 
 export const fetchMicroservicesSuccess = (data) => ({
   type: ACTIONS.SUCCESS,
-  payload: data,
+  payload: {
+    data,
+  },
 });
 
 export const fetchMicroservicesFailure = (error) => ({
@@ -31,10 +33,10 @@ export const fetchMicroservicesFailure = (error) => ({
   },
 });
 
-export const searchMicroservices = (search) => ({
+export const searchMicroservices = (searchQuery) => ({
   type: ACTIONS.SEARCH,
   payload: {
-    search,
+    searchQuery,
   },
 });
 

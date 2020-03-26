@@ -21,7 +21,9 @@ export const fetchFeaturesPending = () => ({
 
 export const fetchFeaturesSuccess = (data) => ({
   type: ACTIONS.SUCCESS,
-  payload: data,
+  payload: {
+    data,
+  },
 });
 
 export const fetchFeaturesFailure = (error) => ({
@@ -31,10 +33,10 @@ export const fetchFeaturesFailure = (error) => ({
   },
 });
 
-export const searchFeatures = (search) => ({
+export const searchFeatures = (searchQuery) => ({
   type: ACTIONS.SEARCH,
   payload: {
-    search,
+    searchQuery,
   },
 });
 

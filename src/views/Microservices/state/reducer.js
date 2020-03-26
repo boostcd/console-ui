@@ -1,6 +1,6 @@
 import ACTIONS from './actions';
 
-const initialState = {
+export const initialState = {
   data: [],
   error: false,
   loading: true,
@@ -9,7 +9,7 @@ const initialState = {
     count: 0,
     lastUpdated: undefined,
   },
-  search: '',
+  searchQuery: '',
 };
 
 export default (state = initialState, action = {}) => {
@@ -44,7 +44,7 @@ export default (state = initialState, action = {}) => {
     case ACTIONS.SUCCESS:
       return {
         ...state,
-        data: payload,
+        data: payload.data,
         error: false,
         loading: false,
         polling: {
@@ -65,7 +65,7 @@ export default (state = initialState, action = {}) => {
     case ACTIONS.SEARCH:
       return {
         ...state,
-        search: payload.search,
+        searchQuery: payload.searchQuery,
       };
 
     default:

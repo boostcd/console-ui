@@ -20,19 +20,19 @@ import {
   startPollingMicroservices,
   stopPollingMicroservices,
 } from './state/actions';
-import { getMicroservicesSearchSelector, getMicroservicesSelector } from './state/selectors';
+import { getMicroservicesSelector } from './state/selectors';
 
 const mapStateToProps = (state) => ({
   data: getMicroservicesSelector(state),
   loading: state.microservices.loading,
   polling: state.microservices.polling,
-  search: getMicroservicesSearchSelector(state),
+  searchQuery: state.microservices.searchQuery,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   startPolling: () => dispatch(startPollingMicroservices()),
   stopPolling: () => dispatch(stopPollingMicroservices()),
-  searchMicroservices: (search) => dispatch(searchMicroservices(search)),
+  searchMicroservices: (searchQuery) => dispatch(searchMicroservices(searchQuery)),
 });
 
 @connect(mapStateToProps, mapDispatchToProps)
@@ -41,7 +41,7 @@ class Microservices extends React.PureComponent {
     super(props);
 
     this.state = {
-      search: props.search,
+      searchQuery: props.searchQuery,
     };
 
     this.debounceSearch = debounce(this.debounceSearch, DEBOUNCE_DELAY);
@@ -66,18 +66,18 @@ class Microservices extends React.PureComponent {
   handleSearchChange = (event) => {
     this.setState(
       {
-        search: event.target.value,
+        searchQuery: event.target.value,
       },
       this.debounceSearch
     );
   };
 
   debounceSearch = () => {
-    this.props.searchMicroservices(this.state.search);
+    this.props.searchMicroservices(this.state.searchQuery);
   };
 
   render() {
-    const { search } = this.state;
+    const { searchQuery } = this.state;
     const { data, loading, polling } = this.props;
     const { count, lastUpdated } = polling;
 
@@ -89,7 +89,7 @@ class Microservices extends React.PureComponent {
         <Helmet title={t('microservices.pageTitle')} />
         <PageHeading title={t('microservices.pageTitle')}>
           <Input
-            value={search}
+            value={searchQuery}
             onChange={this.handleSearchChange}
             placeholder={t('microservices.searchPlaceholder')}
           />
@@ -111,7 +111,7 @@ Microservices.propTypes = {
     count: PropTypes.number,
     lastUpdated: PropTypes.instanceOf(Date),
   }),
-  search: PropTypes.string,
+  searchQuery: PropTypes.string,
   startPolling: PropTypes.func,
   stopPolling: PropTypes.func,
   searchMicroservices: PropTypes.func,

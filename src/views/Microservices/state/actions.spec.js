@@ -1,27 +1,27 @@
 import ACTIONS, {
-  fetchFeaturesFailure,
-  fetchFeaturesPending,
-  fetchFeaturesSuccess,
-  searchFeatures,
-  startPollingFeatures,
-  stopPollingFeatures,
+  fetchMicroservicesFailure,
+  fetchMicroservicesPending,
+  fetchMicroservicesSuccess,
+  searchMicroservices,
+  startPollingMicroservices,
+  stopPollingMicroservices,
 } from './actions';
 
-describe('Features: state/actions', () => {
+describe('Microservices: state/actions', () => {
   it('should create the POLL_START action', () => {
-    expect(startPollingFeatures()).toEqual({
+    expect(startPollingMicroservices()).toEqual({
       type: ACTIONS.POLL_START,
     });
   });
 
   it('should create the POLL_STOP action', () => {
-    expect(stopPollingFeatures()).toEqual({
+    expect(stopPollingMicroservices()).toEqual({
       type: ACTIONS.POLL_STOP,
     });
   });
 
   it('should create the PENDING action', () => {
-    expect(fetchFeaturesPending()).toEqual({
+    expect(fetchMicroservicesPending()).toEqual({
       type: ACTIONS.PENDING,
     });
   });
@@ -29,7 +29,7 @@ describe('Features: state/actions', () => {
   it('should create the SUCCESS action', () => {
     const data = [{ foo: 'bar' }];
 
-    expect(fetchFeaturesSuccess(data)).toEqual({
+    expect(fetchMicroservicesSuccess(data)).toEqual({
       type: ACTIONS.SUCCESS,
       payload: {
         data,
@@ -40,7 +40,7 @@ describe('Features: state/actions', () => {
   it('should create the FAILURE action', () => {
     const error = 'Example error message!';
 
-    expect(fetchFeaturesFailure(error)).toEqual({
+    expect(fetchMicroservicesFailure(error)).toEqual({
       type: ACTIONS.FAILURE,
       payload: {
         error,
@@ -51,7 +51,7 @@ describe('Features: state/actions', () => {
   it('should create the SEARCH action', () => {
     const searchQuery = 'foo-bar';
 
-    expect(searchFeatures(searchQuery)).toEqual({
+    expect(searchMicroservices(searchQuery)).toEqual({
       type: ACTIONS.SEARCH,
       payload: {
         searchQuery,

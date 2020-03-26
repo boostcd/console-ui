@@ -1,16 +1,16 @@
 import { includes } from 'ignore-case';
 import { createSelector } from 'reselect';
 
-export const getMicroservicesDataSelector = (state) => state.microservices.data;
-export const getMicroservicesSearchSelector = (state) => state.microservices.search;
+const getMicroservicesDataSelector = (state) => state.microservices.data;
+const getMicroservicesSearchQuerySelector = (state) => state.microservices.searchQuery;
 
 export const getMicroservicesSelector = createSelector(
   getMicroservicesDataSelector,
-  getMicroservicesSearchSelector,
-  (data, search) => {
-    if (!search) return data;
+  getMicroservicesSearchQuerySelector,
+  (data, searchQuery) => {
+    if (!searchQuery) return data;
 
-    const trimmedSearch = search.trim();
+    const trimmedSearchQuery = searchQuery.trim();
 
     // Partial match by the name/displayName
     return data.map((environment) => {
@@ -19,7 +19,8 @@ export const getMicroservicesSelector = createSelector(
       return {
         ...environment,
         apps: environment.apps.filter(
-          (app) => includes(app.name, trimmedSearch) || includes(app.displayName, trimmedSearch)
+          (app) =>
+            includes(app.name, trimmedSearchQuery) || includes(app.displayName, trimmedSearchQuery)
         ),
       };
     });
