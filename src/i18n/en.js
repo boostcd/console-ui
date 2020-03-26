@@ -3,6 +3,8 @@ export default {
     view: 'View',
     edit: 'Edit',
     delete: 'Delete',
+    confirm: 'Confirm',
+    cancel: 'Cancel',
     submit: 'Submit',
     build: 'Build',
     buildAll: 'Build all',
@@ -46,6 +48,11 @@ export default {
     dataFallback: 'No projects available!',
     actions: {
       add: 'Add project',
+      delete: {
+        confirm: 'Are you sure you want to delete project - {{namespace}}?',
+        pending: 'Deleting project {{namespace}}...',
+        success: 'Successfully deleted project {{namespace}}!',
+      },
     },
     tableColumns: {
       title: 'Title',
@@ -53,7 +60,6 @@ export default {
       namespace: 'Namespace',
       actions: 'Actions',
     },
-    deleteSuccess: 'Successfully deleted project with namespace {{namespace}}!',
   },
   project: {
     actions: {

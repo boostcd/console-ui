@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import gatewayApi from '../../apis/GatewayApi';
 import Button from '../../components/Button/Button';
 import Card from '../../components/Card/Card';
+import ConfirmToast from '../../components/ConfirmToast/ConfirmToast';
 import DataFallback from '../../components/DataFallback/DataFallback';
 import Loader from '../../components/Loader/Loader';
 import PageHeading from '../../components/PageHeading/PageHeading';
@@ -29,6 +30,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 @connect(mapStateToProps, mapDispatchToProps)
 class Projects extends React.PureComponent {
+  confirmToastId = null;
+
   columns = [
     {
       header: t('projects.tableColumns.title'),
@@ -44,14 +47,15 @@ class Projects extends React.PureComponent {
     },
     {
       header: t('projects.tableColumns.actions'),
-      // eslint-disable-next-line react/display-name
-      render: (itemData) => {
+      render: (project) => {
+        const { namespace } = project;
+
         return (
           <Styles.TableActions>
-            <Link to={`/projects/${itemData.namespace}/edit`}>
+            <Link to={`/projects/${namespace}/edit`}>
               <Button variant='secondary'>{t('common.edit')}</Button>
             </Link>
-            <Button variant='secondary' onClick={this.handleDelete.bind(this, itemData.namespace)}>
+            <Button variant='secondary' onClick={this.handleDelete.bind(this, namespace)}>
               {t('common.delete')}
             </Button>
           </Styles.TableActions>
@@ -68,9 +72,35 @@ class Projects extends React.PureComponent {
     this.props.stopPolling();
   }
 
-  handleDelete = async (namespace) => {
+  handleDelete = (namespace) => {
+    this.confirmToastId = toast(
+      <ConfirmToast
+        onConfirm={this.handleDeleteConfirm.bind(null, namespace)}
+        onCancel={this.handleDeleteCancel}
+      >
+        {t('projects.actions.delete.confirm', { namespace })}
+      </ConfirmToast>,
+      {
+        position: 'top-center',
+        autoClose: false,
+        closeOnClick: false,
+      }
+    );
+  };
+
+  handleDeleteConfirm = async (namespace) => {
+    toast.dismiss(this.confirmToastId);
+    const infoToastId = toast.info(t('projects.actions.delete.pending', { namespace }), {
+      autoClose: false,
+    });
+
     await gatewayApi.deleteProject(namespace);
-    toast.success(t('projects.deleteSuccess', { namespace }));
+    toast.dismiss(infoToastId);
+    toast.success(t('projects.actions.delete.success', { namespace }));
+  };
+
+  handleDeleteCancel = () => {
+    toast.dismiss(this.confirmToastId);
   };
 
   render() {

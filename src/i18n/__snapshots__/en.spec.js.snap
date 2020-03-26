@@ -6,6 +6,8 @@ Object {
     "backOut": "Back out!",
     "build": "Build",
     "buildAll": "Build all",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
     "delete": "Delete",
     "deployed": "Deployed {{value}}",
     "deployedDate": "Deployed date",
@@ -60,9 +62,13 @@ Object {
   "projects": Object {
     "actions": Object {
       "add": "Add project",
+      "delete": Object {
+        "confirm": "Are you sure you want to delete project - {{namespace}}?",
+        "pending": "Deleting project {{namespace}}...",
+        "success": "Successfully deleted project {{namespace}}!",
+      },
     },
     "dataFallback": "No projects available!",
-    "deleteSuccess": "Successfully deleted project with namespace {{namespace}}!",
     "pageTitle": "Projects",
     "tableColumns": Object {
       "actions": "Actions",
