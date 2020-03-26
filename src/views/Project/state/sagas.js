@@ -5,10 +5,11 @@ import ACTIONS, { fetchProjectFailure, fetchProjectPending, fetchProjectSuccess 
 
 function* fetchProject(action) {
   const { payload } = action;
+  const { namespace } = payload;
 
   try {
     yield put(fetchProjectPending());
-    const data = yield call(gatewayApi.getProject, payload.namespace);
+    const data = yield call(gatewayApi.getProject, namespace);
     yield put(fetchProjectSuccess(data));
   } catch (error) {
     yield put(fetchProjectFailure(error));

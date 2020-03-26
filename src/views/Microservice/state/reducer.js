@@ -1,6 +1,6 @@
 import ACTIONS from './actions';
 
-const initialState = {
+export const initialState = {
   data: undefined,
   error: false,
   loading: true,
