@@ -1,4 +1,4 @@
-import { Box } from '@rebass/grid';
+import { Box } from 'reflexbox';
 import styled from 'styled-components';
 
 /**

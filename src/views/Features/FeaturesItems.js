@@ -1,5 +1,5 @@
-import { Flex } from '@rebass/grid';
 import React from 'react';
+import { Flex } from 'reflexbox';
 
 import DataFallback from '../../components/DataFallback/DataFallback';
 import FeatureCard from '../../components/FeatureCard/FeatureCard';

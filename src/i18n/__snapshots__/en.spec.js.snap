@@ -52,7 +52,7 @@ Object {
       "pageTitle": "Add project",
     },
     "edit": Object {
-      "pageTitle": "Edit project {{namespace}}",
+      "pageTitle": "Edit project: {{namespace}}",
     },
   },
   "projects": Object {

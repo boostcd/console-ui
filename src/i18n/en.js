@@ -63,7 +63,7 @@ export default {
       pageTitle: 'Add project',
     },
     edit: {
-      pageTitle: 'Edit project {{namespace}}',
+      pageTitle: 'Edit project: {{namespace}}',
     },
   },
 };

@@ -1,4 +1,4 @@
-import { Box, Flex } from '@rebass/grid';
+import { Box, Flex } from 'reflexbox';
 import debounce from 'debounce';
 import PropTypes from 'prop-types';
 import React from 'react';

@@ -41,12 +41,12 @@ class Microservice extends React.PureComponent {
     if (loading) return <Loader />;
     if (!data) return <DataFallback title={t('microservice.dataFallback')} />;
 
-    const title = t('microservice.pageTitle', { service: `${appName}@${environmentName}` });
+    const pageTitle = t('microservice.pageTitle', { service: `${appName}@${environmentName}` });
 
     return (
       <Styles.Wrapper>
-        <Helmet title={title} />
-        <PageHeading title={title}>
+        <Helmet title={pageTitle} />
+        <PageHeading title={pageTitle}>
           <Link to='/microservices'>
             <Button variant='primary'>{t('microservice.actions.backToList')}</Button>
           </Link>

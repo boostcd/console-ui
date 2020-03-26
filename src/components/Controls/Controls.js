@@ -1,6 +1,6 @@
-import { Flex } from '@rebass/grid';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Flex } from 'reflexbox';
 
 import gatewayApi from '../../apis/GatewayApi';
 import featuresType from '../../types/features';

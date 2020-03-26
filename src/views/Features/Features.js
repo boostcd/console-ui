@@ -1,4 +1,4 @@
-import { Box, Flex } from '@rebass/grid';
+import { Box, Flex } from 'reflexbox';
 import debounce from 'debounce';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -80,12 +80,12 @@ class Features extends React.PureComponent {
     if (loading && !count) return <Loader />;
     if (data && !data.length) return <DataFallback title={t('features.dataFallback')} />;
 
-    const title = TASK_MANAGEMENT_TITLE ? TASK_MANAGEMENT_TITLE : t('features.pageTitle');
+    const pageTitle = TASK_MANAGEMENT_TITLE ? TASK_MANAGEMENT_TITLE : t('features.pageTitle');
 
     return (
       <>
-        <Helmet title={title} />
-        <PageHeading title={title}>
+        <Helmet title={pageTitle} />
+        <PageHeading title={pageTitle}>
           <Input
             value={searchQuery}
             onChange={this.handleSearchChange}
