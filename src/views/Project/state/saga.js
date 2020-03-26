@@ -16,6 +16,6 @@ function* fetchProject(action) {
   }
 }
 
-export default function* watchFetchProject() {
+export default function*() {
   yield takeEvery(ACTIONS.FETCH, fetchProject);
 }

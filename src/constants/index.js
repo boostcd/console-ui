@@ -5,7 +5,7 @@ export const DEBOUNCE_DELAY = 500;
 export const POLLING_DELAY = 30000;
 
 export const TOAST_CONFIG = {
-  AUTO_CLOSE: 8000,
+  AUTO_CLOSE: 5000,
 };
 
 export const TOAST_MAX_VISIBLE = 3;

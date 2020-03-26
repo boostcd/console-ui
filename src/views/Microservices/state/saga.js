@@ -22,7 +22,7 @@ function* fetchMicroservices() {
   }
 }
 
-export default function* watchFetchMicroservices() {
+export default function*() {
   while (true) {
     yield take(ACTIONS.POLL_START);
     yield race([call(fetchMicroservices), take(ACTIONS.POLL_STOP)]);

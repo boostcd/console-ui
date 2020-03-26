@@ -20,6 +20,6 @@ function* fetchMicroservice(action) {
   }
 }
 
-export default function* watchFetchMicroservice() {
+export default function*() {
   yield takeEvery(ACTIONS.FETCH, fetchMicroservice);
 }

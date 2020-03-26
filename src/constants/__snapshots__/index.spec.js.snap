@@ -2,6 +2,6 @@
 
 exports[`Constants should match the snapshot - TOAST_CONFIG 1`] = `
 Object {
-  "AUTO_CLOSE": 8000,
+  "AUTO_CLOSE": 5000,
 }
 `;

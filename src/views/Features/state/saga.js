@@ -22,7 +22,7 @@ function* fetchFeatures() {
   }
 }
 
-export default function* watchFetchFeatures() {
+export default function*() {
   while (true) {
     yield take(ACTIONS.POLL_START);
     yield race([call(fetchFeatures), take(ACTIONS.POLL_STOP)]);

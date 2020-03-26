@@ -22,7 +22,7 @@ function* fetchProjects() {
   }
 }
 
-export default function* watchFetchProjects() {
+export default function*() {
   while (true) {
     yield take(ACTIONS.POLL_START);
     yield race([call(fetchProjects), take(ACTIONS.POLL_STOP)]);
