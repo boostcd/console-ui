@@ -23,6 +23,10 @@ export default {
     lastUpdated: 'Last updated: {{value}}',
     testsFailed: 'Untested or tests failing',
     testsSuccessful: 'Tested successfully',
+    action: {
+      pending: 'Starting {{action}}...',
+      success: 'Successfully started {{action}}!',
+    },
   },
   features: {
     pageTitle: 'Features',

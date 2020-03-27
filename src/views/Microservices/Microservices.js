@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
+import { toast } from 'react-toastify';
 import { Box, Flex } from 'reflexbox';
 
 import Controls from '../../components/Controls/Controls';
@@ -56,8 +57,20 @@ class Microservices extends React.PureComponent {
   }
 
   // Temporary restarting the polling in order to update the loading state of the actions
-  handleStateChange = async (apiFn, ...params) => {
-    await apiFn(...params);
+  handleStateChange = async (actionTitle, actionFn, ...params) => {
+    const action = actionTitle.toLowerCase();
+    const toastId = toast.info(t('common.action.pending', { action }), {
+      autoClose: false,
+    });
+
+    try {
+      await actionFn(...params);
+      toast.success(t('common.action.success', { action }), {
+        autoClose: 2500,
+      });
+    } finally {
+      toast.dismiss(toastId);
+    }
 
     this.props.stopPolling();
     this.props.startPolling();

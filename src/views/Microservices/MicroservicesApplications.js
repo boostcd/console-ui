@@ -21,7 +21,13 @@ class MicroservicesApplications extends React.PureComponent {
       <Button
         variant='primary'
         isDisabled={state.build}
-        onClick={this.props.onStateChange.bind(null, gatewayApi.build, environmentName, appName)}
+        onClick={this.props.onStateChange.bind(
+          null,
+          t('common.build'),
+          gatewayApi.build,
+          environmentName,
+          appName
+        )}
       >
         <span>{t('common.build')}</span>
         {state.build && <Styles.StateIcon />}
@@ -37,7 +43,13 @@ class MicroservicesApplications extends React.PureComponent {
       <Button
         variant='primary'
         isDisabled={state.promote}
-        onClick={this.props.onStateChange.bind(null, gatewayApi.promote, environmentName, appName)}
+        onClick={this.props.onStateChange.bind(
+          null,
+          t('common.promote'),
+          gatewayApi.promote,
+          environmentName,
+          appName
+        )}
       >
         <span>{t('common.promote')}</span>
         {state.promote && <Styles.StateIcon />}

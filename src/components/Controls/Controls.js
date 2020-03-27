@@ -18,7 +18,12 @@ class Controls extends React.PureComponent {
       <Button
         variant='primary'
         isDisabled={state.build}
-        onClick={this.props.onStateChange.bind(null, gatewayApi.buildAll, name)}
+        onClick={this.props.onStateChange.bind(
+          null,
+          t('common.buildAll'),
+          gatewayApi.buildAll,
+          name
+        )}
       >
         <span>{t('common.buildAll')}</span>
         {state.build && <Styles.StateIcon />}
@@ -33,7 +38,7 @@ class Controls extends React.PureComponent {
       <Button
         variant='primary'
         isDisabled={state.test}
-        onClick={this.props.onStateChange.bind(null, gatewayApi.testAll, name)}
+        onClick={this.props.onStateChange.bind(null, t('common.testAll'), gatewayApi.testAll, name)}
       >
         <span>{t('common.testAll')}</span>
         {state.test && <Styles.StateIcon />}
@@ -48,7 +53,12 @@ class Controls extends React.PureComponent {
       <Button
         variant='primary'
         isDisabled={state.promote}
-        onClick={this.props.onStateChange.bind(null, gatewayApi.promoteAll, name)}
+        onClick={this.props.onStateChange.bind(
+          null,
+          t('common.promoteAll'),
+          gatewayApi.promoteAll,
+          name
+        )}
       >
         <span>{t('common.promoteAll')}</span>
         {state.promote && <Styles.StateIcon />}
@@ -63,7 +73,7 @@ class Controls extends React.PureComponent {
       <Button
         variant='primary'
         isDisabled={state.goLive}
-        onClick={this.props.onStateChange.bind(null, gatewayApi.goLive, name)}
+        onClick={this.props.onStateChange.bind(null, t('common.goLive'), gatewayApi.goLive, name)}
       >
         <span>{t('common.goLive')}</span>
         {state.goLive && <Styles.StateIcon />}
@@ -78,7 +88,7 @@ class Controls extends React.PureComponent {
       <Button
         variant='primary'
         isDisabled={state.backOut}
-        onClick={this.props.onStateChange.bind(null, gatewayApi.backOut, name)}
+        onClick={this.props.onStateChange.bind(null, t('common.backOut'), gatewayApi.backOut, name)}
       >
         <span>{t('common.backOut')}</span>
         {state.backOut && <Styles.StateIcon />}

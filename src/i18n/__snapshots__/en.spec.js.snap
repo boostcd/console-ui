@@ -3,6 +3,10 @@
 exports[`i18n: EN should match the snapshot 1`] = `
 Object {
   "common": Object {
+    "action": Object {
+      "pending": "Starting {{action}}...",
+      "success": "Successfully started {{action}}!",
+    },
     "backOut": "Back out!",
     "build": "Build",
     "buildAll": "Build all",
