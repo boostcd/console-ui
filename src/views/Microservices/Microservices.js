@@ -1,7 +1,7 @@
 import debounce from 'debounce';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import { Box, Flex } from 'reflexbox';

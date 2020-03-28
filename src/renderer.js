@@ -1,4 +1,3 @@
-// TODO: Clean up and split up all the different logic handling styled-components, variables set on window object, etc
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 import path from 'path';
 import React from 'react';
@@ -42,7 +41,7 @@ export default (req, res) => {
   } else {
     res.status(200).send(
       `<!doctype html>
-      <html lang="">
+      <html lang="en">
         <head>
           <meta charset="utf-8" />
           <title>${PRODUCT_DESCRIPTION}</title>

@@ -2,7 +2,6 @@
 
 + Introduce Typescript and add typings across the project
 + Use yarn instead of npm for package manager
-+ Solve React life cycle method deprecation warning by updating react-helmet
 + Simplify the code-splitting/rendered logic in src/renderer.js
 + Integrate a test step into the deployment process (with coverage reporting)
 + Rework the project scripts to follow common practice (The current scripts - start, build, etc are enforced by the OpenShift Node.js image)
