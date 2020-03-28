@@ -34,11 +34,7 @@ module.exports = {
 
       // Push the bundle analyzer plugin if the environment variable is set
       if (process.env.BUNDLE_ANALYZE) {
-        config.plugins.push(
-          new BundleAnalyzerPlugin({
-            analyzerPort: 3003,
-          })
-        );
+        config.plugins.push(new BundleAnalyzerPlugin());
       }
     }
 

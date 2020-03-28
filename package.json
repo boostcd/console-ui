@@ -4,11 +4,11 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "analyze": "BUNDLE_ANALYZE=true razzle build",
     "build": "razzle build",
     "start": "razzle build && NODE_ENV=production node build/server.js",
     "start:dev": "razzle start",
-    "test": "razzle test --env=jsdom",
-    "analyze": "BUNDLE_ANALYZE=true razzle build"
+    "test": "razzle test --env=jsdom"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -24,8 +24,6 @@
     "@babel/core": "^7.8.7",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-proposal-decorators": "^7.8.3",
-    "@commitlint/cli": "^8.3.5",
-    "@commitlint/config-conventional": "^8.3.4",
     "@loadable/babel-plugin": "^5.12.0",
     "@loadable/component": "^5.12.0",
     "@loadable/server": "^5.12.0",
@@ -64,6 +62,8 @@
     "webpack-bundle-analyzer": "^3.6.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",

@@ -1,5 +1,6 @@
 ### Future improvements and notes
 
++ Introduce Typescript and add typings across the project
 + Use yarn instead of npm for package manager
 + Solve React life cycle method deprecation warning by updating react-helmet
 + Simplify the code-splitting/rendered logic in src/renderer.js
