@@ -17,7 +17,7 @@ const Projects = loadable(() => import('./views/Projects/Projects'));
 const Project = loadable(() => import('./views/Project/Project'));
 
 const App = () => (
-  <>
+  <React.StrictMode>
     <Helmet titleTemplate={`${PRODUCT_DESCRIPTION} - %s`} />
     <GlobalStyles />
     <ToastContainer autoClose={TOAST_CONFIG.AUTO_CLOSE} pauseOnFocusLoss={false} />
@@ -37,7 +37,7 @@ const App = () => (
         </Route>
       </Switch>
     </Page>
-  </>
+  </React.StrictMode>
 );
 
 export default App;

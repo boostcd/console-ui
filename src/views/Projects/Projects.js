@@ -21,6 +21,7 @@ import { startPollingProjects, stopPollingProjects } from './state/actions';
 const mapStateToProps = (state) => ({
   data: state.projects.data,
   loading: state.projects.loading,
+  polling: state.projects.polling,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -104,9 +105,10 @@ class Projects extends React.PureComponent {
   };
 
   render() {
-    const { data, loading } = this.props;
+    const { data, loading, polling } = this.props;
+    const { count } = polling;
 
-    if (loading) return <Loader />;
+    if (loading && !count) return <Loader />;
     if (data && !data.length) return <DataFallback title={t('projects.dataFallback')} />;
 
     return (
@@ -128,6 +130,9 @@ class Projects extends React.PureComponent {
 Projects.propTypes = {
   data: projectsType,
   loading: PropTypes.bool,
+  polling: PropTypes.shape({
+    count: PropTypes.number,
+  }),
   startPolling: PropTypes.func,
   stopPolling: PropTypes.func,
 };

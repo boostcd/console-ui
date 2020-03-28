@@ -4,6 +4,9 @@ import { REQUEST_TIMEOUT } from '../constants';
 import RequestError from '../utils/RequestError';
 import ToastService from '../utils/ToastService';
 
+/**
+ * Base API class wrapping around the axios library
+ */
 class BaseApi {
   constructor(baseURL) {
     this.instance = axios.create({

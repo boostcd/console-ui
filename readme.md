@@ -67,4 +67,8 @@ Linting and code formatting is done by using [ESLint](https://eslint.org/) and [
 #### Commit message linting
 Commit message are linted and certain rules are enforced by using [commitlint](https://github.com/conventional-changelog/commitlint/#what-is-commitlint). This is used in order to enforce better messages and descriptions for changes made to the codebase.
 
+## To be implemented
+
+[Future improvements and notes here](todo.md)
+
 *To be extended in the future with more documentation on how the application is working*

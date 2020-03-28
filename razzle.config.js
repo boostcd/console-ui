@@ -7,6 +7,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 // https://github.com/gregberge/loadable-components/tree/master/examples/razzle
 module.exports = {
   modify: (config, { dev, target }) => {
+    // Disable the source maps for production
     config.devtool = dev ? 'source-map' : false;
 
     // @loadable support
@@ -30,6 +31,15 @@ module.exports = {
           name: dev,
         },
       });
+
+      // Push the bundle analyzer plugin if the environment variable is set
+      if (process.env.BUNDLE_ANALYZE) {
+        config.plugins.push(
+          new BundleAnalyzerPlugin({
+            analyzerPort: 3003,
+          })
+        );
+      }
     }
 
     // Define the global environment variables used in the project
@@ -42,11 +52,6 @@ module.exports = {
         TASK_MANAGEMENT_TITLE: JSON.stringify(process.env.TASK_MANAGEMENT_TITLE),
       })
     );
-
-    // Push the bundle analyzer plugin if the environment variable is set
-    if (process.env.BUNDLE_ANALYZE) {
-      config.plugins.push(new BundleAnalyzerPlugin());
-    }
 
     return config;
   },
