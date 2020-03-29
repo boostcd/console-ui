@@ -6,7 +6,11 @@ import renderer from './renderer';
 
 const server = express();
 
-server.use(express.static(process.env.RAZZLE_PUBLIC_DIR));
+// Don't serve static files when in test mode
+if (process.env.NODE_ENV !== 'test') {
+  server.use(express.static(process.env.RAZZLE_PUBLIC_DIR));
+}
+
 server.use(helmet());
 server.use(morgan('dev'));
 
@@ -15,7 +19,7 @@ server.get('/api/health', (req, res) => {
 });
 
 server.get('/api/*', (req, res) => {
-  res.status(404).json({ message: 'API endpoint not found! ' });
+  res.status(404).json({ message: 'API endpoint not found!' });
 });
 
 server.get('/*', renderer);

@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { TOAST_MAX_VISIBLE } from '../constants';
 
 /**
- * Simple utility to limit the visible toastify notifications
+ * Simple utility to limit the visible toastify error notifications
  */
 class ToastService {
   toasts = [];

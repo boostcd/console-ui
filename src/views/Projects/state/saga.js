@@ -8,7 +8,7 @@ import ACTIONS, {
   fetchProjectsSuccess,
 } from './actions';
 
-function* fetchProjects() {
+export function* fetchProjects() {
   while (true) {
     try {
       yield put(fetchProjectsPending());

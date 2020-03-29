@@ -22,17 +22,17 @@ class GatewayApi extends BaseApi {
     });
   };
 
-  getProjects = async () => {
-    return await this.request({
-      method: 'GET',
-      url: '/projects',
-    });
-  };
-
   getProject = async (namespace) => {
     return await this.request({
       method: 'GET',
       url: `/project/${namespace}`,
+    });
+  };
+
+  getProjects = async () => {
+    return await this.request({
+      method: 'GET',
+      url: '/projects',
     });
   };
 

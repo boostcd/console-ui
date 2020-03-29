@@ -8,7 +8,7 @@ import ACTIONS, {
   fetchMicroservicesSuccess,
 } from './actions';
 
-function* fetchMicroservices() {
+export function* fetchMicroservices() {
   while (true) {
     try {
       yield put(fetchMicroservicesPending());

@@ -2,6 +2,6 @@
   "*.{js, jsx}": [
     "prettier --write",
     "eslint",
-    "jest test --bail --findRelatedTests"
+    "yarn test --bail --runInBand --findRelatedTests --watchAll=false"
   ]
 }

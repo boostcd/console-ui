@@ -14,11 +14,9 @@
     "collectCoverageFrom": [
       "<rootDir>/src/**/*.js",
       "!<rootDir>/src/**/*.styled.js",
-      "!<rootDir>/src/styles/**/*.js"
+      "!<rootDir>/src/styles/**/*.js",
+      "!<rootDir>/src/types/*.js"
     ]
-  },
-  "resolutions": {
-    "react-side-effect": "^2.1.0"
   },
   "dependencies": {
     "@babel/core": "^7.8.7",
@@ -76,6 +74,8 @@
     "husky": "^4.2.3",
     "install-deps-postmerge": "^1.0.5",
     "lint-staged": "^10.0.8",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "redux-saga-test-plan": "^4.0.0-rc.3",
+    "supertest": "^4.0.2"
   }
 }

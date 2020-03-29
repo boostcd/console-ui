@@ -23,6 +23,7 @@ export default (initialState) => {
     composeWithDevTools(applyMiddleware(...middleware))
   );
 
+  // Extending the store to be able to run sagas from the instance
   store.runSaga = sagaMiddleware.run;
   store.close = () => store.dispatch(END);
 

@@ -7,7 +7,7 @@ import ACTIONS, {
   fetchMicroserviceSuccess,
 } from './actions';
 
-function* fetchMicroservice(action) {
+export function* fetchMicroservice(action) {
   const { payload } = action;
   const { environmentName, appName } = payload;
 

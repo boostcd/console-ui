@@ -3,7 +3,7 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import gatewayApi from '../../../apis/GatewayApi';
 import ACTIONS, { fetchProjectFailure, fetchProjectPending, fetchProjectSuccess } from './actions';
 
-function* fetchProject(action) {
+export function* fetchProject(action) {
   const { payload } = action;
   const { namespace } = payload;
 

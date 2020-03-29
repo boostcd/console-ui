@@ -8,7 +8,7 @@ import ACTIONS, {
   fetchFeaturesSuccess,
 } from './actions';
 
-function* fetchFeatures() {
+export function* fetchFeatures() {
   while (true) {
     try {
       yield put(fetchFeaturesPending());

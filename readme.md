@@ -60,6 +60,12 @@ The application will start at [localhost:8080](http://localhost:8080) by default
 
 ..and much more 🤫
 
+### Testing
+
+Testing is done by using [Jest](https://jestjs.io/) as a test runner and using [redux-saga-test-plan](https://www.npmjs.com/package/redux-saga-test-plan) for testing the sagas. There is a also a commit hook to run tests related to the applied changes.
+
+*Note: Using [.silentRun()](https://github.com/jfairbank/redux-saga-test-plan/blob/master/docs/integration-testing/timeout.md#silencing-warnings) for the saga testing, because some of the sagas are using infinite loop to achieve polling functionality*
+
 ### Linting and code formatting
 
 Linting and code formatting is done by using [ESLint](https://eslint.org/) and [prettier](https://prettier.io/). [Git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) are configured using [husky](https://www.npmjs.com/package/husky) and [lint-staged](https://www.npmjs.com/package/lint-staged) in order to prevent bad coding practices by linting and pre-formatting the code on every commit.
