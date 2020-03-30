@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { ifProp, switchProp, withProp } from 'styled-tools';
 
 import { baseColor } from '../../styles/variables/colors';
@@ -39,7 +39,7 @@ export default styled.button`
 
   ${ifProp(
     'isDisabled',
-    css`
+    `
       pointer-events: none;
       /*
       color: #bbbbbb;

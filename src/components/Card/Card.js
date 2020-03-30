@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { ifProp } from 'styled-tools';
 
 export default styled.div`
@@ -14,7 +14,7 @@ export default styled.div`
 
   ${ifProp(
     'isActive',
-    css`
+    `
       background: #e5f4f7;
     `
   )};
