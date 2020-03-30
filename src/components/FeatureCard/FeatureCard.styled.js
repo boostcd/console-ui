@@ -1,31 +1,19 @@
 import { Jira, Trello } from '@styled-icons/fa-brands';
-import { TicketAlt } from '@styled-icons/fa-solid';
+import { ExclamationTriangle, TicketAlt } from '@styled-icons/fa-solid';
 import styled, { css } from 'styled-components';
-import { switchProp } from 'styled-tools';
+import { ifProp } from 'styled-tools';
 
-import PROMOTE_STATUS from '../../constants/promoteStatus';
 import { baseColor } from '../../styles/variables/colors';
 import Card from '../Card/Card';
 
-const backgrounds = {
-  [PROMOTE_STATUS.NOT_PROMOTED]: '#d9f9ff',
-  [PROMOTE_STATUS.PARTIALLY_PROMOTED]: '#fcffd1',
-  [PROMOTE_STATUS.PROMOTED]: 'white',
-};
-
-const hoverBackgrounds = {
-  [PROMOTE_STATUS.NOT_PROMOTED]: '#e5f4f7',
-  [PROMOTE_STATUS.PARTIALLY_PROMOTED]: '#f3f9a4',
-  [PROMOTE_STATUS.PROMOTED]: '#efefef',
-};
-
 export const Wrapper = styled(Card)`
+  position: relative;
   margin-top: 0.5rem;
   transition: background 200ms linear;
-  background: ${switchProp('promoteStatus', backgrounds)};
+  background: ${ifProp('isNotPromoted', '#e5f4f7', 'white')};
 
   &:hover {
-    background: ${switchProp('promoteStatus', hoverBackgrounds)};
+    background: ${ifProp('isNotPromoted', '#d9f9ff', '#efefef')};
   }
 `;
 
@@ -71,4 +59,12 @@ export const WaitingSince = styled.div`
 
 export const Status = styled.div`
   font-size: 0.8rem;
+`;
+
+export const PartiallyPromotedIcon = styled(ExclamationTriangle)`
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 1rem;
+  color: orange;
 `;

@@ -4,6 +4,5 @@ exports[`Constants: PROMOTE_STATUS should match the snapshot 1`] = `
 Object {
   "NOT_PROMOTED": 0,
   "PARTIALLY_PROMOTED": 1,
-  "PROMOTED": 2,
 }
 `;

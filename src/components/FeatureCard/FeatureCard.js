@@ -18,16 +18,17 @@ class FeatureCard extends React.PureComponent {
     const { featureId, title, status, url, promoteStatus, waitingSince } = this.props; //description
 
     const icon = this.getIconByUrl(url);
+    const isNotPromoted = promoteStatus === PROMOTE_STATUS.NOT_PROMOTED;
     const isPartiallyPromoted = promoteStatus === PROMOTE_STATUS.PARTIALLY_PROMOTED;
 
     return (
-      <Styles.Wrapper promoteStatus={promoteStatus}>
+      <Styles.Wrapper isNotPromoted={isNotPromoted}>
+        {isPartiallyPromoted && (
+          <Styles.PartiallyPromotedIcon title={t('features.partiallyPromoted')} />
+        )}
         <Styles.IdSection>
           <span>{icon}</span>
-          <Styles.Id>
-            <span>{featureId}</span>
-            {isPartiallyPromoted && <span> {t('features.partiallyPromoted')}</span>}
-          </Styles.Id>
+          <Styles.Id>{featureId}</Styles.Id>
         </Styles.IdSection>
         <Styles.Title>{title}</Styles.Title>
         <Styles.Status>{t('features.status', { value: status })}</Styles.Status>

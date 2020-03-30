@@ -34,7 +34,7 @@ Object {
   "features": Object {
     "dataFallback": "No features available!",
     "pageTitle": "Features",
-    "partiallyPromoted": "(partially promoted)",
+    "partiallyPromoted": "Feature is partially promoted!",
     "searchPlaceholder": "Search for features",
     "status": "Status: {{value}}",
     "waitingSince": "Waiting since: {{value}}",
