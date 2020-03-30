@@ -1,16 +1,31 @@
 import { Jira, Trello } from '@styled-icons/fa-brands';
 import { TicketAlt } from '@styled-icons/fa-solid';
 import styled, { css } from 'styled-components';
-import { ifProp } from 'styled-tools';
+import { switchProp } from 'styled-tools';
 
+import PROMOTE_STATUS from '../../constants/promoteStatus';
 import { baseColor } from '../../styles/variables/colors';
 import Card from '../Card/Card';
 
+const backgrounds = {
+  [PROMOTE_STATUS.NOT_PROMOTED]: '#d9f9ff',
+  [PROMOTE_STATUS.PARTIALLY_PROMOTED]: '#fcffd1',
+  [PROMOTE_STATUS.PROMOTED]: 'white',
+};
+
+const hoverBackgrounds = {
+  [PROMOTE_STATUS.NOT_PROMOTED]: '#e5f4f7',
+  [PROMOTE_STATUS.PARTIALLY_PROMOTED]: '#f3f9a4',
+  [PROMOTE_STATUS.PROMOTED]: '#efefef',
+};
+
 export const Wrapper = styled(Card)`
   margin-top: 0.5rem;
+  transition: background 200ms linear;
+  background: ${switchProp('promoteStatus', backgrounds)};
 
   &:hover {
-    background: ${ifProp('isActive', '#d9f9ff', '#efefef')};
+    background: ${switchProp('promoteStatus', hoverBackgrounds)};
   }
 `;
 

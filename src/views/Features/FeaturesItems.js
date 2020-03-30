@@ -9,7 +9,7 @@ import t from '../../utils/translate';
 
 class FeaturesItems extends React.PureComponent {
   renderCard = (environment, feature, index) => {
-    const { featureId, title, status, url, description, promoted, waitingSince } = feature;
+    const { featureId, title, status, url, description, promoteStatus, waitingSince } = feature;
     const key = `features:${environment.name}@${featureId}@${index}`;
 
     return (
@@ -26,7 +26,7 @@ class FeaturesItems extends React.PureComponent {
           status={status}
           url={url}
           description={description}
-          promoted={promoted}
+          promoteStatus={promoteStatus}
           waitingSince={waitingSince}
         />
       </a>
