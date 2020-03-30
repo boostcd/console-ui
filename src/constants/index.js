@@ -8,4 +8,4 @@ export const TOAST_CONFIG = {
   AUTO_CLOSE: 5000,
 };
 
-export const TOAST_MAX_VISIBLE = 3;
+export const TOAST_MAX_VISIBLE = 2;
