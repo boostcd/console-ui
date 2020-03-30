@@ -1,7 +1,7 @@
 {
   "*.{js, jsx}": [
     "prettier --write",
-    "eslint",
+    "eslint --max-warnings 0",
     "yarn test --bail --runInBand --findRelatedTests --watchAll=false"
   ]
 }
