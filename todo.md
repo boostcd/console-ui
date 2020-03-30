@@ -1,6 +1,10 @@
 ### Future improvements and notes
 
+Reason #1: Explicitness when choosing Redux over others; Faster to get up and running, and mainly smaller learning curve for newcomers to the project
+
 + Introduce Typescript and add typings across the project
++ Use hooks for stage management instead of Redux (reason #1)
++ Use react-testing-library for component testing instead of enzyme (reason #1) 
 + Use yarn instead of npm for package manager
 + Simplify the code-splitting/rendered logic in src/renderer.js
 + Integrate a test step into the deployment process (with coverage reporting)

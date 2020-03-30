@@ -1,11 +1,11 @@
 import MockDate from '../../../utils/MockDate';
 import {
+  fetchMicroservicesFailure,
+  fetchMicroservicesPending,
+  fetchMicroservicesSuccess,
+  searchMicroservices,
   startPollingMicroservices,
   stopPollingMicroservices,
-  fetchMicroservicesSuccess,
-  fetchMicroservicesFailure,
-  searchMicroservices,
-  fetchMicroservicesPending,
 } from './actions';
 import reducer, { initialState } from './reducer';
 

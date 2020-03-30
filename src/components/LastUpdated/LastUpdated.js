@@ -18,8 +18,8 @@ class LastUpdated extends React.PureComponent {
 }
 
 LastUpdated.propTypes = {
-  date: PropTypes.instanceOf(Date),
-  loading: PropTypes.bool,
+  date: PropTypes.instanceOf(Date).isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default LastUpdated;

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components: FixedWidthBox it should match the snapshot 1`] = `
+.c0 {
+  min-width: 240px !important;
+}
+
+<div
+  className="c0 css-vurnku"
+/>
+`;

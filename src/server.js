@@ -6,13 +6,13 @@ import renderer from './renderer';
 
 const server = express();
 
-// Don't serve static files when in test mode
+// Don't serve static files and apply any middleware when in test mode
 if (process.env.NODE_ENV !== 'test') {
   server.use(express.static(process.env.RAZZLE_PUBLIC_DIR));
-}
 
-server.use(helmet());
-server.use(morgan('dev'));
+  server.use(helmet());
+  server.use(morgan('dev'));
+}
 
 server.get('/api/health', (req, res) => {
   res.status(200).json({ message: '😊' });

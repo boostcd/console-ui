@@ -62,7 +62,7 @@ The application will start at [localhost:8080](http://localhost:8080) by default
 
 ### Testing
 
-Testing is done by using [Jest](https://jestjs.io/) as a test runner and using [redux-saga-test-plan](https://www.npmjs.com/package/redux-saga-test-plan) for testing the sagas. There is a also a commit hook to run tests related to the applied changes.
+Testing is implemented by using [Jest](https://jestjs.io/) as a test runner, [Enzyme](https://enzymejs.github.io/enzyme/) for component testing and [redux-saga-test-plan](https://www.npmjs.com/package/redux-saga-test-plan) for saga testing. There is a also a commit hook to run tests related to the applied changes.
 
 *Note: Using [.silentRun()](https://github.com/jfairbank/redux-saga-test-plan/blob/master/docs/integration-testing/timeout.md#silencing-warnings) for the saga testing, because some of the sagas are using infinite loop to achieve polling functionality*
 
