@@ -1,5 +1,5 @@
 import { Jira, Trello } from '@styled-icons/fa-brands';
-import { ExclamationTriangle, TicketAlt } from '@styled-icons/fa-solid';
+import { ExclamationCircle, TicketAlt } from '@styled-icons/fa-solid';
 import styled, { css } from 'styled-components';
 import { ifProp } from 'styled-tools';
 
@@ -61,7 +61,7 @@ export const Status = styled.div`
   font-size: 0.8rem;
 `;
 
-export const PartiallyPromotedIcon = styled(ExclamationTriangle)`
+export const PartiallyPromotedIcon = styled(ExclamationCircle)`
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
