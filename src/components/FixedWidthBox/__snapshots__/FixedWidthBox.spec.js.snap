@@ -2,6 +2,7 @@
 
 exports[`Components: FixedWidthBox it should match the snapshot 1`] = `
 .c0 {
+  max-width: 240px;
   min-width: 240px !important;
 }
 
