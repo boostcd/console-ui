@@ -10,7 +10,7 @@ describe('Components: Card', () => {
   });
 
   it('it should match the snapshot when active', () => {
-    const tree = renderer.create(<Card isActive={true} />).toJSON();
+    const tree = renderer.create(<Card isActive />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

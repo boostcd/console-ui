@@ -3,5 +3,6 @@
 exports[`Constants should match the snapshot - TOAST_CONFIG 1`] = `
 Object {
   "AUTO_CLOSE": 5000,
+  "MAX_VISIBLE": 2,
 }
 `;

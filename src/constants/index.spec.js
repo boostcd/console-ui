@@ -1,10 +1,4 @@
-import {
-  DEBOUNCE_DELAY,
-  POLLING_DELAY,
-  REQUEST_TIMEOUT,
-  TOAST_CONFIG,
-  TOAST_MAX_VISIBLE,
-} from './index';
+import { DEBOUNCE_DELAY, POLLING_DELAY, REQUEST_TIMEOUT, TOAST_CONFIG } from './index';
 
 describe('Constants', () => {
   it('should have the REQUEST_TIMEOUT defined', () => {
@@ -24,10 +18,5 @@ describe('Constants', () => {
 
   it('should match the snapshot - TOAST_CONFIG', () => {
     expect(TOAST_CONFIG).toMatchSnapshot();
-  });
-
-  it('should have the TOAST_MAX_VISIBLE defined', () => {
-    expect(TOAST_MAX_VISIBLE).toBeDefined();
-    expect(typeof TOAST_MAX_VISIBLE).toBe('number');
   });
 });

@@ -81,5 +81,9 @@ Object {
       "title": "Title",
     },
   },
+  "test": Object {
+    "simple": "Simple example without params",
+    "withParams": "Example with params: {{firstValue}} {{secondValue}}",
+  },
 }
 `;

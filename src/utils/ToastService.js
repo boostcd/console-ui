@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify';
 
-import { TOAST_MAX_VISIBLE } from '../constants';
+import { TOAST_CONFIG } from '../constants';
 
 /**
  * Simple utility to limit the visible toastify error notifications
@@ -9,7 +9,7 @@ class ToastService {
   toasts = [];
 
   showError(message) {
-    if (this.toasts.length >= TOAST_MAX_VISIBLE) {
+    if (this.toasts.length >= TOAST_CONFIG.MAX_VISIBLE) {
       const removeId = this.toasts.shift();
       toast.dismiss(removeId);
     }

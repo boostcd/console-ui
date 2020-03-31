@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components: Button it should match the snapshot [isDisabled] 1`] = `
+.c0 {
+  outline: none;
+  cursor: pointer;
+  border: 0;
+  height: 1.8rem;
+  line-height: 1.8rem;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  padding: 0 0.5rem;
+  -webkit-transition: 150ms all ease-in;
+  transition: 150ms all ease-in;
+  border: 1px solid undefined;
+  pointer-events: none;
+}
+
+.c0:hover {
+  color: white;
+}
+
+<button
+  className="c0"
+>
+  Disabled button
+</button>
+`;
+
+exports[`Components: Button it should match the snapshot [primary] 1`] = `
+.c0 {
+  outline: none;
+  cursor: pointer;
+  border: 0;
+  height: 1.8rem;
+  line-height: 1.8rem;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  padding: 0 0.5rem;
+  -webkit-transition: 150ms all ease-in;
+  transition: 150ms all ease-in;
+  color: white;
+  background: #2BA2B8;
+  border: 1px solid transparent;
+}
+
+.c0:hover {
+  color: white;
+  background: #138496;
+}
+
+<button
+  className="c0"
+>
+  Primary button
+</button>
+`;
+
+exports[`Components: Button it should match the snapshot [secondary] 1`] = `
+.c0 {
+  outline: none;
+  cursor: pointer;
+  border: 0;
+  height: 1.8rem;
+  line-height: 1.8rem;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  padding: 0 0.5rem;
+  -webkit-transition: 150ms all ease-in;
+  transition: 150ms all ease-in;
+  color: #2BA2B8;
+  background: transparent;
+  border: 1px solid #2BA2B8;
+}
+
+.c0:hover {
+  color: white;
+  background: #2BA2B8;
+}
+
+<button
+  className="c0"
+>
+  Secondary button
+</button>
+`;

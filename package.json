@@ -36,6 +36,7 @@
     "formik": "^2.1.4",
     "helmet": "^3.21.3",
     "ignore-case": "^0.1.0",
+    "invariant": "^2.2.4",
     "lodash.get": "^4.4.2",
     "morgan": "^1.9.1",
     "prop-types": "^15.7.2",

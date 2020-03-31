@@ -1,4 +1,8 @@
 export default {
+  test: {
+    simple: 'Simple example without params',
+    withParams: 'Example with params: {{firstValue}} {{secondValue}}',
+  },
   common: {
     view: 'View',
     edit: 'Edit',
