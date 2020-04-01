@@ -23,7 +23,7 @@ export const TestsSuccessfulIcon = styled(CheckCircle)`
   color: green;
 `;
 
-export const TestsFailed = styled(ExclamationCircle)`
+export const TestsFailedIcon = styled(ExclamationCircle)`
   ${testIconStyles};
   color: red;
 `;
