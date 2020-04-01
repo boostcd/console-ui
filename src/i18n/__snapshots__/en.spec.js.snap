@@ -69,7 +69,7 @@ Object {
       "delete": Object {
         "confirm": "Are you sure you want to delete project - {{namespace}}?",
         "pending": "Deleting project {{namespace}}...",
-        "success": "Successfully deleted project {{namespace}}!",
+        "success": "Project {{namespace}} is marked for deletion!",
       },
     },
     "dataFallback": "No projects available!",
@@ -80,6 +80,7 @@ Object {
       "owner": "Owner",
       "title": "Title",
     },
+    "terminating": "Project was marked for deletion!",
   },
   "test": Object {
     "simple": "Simple example without params",
