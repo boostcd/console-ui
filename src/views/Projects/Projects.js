@@ -95,9 +95,16 @@ class Projects extends React.PureComponent {
       autoClose: false,
     });
 
-    await gatewayApi.deleteProject(namespace);
-    toast.dismiss(infoToastId);
-    toast.success(t('projects.actions.delete.success', { namespace }));
+    try {
+      await gatewayApi.deleteProject(namespace);
+      toast.success(t('projects.actions.delete.success', { namespace }));
+
+      // Restarting the polling
+      this.props.stopPolling();
+      this.props.startPolling();
+    } finally {
+      toast.dismiss(infoToastId);
+    }
   };
 
   handleDeleteCancel = () => {

@@ -1,8 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
+import scrollbar from './other/scrollbar';
 import resets from './resets';
-import scrollbar from './scrollbar';
 
 export default createGlobalStyle`
   ${normalize};

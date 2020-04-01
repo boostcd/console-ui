@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 
 import gatewayApi from '../../apis/GatewayApi';
 import Button from '../../components/Button/Button';
+import Card from '../../components/Card/Card';
 import Loader from '../../components/Loader/Loader';
 import PageHeading from '../../components/PageHeading/PageHeading';
 import { fetchUsers } from '../../store/users/actions';
@@ -49,10 +50,8 @@ class Project extends React.PureComponent {
     }
   }
 
-  handleSubmit = async () => {
+  handleSubmit = async (data) => {
     const { history } = this.props;
-
-    const data = {}; // todo: pass the actual data from the form
 
     if (this.isEditing) {
       await gatewayApi.editProject(this.namespace, data);
@@ -69,13 +68,12 @@ class Project extends React.PureComponent {
   render() {
     const { users, usersLoading, project, projectLoading } = this.props;
 
+    if (usersLoading || (projectLoading && this.isEditing)) return <Loader />;
+
     const pageTitle = this.isEditing
       ? t('project.edit.pageTitle', { namespace: this.namespace })
       : t('project.add.pageTitle');
 
-    if (usersLoading || (projectLoading && this.isEditing)) return <Loader />;
-
-    console.log(users, project);
     return (
       <>
         <Helmet title={pageTitle} />
@@ -84,12 +82,14 @@ class Project extends React.PureComponent {
             <Button variant='primary'>{t('project.actions.backToList')}</Button>
           </Link>
         </PageHeading>
-        <ProjectForm
-          project={project}
-          users={users}
-          isEditing={this.isEditing}
-          handleSubmit={this.handleSubmit}
-        />
+        <Card>
+          <ProjectForm
+            project={project}
+            users={users}
+            isEditing={this.isEditing}
+            onSubmit={this.handleSubmit}
+          />
+        </Card>
       </>
     );
   }

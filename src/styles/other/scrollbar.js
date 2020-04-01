@@ -3,8 +3,8 @@ import { css } from 'styled-components';
 // Custom webkit scrollbar
 export default css`
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
   }
 
   ::-webkit-scrollbar-button:end:increment,
