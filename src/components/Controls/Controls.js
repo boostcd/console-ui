@@ -17,7 +17,7 @@ class Controls extends React.PureComponent {
     return (
       <Button
         variant='primary'
-        isDisabled={state.build}
+        preventEvents={state.build}
         onClick={this.props.onStateChange.bind(
           null,
           t('common.buildAll'),
@@ -37,7 +37,7 @@ class Controls extends React.PureComponent {
     return (
       <Button
         variant='primary'
-        isDisabled={state.test}
+        preventEvents={state.test}
         onClick={this.props.onStateChange.bind(null, t('common.testAll'), gatewayApi.testAll, name)}
       >
         <span>{t('common.testAll')}</span>
@@ -52,7 +52,7 @@ class Controls extends React.PureComponent {
     return (
       <Button
         variant='primary'
-        isDisabled={state.promote}
+        preventEvents={state.promote}
         onClick={this.props.onStateChange.bind(
           null,
           t('common.promoteAll'),
@@ -72,7 +72,7 @@ class Controls extends React.PureComponent {
     return (
       <Button
         variant='primary'
-        isDisabled={state.goLive}
+        preventEvents={state.goLive}
         onClick={this.props.onStateChange.bind(null, t('common.goLive'), gatewayApi.goLive, name)}
       >
         <span>{t('common.goLive')}</span>
@@ -87,7 +87,7 @@ class Controls extends React.PureComponent {
     return (
       <Button
         variant='primary'
-        isDisabled={state.backOut}
+        preventEvents={state.backOut}
         onClick={this.props.onStateChange.bind(null, t('common.backOut'), gatewayApi.backOut, name)}
       >
         <span>{t('common.backOut')}</span>

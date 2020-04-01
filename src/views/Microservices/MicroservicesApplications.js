@@ -20,7 +20,7 @@ class MicroservicesApplications extends React.PureComponent {
     return (
       <Button
         variant='primary'
-        isDisabled={state.build}
+        preventEvents={state.build}
         onClick={this.props.onStateChange.bind(
           null,
           t('common.build'),
@@ -42,7 +42,7 @@ class MicroservicesApplications extends React.PureComponent {
     return (
       <Button
         variant='primary'
-        isDisabled={state.promote}
+        preventEvents={state.promote}
         onClick={this.props.onStateChange.bind(
           null,
           t('common.promote'),

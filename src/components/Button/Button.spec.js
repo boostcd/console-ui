@@ -14,6 +14,17 @@ describe('Components: Button', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('it should match the snapshot [preventEvents]', () => {
+    const tree = renderer
+      .create(
+        <Button variant='primary' preventEvents>
+          Primary button with disabled events
+        </Button>
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('it should match the snapshot [isDisabled]', () => {
     const tree = renderer.create(<Button isDisabled>Disabled button</Button>).toJSON();
     expect(tree).toMatchSnapshot();
