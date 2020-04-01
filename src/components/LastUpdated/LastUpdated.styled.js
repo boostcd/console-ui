@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   font-size: 0.7rem;
 `;
 
-export const Spinner = styled(CircleNotch)`
+export const SpinnerIcon = styled(CircleNotch)`
   width: 0.7rem;
   height: 0.7rem;
   margin-right: 0.2rem;

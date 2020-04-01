@@ -123,14 +123,14 @@ class Controls extends React.PureComponent {
     return (
       <FixedWidthBox key={key} width={width} px={2}>
         <Styles.Title>
-          <Styles.Indicator colour={indicatorColour} isActive={isActive} />
+          <Styles.IndicatorIcon colour={indicatorColour} isActive={isActive} />
           <span>{displayName || name}</span>
           {isTestable && (
             <>
               {tested ? (
-                <Styles.TestsSuccessful title={t('common.testsSuccessful')} />
+                <Styles.TestsSuccessfulIcon title={t('common.testsSuccessful')} />
               ) : (
-                <Styles.TestsFailed title={t('common.testsFailed')} />
+                <Styles.TestsFailedIcon title={t('common.testsFailed')} />
               )}
             </>
           )}

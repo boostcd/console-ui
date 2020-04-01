@@ -37,9 +37,9 @@ class MicroserviceCard extends React.PureComponent {
           {isTestable && (
             <>
               {tested ? (
-                <Styles.TestsSuccessful title={t('common.testsSuccessful')} />
+                <Styles.TestsSuccessfulIcon title={t('common.testsSuccessful')} />
               ) : (
-                <Styles.TestsFailed title={t('common.testsFailed')} />
+                <Styles.TestsFailedIcon title={t('common.testsFailed')} />
               )}
             </>
           )}

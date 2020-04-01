@@ -6,7 +6,7 @@ class Loader extends React.PureComponent {
   render() {
     return (
       <Styles.Wrapper>
-        <Styles.Spinner />
+        <Styles.SpinnerIcon />
       </Styles.Wrapper>
     );
   }

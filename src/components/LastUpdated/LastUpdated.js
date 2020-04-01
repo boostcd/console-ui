@@ -10,7 +10,7 @@ class LastUpdated extends React.PureComponent {
 
     return (
       <Styles.Wrapper>
-        {loading && <Styles.Spinner />}
+        {loading && <Styles.SpinnerIcon />}
         <span>{t('common.lastUpdated', { value: date.toLocaleString() })}</span>
       </Styles.Wrapper>
     );

@@ -14,7 +14,7 @@ describe('Components: Loader', () => {
     expect(wrapper.find(Styles.Wrapper)).toHaveLength(1);
   });
 
-  it('should render the spinner', () => {
-    expect(wrapper.find(Styles.Spinner)).toHaveLength(1);
+  it('should render the spinner icon', () => {
+    expect(wrapper.find(Styles.SpinnerIcon)).toHaveLength(1);
   });
 });

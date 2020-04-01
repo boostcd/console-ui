@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   height: 100%;
 `;
 
-export const Spinner = styled(CircleNotch)`
+export const SpinnerIcon = styled(CircleNotch)`
   color: #888;
   width: 3rem;
   height: 3rem;

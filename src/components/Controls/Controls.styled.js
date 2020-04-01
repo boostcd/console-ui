@@ -21,7 +21,7 @@ export const Actions = styled.div`
   margin-top: 0.5rem;
 `;
 
-export const Indicator = styled(Circle)`
+export const IndicatorIcon = styled(Circle)`
   width: 0.7rem;
   height: 0.7rem;
   color: ${prop('colour', '#484848')};
@@ -41,12 +41,12 @@ const testIconStyles = css`
   margin-left: 0.5rem;
 `;
 
-export const TestsSuccessful = styled(CheckCircle)`
+export const TestsSuccessfulIcon = styled(CheckCircle)`
   ${testIconStyles};
   color: green;
 `;
 
-export const TestsFailed = styled(ExclamationCircle)`
+export const TestsFailedIcon = styled(ExclamationCircle)`
   ${testIconStyles};
   color: red;
 `;

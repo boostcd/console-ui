@@ -14,14 +14,14 @@ describe('Components: LastUpdated', () => {
     expect(wrapper.find(Styles.Wrapper)).toHaveLength(1);
   });
 
-  it('should not be in a loading state', () => {
+  it('should not render a spinner icon [loading=false]', () => {
     wrapper.setProps({ loading: false });
-    expect(wrapper.find(Styles.Spinner)).toHaveLength(0);
+    expect(wrapper.find(Styles.SpinnerIcon)).toHaveLength(0);
   });
 
-  it('should be in a loading state', () => {
+  it('should render a spinner icon [loading=true]', () => {
     wrapper.setProps({ loading: true });
-    expect(wrapper.find(Styles.Spinner)).toHaveLength(1);
+    expect(wrapper.find(Styles.SpinnerIcon)).toHaveLength(1);
   });
 
   it('should render the passed date', () => {

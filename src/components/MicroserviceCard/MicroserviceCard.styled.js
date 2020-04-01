@@ -15,12 +15,12 @@ const testIconStyles = css`
   vertical-align: middle;
 `;
 
-export const TestsSuccessful = styled(CheckCircle)`
+export const TestsSuccessfulIcon = styled(CheckCircle)`
   ${testIconStyles};
   color: green;
 `;
 
-export const TestsFailed = styled(ExclamationCircle)`
+export const TestsFailedIcon = styled(ExclamationCircle)`
   ${testIconStyles};
   color: red;
 `;
