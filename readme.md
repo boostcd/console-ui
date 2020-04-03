@@ -61,15 +61,23 @@ The application will start at [localhost:8080](http://localhost:8080) by default
 
 ..and much more 🤫
 
+### GIT Workflow
+
+Workflows are custom automated processes that you can set up in your repository to build, test, package, release, or deploy any project on GitHub. With workflows you can automate your software development life cycle with a wide range of tools and services.
+
+[The current workflow](./.github/workflows/main.yml) is implemented to run on master or pull request pushes in order to verify that the project can still build and that the tests are passing with the applied changes.
+
+[Read more about workflows](https://help.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow)
+
 ### Testing
 
-Testing is implemented by using [Jest](https://jestjs.io/) as a test runner, [Enzyme](https://enzymejs.github.io/enzyme/) for component testing and [redux-saga-test-plan](https://www.npmjs.com/package/redux-saga-test-plan) for saga testing. There is a also a commit hook to run tests related to the applied changes.
+Testing is implemented by using [Jest](https://jestjs.io/) as a test runner, [Enzyme](https://enzymejs.github.io/enzyme/) for component testing and [redux-saga-test-plan](https://www.npmjs.com/package/redux-saga-test-plan) for saga testing. There is also a commit hook to run tests related to the applied changes.
 
-*Note: Using [.silentRun()](https://github.com/jfairbank/redux-saga-test-plan/blob/master/docs/integration-testing/timeout.md#silencing-warnings) for the saga testing, because some of the sagas are using infinite loop to achieve polling functionality*
+*Note: Using [.silentRun()](https://github.com/jfairbank/redux-saga-test-plan/blob/master/docs/integration-testing/timeout.md#silencing-warnings) for the saga testing, because some of the sagas are using an infinite loop to achieve polling functionality*
 
-### Linting and code formatting
+### Linting and code formatting 🤨
 
-Linting and code formatting is done by using [ESLint](https://eslint.org/) and [prettier](https://prettier.io/). [Git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) are configured using [husky](https://www.npmjs.com/package/husky) and [lint-staged](https://www.npmjs.com/package/lint-staged) in order to prevent bad coding practices by linting and pre-formatting the code on every commit.
+Linting and code formatting is done by using [ESLint](https://eslint.org/) and [prettier](https://prettier.io/). [Git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) are configured using [husky](https://www.npmjs.com/package/husky)🐕 and [lint-staged](https://www.npmjs.com/package/lint-staged) in order to prevent bad coding practices by linting and pre-formatting the code on every commit.
 
 #### Commit message linting
 Commit message are linted and certain rules are enforced by using [commitlint](https://github.com/conventional-changelog/commitlint/#what-is-commitlint). This is used in order to enforce better messages and descriptions for changes made to the codebase.
