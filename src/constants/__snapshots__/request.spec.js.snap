@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Constants: request should match the snapshot - REQUEST_RESPONSE_STATUS 1`] = `
+Object {
+  "ERROR": "error",
+  "SUCCESS": "success",
+}
+`;
