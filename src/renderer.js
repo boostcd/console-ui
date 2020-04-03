@@ -12,7 +12,11 @@ import configureStore from './store/configureStore';
 const store = configureStore();
 const sheet = new ServerStyleSheet();
 
-const statsFile = path.resolve('build/loadable-stats.json');
+// Mocking the loadable stats file for the tests
+const isTesting = process.env.NODE_ENV === 'test';
+const statsFileRoot = isTesting ? 'src/__mocks__' : 'build';
+const statsFile = path.resolve(`${statsFileRoot}/loadable-stats.json`);
+
 const extractor = new ChunkExtractor({
   statsFile,
   entrypoints: ['client'],

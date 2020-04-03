@@ -5,9 +5,10 @@ import morgan from 'morgan';
 import renderer from './renderer';
 
 const server = express();
+const isTesting = process.env.NODE_ENV === 'test';
 
 // Don't serve static files and apply any middleware when in test mode
-if (process.env.NODE_ENV !== 'test') {
+if (!isTesting) {
   server.use(express.static(process.env.RAZZLE_PUBLIC_DIR));
 
   server.use(helmet());
