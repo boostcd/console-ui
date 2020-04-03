@@ -24,8 +24,8 @@ jobs:
     - name: Install node packages from registry
       run: npm ci
 
-    - name: Build the project
-      run: npm run build
-
     - name: Run the tests
       run: npm run test:ci
+
+    - name: Build the project
+      run: npm run build
