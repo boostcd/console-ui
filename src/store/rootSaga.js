@@ -1,6 +1,7 @@
 import { all, fork } from 'redux-saga/effects';
 
 import featuresSaga from '../views/Features/state/saga';
+import librariesSaga from '../views/Libraries/state/saga';
 import microserviceSaga from '../views/Microservice/state/saga';
 import microservicesSaga from '../views/Microservices/state/saga';
 import projectSaga from '../views/Project/state/saga';
@@ -15,6 +16,7 @@ const sagas = [
   microservicesSaga,
   projectSaga,
   projectsSaga,
+  librariesSaga,
 ];
 
 export default function* rootSaga() {

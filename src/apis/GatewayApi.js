@@ -66,6 +66,20 @@ class GatewayApi extends BaseApi {
     });
   };
 
+  getLibraries = async () => {
+    return await this.request({
+      method: 'GET',
+      url: '/libraries',
+    });
+  };
+
+  releaseLibrary = async (name) => {
+    return await this.request({
+      method: 'POST',
+      url: ` /library/${name}/release`,
+    });
+  };
+
   build = async (environment, service) => {
     return await this.request({
       method: 'POST',

@@ -24,6 +24,7 @@ Object {
     "notDeployed": "Not deployed",
     "promote": "Promote",
     "promoteAll": "Promote all",
+    "release": "Release",
     "submit": "Submit",
     "testAll": "Run tests",
     "testsFailed": "Untested or tests failing",
@@ -37,6 +38,21 @@ Object {
     "searchPlaceholder": "Search for features",
     "status": "Status: {{value}}",
     "waitingSince": "Waiting since: {{value}}",
+  },
+  "libraries": Object {
+    "actions": Object {
+      "release": Object {
+        "confirm": "Are you sure you want to release library - {{name}}?",
+        "pending": "Releasing library {{name}}...",
+        "success": "Library {{name}} is released!",
+      },
+    },
+    "dataFallback": "No libraries available!",
+    "pageTitle": "Libraries",
+    "tableColumns": Object {
+      "actions": "Actions",
+      "name": "Name",
+    },
   },
   "microservice": Object {
     "actions": Object {
