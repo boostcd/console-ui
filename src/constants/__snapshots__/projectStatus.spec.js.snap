@@ -2,7 +2,7 @@
 
 exports[`Constants: projectStatus should match the snapshot 1`] = `
 Object {
-  "ACTIVE": "active",
-  "TERMINATING": "terminating",
+  "ACTIVE": "Active",
+  "TERMINATING": "Terminating",
 }
 `;

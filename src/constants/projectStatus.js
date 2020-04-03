@@ -1,4 +1,4 @@
 export default {
-  ACTIVE: 'active',
-  TERMINATING: 'terminating',
+  ACTIVE: 'Active',
+  TERMINATING: 'Terminating',
 };
