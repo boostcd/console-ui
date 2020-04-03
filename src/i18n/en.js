@@ -15,6 +15,7 @@ export default {
     testAll: 'Run tests',
     promote: 'Promote',
     promoteAll: 'Promote all',
+    release: 'Release',
     goLive: 'Go live!',
     backOut: 'Back out!',
     name: 'Name',
@@ -82,6 +83,21 @@ export default {
     edit: {
       pageTitle: 'Edit project: {{namespace}}',
       successMessage: 'Successfully edited a project!',
+    },
+  },
+  libraries: {
+    pageTitle: 'Libraries',
+    dataFallback: 'No libraries available!',
+    actions: {
+      release: {
+        confirm: 'Are you sure you want to release library - {{name}}?',
+        pending: 'Releasing library {{name}}...',
+        success: 'Library {{name}} is released!',
+      },
+    },
+    tableColumns: {
+      name: 'Name',
+      actions: 'Actions',
     },
   },
 };
