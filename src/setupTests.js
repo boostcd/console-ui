@@ -7,7 +7,7 @@ import Adapter from 'enzyme-adapter-react-16';
 process.env.NODE_ENV = 'test';
 
 // Set process environment variable for the timezone
-process.env.TZ = 'utc';
+process.env.TZ = 'UTC';
 
 // Set other global variables used in the tests
 global.noop = () => undefined;
