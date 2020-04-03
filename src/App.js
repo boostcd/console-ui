@@ -15,6 +15,7 @@ const Microservices = loadable(() => import('./views/Microservices/Microservices
 const Microservice = loadable(() => import('./views/Microservice/Microservice'));
 const Projects = loadable(() => import('./views/Projects/Projects'));
 const Project = loadable(() => import('./views/Project/Project'));
+const Libraries = loadable(() => import('./views/Libraries/Libraries'));
 
 const App = () => (
   <React.StrictMode>
@@ -33,6 +34,7 @@ const App = () => (
           <Route path='/projects/add' component={Project} />
           <Route path='/projects/:namespace/edit' component={Project} />
           <Route path='/projects' component={Projects} />
+          <Route path='/libraries' component={Libraries} />
           <Route path='*'>
             <Redirect to='/' />
           </Route>

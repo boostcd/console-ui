@@ -1,4 +1,5 @@
 import mockFeatures from '../examples/features.json';
+import mockLibraries from '../examples/libraries.json';
 import mockMicroservice from '../examples/microservice.json';
 import mockMicroservices from '../examples/microservices.json';
 import mockProject from '../examples/project.json';
@@ -18,6 +19,8 @@ class GatewayApi {
   getProjects = () => mockProjects;
 
   getUsers = () => mockUsers;
+
+  getLibraries = () => mockLibraries;
 }
 
 export default new GatewayApi();
