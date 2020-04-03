@@ -9,7 +9,7 @@
     "start": "razzle build && NODE_ENV=production node build/server.js",
     "start:dev": "razzle start",
     "test": "razzle test --env=jsdom",
-    "test:ci": "TZ=UTC razzle test --env=jsdom --verbose --runInBand --watchAll=false"
+    "test:ci": "razzle test --env=jsdom --verbose --runInBand --watchAll=false"
   },
   "jest": {
     "collectCoverageFrom": [
