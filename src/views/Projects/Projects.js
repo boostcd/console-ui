@@ -13,6 +13,7 @@ import DataFallback from '../../components/DataFallback/DataFallback';
 import Loader from '../../components/Loader/Loader';
 import PageHeading from '../../components/PageHeading/PageHeading';
 import Table from '../../components/Table/Table';
+import PROJECT_STATUS from '../../constants/projectStatus';
 import projectsType from '../../types/projects';
 import t from '../../utils/translate';
 import * as Styles from './Projects.styled';
@@ -36,7 +37,17 @@ class Projects extends React.PureComponent {
   columns = [
     {
       header: t('projects.tableColumns.title'),
-      accessor: 'title',
+      render: (project) => {
+        const { title, status } = project;
+        const isTerminating = status === PROJECT_STATUS.TERMINATING;
+
+        return (
+          <div>
+            <span>{title}</span>
+            {isTerminating && <Styles.TerminatingIcon title={t('projects.terminating')} />}
+          </div>
+        );
+      },
     },
     {
       header: t('projects.tableColumns.owner'),
@@ -49,14 +60,26 @@ class Projects extends React.PureComponent {
     {
       header: t('projects.tableColumns.actions'),
       render: (project) => {
-        const { namespace } = project;
+        const { namespace, status } = project;
+        const isTerminating = status === PROJECT_STATUS.TERMINATING;
+        const editButton = (
+          <Button variant='secondary' isDisabled={isTerminating}>
+            {t('common.edit')}
+          </Button>
+        );
 
         return (
           <Styles.TableActions>
-            <Link to={`/projects/${namespace}/edit`}>
-              <Button variant='secondary'>{t('common.edit')}</Button>
-            </Link>
-            <Button variant='secondary' onClick={this.handleDelete.bind(this, namespace)}>
+            {isTerminating ? (
+              editButton
+            ) : (
+              <Link to={`/projects/${namespace}/edit`}>{editButton}</Link>
+            )}
+            <Button
+              variant='secondary'
+              isDisabled={isTerminating}
+              onClick={this.handleDelete.bind(this, namespace)}
+            >
               {t('common.delete')}
             </Button>
           </Styles.TableActions>

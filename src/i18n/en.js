@@ -59,7 +59,7 @@ export default {
       delete: {
         confirm: 'Are you sure you want to delete project - {{namespace}}?',
         pending: 'Deleting project {{namespace}}...',
-        success: 'Successfully deleted project {{namespace}}!',
+        success: 'Project {{namespace}} is marked for deletion!',
       },
     },
     tableColumns: {
@@ -68,6 +68,7 @@ export default {
       namespace: 'Namespace',
       actions: 'Actions',
     },
+    terminating: 'Project was marked for deletion!',
   },
   project: {
     actions: {
