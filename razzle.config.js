@@ -10,6 +10,12 @@ module.exports = {
     // Disable the source maps for production
     config.devtool = dev ? 'source-map' : false;
 
+    // Turn off hints because the combined asset size exceeds the recommended limit
+    config.performance = {
+      ...config.performance,
+      hints: false,
+    };
+
     // @loadable support
     if (target === 'web') {
       const filename = path.resolve(__dirname, 'build');

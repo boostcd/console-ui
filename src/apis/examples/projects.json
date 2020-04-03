@@ -2,26 +2,31 @@
   {
     "title": "Build: Estafet Block Chain Demo",
     "owner": "admin",
-    "namespace": "blockchain-demo-build"
+    "namespace": "blockchain-demo-build",
+    "status": "active"
   },
   {
     "title": "Test: Estafet Block Chain Demo",
     "owner": "admin",
-    "namespace": "blockchain-demo-test"
+    "namespace": "blockchain-demo-test",
+    "status": "terminating"
   },
   {
     "title": "CI/CD: Estafet Block Chain Demo",
     "owner": "admin",
-    "namespace": "blockchain-demo-cicd"
+    "namespace": "blockchain-demo-cicd",
+    "status": "active"
   },
   {
     "title": "Nexus",
     "owner": "admin",
-    "namespace": "blockchain-demo-nexus"
+    "namespace": "blockchain-demo-nexus",
+    "status": "active"
   },
   {
     "title": "Some Dev",
     "owner": "user.name",
-    "namespace": "some-dev"
+    "namespace": "some-dev",
+    "status": "terminating"
   }
 ]

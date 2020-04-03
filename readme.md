@@ -20,7 +20,8 @@ yarn install
 * **build** - Bundle the application into the build folder
 * **start** - Start the applications in production mode
 * **start:dev** - Start the applications in development mode
-* **test** - Run the unit test suite using [Jest](https://jestjs.io/)
+* **test** - Runs the unit test suite using [Jest](https://jestjs.io/)
+* **test:ci** - Runs the unit test suite in CI mode (verbose flag set and watch mode disabled)
 * **analyze** - Build the project and analyze the bundle using a [Webpack plugin](https://www.npmjs.com/package/webpack-bundle-analyzer)
 
 ### Running locally

@@ -7,6 +7,6 @@ describe('Utils: MockDate', () => {
   });
 
   it('should be a fixed date', () => {
-    expect(new MockDate()).toEqual(new Date('2020-02-23T22:00:00.000Z'));
+    expect(new MockDate()).toEqual(new Date('2020-02-24T00:00:00'));
   });
 });
