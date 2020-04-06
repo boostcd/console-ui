@@ -85,8 +85,14 @@ objects:
     strategy:
       sourceStrategy:
         env:
-        - name: MAVEN_MIRROR_URL
-          value: ${MAVEN_MIRROR_URL}
+          - name: MAVEN_MIRROR_URL
+            value: ${MAVEN_MIRROR_URL}
+          - name: POST_INSTALL
+            value: true
+          - name: YARN_ENABLED
+            value: true
+          - name: YARN_ARGS
+            value: "--frozen-lockfile"
         from:
           kind: ImageStreamTag
           name: 'nodejs:10'
