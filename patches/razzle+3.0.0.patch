@@ -1,0 +1,20 @@
+diff --git a/node_modules/razzle/config/paths.js b/node_modules/razzle/config/paths.js
+index 1813df1..1ba8109 100644
+--- a/node_modules/razzle/config/paths.js
++++ b/node_modules/razzle/config/paths.js
+@@ -7,7 +7,14 @@ const url = require('url');
+ // Make sure any symlinks in the project folder are resolved:
+ // https://github.com/facebookincubator/create-react-app/issues/637
+ const appDirectory = fs.realpathSync(process.cwd());
+-const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
++const resolveApp = relativePath => {
++  const a = path.resolve(appDirectory, relativePath);
++  if (relativePath === 'razzle.config.js') {
++    console.log('Paths: ', appDirectory, a);
++  }
++
++  return a;
++};
+ 
+ const envPublicUrl = process.env.PUBLIC_URL;
+ 

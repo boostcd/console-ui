@@ -6,7 +6,7 @@
   "scripts": {
     "analyze": "BUNDLE_ANALYZE=true razzle build",
     "build": "razzle build",
-    "postinstall": "!(test -n \"$POST_INSTALL\") || (pwd && ls -la && razzle build)",
+    "postinstall": "patch-package && !(test -n \"$POST_INSTALL\") || (pwd && razzle build)",
     "start": "NODE_ENV=production node build/server.js",
     "start:dev": "razzle start",
     "test": "razzle test --env=jsdom",
@@ -41,6 +41,8 @@
     "invariant": "^2.2.4",
     "lodash.get": "^4.4.2",
     "morgan": "^1.9.1",
+    "patch-package": "^6.2.2",
+    "postinstall-postinstall": "^2.1.0",
     "prop-types": "^15.7.2",
     "razzle": "^3.0.0",
     "react": "^16.13.0",
