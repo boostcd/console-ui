@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "license": "UNLICENSED",
+  "engines": {
+    "node": ">= 12.16.1"
+  },
   "scripts": {
     "analyze": "BUNDLE_ANALYZE=true razzle build",
     "build": "razzle build",
