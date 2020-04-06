@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "license": "UNLICENSED",
+  "engines": {
+    "node": ">= 10.16.3"
+  },
   "scripts": {
     "analyze": "BUNDLE_ANALYZE=true razzle build",
     "build": "razzle build",
-    "postinstall": "patch-package && !(test -n \"$POST_INSTALL\") || razzle build",
+    "postinstall": "!(test -n \"$POST_INSTALL\") || razzle build",
     "start": "NODE_ENV=production node build/server.js",
     "start:dev": "razzle start",
     "test": "razzle test --env=jsdom",
@@ -41,8 +44,6 @@
     "invariant": "^2.2.4",
     "lodash.get": "^4.4.2",
     "morgan": "^1.9.1",
-    "patch-package": "^6.2.2",
-    "postinstall-postinstall": "^2.1.0",
     "prop-types": "^15.7.2",
     "razzle": "^3.0.0",
     "react": "^16.13.0",
@@ -61,7 +62,8 @@
     "styled-components": "^5.0.1",
     "styled-normalize": "^8.0.7",
     "styled-tools": "^1.7.1",
-    "timeago.js": "^4.0.2"
+    "timeago.js": "^4.0.2",
+    "webpack-bundle-analyzer": "^3.6.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
@@ -84,10 +86,6 @@
     "prettier": "^1.19.1",
     "react-test-renderer": "^16.13.1",
     "redux-saga-test-plan": "^4.0.0-rc.3",
-    "supertest": "^4.0.2",
-    "webpack-bundle-analyzer": "^3.6.1"
-  },
-  "engines": {
-    "node": ">= 10.16.3"
+    "supertest": "^4.0.2"
   }
 }
