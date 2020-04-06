@@ -7,7 +7,7 @@
     "node": ">= 10.16.3"
   },
   "scripts": {
-    "postinstall": "razzle build",
+    "postinstall": "test -n \"$NO_POST_INSTALL\" || razzle build",
     "analyze": "BUNDLE_ANALYZE=true razzle build",
     "build": "razzle build",
     "start": "NODE_ENV=production node build/server.js",

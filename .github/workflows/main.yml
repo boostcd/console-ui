@@ -19,6 +19,9 @@ jobs:
 
     - name: Install node packages from registry
       run: yarn install --frozen-lockfile
+      env:
+        # Skip the post install script used to build the app in OpenShift
+        NO_POST_INSTALL: true
 
     - name: Run the tests
       run: yarn test:ci
