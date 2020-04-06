@@ -1,6 +1,9 @@
 # estafet-openshift-boost-console-ui-react
 
-![CI Workflow](https://github.com/Estafet-LTD/estafet-openshift-boost-console-ui-react/workflows/CI%20Workflow/badge.svg?branch=master)
+![Build](https://img.shields.io/github/workflow/status/Estafet-LTD/estafet-openshift-boost-console-ui-react/CI%20Workflow/master) ![Version](https://img.shields.io/github/package-json/v/Estafet-LTD/estafet-openshift-boost-console-ui-react) ![Pull requests](https://img.shields.io/github/issues-pr/Estafet-LTD/estafet-openshift-boost-console-ui-react) ![Issues](https://img.shields.io/github/issues/Estafet-LTD/estafet-openshift-boost-console-ui-react)
+
+
+
 
 Front-end application for the Estafet Boost project build using React. More about requirements, technology stack and how to run in the sections bellow.
 
