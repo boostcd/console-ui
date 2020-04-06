@@ -15,8 +15,9 @@ const sheet = new ServerStyleSheet();
 // Mocking the loadable stats file for the tests
 const isTesting = process.env.NODE_ENV === 'test';
 const statsFileRoot = isTesting ? 'src/__mocks__' : 'build';
+console.log(`Stats path: ${statsFileRoot}/loadable-stats.json`);
 const statsFile = path.resolve(`${statsFileRoot}/loadable-stats.json`);
-
+console.log('Stats path', statsFile);
 const extractor = new ChunkExtractor({
   statsFile,
   entrypoints: ['client'],
