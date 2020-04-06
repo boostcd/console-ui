@@ -4,7 +4,7 @@
   "private": true,
   "license": "UNLICENSED",
   "engines": {
-    "node": ">= 12.16.1"
+    "node": ">= 10.16.3"
   },
   "scripts": {
     "postinstall": "razzle build",

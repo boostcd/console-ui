@@ -10,14 +10,14 @@ Front-end application for the Estafet Boost project build using React. More abou
 ### Requirements
 
 * [Node.js](https://nodejs.org/en/)
-* Package manager ([npm](https://www.npmjs.com/get-npm) or [yarn](https://yarnpkg.com/)), but preferably npm because it's used by OpenShift
+* Package manager [yarn](https://yarnpkg.com/) or ([npm](https://www.npmjs.com/get-npm), but preferably yarn 📦
 
 Use the package manager to install the dependencies.
 
 ```bash
-npm install
-OR
 yarn install
+OR
+npm install
 ```
 
 ### Commands
@@ -44,9 +44,9 @@ TASK_MANAGEMENT_TITLE=...
 Use the following command to start the project in development mode:
 
 ```bash
-npm run start:dev
-OR
 yarn start:dev
+OR
+npm run start:dev
 ```
 
 The application will start at [localhost:8080](http://localhost:8080) by default. You can change to a desired port by defining a **PORT** (process.env.PORT) environment variable by [creating a .env file](https://github.com/jaredpalmer/razzle#adding-environment-variables-in-env) inside the root folder. This should be used for development purposes only as the .env files are git-ignored anyway.
