@@ -9,6 +9,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
  */
 module.exports = {
   modify: (config, { dev, target }) => {
+    console.log('Config here', config, dev, target);
     // Disable the source maps for production
     config.devtool = dev ? 'source-map' : false;
 
