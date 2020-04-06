@@ -19,10 +19,10 @@ index 1813df1..1ba8109 100644
  const envPublicUrl = process.env.PUBLIC_URL;
  
 diff --git a/node_modules/razzle/scripts/build.js b/node_modules/razzle/scripts/build.js
-index 815dd94..7fa280a 100755
+index 815dd94..3bd2424 100755
 --- a/node_modules/razzle/scripts/build.js
 +++ b/node_modules/razzle/scripts/build.js
-@@ -73,7 +73,9 @@ function build(previousFileSizes) {
+@@ -73,9 +73,13 @@ function build(previousFileSizes) {
    // Check if razzle.config.js exists
    let razzle = {};
    try {
@@ -30,5 +30,10 @@ index 815dd94..7fa280a 100755
      razzle = require(paths.appRazzleConfig);
 +    console.log('Razzle config:', razzle);
      /* eslint-disable no-empty */
-   } catch (e) {}
+-  } catch (e) {}
++  } catch (e) {
++    console.error('Error caught while trying to load config', e);
++  }
    /* eslint-enable */
+ 
+   if (razzle.clearConsole === false || !!razzle.host || !!razzle.port) {
