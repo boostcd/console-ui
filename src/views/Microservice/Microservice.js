@@ -58,7 +58,7 @@ class Microservice extends React.PureComponent {
           </Styles.Detail>
           <Styles.Detail>
             <Styles.DetailTitle>{t('common.displayName')}</Styles.DetailTitle>
-            <Styles.DetailValue>{data.displayName}</Styles.DetailValue>
+            <Styles.DetailValue>{data.displayName || '-'}</Styles.DetailValue>
           </Styles.Detail>
           <Styles.Detail>
             <Styles.DetailTitle>{t('common.environment')}:</Styles.DetailTitle>
