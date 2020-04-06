@@ -55,6 +55,8 @@ module.exports = {
     }
 
     // Define the global environment variables used in the project
+    console.log(process.env);
+
     config.plugins.push(
       new webpack.DefinePlugin({
         PORT: JSON.stringify(process.env.PORT),
