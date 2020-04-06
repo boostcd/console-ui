@@ -6,7 +6,7 @@
   "scripts": {
     "analyze": "BUNDLE_ANALYZE=true razzle build",
     "build": "razzle build",
-    "postinstall": "patch-package && !(test -n \"$POST_INSTALL\") || (pwd && razzle build)",
+    "postinstall": "patch-package && !(test -n \"$POST_INSTALL\") || razzle build",
     "start": "NODE_ENV=production node build/server.js",
     "start:dev": "razzle start",
     "test": "razzle test --env=jsdom",
