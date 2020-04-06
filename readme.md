@@ -2,9 +2,6 @@
 
 ![Build](https://img.shields.io/github/workflow/status/Estafet-LTD/estafet-openshift-boost-console-ui-react/CI%20Workflow/master) ![Version](https://img.shields.io/github/package-json/v/Estafet-LTD/estafet-openshift-boost-console-ui-react) ![Pull requests](https://img.shields.io/github/issues-pr/Estafet-LTD/estafet-openshift-boost-console-ui-react) ![Issues](https://img.shields.io/github/issues/Estafet-LTD/estafet-openshift-boost-console-ui-react)
 
-
-
-
 Front-end application for the Estafet Boost project build using React. More about requirements, technology stack and how to run in the sections bellow.
 
 ### Requirements
@@ -28,7 +25,7 @@ npm install
 * **test** - Runs the unit test suite using [Jest](https://jestjs.io/)
 * **test:ci** - Runs the unit test suite in CI mode (verbose flag set and watch mode disabled)
 * **analyze** - Build the project and analyze the bundle using a [Webpack plugin](https://www.npmjs.com/package/webpack-bundle-analyzer)
-* **postinstall** - Used as a hook to build the application when deploying in OpenShift
+* **postinstall** - Used as a hook to build the application when deploying in OpenShift; This script is skipped by default, enable it by passing `POST_INSTALL=true`
 
 ### Running locally
 
