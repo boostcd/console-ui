@@ -28,6 +28,7 @@ yarn install
 * **test** - Runs the unit test suite using [Jest](https://jestjs.io/)
 * **test:ci** - Runs the unit test suite in CI mode (verbose flag set and watch mode disabled)
 * **analyze** - Build the project and analyze the bundle using a [Webpack plugin](https://www.npmjs.com/package/webpack-bundle-analyzer)
+* **postinstall** - Used as a hook to build the application when deploying in OpenShift
 
 ### Running locally
 

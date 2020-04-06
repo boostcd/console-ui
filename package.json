@@ -7,9 +7,10 @@
     "node": ">= 12.16.1"
   },
   "scripts": {
+    "postinstall": "razzle build",
     "analyze": "BUNDLE_ANALYZE=true razzle build",
     "build": "razzle build",
-    "start": "razzle build && NODE_ENV=production node build/server.js",
+    "start": "NODE_ENV=production node build/server.js",
     "start:dev": "razzle start",
     "test": "razzle test --env=jsdom",
     "test:ci": "razzle test --env=jsdom --verbose --runInBand --watchAll=false"
@@ -23,18 +24,11 @@
     ]
   },
   "dependencies": {
-    "@babel/core": "^7.8.7",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/plugin-proposal-decorators": "^7.8.3",
-    "@loadable/babel-plugin": "^5.12.0",
     "@loadable/component": "^5.12.0",
     "@loadable/server": "^5.12.0",
-    "@loadable/webpack-plugin": "^5.12.0",
     "@styled-icons/fa-brands": "^10.0.0",
     "@styled-icons/fa-solid": "^10.0.0",
     "axios": "^0.19.2",
-    "babel-plugin-styled-components": "^1.10.7",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "debounce": "^1.2.0",
     "express": "^4.17.1",
     "formik": "^2.1.4",
@@ -61,13 +55,19 @@
     "styled-components": "^5.0.1",
     "styled-normalize": "^8.0.7",
     "styled-tools": "^1.7.1",
-    "timeago.js": "^4.0.2",
-    "webpack-bundle-analyzer": "^3.6.1"
+    "timeago.js": "^4.0.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-decorators": "^7.8.3",
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
+    "@loadable/babel-plugin": "^5.12.0",
+    "@loadable/webpack-plugin": "^5.12.0",
     "babel-eslint": "^10.1.0",
+    "babel-plugin-styled-components": "^1.10.7",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^6.8.0",
@@ -85,6 +85,7 @@
     "prettier": "^1.19.1",
     "react-test-renderer": "^16.13.1",
     "redux-saga-test-plan": "^4.0.0-rc.3",
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "webpack-bundle-analyzer": "^3.6.1"
   }
 }

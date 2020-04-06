@@ -1,13 +1,11 @@
 ### Future improvements and notes
 
-Reason #1: Explicitness when choosing Redux over others; Faster to get up and running, and mainly smaller learning curve for newcomers to the project
-
-+ Introduce Typescript and add typings across the project
++ Introduce [Typescript](https://github.com/jaredpalmer/razzle/tree/master/examples/with-typescript) and add typings across the project
 + Use hooks for stage management instead of Redux (reason #1)
-+ Use react-testing-library for component testing instead of enzyme (reason #1) 
-+ Use yarn instead of npm for package manager
-+ Simplify the code-splitting/rendered logic in src/renderer.js
++ Use [react-testing-library](https://github.com/testing-library/react-testing-library) for component testing instead of enzyme (reason #1) 
++ Use yarn instead of npm as a package manager
 + Integrate a test step into the deployment process (with coverage reporting)
-+ Rework the project scripts to follow common practice (The current scripts - start, build, etc are enforced by the OpenShift Node.js image)
-+ Move dev-specific packages like babel and webpack plugins to devDependencies
 + Introduce an i18n service to handle translations if required (src/i18n file containing texts currently)
++ Use [semantic-release](https://github.com/semantic-release/semantic-release) to release and version the application; Commit message rules are already enforced by [commitlint](https://github.com/conventional-changelog/commitlint), so feel free to generate changelogs when releasing
+
+*Reason #1: Explicitness when choosing Redux over others; Faster to get up and running, and mainly smaller learning curve for newcomers to the project*
