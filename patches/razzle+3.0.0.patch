@@ -30,15 +30,3 @@ index 815dd94..20fb282 100755
      razzle = require(paths.appRazzleConfig);
      /* eslint-disable no-empty */
    } catch (e) {}
-diff --git a/node_modules/razzle/scripts/start.js b/node_modules/razzle/scripts/start.js
-index 21d5cd8..14341ea 100755
---- a/node_modules/razzle/scripts/start.js
-+++ b/node_modules/razzle/scripts/start.js
-@@ -31,6 +31,7 @@ function main() {
-   // Check for razzle.config.js file
-   if (fs.existsSync(paths.appRazzleConfig)) {
-     try {
-+      console.log(appRazzleConfig);
-       razzle = require(paths.appRazzleConfig);
-     } catch (e) {
-       clearConsole();
