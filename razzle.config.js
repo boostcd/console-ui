@@ -54,6 +54,11 @@ module.exports = {
       }
     }
 
+    // Check for missing required environment variables
+    if (!process.env.PRODUCT_DESCRIPTION || !process.env.GATEWAY_API_SERVICE_URI) {
+      throw new Error('Missing mandatory environment variable configuration!');
+    }
+
     // Define the global environment variables used in the project
     config.plugins.push(
       new webpack.DefinePlugin({

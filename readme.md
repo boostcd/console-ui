@@ -7,7 +7,7 @@ Front-end application for the Estafet Boost project build using React. More abou
 ### Requirements
 
 * [Node.js](https://nodejs.org/en/)
-* Package manager [yarn](https://yarnpkg.com/) or ([npm](https://www.npmjs.com/get-npm), but preferably yarn 📦
+* Package manager [yarn](https://yarnpkg.com/) or [npm](https://www.npmjs.com/get-npm), but preferably yarn 📦
 
 Use the package manager to install the dependencies.
 
@@ -21,24 +21,15 @@ npm install
 
 * **build** - Bundle the application into the build folder
 * **start** - Start the applications in production mode
-* **start:dev** - Start the applications in development mode
-* **test** - Runs the unit test suite using [Jest](https://jestjs.io/)
+* **start:dev** - Start the applications in development (watch) mode
+* **test** - Runs the unit test suite using [Jest](https://jestjs.io/) in match mode
 * **test:ci** - Runs the unit test suite in CI mode (verbose flag set and watch mode disabled)
 * **analyze** - Build the project and analyze the bundle using a [Webpack plugin](https://www.npmjs.com/package/webpack-bundle-analyzer)
-* **postinstall** - Used as a hook to build the application when deploying in OpenShift; This script is skipped by default, enable it by passing `POST_INSTALL=true`
+* **postinstall** - Used as a hook to build the application when deploying in OpenShift; This script is skipped by default; enabled in Openshift with `POST_INSTALL=true`
 
 ### Running locally
 
-Please configure the following environment variables in order to run the project locally:
-
-```bash
-PRODUCT=...
-PRODUCT_DESCRIPTION=...
-GATEWAY_API_SERVICE_URI=...
-TASK_MANAGEMENT_TITLE=...
-```
-
-Use the following command to start the project in development mode:
+Prior to starting the project, please configure the mandatory environment variables listed [here](env.md). Use the following command to start the project in development mode:
 
 ```bash
 yarn start:dev
@@ -46,7 +37,11 @@ OR
 npm run start:dev
 ```
 
-The application will start at [localhost:8080](http://localhost:8080) by default. You can change to a desired port by defining a **PORT** (process.env.PORT) environment variable by [creating a .env file](https://github.com/jaredpalmer/razzle#adding-environment-variables-in-env) inside the root folder. This should be used for development purposes only as the .env files are git-ignored anyway.
+The application will start at [localhost:8080](http://localhost:8080) by default. You can change to a desired port by using the **PORT** environment variable.
+
+### Environment variables
+
+[Read more about environment variables here.](env.md)
 
 ### Technology
 
