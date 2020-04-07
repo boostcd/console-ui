@@ -94,22 +94,20 @@ objects:
     strategy:
       sourceStrategy:
         env:
-          - name: MAVEN_MIRROR_URL
-            value: ${MAVEN_MIRROR_URL}
-          - name: POST_INSTALL
-            value: true
           - name: YARN_ENABLED
             value: true
           - name: YARN_ARGS
             value: "--frozen-lockfile"
-          - name: GATEWAY_API_SERVICE_URI
-            value: 'http://console-gateway-api-${NAMESPACE}.${OPENSHIFT_HOST}'
-          - name: TASK_MANAGEMENT_TITLE
-            value: ${TASK_MANAGEMENT_TITLE}
+          - name: POST_INSTALL
+            value: true
           - name: PRODUCT
             value: ${PRODUCT}
           - name: PRODUCT_DESCRIPTION
             value: ${PRODUCT_DESCRIPTION}
+          - name: TASK_MANAGEMENT_TITLE
+            value: ${TASK_MANAGEMENT_TITLE}
+          - name: GATEWAY_API_SERVICE_URI
+            value: 'http://console-gateway-api-${NAMESPACE}.${OPENSHIFT_HOST}'
         from:
           kind: ImageStreamTag
           name: 'nodejs:10'
