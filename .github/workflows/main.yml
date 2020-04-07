@@ -22,3 +22,6 @@ jobs:
 
     - name: Build the project
       run: yarn build
+      env:
+        PRODUCT_DESCRIPTION: Example product description
+        GATEWAY_API_SERVICE_URI: https://example.api
