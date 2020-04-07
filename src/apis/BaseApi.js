@@ -31,7 +31,7 @@ class BaseApi {
       const { data, headers } = response;
       const { 'content-type': contentType } = headers;
 
-      if (contentType !== 'application/json') {
+      if (!contentType || contentType.indexOf('application/json') === -1) {
         throw new RequestError('Content-Type header is not application/json!');
       }
 

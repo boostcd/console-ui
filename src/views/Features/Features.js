@@ -105,7 +105,13 @@ class Features extends React.PureComponent {
             placeholder={t('features.searchPlaceholder')}
           />
         </PageHeading>
-        <Controls data={data} itemAccessor='features' onStateChange={this.handleStateChange} />
+        <Controls
+          data={data}
+          itemAccessor='features'
+          onStateChange={this.handleStateChange}
+          buttonBuildLabel={t('common.build')}
+          buttonPromoteLabel={t('common.promote')}
+        />
         <Flex mt={3} flexDirection='column-reverse'>
           <Box px={2}>{lastUpdated && <LastUpdated date={lastUpdated} loading={loading} />}</Box>
         </Flex>
