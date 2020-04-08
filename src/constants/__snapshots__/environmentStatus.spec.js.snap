@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Constants: projectStatus should match the snapshot 1`] = `
+exports[`Constants: environmentStatus should match the snapshot 1`] = `
 Object {
   "ACTIVE": "active",
   "TERMINATING": "terminating",

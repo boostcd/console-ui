@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 
-import environmentType from './environment';
 import microserviceType from './microservice';
+import stageType from './stage';
 
 export default PropTypes.arrayOf(
   PropTypes.shape({
-    ...environmentType,
+    ...stageType,
     apps: PropTypes.arrayOf(PropTypes.shape(microserviceType)).isRequired,
   })
 );

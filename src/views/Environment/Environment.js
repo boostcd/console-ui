@@ -11,26 +11,26 @@ import Card from '../../components/Card/Card';
 import Loader from '../../components/Loader/Loader';
 import PageHeading from '../../components/PageHeading/PageHeading';
 import { fetchUsers } from '../../store/users/actions';
-import projectType from '../../types/project';
+import environmentType from '../../types/stage';
 import usersType from '../../types/users';
 import t from '../../utils/translate';
-import ProjectForm from './ProjectForm';
-import { fetchProject } from './state/actions';
+import EnvironmentForm from './EnvironmentForm';
+import { fetchEnvironment } from './state/actions';
 
 const mapStateToProps = (state) => ({
   users: state.users.data,
   usersLoading: state.users.loading,
-  project: state.project.data,
-  projectLoading: state.project.loading,
+  environment: state.environment.data,
+  environmentLoading: state.environment.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchUsers: () => dispatch(fetchUsers()),
-  fetchProject: (namespace) => dispatch(fetchProject(namespace)),
+  fetchEnvironment: (namespace) => dispatch(fetchEnvironment(namespace)),
 });
 
 @connect(mapStateToProps, mapDispatchToProps)
-class Project extends React.PureComponent {
+class Environment extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -46,7 +46,7 @@ class Project extends React.PureComponent {
     this.props.fetchUsers();
 
     if (this.isEditing) {
-      this.props.fetchProject(this.namespace);
+      this.props.fetchEnvironment(this.namespace);
     }
   }
 
@@ -54,42 +54,42 @@ class Project extends React.PureComponent {
     const { history } = this.props;
 
     if (this.isEditing) {
-      await gatewayApi.editProject(this.namespace, {
+      await gatewayApi.editEnvironment(this.namespace, {
         title: data.title,
       });
-      toast.success(t('project.edit.successMessage'));
+      toast.success(t('environment.edit.successMessage'));
     } else {
-      await gatewayApi.createProject({
+      await gatewayApi.createEnvironment({
         title: data.title,
         owner: data.owner,
       });
-      toast.success(t('project.add.successMessage'));
+      toast.success(t('environment.add.successMessage'));
     }
 
     // Redirect back to the list page
-    history.push('/projects');
+    history.push('/environments');
   };
 
   render() {
-    const { users, usersLoading, project, projectLoading } = this.props;
+    const { users, usersLoading, environment, environmentLoading } = this.props;
 
-    if (usersLoading || (projectLoading && this.isEditing)) return <Loader />;
+    if (usersLoading || (environmentLoading && this.isEditing)) return <Loader />;
 
     const pageTitle = this.isEditing
-      ? t('project.edit.pageTitle', { namespace: this.namespace })
-      : t('project.add.pageTitle');
+      ? t('environment.edit.pageTitle', { namespace: this.namespace })
+      : t('environment.add.pageTitle');
 
     return (
       <>
         <Helmet title={pageTitle} />
         <PageHeading title={pageTitle}>
-          <Link to='/projects'>
-            <Button variant='primary'>{t('project.actions.backToList')}</Button>
+          <Link to='/environments'>
+            <Button variant='primary'>{t('environment.actions.backToList')}</Button>
           </Link>
         </PageHeading>
         <Card>
-          <ProjectForm
-            project={this.isEditing ? project : undefined}
+          <EnvironmentForm
+            environment={this.isEditing ? environment : undefined}
             users={users}
             isEditing={this.isEditing}
             onSubmit={this.handleSubmit}
@@ -100,7 +100,7 @@ class Project extends React.PureComponent {
   }
 }
 
-Project.propTypes = {
+Environment.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       namespace: PropTypes.string,
@@ -111,10 +111,10 @@ Project.propTypes = {
   }),
   users: usersType,
   usersLoading: PropTypes.bool,
-  project: PropTypes.shape(projectType),
-  projectLoading: PropTypes.bool,
+  environment: PropTypes.shape(environmentType),
+  environmentLoading: PropTypes.bool,
   fetchUsers: PropTypes.func,
-  fetchProject: PropTypes.func,
+  fetchEnvironment: PropTypes.func,
 };
 
-export default Project;
+export default Environment;

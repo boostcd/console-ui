@@ -22,21 +22,21 @@ class GatewayApi extends BaseApi {
     });
   };
 
-  getProject = async (namespace) => {
+  getEnvironment = async (namespace) => {
     return await this.request({
       method: 'GET',
       url: `/project/${namespace}`,
     });
   };
 
-  getProjects = async () => {
+  getEnvironments = async () => {
     return await this.request({
       method: 'GET',
       url: '/projects',
     });
   };
 
-  createProject = async (data) => {
+  createEnvironment = async (data) => {
     return await this.request({
       method: 'POST',
       url: `/project`,
@@ -44,7 +44,7 @@ class GatewayApi extends BaseApi {
     });
   };
 
-  editProject = async (namespace, data) => {
+  editEnvironment = async (namespace, data) => {
     return await this.request({
       method: 'PUT',
       url: `/project/${namespace}`,
@@ -52,7 +52,7 @@ class GatewayApi extends BaseApi {
     });
   };
 
-  deleteProject = async (namespace) => {
+  deleteEnvironment = async (namespace) => {
     return await this.request({
       method: 'DELETE',
       url: `/project/${namespace}`,

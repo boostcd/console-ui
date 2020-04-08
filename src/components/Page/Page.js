@@ -25,8 +25,8 @@ class Page extends React.PureComponent {
               <Styles.NavigationItem to='/microservices'>
                 {t('microservices.pageTitle')}
               </Styles.NavigationItem>
-              <Styles.NavigationItem to='/projects'>
-                {t('projects.pageTitle')}
+              <Styles.NavigationItem to='/environments'>
+                {t('environments.pageTitle')}
               </Styles.NavigationItem>
               {/* <Styles.NavigationItem to='/libraries'>
                 {t('libraries.pageTitle')}

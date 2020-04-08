@@ -13,8 +13,8 @@ describe('Store: rootReducer', () => {
     expect(reducer).toHaveProperty('features');
     expect(reducer).toHaveProperty('microservice');
     expect(reducer).toHaveProperty('microservices');
-    expect(reducer).toHaveProperty('project');
-    expect(reducer).toHaveProperty('projects');
+    expect(reducer).toHaveProperty('environment');
+    expect(reducer).toHaveProperty('environments');
   });
 
   it('should handle actions and return the correct state', () => {
