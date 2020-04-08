@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components: Select it should match the snapshot [default] 1`] = `
+.c0 {
+  width: 100%;
+  font-size: 0.9rem;
+  outline: none;
+  background: white;
+  height: 2rem;
+  line-height: 2rem;
+  padding: 0 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 3px;
+}
+
+<select
+  className="c0"
+/>
+`;
+
+exports[`Components: Select it should match the snapshot [hasError] 1`] = `
+.c0 {
+  width: 100%;
+  font-size: 0.9rem;
+  outline: none;
+  background: white;
+  height: 2rem;
+  line-height: 2rem;
+  padding: 0 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 3px;
+  border-color: #dc3545;
+}
+
+<select
+  className="c0"
+/>
+`;

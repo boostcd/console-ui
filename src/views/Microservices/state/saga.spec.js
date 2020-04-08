@@ -15,7 +15,7 @@ import { fetchMicroservices } from './saga';
 jest.mock('../../../apis/GatewayApi.js');
 
 describe('Microservices: state/saga', () => {
-  it('should fetch the microservices', () => {
+  it('should fetch the data', () => {
     return expectSaga(fetchMicroservices)
       .put(fetchMicroservicesPending())
       .provide(call.fn(gatewayApi.getMicroservices))

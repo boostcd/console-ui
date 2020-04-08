@@ -1,49 +1,47 @@
 # estafet-openshift-boost-console-ui-react
 
+![Build](https://img.shields.io/github/workflow/status/Estafet-LTD/estafet-openshift-boost-console-ui-react/CI%20Workflow/master) ![Version](https://img.shields.io/github/package-json/v/Estafet-LTD/estafet-openshift-boost-console-ui-react) ![Pull requests](https://img.shields.io/github/issues-pr/Estafet-LTD/estafet-openshift-boost-console-ui-react) ![Issues](https://img.shields.io/github/issues/Estafet-LTD/estafet-openshift-boost-console-ui-react)
+
 Front-end application for the Estafet Boost project build using React. More about requirements, technology stack and how to run in the sections bellow.
 
 ### Requirements
 
 * [Node.js](https://nodejs.org/en/)
-* Package manager ([npm](https://www.npmjs.com/get-npm) or [yarn](https://yarnpkg.com/)), but preferably npm because it's used by OpenShift
+* Package manager [yarn](https://yarnpkg.com/) or [npm](https://www.npmjs.com/get-npm), but preferably yarn 📦
 
 Use the package manager to install the dependencies.
 
 ```bash
-npm install
-OR
 yarn install
+OR
+npm install
 ```
 
 ### Commands
 
 * **build** - Bundle the application into the build folder
 * **start** - Start the applications in production mode
-* **start:dev** - Start the applications in development mode
-* **test** - Runs the unit test suite using [Jest](https://jestjs.io/)
+* **start:dev** - Start the applications in development (watch) mode
+* **test** - Runs the unit test suite using [Jest](https://jestjs.io/) in match mode
 * **test:ci** - Runs the unit test suite in CI mode (verbose flag set and watch mode disabled)
 * **analyze** - Build the project and analyze the bundle using a [Webpack plugin](https://www.npmjs.com/package/webpack-bundle-analyzer)
+* **postinstall** - Used as a hook to build the application when deploying in OpenShift; This script is skipped by default; enabled in Openshift with `POST_INSTALL=true`
 
 ### Running locally
 
-Please configure the following environment variables in order to run the project locally:
+Prior to starting the project, please configure the mandatory environment variables listed [here](env.md). Use the following command to start the project in development mode:
 
 ```bash
-PRODUCT=...
-PRODUCT_DESCRIPTION=...
-GATEWAY_API_SERVICE_URI=...
-TASK_MANAGEMENT_TITLE=...
-```
-
-Use the following command to start the project in development mode:
-
-```bash
-npm run start:dev
-OR
 yarn start:dev
+OR
+npm run start:dev
 ```
 
-The application will start at [localhost:8080](http://localhost:8080) by default. You can change to a desired port by defining a **PORT** (process.env.PORT) environment variable by [creating a .env file](https://github.com/jaredpalmer/razzle#adding-environment-variables-in-env) inside the root folder. This should be used for development purposes only as the .env files are git-ignored anyway.
+The application will start at [localhost:8080](http://localhost:8080) by default. You can change to a desired port by using the **PORT** environment variable.
+
+### Environment variables
+
+[Read more about environment variables here.](env.md)
 
 ### Technology
 

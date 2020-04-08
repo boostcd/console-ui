@@ -11,7 +11,7 @@ import { fetchLibraries } from './saga';
 jest.mock('../../../apis/GatewayApi.js');
 
 describe('Libraries: state/saga', () => {
-  it('should fetch the libraries', () => {
+  it('should fetch the data', () => {
     return expectSaga(fetchLibraries)
       .put(fetchLibrariesPending())
       .provide(call.fn(gatewayApi.getLibraries))

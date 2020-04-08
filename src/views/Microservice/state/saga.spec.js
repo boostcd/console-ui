@@ -19,7 +19,7 @@ describe('Microservice: state/saga', () => {
   const environmentName = 'env-name';
   const appName = 'app-name';
 
-  it('should fetch the microservice', () => {
+  it('should fetch the data', () => {
     return expectSaga(fetchMicroservice, fetchMicroserviceAction(environmentName, appName))
       .put(fetchMicroservicePending())
       .provide(call.fn(gatewayApi.getMicroservices))

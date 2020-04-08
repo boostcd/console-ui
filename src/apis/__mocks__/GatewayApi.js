@@ -1,9 +1,9 @@
+import mockEnvironment from '../examples/environment.json';
+import mockEnvironments from '../examples/environments.json';
 import mockFeatures from '../examples/features.json';
 import mockLibraries from '../examples/libraries.json';
 import mockMicroservice from '../examples/microservice.json';
 import mockMicroservices from '../examples/microservices.json';
-import mockProject from '../examples/project.json';
-import mockProjects from '../examples/projects.json';
 import mockUsers from '../examples/users.json';
 
 /**
@@ -15,8 +15,8 @@ class GatewayApi {
   getMicroservice = () => mockMicroservice;
   getMicroservices = () => mockMicroservices;
 
-  getProject = () => mockProject;
-  getProjects = () => mockProjects;
+  getEnvironment = () => mockEnvironment;
+  getEnvironments = () => mockEnvironments;
 
   getUsers = () => mockUsers;
 

@@ -26,7 +26,16 @@ class BaseApi {
     try {
       const response = await this.instance.request(config);
       // console.info(`${config.method} request to ${config.url} responded with: `, response);
-      return response.data;
+
+      // Throw an error if the Content-Type header is not JSON
+      const { data, headers } = response;
+      const { 'content-type': contentType } = headers;
+
+      if (!contentType || contentType.indexOf('application/json') === -1) {
+        throw new RequestError('Content-Type header is not application/json!');
+      }
+
+      return data;
     } catch (error) {
       const message = `${config.method} request to ${config.url} failed with: ${error.message}`;
 

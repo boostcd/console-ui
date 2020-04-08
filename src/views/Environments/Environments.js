@@ -13,55 +13,55 @@ import DataFallback from '../../components/DataFallback/DataFallback';
 import Loader from '../../components/Loader/Loader';
 import PageHeading from '../../components/PageHeading/PageHeading';
 import Table from '../../components/Table/Table';
-import PROJECT_STATUS from '../../constants/projectStatus';
-import projectsType from '../../types/projects';
+import ENVIRONMENT_STATUS from '../../constants/environmentStatus';
+import environmentsType from '../../types/environments';
 import t from '../../utils/translate';
-import * as Styles from './Projects.styled';
-import { startPollingProjects, stopPollingProjects } from './state/actions';
+import * as Styles from './Environments.styled';
+import { startPollingEnvironments, stopPollingEnvironments } from './state/actions';
 
 const mapStateToProps = (state) => ({
-  data: state.projects.data,
-  loading: state.projects.loading,
-  polling: state.projects.polling,
+  data: state.environments.data,
+  loading: state.environments.loading,
+  polling: state.environments.polling,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  startPolling: () => dispatch(startPollingProjects()),
-  stopPolling: () => dispatch(stopPollingProjects()),
+  startPolling: () => dispatch(startPollingEnvironments()),
+  stopPolling: () => dispatch(stopPollingEnvironments()),
 });
 
 @connect(mapStateToProps, mapDispatchToProps)
-class Projects extends React.PureComponent {
+class Environments extends React.PureComponent {
   confirmToastId = null;
 
   columns = [
     {
-      header: t('projects.tableColumns.title'),
-      render: (project) => {
-        const { title, status } = project;
-        const isTerminating = status === PROJECT_STATUS.TERMINATING;
+      header: t('environments.tableColumns.title'),
+      render: (environment) => {
+        const { title, status } = environment;
+        const isTerminating = status === ENVIRONMENT_STATUS.TERMINATING;
 
         return (
           <div>
             <span>{title}</span>
-            {isTerminating && <Styles.TerminatingIcon title={t('projects.terminating')} />}
+            {isTerminating && <Styles.TerminatingIcon title={t('environments.terminating')} />}
           </div>
         );
       },
     },
     {
-      header: t('projects.tableColumns.owner'),
+      header: t('environments.tableColumns.owner'),
       accessor: 'owner',
     },
     {
-      header: t('projects.tableColumns.namespace'),
+      header: t('environments.tableColumns.namespace'),
       accessor: 'namespace',
     },
     {
-      header: t('projects.tableColumns.actions'),
-      render: (project) => {
-        const { namespace, status } = project;
-        const isTerminating = status === PROJECT_STATUS.TERMINATING;
+      header: t('environments.tableColumns.actions'),
+      render: (environment) => {
+        const { namespace, status } = environment;
+        const isTerminating = status === ENVIRONMENT_STATUS.TERMINATING;
         const editButton = (
           <Button variant='secondary' isDisabled={isTerminating}>
             {t('common.edit')}
@@ -73,7 +73,7 @@ class Projects extends React.PureComponent {
             {isTerminating ? (
               editButton
             ) : (
-              <Link to={`/projects/${namespace}/edit`}>{editButton}</Link>
+              <Link to={`/environments/${namespace}/edit`}>{editButton}</Link>
             )}
             <Button
               variant='secondary'
@@ -102,7 +102,7 @@ class Projects extends React.PureComponent {
         onConfirm={this.handleDeleteConfirm.bind(null, namespace)}
         onCancel={this.handleDeleteCancel}
       >
-        {t('projects.actions.delete.confirm', { namespace })}
+        {t('environments.actions.delete.confirm', { namespace })}
       </ConfirmToast>,
       {
         position: 'top-center',
@@ -114,13 +114,13 @@ class Projects extends React.PureComponent {
 
   handleDeleteConfirm = async (namespace) => {
     toast.dismiss(this.confirmToastId);
-    const infoToastId = toast.info(t('projects.actions.delete.pending', { namespace }), {
+    const infoToastId = toast.info(t('environments.actions.delete.pending', { namespace }), {
       autoClose: false,
     });
 
     try {
-      await gatewayApi.deleteProject(namespace);
-      toast.success(t('projects.actions.delete.success', { namespace }));
+      await gatewayApi.deleteEnvironment(namespace);
+      toast.success(t('environments.actions.delete.success', { namespace }));
 
       // Restarting the polling
       this.props.stopPolling();
@@ -139,14 +139,14 @@ class Projects extends React.PureComponent {
     const { count } = polling;
 
     if (loading && !count) return <Loader />;
-    if (data && !data.length) return <DataFallback title={t('projects.dataFallback')} />;
+    if (data && !data.length) return <DataFallback title={t('environments.dataFallback')} />;
 
     return (
       <>
-        <Helmet title={t('projects.pageTitle')} />
-        <PageHeading title={t('projects.pageTitle')}>
-          <Link to='/projects/add'>
-            <Button variant='primary'>{t('projects.actions.add')}</Button>
+        <Helmet title={t('environments.pageTitle')} />
+        <PageHeading title={t('environments.pageTitle')}>
+          <Link to='/environments/add'>
+            <Button variant='primary'>{t('environments.actions.add')}</Button>
           </Link>
         </PageHeading>
         <Card>
@@ -157,8 +157,8 @@ class Projects extends React.PureComponent {
   }
 }
 
-Projects.propTypes = {
-  data: projectsType,
+Environments.propTypes = {
+  data: environmentsType,
   loading: PropTypes.bool,
   polling: PropTypes.shape({
     count: PropTypes.number,
@@ -167,4 +167,4 @@ Projects.propTypes = {
   stopPolling: PropTypes.func,
 };
 
-export default Projects;
+export default Environments;

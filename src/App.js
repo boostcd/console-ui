@@ -13,9 +13,9 @@ import GlobalStyles from './styles/globalStyles';
 const Features = loadable(() => import('./views/Features/Features'));
 const Microservices = loadable(() => import('./views/Microservices/Microservices'));
 const Microservice = loadable(() => import('./views/Microservice/Microservice'));
-const Projects = loadable(() => import('./views/Projects/Projects'));
-const Project = loadable(() => import('./views/Project/Project'));
-const Libraries = loadable(() => import('./views/Libraries/Libraries'));
+const Environments = loadable(() => import('./views/Environments/Environments'));
+const Environment = loadable(() => import('./views/Environment/Environment'));
+// const Libraries = loadable(() => import('./views/Libraries/Libraries'));
 
 const App = () => (
   <React.StrictMode>
@@ -31,10 +31,10 @@ const App = () => (
           <Route path='/features' component={Features} />
           <Route path='/microservices/:environmentName/:appName' component={Microservice} />
           <Route path='/microservices' component={Microservices} />
-          <Route path='/projects/add' component={Project} />
-          <Route path='/projects/:namespace/edit' component={Project} />
-          <Route path='/projects' component={Projects} />
-          <Route path='/libraries' component={Libraries} />
+          <Route path='/environments/add' component={Environment} />
+          <Route path='/environments/:namespace/edit' component={Environment} />
+          <Route path='/environments' component={Environments} />
+          {/* <Route path='/libraries' component={Libraries} /> */}
           <Route path='*'>
             <Redirect to='/' />
           </Route>

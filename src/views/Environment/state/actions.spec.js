@@ -1,15 +1,15 @@
 import ACTIONS, {
-  fetchProject,
-  fetchProjectFailure,
-  fetchProjectPending,
-  fetchProjectSuccess,
+  fetchEnvironment,
+  fetchEnvironmentFailure,
+  fetchEnvironmentPending,
+  fetchEnvironmentSuccess,
 } from './actions';
 
-describe('Project: state/actions', () => {
+describe('Environment: state/actions', () => {
   it('should create the FETCH action', () => {
     const namespace = 'example-namespace';
 
-    expect(fetchProject(namespace)).toEqual({
+    expect(fetchEnvironment(namespace)).toEqual({
       type: ACTIONS.FETCH,
       payload: {
         namespace,
@@ -18,7 +18,7 @@ describe('Project: state/actions', () => {
   });
 
   it('should create the PENDING action', () => {
-    expect(fetchProjectPending()).toEqual({
+    expect(fetchEnvironmentPending()).toEqual({
       type: ACTIONS.PENDING,
     });
   });
@@ -26,7 +26,7 @@ describe('Project: state/actions', () => {
   it('should create the SUCCESS action', () => {
     const data = [{ foo: 'bar' }];
 
-    expect(fetchProjectSuccess(data)).toEqual({
+    expect(fetchEnvironmentSuccess(data)).toEqual({
       type: ACTIONS.SUCCESS,
       payload: {
         data,
@@ -37,7 +37,7 @@ describe('Project: state/actions', () => {
   it('should create the FAILURE action', () => {
     const error = 'Example error message!';
 
-    expect(fetchProjectFailure(error)).toEqual({
+    expect(fetchEnvironmentFailure(error)).toEqual({
       type: ACTIONS.FAILURE,
       payload: {
         error,

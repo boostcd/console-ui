@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { ifProp } from 'styled-tools';
 
-export default styled.input`
+export default styled.select`
   width: 100%;
   font-size: 0.9rem;
   outline: none;
@@ -12,16 +12,16 @@ export default styled.input`
   border: 1px solid #ced4da;
   border-radius: 3px;
 
-  &::placeholder {
-    color: #c8c8c8;
-    font-size: 0.9rem;
-  }
-
-  &:read-only {
-    color: #495057;
-    background: #e9ecef;
-    border-color: #ced4da;
-  }
+  /* Using pointer-events because read-only is not applicable to a select field */
+  ${ifProp(
+    'readOnly',
+    `
+      pointer-events: none;
+      color: #495057;
+      background: #e9ecef;
+      border-color: #ced4da;
+    `
+  )};
 
   ${ifProp('hasError', `border-color: #dc3545;`)};
 `;

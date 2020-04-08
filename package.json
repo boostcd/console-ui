@@ -1,12 +1,16 @@
 {
   "name": "estafet-openshift-boost-console-ui-react",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "license": "UNLICENSED",
+  "engines": {
+    "node": ">= 10.16.3"
+  },
   "scripts": {
     "analyze": "BUNDLE_ANALYZE=true razzle build",
     "build": "razzle build",
-    "start": "razzle build && NODE_ENV=production node build/server.js",
+    "postinstall": "!(test -n \"$POST_INSTALL\") || razzle build",
+    "start": "NODE_ENV=production node build/server.js",
     "start:dev": "razzle start",
     "test": "razzle test --env=jsdom",
     "test:ci": "razzle test --env=jsdom --verbose --runInBand --watchAll=false"

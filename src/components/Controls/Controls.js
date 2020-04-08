@@ -12,20 +12,16 @@ import * as Styles from './Controls.styled';
 
 class Controls extends React.PureComponent {
   renderBuildAction(environment) {
+    const { buttonBuildLabel } = this.props;
     const { name, state = {} } = environment;
 
     return (
       <Button
         variant='primary'
         preventEvents={state.build}
-        onClick={this.props.onStateChange.bind(
-          null,
-          t('common.buildAll'),
-          gatewayApi.buildAll,
-          name
-        )}
+        onClick={this.props.onStateChange.bind(null, buttonBuildLabel, gatewayApi.buildAll, name)}
       >
-        <span>{t('common.buildAll')}</span>
+        <span>{buttonBuildLabel}</span>
         {state.build && <Styles.StateIcon />}
       </Button>
     );
@@ -47,6 +43,7 @@ class Controls extends React.PureComponent {
   }
 
   renderPromoteAction(environment) {
+    const { buttonPromoteLabel } = this.props;
     const { name, state = {} } = environment;
 
     return (
@@ -55,12 +52,12 @@ class Controls extends React.PureComponent {
         preventEvents={state.promote}
         onClick={this.props.onStateChange.bind(
           null,
-          t('common.promoteAll'),
+          buttonPromoteLabel,
           gatewayApi.promoteAll,
           name
         )}
       >
-        <span>{t('common.promoteAll')}</span>
+        <span>{buttonPromoteLabel}</span>
         {state.promote && <Styles.StateIcon />}
       </Button>
     );
@@ -169,6 +166,14 @@ Controls.propTypes = {
   data: PropTypes.oneOfType([microservicesType, featuresType]).isRequired,
   itemAccessor: PropTypes.string.isRequired,
   onStateChange: PropTypes.func.isRequired,
+  // Custom button labels for specific usage on the features page
+  buttonBuildLabel: PropTypes.string,
+  buttonPromoteLabel: PropTypes.string,
+};
+
+Controls.defaultProps = {
+  buttonBuildLabel: t('common.buildAll'),
+  buttonPromoteLabel: t('common.promoteAll'),
 };
 
 export default Controls;
