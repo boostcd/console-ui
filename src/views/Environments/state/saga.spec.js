@@ -15,7 +15,7 @@ import { fetchEnvironments } from './saga';
 jest.mock('../../../apis/GatewayApi.js');
 
 describe('Environments: state/saga', () => {
-  it('should fetch the environments', () => {
+  it('should fetch the data', () => {
     return expectSaga(fetchEnvironments)
       .put(fetchEnvironmentsPending())
       .provide(call.fn(gatewayApi.getEnvironments))

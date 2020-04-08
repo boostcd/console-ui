@@ -11,7 +11,7 @@ import Card from '../../components/Card/Card';
 import Loader from '../../components/Loader/Loader';
 import PageHeading from '../../components/PageHeading/PageHeading';
 import { fetchUsers } from '../../store/users/actions';
-import environmentType from '../../types/stage';
+import environmentType from '../../types/environment';
 import usersType from '../../types/users';
 import t from '../../utils/translate';
 import EnvironmentForm from './EnvironmentForm';

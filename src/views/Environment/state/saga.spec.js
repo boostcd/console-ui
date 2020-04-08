@@ -18,7 +18,7 @@ jest.mock('../../../apis/GatewayApi.js');
 describe('Environment: state/saga', () => {
   const namespace = 'namespace-name';
 
-  it('should fetch the environment', () => {
+  it('should fetch the data', () => {
     return expectSaga(fetchEnvironment, fetchEnvironmentAction(namespace))
       .put(fetchEnvironmentPending())
       .provide(call.fn(gatewayApi.getEnvironment))
