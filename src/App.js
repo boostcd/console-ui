@@ -8,6 +8,7 @@ import { ToastContainer } from 'react-toastify';
 
 import Page from './components/Page/Page';
 import { TOAST_CONFIG, TOAST_CONTAINERS } from './constants';
+import { PRODUCT_DESCRIPTION } from './constants/env';
 import GlobalStyles from './styles/globalStyles';
 
 const Features = loadable(() => import('./views/Features/Features'));

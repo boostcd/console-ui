@@ -55,7 +55,7 @@ class ToastService {
     );
 
     return toast(component, {
-      containerId: 'confirm',
+      containerId: TOAST_CONTAINERS.CONFIRM,
     });
   }
 }

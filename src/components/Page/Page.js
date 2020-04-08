@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+import { PRODUCT_DESCRIPTION, TASK_MANAGEMENT_TITLE } from '../../constants/env';
 import t from '../../utils/translate';
 import logo from './logo.png';
 import * as Styles from './Page.styled';
@@ -20,7 +21,7 @@ class Page extends React.PureComponent {
             </NavLink>
             <Styles.Navigation>
               <Styles.NavigationItem to='/features'>
-                {TASK_MANAGEMENT_TITLE ? TASK_MANAGEMENT_TITLE : t('features.pageTitle')}
+                {TASK_MANAGEMENT_TITLE || t('features.pageTitle')}
               </Styles.NavigationItem>
               <Styles.NavigationItem to='/microservices'>
                 {t('microservices.pageTitle')}

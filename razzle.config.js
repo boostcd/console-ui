@@ -54,21 +54,22 @@ module.exports = {
       }
     }
 
+    // TODO: Uncomment me when the environment variables can be loaded only once during build
     // Check for missing required environment variables
-    if (!process.env.PRODUCT_DESCRIPTION || !process.env.GATEWAY_API_SERVICE_URI) {
-      throw new Error('Missing mandatory environment variable configuration!');
-    }
+    // if (!process.env.PRODUCT_DESCRIPTION || !process.env.GATEWAY_API_SERVICE_URI) {
+    //   throw new Error('Missing mandatory environment variable configuration!');
+    // }
 
     // Define the global environment variables used in the project
-    config.plugins.push(
-      new webpack.DefinePlugin({
-        PORT: JSON.stringify(process.env.PORT),
-        PRODUCT: JSON.stringify(process.env.PRODUCT),
-        PRODUCT_DESCRIPTION: JSON.stringify(process.env.PRODUCT_DESCRIPTION),
-        GATEWAY_API_SERVICE_URI: JSON.stringify(process.env.GATEWAY_API_SERVICE_URI),
-        TASK_MANAGEMENT_TITLE: JSON.stringify(process.env.TASK_MANAGEMENT_TITLE),
-      })
-    );
+    // config.plugins.push(
+    //   new webpack.DefinePlugin({
+    //     PORT: JSON.stringify(process.env.PORT),
+    //     PRODUCT: JSON.stringify(process.env.PRODUCT),
+    //     PRODUCT_DESCRIPTION: JSON.stringify(process.env.PRODUCT_DESCRIPTION),
+    //     GATEWAY_API_SERVICE_URI: JSON.stringify(process.env.GATEWAY_API_SERVICE_URI),
+    //     TASK_MANAGEMENT_TITLE: JSON.stringify(process.env.TASK_MANAGEMENT_TITLE),
+    //   })
+    // );
 
     return config;
   },

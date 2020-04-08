@@ -12,6 +12,7 @@ import LastUpdated from '../../components/LastUpdated/LastUpdated';
 import Loader from '../../components/Loader/Loader';
 import PageHeading from '../../components/PageHeading/PageHeading';
 import { DEBOUNCE_DELAY } from '../../constants';
+import { TASK_MANAGEMENT_TITLE } from '../../constants/env';
 import featuresType from '../../types/features';
 import ToastService from '../../utils/ToastService';
 import t from '../../utils/translate';
@@ -89,7 +90,7 @@ class Features extends React.PureComponent {
     if (loading && !count) return <Loader />;
     if (data && !data.length) return <DataFallback title={t('features.dataFallback')} />;
 
-    const pageTitle = TASK_MANAGEMENT_TITLE ? TASK_MANAGEMENT_TITLE : t('features.pageTitle');
+    const pageTitle = TASK_MANAGEMENT_TITLE || t('features.pageTitle');
 
     return (
       <>

@@ -19,12 +19,13 @@ npm install
 
 ### Commands
 
-* **build** - Bundle the application into the build folder
+
 * **start** - Start the applications in production mode
 * **start:dev** - Start the applications in development (watch) mode
+* **build** - Bundle the application into the build folder
+* **build:analyze** - Build the project and analyze the bundle using a [Webpack plugin](https://www.npmjs.com/package/webpack-bundle-analyzer)
 * **test** - Runs the unit test suite using [Jest](https://jestjs.io/) in match mode
 * **test:ci** - Runs the unit test suite in CI mode (verbose flag set and watch mode disabled)
-* **analyze** - Build the project and analyze the bundle using a [Webpack plugin](https://www.npmjs.com/package/webpack-bundle-analyzer)
 * **postinstall** - Used as a hook to build the application when deploying in OpenShift; This script is skipped by default; enabled in Openshift with `POST_INSTALL=true`
 
 ### Running locally

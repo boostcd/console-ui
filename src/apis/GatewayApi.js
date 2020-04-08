@@ -1,3 +1,4 @@
+import { GATEWAY_API_SERVICE_URI } from '../constants/env';
 import BaseApi from './BaseApi';
 
 class GatewayApi extends BaseApi {

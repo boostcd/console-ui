@@ -7,13 +7,6 @@
       "jsx": true
     }
   },
-  "globals": {
-    "PORT": true,
-    "PRODUCT": true,
-    "PRODUCT_DESCRIPTION": true,
-    "GATEWAY_API_SERVICE_URI": true,
-    "TASK_MANAGEMENT_TITLE": true
-  },
   "env": {
     "node": true,
     "es6": true,
