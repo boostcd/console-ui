@@ -1,5 +1,4 @@
-// TODO: Update the values with the correct enums
 export default {
-  NOT_PROMOTED: 0,
-  PARTIALLY_PROMOTED: 1,
+  NOT_PROMOTED: 'NOT_PROMOTED',
+  PARTIALLY_PROMOTED: 'PARTIALLY_PROMOTED',
 };
