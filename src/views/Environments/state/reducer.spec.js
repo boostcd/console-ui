@@ -1,14 +1,14 @@
 import MockDate from '../../../utils/MockDate';
 import {
-  fetchProjectsFailure,
-  fetchProjectsPending,
-  fetchProjectsSuccess,
-  startPollingProjects,
-  stopPollingProjects,
+  fetchEnvironmentsFailure,
+  fetchEnvironmentsPending,
+  fetchEnvironmentsSuccess,
+  startPollingEnvironments,
+  stopPollingEnvironments,
 } from './actions';
 import reducer, { initialState } from './reducer';
 
-describe('Projects: state/reducer', () => {
+describe('Environments: state/reducer', () => {
   it('should have an initial state', () => {
     expect(reducer()).toEqual(initialState);
   });
@@ -23,7 +23,7 @@ describe('Projects: state/reducer', () => {
 
   describe('POLL_START', () => {
     it('should handle the action', () => {
-      const action = startPollingProjects();
+      const action = startPollingEnvironments();
 
       expect(reducer(undefined, action)).toEqual({
         ...initialState,
@@ -45,7 +45,7 @@ describe('Projects: state/reducer', () => {
         },
       };
 
-      const action = stopPollingProjects();
+      const action = stopPollingEnvironments();
 
       expect(reducer(state, action)).toEqual({
         ...initialState,
@@ -65,7 +65,7 @@ describe('Projects: state/reducer', () => {
         loading: false,
       };
 
-      const action = fetchProjectsPending();
+      const action = fetchEnvironmentsPending();
 
       expect(reducer(state, action)).toEqual({
         ...initialState,
@@ -99,7 +99,7 @@ describe('Projects: state/reducer', () => {
       };
 
       const data = [{ foo: 'bar' }];
-      const action = fetchProjectsSuccess(data);
+      const action = fetchEnvironmentsSuccess(data);
 
       expect(reducer(state, action)).toEqual({
         ...initialState,
@@ -123,7 +123,7 @@ describe('Projects: state/reducer', () => {
         loading: true,
       };
 
-      const action = fetchProjectsFailure();
+      const action = fetchEnvironmentsFailure();
 
       expect(reducer(state, action)).toEqual({
         ...initialState,

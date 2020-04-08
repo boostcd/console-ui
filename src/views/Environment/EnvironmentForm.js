@@ -5,30 +5,30 @@ import React from 'react';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import Select from '../../components/Select/Select';
-import projectType from '../../types/project';
+import environmentType from '../../types/environment';
 import usersType from '../../types/users';
 import t from '../../utils/translate';
-import * as Styles from './ProjectForm.styled';
+import * as Styles from './EnvironmentForm.styled';
 
-const ProjectForm = (props) => {
-  const { project, users, isEditing, onSubmit } = props;
+const EnvironmentForm = (props) => {
+  const { environment, users, isEditing, onSubmit } = props;
 
   const formik = useFormik({
     initialValues: {
-      title: project.title || '',
-      namespace: project.namespace || '',
-      owner: project.owner || '',
+      title: environment.title || '',
+      namespace: environment.namespace || '',
+      owner: environment.owner || '',
     },
     onSubmit,
     validate: (values) => {
       let errors = {};
 
       if (!values.title) {
-        errors.title = t('project.form.errors.title');
+        errors.title = t('environment.form.errors.title');
       }
 
       if (!values.owner) {
-        errors.owner = t('project.form.errors.owner');
+        errors.owner = t('environment.form.errors.owner');
       }
 
       return errors;
@@ -41,7 +41,7 @@ const ProjectForm = (props) => {
     <Styles.Wrapper>
       <form onSubmit={formik.handleSubmit}>
         <Styles.InputGroup>
-          <Styles.InputLabel htmlFor='title'>{t('project.form.title')}</Styles.InputLabel>
+          <Styles.InputLabel htmlFor='title'>{t('environment.form.title')}</Styles.InputLabel>
           <Input
             type='text'
             id='title'
@@ -54,7 +54,9 @@ const ProjectForm = (props) => {
         </Styles.InputGroup>
         {isEditing && (
           <Styles.InputGroup>
-            <Styles.InputLabel htmlFor='namespace'>{t('project.form.namespace')}</Styles.InputLabel>
+            <Styles.InputLabel htmlFor='namespace'>
+              {t('environment.form.namespace')}
+            </Styles.InputLabel>
             <Input
               type='text'
               id='namespace'
@@ -66,7 +68,7 @@ const ProjectForm = (props) => {
           </Styles.InputGroup>
         )}
         <Styles.InputGroup>
-          <Styles.InputLabel htmlFor='owner'>{t('project.form.owner')}</Styles.InputLabel>
+          <Styles.InputLabel htmlFor='owner'>{t('environment.form.owner')}</Styles.InputLabel>
           <Select
             id='owner'
             name='owner'
@@ -94,16 +96,16 @@ const ProjectForm = (props) => {
   );
 };
 
-ProjectForm.propTypes = {
-  project: PropTypes.shape(projectType),
+EnvironmentForm.propTypes = {
+  environment: PropTypes.shape(environmentType),
   users: usersType,
   isEditing: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 
-ProjectForm.defaultProps = {
-  project: {},
+EnvironmentForm.defaultProps = {
+  environment: {},
   users: [],
 };
 
-export default ProjectForm;
+export default EnvironmentForm;

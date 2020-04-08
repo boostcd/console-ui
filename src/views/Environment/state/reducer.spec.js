@@ -1,7 +1,11 @@
-import { fetchProjectFailure, fetchProjectPending, fetchProjectSuccess } from './actions';
+import {
+  fetchEnvironmentFailure,
+  fetchEnvironmentPending,
+  fetchEnvironmentSuccess,
+} from './actions';
 import reducer, { initialState } from './reducer';
 
-describe('Project: state/reducer', () => {
+describe('Environment: state/reducer', () => {
   it('should have an initial state', () => {
     expect(reducer()).toEqual(initialState);
   });
@@ -22,7 +26,7 @@ describe('Project: state/reducer', () => {
         loading: false,
       };
 
-      const action = fetchProjectPending();
+      const action = fetchEnvironmentPending();
 
       expect(reducer(state, action)).toEqual({
         ...initialState,
@@ -41,7 +45,7 @@ describe('Project: state/reducer', () => {
       };
 
       const data = [{ foo: 'bar' }];
-      const action = fetchProjectSuccess(data);
+      const action = fetchEnvironmentSuccess(data);
 
       expect(reducer(state, action)).toEqual({
         ...initialState,
@@ -60,7 +64,7 @@ describe('Project: state/reducer', () => {
         loading: true,
       };
 
-      const action = fetchProjectFailure();
+      const action = fetchEnvironmentFailure();
 
       expect(reducer(state, action)).toEqual({
         ...initialState,
