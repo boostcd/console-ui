@@ -1,26 +1,26 @@
 import ACTIONS, {
-  fetchProjectsFailure,
-  fetchProjectsPending,
-  fetchProjectsSuccess,
-  startPollingProjects,
-  stopPollingProjects,
+  fetchEnvironmentsFailure,
+  fetchEnvironmentsPending,
+  fetchEnvironmentsSuccess,
+  startPollingEnvironments,
+  stopPollingEnvironments,
 } from './actions';
 
-describe('Projects: state/actions', () => {
+describe('Environments: state/actions', () => {
   it('should create the POLL_START action', () => {
-    expect(startPollingProjects()).toEqual({
+    expect(startPollingEnvironments()).toEqual({
       type: ACTIONS.POLL_START,
     });
   });
 
   it('should create the POLL_STOP action', () => {
-    expect(stopPollingProjects()).toEqual({
+    expect(stopPollingEnvironments()).toEqual({
       type: ACTIONS.POLL_STOP,
     });
   });
 
   it('should create the PENDING action', () => {
-    expect(fetchProjectsPending()).toEqual({
+    expect(fetchEnvironmentsPending()).toEqual({
       type: ACTIONS.PENDING,
     });
   });
@@ -28,7 +28,7 @@ describe('Projects: state/actions', () => {
   it('should create the SUCCESS action', () => {
     const data = [{ foo: 'bar' }];
 
-    expect(fetchProjectsSuccess(data)).toEqual({
+    expect(fetchEnvironmentsSuccess(data)).toEqual({
       type: ACTIONS.SUCCESS,
       payload: {
         data,
@@ -39,7 +39,7 @@ describe('Projects: state/actions', () => {
   it('should create the FAILURE action', () => {
     const error = 'Example error message!';
 
-    expect(fetchProjectsFailure(error)).toEqual({
+    expect(fetchEnvironmentsFailure(error)).toEqual({
       type: ACTIONS.FAILURE,
       payload: {
         error,

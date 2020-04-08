@@ -9,23 +9,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x]
+    timeout-minutes: 5
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
+    - uses: actions/checkout@v2
 
     - name: Install node packages from registry
-      run: npm ci
-
-    - name: Build the project
-      run: npm run build
+      run: yarn install --frozen-lockfile
 
     - name: Run the tests
-      run: npm run test:ci
+      run: yarn test:ci
+
+    - name: Build the project
+      run: yarn build
+      env:
+        PRODUCT_DESCRIPTION: Example product description
+        GATEWAY_API_SERVICE_URI: https://example.api

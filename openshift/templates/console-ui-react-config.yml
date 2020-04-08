@@ -32,15 +32,6 @@ parameters:
 - description: Defines the product that this template is related to
   name: PRODUCT
   required: true
-- description: Defines the product description that this template is related to
-  name: PRODUCT_DESCRIPTION
-  required: true
-- description: Defines the host Openshift is running on
-  name: OPENSHIFT_HOST
-  required: true
-- description: Defines the tasks manager title
-  name: TASK_MANAGEMENT_TITLE
-  required: true
 objects:
 - apiVersion: v1
   kind: DeploymentConfig
@@ -75,15 +66,6 @@ objects:
           deploymentconfig: ${MICROSERVICE}
       spec:
         containers:
-          - env:
-              - name: GATEWAY_API_SERVICE_URI
-                value: 'http://console-gateway-api-${NAMESPACE}.${OPENSHIFT_HOST}'
-              - name: TASK_MANAGEMENT_TITLE
-                value: ${TASK_MANAGEMENT_TITLE}
-              - name: PRODUCT
-                value: ${PRODUCT}
-              - name: PRODUCT_DESCRIPTION
-                value: ${PRODUCT_DESCRIPTION}
             image: ${DOCKER_REGISTRY}/${DOCKER_NAMESPACE}/${MICROSERVICE}:${DOCKER_IMAGE_LABEL}
             imagePullPolicy: Always
             name: ${MICROSERVICE}

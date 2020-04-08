@@ -26,16 +26,15 @@ class BaseApi {
    * Extract the data from the standardized response format
    * https://stackoverflow.com/questions/12806386/standard-json-api-response-format/12979961#12979961
    */
-  extractData(response) {
-    const { data: responseData = {} } = response;
+  extractData(responseData) {
     const { status, data, message } = responseData;
 
-    if (status !== REQUEST_RESPONSE_STATUS.ERROR && status !== REQUEST_RESPONSE_STATUS.SUCCESS) {
-      console.warn('API response status field not following the established format');
+    if (status !== REQUEST_RESPONSE_STATUS.SUCCESS && status !== REQUEST_RESPONSE_STATUS.ERROR) {
+      throw new Error('API: Response status not following the established format!');
     }
 
     if (status === REQUEST_RESPONSE_STATUS.ERROR) {
-      throw new Error(message || 'Something went wrong when extracting the data from the response');
+      throw new Error(message || 'API: Response error message not defined!');
     }
 
     return data;
@@ -46,7 +45,15 @@ class BaseApi {
       const response = await this.instance.request(config);
       // console.info(`${config.method} request to ${config.url} responded with: `, response);
 
-      return this.extractData(response);
+      // Throw an error if the Content-Type header is not JSON
+      const { data, headers } = response;
+      const { 'content-type': contentType } = headers;
+
+      if (!contentType || contentType.indexOf('application/json') === -1) {
+        throw new RequestError('API: Content-Type header is not application/json!');
+      }
+
+      return this.extractData(data);
     } catch (error) {
       const message = `${config.method} request to ${config.url} failed with: ${error.message}`;
 

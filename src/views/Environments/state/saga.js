@@ -3,19 +3,19 @@ import { call, delay, put, race, take } from 'redux-saga/effects';
 import gatewayApi from '../../../apis/GatewayApi';
 import { POLLING_DELAY } from '../../../constants';
 import ACTIONS, {
-  fetchProjectsFailure,
-  fetchProjectsPending,
-  fetchProjectsSuccess,
+  fetchEnvironmentsFailure,
+  fetchEnvironmentsPending,
+  fetchEnvironmentsSuccess,
 } from './actions';
 
-export function* fetchProjects() {
+export function* fetchEnvironments() {
   while (true) {
     try {
-      yield put(fetchProjectsPending());
-      const data = yield call(gatewayApi.getProjects);
-      yield put(fetchProjectsSuccess(data));
+      yield put(fetchEnvironmentsPending());
+      const data = yield call(gatewayApi.getEnvironments);
+      yield put(fetchEnvironmentsSuccess(data));
     } catch (error) {
-      yield put(fetchProjectsFailure(error));
+      yield put(fetchEnvironmentsFailure(error));
     } finally {
       yield delay(POLLING_DELAY);
     }
@@ -25,6 +25,6 @@ export function* fetchProjects() {
 export default function*() {
   while (true) {
     yield take(ACTIONS.POLL_START);
-    yield race([call(fetchProjects), take(ACTIONS.POLL_STOP)]);
+    yield race([call(fetchEnvironments), take(ACTIONS.POLL_STOP)]);
   }
 }

@@ -1,13 +1,11 @@
 import PropTypes from 'prop-types';
 
-import { actionsType, stateType } from './common';
+import ENVIRONMENT_STATUS from '../constants/environmentStatus';
 
 export default {
-  name: PropTypes.string.isRequired,
-  displayName: PropTypes.string.isRequired,
-  updatedDate: PropTypes.string.isRequired,
-  actions: PropTypes.shape(actionsType).isRequired,
-  state: PropTypes.shape(stateType).isRequired,
-  tested: PropTypes.bool,
-  indicatorColour: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  owner: PropTypes.string.isRequired,
+  namespace: PropTypes.string.isRequired,
+  status: PropTypes.oneOf([ENVIRONMENT_STATUS.ACTIVE, ENVIRONMENT_STATUS.TERMINATING]),
+  // apps: PropTypes.arrayOf(PropTypes.string),
 };

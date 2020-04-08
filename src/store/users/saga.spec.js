@@ -11,7 +11,7 @@ import { fetchUsers } from './saga';
 jest.mock('../../apis/GatewayApi.js');
 
 describe('Users: saga', () => {
-  it('should fetch the users', () => {
+  it('should fetch the data', () => {
     return expectSaga(fetchUsers)
       .put(fetchUsersPending())
       .provide(call.fn(gatewayApi.getUsers))

@@ -52,15 +52,15 @@ export default {
       backToList: 'Back to list',
     },
   },
-  projects: {
-    pageTitle: 'Projects',
-    dataFallback: 'No projects available!',
+  environments: {
+    pageTitle: 'Environments',
+    dataFallback: 'No environments available!',
     actions: {
-      add: 'Add project',
+      add: 'Add environment',
       delete: {
-        confirm: 'Are you sure you want to delete project - {{namespace}}?',
-        pending: 'Deleting project {{namespace}}...',
-        success: 'Project {{namespace}} is marked for deletion!',
+        confirm: 'Are you sure you want to delete environment - {{namespace}}?',
+        pending: 'Deleting environment {{namespace}}...',
+        success: 'Environment {{namespace}} is marked for deletion!',
       },
     },
     tableColumns: {
@@ -69,19 +69,28 @@ export default {
       namespace: 'Namespace',
       actions: 'Actions',
     },
-    terminating: 'Project was marked for deletion!',
+    terminating: 'Environment was marked for deletion!',
   },
-  project: {
+  environment: {
     actions: {
       backToList: 'Back to list',
     },
+    form: {
+      title: 'Title:',
+      owner: 'Owner:',
+      namespace: 'Namespace:',
+      errors: {
+        title: 'Please enter a environment title!',
+        owner: 'Please select a environment owner!',
+      },
+    },
     add: {
-      pageTitle: 'Add project',
-      successMessage: 'Successfully added a new project!',
+      pageTitle: 'Add environment',
+      successMessage: 'Successfully added a new environment!',
     },
     edit: {
-      pageTitle: 'Edit project: {{namespace}}',
-      successMessage: 'Successfully edited a project!',
+      pageTitle: 'Edit environment: {{namespace}}',
+      successMessage: 'Successfully edited a environment!',
     },
   },
   libraries: {
