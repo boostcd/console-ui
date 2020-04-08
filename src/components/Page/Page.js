@@ -28,9 +28,9 @@ class Page extends React.PureComponent {
               <Styles.NavigationItem to='/environments'>
                 {t('environments.pageTitle')}
               </Styles.NavigationItem>
-              {/* <Styles.NavigationItem to='/libraries'>
+              <Styles.NavigationItem to='/libraries'>
                 {t('libraries.pageTitle')}
-              </Styles.NavigationItem> */}
+              </Styles.NavigationItem>
             </Styles.Navigation>
           </Styles.HeaderContainer>
         </Styles.Header>
