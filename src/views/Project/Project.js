@@ -53,16 +53,16 @@ class Project extends React.PureComponent {
   handleSubmit = async (data) => {
     const { history } = this.props;
 
-    const projectData = {
-      title: data.title,
-      owner: data.owner,
-    };
-
     if (this.isEditing) {
-      await gatewayApi.editProject(this.namespace, projectData);
+      await gatewayApi.editProject(this.namespace, {
+        title: data.title,
+      });
       toast.success(t('project.edit.successMessage'));
     } else {
-      await gatewayApi.createProject(projectData);
+      await gatewayApi.createProject({
+        title: data.title,
+        owner: data.owner,
+      });
       toast.success(t('project.add.successMessage'));
     }
 

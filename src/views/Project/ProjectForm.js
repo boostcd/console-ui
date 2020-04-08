@@ -73,6 +73,7 @@ const ProjectForm = (props) => {
             value={formik.values.owner}
             onChange={formik.handleChange}
             hasError={!!formik.errors.owner}
+            readOnly={isEditing}
           >
             <option value=''></option>
             {users.map((user) => (

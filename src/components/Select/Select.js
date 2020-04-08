@@ -12,5 +12,16 @@ export default styled.select`
   border: 1px solid #ced4da;
   border-radius: 3px;
 
+  /* Using pointer-events because read-only is not applicable to a select field */
+  ${ifProp(
+    'readOnly',
+    `
+      pointer-events: none;
+      color: #495057;
+      background: #e9ecef;
+      border-color: #ced4da;
+    `
+  )};
+
   ${ifProp('hasError', `border-color: #dc3545;`)};
 `;
