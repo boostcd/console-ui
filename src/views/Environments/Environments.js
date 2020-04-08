@@ -3,18 +3,17 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
 import gatewayApi from '../../apis/GatewayApi';
 import Button from '../../components/Button/Button';
 import Card from '../../components/Card/Card';
-import ConfirmToast from '../../components/ConfirmToast/ConfirmToast';
 import DataFallback from '../../components/DataFallback/DataFallback';
 import Loader from '../../components/Loader/Loader';
 import PageHeading from '../../components/PageHeading/PageHeading';
 import Table from '../../components/Table/Table';
 import ENVIRONMENT_STATUS from '../../constants/environmentStatus';
 import environmentsType from '../../types/environments';
+import ToastService from '../../utils/ToastService';
 import t from '../../utils/translate';
 import * as Styles from './Environments.styled';
 import { startPollingEnvironments, stopPollingEnvironments } from './state/actions';
@@ -70,6 +69,13 @@ class Environments extends React.PureComponent {
 
         return (
           <Styles.TableActions>
+            <Button
+              variant='secondary'
+              isDisabled={isTerminating}
+              onClick={this.handleRebuild.bind(this, namespace)}
+            >
+              {t('common.rebuild')}
+            </Button>
             {isTerminating ? (
               editButton
             ) : (
@@ -94,44 +100,55 @@ class Environments extends React.PureComponent {
 
   componentWillUnmount() {
     this.props.stopPolling();
+    ToastService.dismiss(this.confirmToastId);
   }
 
+  handleConfirmCancel = () => {
+    ToastService.dismiss(this.confirmToastId);
+  };
+
+  handleRebuild = (namespace) => {
+    this.confirmToastId = ToastService.confirm({
+      text: t('environments.actions.rebuild.confirm', { namespace }),
+      onConfirm: this.handleRebuildConfirm.bind(null, namespace),
+      onCancel: this.handleConfirmCancel,
+    });
+  };
+
   handleDelete = (namespace) => {
-    this.confirmToastId = toast(
-      <ConfirmToast
-        onConfirm={this.handleDeleteConfirm.bind(null, namespace)}
-        onCancel={this.handleDeleteCancel}
-      >
-        {t('environments.actions.delete.confirm', { namespace })}
-      </ConfirmToast>,
-      {
-        position: 'top-center',
-        autoClose: false,
-        closeOnClick: false,
-      }
-    );
+    this.confirmToastId = ToastService.confirm({
+      text: t('environments.actions.delete.confirm', { namespace }),
+      onConfirm: this.handleDeleteConfirm.bind(null, namespace),
+      onCancel: this.handleConfirmCancel,
+    });
+  };
+
+  handleRebuildConfirm = async (namespace) => {
+    ToastService.dismiss(this.confirmToastId);
+    const infoToastId = ToastService.info(t('environments.actions.rebuild.pending', { namespace }));
+
+    try {
+      await gatewayApi.rebuildEnvironment(namespace);
+      ToastService.success(t('environments.actions.rebuild.success', { namespace }));
+    } finally {
+      ToastService.dismiss(infoToastId);
+    }
   };
 
   handleDeleteConfirm = async (namespace) => {
-    toast.dismiss(this.confirmToastId);
-    const infoToastId = toast.info(t('environments.actions.delete.pending', { namespace }), {
-      autoClose: false,
-    });
+    ToastService.dismiss(this.confirmToastId);
+    const infoToastId = ToastService.info(t('environments.actions.delete.pending', { namespace }));
 
     try {
       await gatewayApi.deleteEnvironment(namespace);
-      toast.success(t('environments.actions.delete.success', { namespace }));
+      ToastService.success(t('environments.actions.delete.success', { namespace }));
 
       // Restarting the polling
       this.props.stopPolling();
       this.props.startPolling();
     } finally {
-      toast.dismiss(infoToastId);
+      ToastService.dismiss(infoToastId);
     }
-  };
-
-  handleDeleteCancel = () => {
-    toast.dismiss(this.confirmToastId);
   };
 
   render() {

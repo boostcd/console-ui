@@ -16,6 +16,7 @@ export default {
     promote: 'Promote',
     promoteAll: 'Promote all',
     release: 'Release',
+    rebuild: 'Rebuild',
     goLive: 'Go live!',
     backOut: 'Back out!',
     name: 'Name',
@@ -61,6 +62,11 @@ export default {
         confirm: 'Are you sure you want to delete environment - {{namespace}}?',
         pending: 'Deleting environment {{namespace}}...',
         success: 'Environment {{namespace}} is marked for deletion!',
+      },
+      rebuild: {
+        confirm: 'Are you sure you want to rebuild environment - {{namespace}}?',
+        pending: 'Rebuilding environment {{namespace}}...',
+        success: 'Environment {{namespace}} started rebuilding!',
       },
     },
     tableColumns: {

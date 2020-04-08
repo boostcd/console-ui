@@ -59,6 +59,13 @@ class GatewayApi extends BaseApi {
     });
   };
 
+  rebuildEnvironment = async (namespace) => {
+    return await this.request({
+      method: 'POST',
+      url: `/project/${namespace}/rebuild`,
+    });
+  };
+
   getUsers = async () => {
     return await this.request({
       method: 'GET',

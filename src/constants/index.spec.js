@@ -1,4 +1,10 @@
-import { DEBOUNCE_DELAY, POLLING_DELAY, REQUEST_TIMEOUT, TOAST_CONFIG } from './index';
+import {
+  DEBOUNCE_DELAY,
+  POLLING_DELAY,
+  REQUEST_TIMEOUT,
+  TOAST_CONFIG,
+  TOAST_CONTAINERS,
+} from './index';
 
 describe('Constants', () => {
   it('should have the REQUEST_TIMEOUT defined', () => {
@@ -18,5 +24,9 @@ describe('Constants', () => {
 
   it('should match the snapshot - TOAST_CONFIG', () => {
     expect(TOAST_CONFIG).toMatchSnapshot();
+  });
+
+  it('should match the snapshot - TOAST_CONTAINERS', () => {
+    expect(TOAST_CONTAINERS).toMatchSnapshot();
   });
 });

@@ -3,6 +3,14 @@
 exports[`Constants should match the snapshot - TOAST_CONFIG 1`] = `
 Object {
   "AUTO_CLOSE": 5000,
+  "AUTO_CLOSE_SUCCESS": 2500,
   "MAX_VISIBLE": 2,
+}
+`;
+
+exports[`Constants should match the snapshot - TOAST_CONTAINERS 1`] = `
+Object {
+  "CONFIRM": "confirm",
+  "MAIN": "main",
 }
 `;

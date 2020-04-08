@@ -7,7 +7,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import Page from './components/Page/Page';
-import { TOAST_CONFIG } from './constants';
+import { TOAST_CONFIG, TOAST_CONTAINERS } from './constants';
 import GlobalStyles from './styles/globalStyles';
 
 const Features = loadable(() => import('./views/Features/Features'));
@@ -22,7 +22,20 @@ const App = () => (
     <HelmetProvider>
       <Helmet titleTemplate={`${PRODUCT_DESCRIPTION} - %s`} />
       <GlobalStyles />
-      <ToastContainer autoClose={TOAST_CONFIG.AUTO_CLOSE} pauseOnFocusLoss={false} />
+      <ToastContainer
+        containerId={TOAST_CONTAINERS.MAIN}
+        position='top-right'
+        autoClose={TOAST_CONFIG.AUTO_CLOSE}
+        pauseOnFocusLoss={false}
+        enableMultiContainer
+      />
+      <ToastContainer
+        containerId={TOAST_CONTAINERS.CONFIRM}
+        position='top-center'
+        autoClose={false}
+        closeOnClick={false}
+        enableMultiContainer
+      />
       <Page>
         <Switch>
           <Route exact path='/'>
