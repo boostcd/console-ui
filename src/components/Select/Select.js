@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { ifProp } from 'styled-tools';
 
-export const Wrapper = styled.input`
+export default styled.select`
   width: 100%;
   font-size: 0.9rem;
   outline: none;
@@ -11,8 +12,5 @@ export const Wrapper = styled.input`
   border: 1px solid #ced4da;
   border-radius: 3px;
 
-  &::placeholder {
-    color: #c8c8c8;
-    font-size: 0.9rem;
-  }
+  ${ifProp('hasError', `border-color: #dc3545;`)};
 `;

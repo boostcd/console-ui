@@ -75,6 +75,15 @@ export default {
     actions: {
       backToList: 'Back to list',
     },
+    form: {
+      title: 'Title:',
+      owner: 'Owner:',
+      namespace: 'Namespace:',
+      errors: {
+        title: 'Please enter a project title!',
+        owner: 'Please select a project owner!',
+      },
+    },
     add: {
       pageTitle: 'Add project',
       successMessage: 'Successfully added a new project!',

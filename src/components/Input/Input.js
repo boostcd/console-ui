@@ -1,22 +1,27 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import styled from 'styled-components';
+import { ifProp } from 'styled-tools';
 
-import * as Styles from './Input.styled';
+export default styled.input`
+  width: 100%;
+  font-size: 0.9rem;
+  outline: none;
+  background: white;
+  height: 2rem;
+  line-height: 2rem;
+  padding: 0 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 3px;
 
-class Input extends React.PureComponent {
-  render() {
-    const { value, placeholder, onChange } = this.props;
-
-    return (
-      <Styles.Wrapper type='text' value={value} placeholder={placeholder} onChange={onChange} />
-    );
+  &::placeholder {
+    color: #c8c8c8;
+    font-size: 0.9rem;
   }
-}
 
-Input.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  placeholder: PropTypes.string,
-};
+  &:read-only {
+    color: #495057;
+    background: #e9ecef;
+    border-color: #ced4da;
+  }
 
-export default Input;
+  ${ifProp('hasError', `border-color: #dc3545;`)};
+`;

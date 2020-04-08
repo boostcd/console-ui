@@ -78,6 +78,15 @@ Object {
       "pageTitle": "Edit project: {{namespace}}",
       "successMessage": "Successfully edited a project!",
     },
+    "form": Object {
+      "errors": Object {
+        "owner": "Please select a project owner!",
+        "title": "Please enter a project title!",
+      },
+      "namespace": "Namespace:",
+      "owner": "Owner:",
+      "title": "Title:",
+    },
   },
   "projects": Object {
     "actions": Object {
