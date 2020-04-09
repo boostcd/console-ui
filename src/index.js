@@ -8,8 +8,10 @@ let currentApp = app;
 /**
  * Please note that whole process.env object is inlined during build
  * https://github.com/jaredpalmer/razzle/issues/356
+ * Using this function as a workaround to the problem
  */
-const port = process.env.PORT || 8080;
+const getEnv = (name) => process.env[name];
+const port = getEnv('PORT') || 8080;
 
 server.listen(port, (error) => {
   if (error) {
