@@ -76,14 +76,14 @@ objects:
       spec:
         containers:
           - env:
-            - name: PRODUCT
-              value: ${PRODUCT}
-            - name: PRODUCT_DESCRIPTION
-              value: ${PRODUCT_DESCRIPTION}
-            - name: TASK_MANAGEMENT_TITLE
-              value: ${TASK_MANAGEMENT_TITLE}
-            - name: GATEWAY_API_SERVICE_URI
-              value: 'http://console-gateway-api-${NAMESPACE}.${OPENSHIFT_HOST}'
+              - name: PRODUCT
+                value: ${PRODUCT}
+              - name: PRODUCT_DESCRIPTION
+                value: ${PRODUCT_DESCRIPTION}
+              - name: TASK_MANAGEMENT_TITLE
+                value: ${TASK_MANAGEMENT_TITLE}
+              - name: GATEWAY_API_SERVICE_URI
+                value: 'http://console-gateway-api-${NAMESPACE}.${OPENSHIFT_HOST}'
             image: ${DOCKER_REGISTRY}/${DOCKER_NAMESPACE}/${MICROSERVICE}:${DOCKER_IMAGE_LABEL}
             imagePullPolicy: Always
             name: ${MICROSERVICE}
