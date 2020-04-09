@@ -62,6 +62,7 @@ class Environment extends React.PureComponent {
       await gatewayApi.createEnvironment({
         title: data.title,
         owner: data.owner,
+        test: data.test,
       });
       ToastService.success(t('environment.add.successMessage'));
     }

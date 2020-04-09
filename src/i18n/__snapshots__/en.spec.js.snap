@@ -52,6 +52,7 @@ Object {
       },
       "namespace": "Namespace:",
       "owner": "Owner:",
+      "test": "Environment used for testing",
       "title": "Title:",
     },
   },

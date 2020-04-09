@@ -85,6 +85,7 @@ export default {
       title: 'Title:',
       owner: 'Owner:',
       namespace: 'Namespace:',
+      test: 'Environment used for testing',
       errors: {
         title: 'Please enter a environment title!',
         owner: 'Please select a environment owner!',

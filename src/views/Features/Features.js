@@ -97,7 +97,6 @@ class Features extends React.PureComponent {
         <Helmet title={pageTitle} />
         <PageHeading title={pageTitle}>
           <Input
-            type='text'
             value={searchQuery}
             placeholder={t('features.searchPlaceholder')}
             onChange={this.handleSearchChange}

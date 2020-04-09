@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import Button from '../../components/Button/Button';
+import Checkbox from '../../components/Checkbox/Checkbox';
 import Input from '../../components/Input/Input';
 import Select from '../../components/Select/Select';
 import environmentType from '../../types/environment';
@@ -18,6 +19,7 @@ const EnvironmentForm = (props) => {
       title: environment.title || '',
       namespace: environment.namespace || '',
       owner: environment.owner || '',
+      test: environment.test || false,
     },
     onSubmit,
     validate: (values) => {
@@ -43,7 +45,6 @@ const EnvironmentForm = (props) => {
         <Styles.InputGroup>
           <Styles.InputLabel htmlFor='title'>{t('environment.form.title')}</Styles.InputLabel>
           <Input
-            type='text'
             id='title'
             name='title'
             value={formik.values.title}
@@ -58,7 +59,6 @@ const EnvironmentForm = (props) => {
               {t('environment.form.namespace')}
             </Styles.InputLabel>
             <Input
-              type='text'
               id='namespace'
               name='namespace'
               value={formik.values.namespace}
@@ -85,6 +85,16 @@ const EnvironmentForm = (props) => {
             ))}
           </Select>
           {formik.errors.owner && <Styles.InputError>{formik.errors.owner}</Styles.InputError>}
+        </Styles.InputGroup>
+        <Styles.InputGroup>
+          <Checkbox
+            id='test'
+            name='test'
+            checked={formik.values.test}
+            onChange={formik.handleChange}
+            readyOnly={isEditing}
+          />
+          <Styles.CheckboxLabel htmlFor='test'>{t('environment.form.test')}</Styles.CheckboxLabel>
         </Styles.InputGroup>
         <Styles.InputGroup>
           <Button type='submit' variant='primary' isDisabled={isSubmitDisabled}>

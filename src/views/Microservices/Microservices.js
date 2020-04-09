@@ -98,7 +98,6 @@ class Microservices extends React.PureComponent {
         <Helmet title={t('microservices.pageTitle')} />
         <PageHeading title={t('microservices.pageTitle')}>
           <Input
-            type='text'
             value={searchQuery}
             placeholder={t('microservices.searchPlaceholder')}
             onChange={this.handleSearchChange}

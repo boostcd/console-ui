@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { ifProp } from 'styled-tools';
 
-export default styled.input`
+export default styled.input.attrs({ type: 'text' })`
   width: 100%;
   font-size: 0.9rem;
   outline: none;
@@ -23,5 +23,5 @@ export default styled.input`
     border-color: #ced4da;
   }
 
-  ${ifProp('hasError', `border-color: #dc3545;`)};
+  ${ifProp('hasError', 'border-color: #dc3545;')};
 `;
