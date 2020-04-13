@@ -28,6 +28,8 @@ npm install
 - **lint** - Runs the linter using [ESLint](https://eslint.org/) and prints out errors and warnings
 - **postinstall** - Used as a hook to build the application when deploying in OpenShift; This script is skipped by default; enabled in Openshift with `POST_INSTALL=true`
 
+_Some of the commands are prefixed with [cross-env](https://www.npmjs.com/package/cross-env) in order to support environment variables across different platforms._
+
 ### Running locally
 
 Prior to starting the project, please configure the mandatory environment variables listed [here](env.md). Use the following command to start the project in development mode:

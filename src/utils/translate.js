@@ -1,5 +1,5 @@
-import invariant from 'invariant';
 import get from 'lodash.get';
+import invariant from 'tiny-invariant';
 
 import en from '../i18n/en';
 
