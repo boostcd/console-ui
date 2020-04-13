@@ -76,8 +76,6 @@ objects:
       spec:
         containers:
           - env:
-              - name: YARN_ENABLED
-                value: 'true'
               - name: PRODUCT
                 value: ${PRODUCT}
               - name: PRODUCT_DESCRIPTION

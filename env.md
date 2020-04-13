@@ -3,16 +3,16 @@
 *Environment variables marked with * are mandatory.*
 
 #### Project specific
-* `PRODUCT`
+* `PRODUCT`*
 * `PRODUCT_DESCRIPTION`*
 * `GATEWAY_API_SERVICE_URI`*
-* `TASK_MANAGEMENT_TITLE`
+* `TASK_MANAGEMENT_TITLE`*
 
 #### Setup/testing
 * `PORT` - Configure a different port for the application to run; Defaults to `8080`
-* `BUNDLE_ANALYZE` - Used to build the project and analyze the generated bundle (`yarn analyze`)
+* `BUNDLE_ANALYZE` - Used to build the project and analyze the generated bundle (`yarn run build:analyze`)
 
-#### OpenShift specific
+#### OpenShift specific (build process)
 * `YARN_ENABLED`* - Enables yarn as a package manager instead of npm
 * `YARN_ARGS`* - Arguments to pass to the `yarn install` command
 * `POST_INSTALL`* - Enables the `postinstall` script to run a build after installing the dependencies

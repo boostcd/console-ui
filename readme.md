@@ -19,7 +19,6 @@ npm install
 
 ### Commands
 
-
 * **start** - Start the applications in production mode
 * **start:dev** - Start the applications in development (watch) mode
 * **build** - Bundle the application into the build folder
