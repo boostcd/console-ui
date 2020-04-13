@@ -13,6 +13,7 @@
     "build:analyze": "BUNDLE_ANALYZE=true razzle build",
     "test": "razzle test --env=jsdom --verbose",
     "test:ci": "razzle test --env=jsdom --silent --runInBand --watchAll=false",
+    "lint": "eslint src",
     "postinstall": "!(test -n \"$POST_INSTALL\") || razzle build"
   },
   "jest": {
@@ -40,6 +41,7 @@
     "express": "^4.17.1",
     "formik": "^2.1.4",
     "helmet": "^3.21.3",
+    "http-status-codes": "^1.4.0",
     "ignore-case": "^0.1.0",
     "invariant": "^2.2.4",
     "lodash.get": "^4.4.2",

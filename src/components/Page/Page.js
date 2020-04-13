@@ -20,7 +20,7 @@ class Page extends React.PureComponent {
               <Styles.Slogan>{PRODUCT_DESCRIPTION}</Styles.Slogan>
             </NavLink>
             <Styles.Navigation>
-              <Styles.NavigationItem to='/features'>
+              <Styles.NavigationItem to='/'>
                 {TASK_MANAGEMENT_TITLE || t('features.pageTitle')}
               </Styles.NavigationItem>
               <Styles.NavigationItem to='/microservices'>

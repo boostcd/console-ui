@@ -115,4 +115,10 @@ export default {
       actions: 'Actions',
     },
   },
+  notFound: {
+    pageTitle: '404',
+    title: '404',
+    subTitle: 'Page not found',
+    backButton: 'Back to landing',
+  },
 };

@@ -114,6 +114,12 @@ Object {
     "pageTitle": "Microservices",
     "searchPlaceholder": "Search for microservices",
   },
+  "notFound": Object {
+    "backButton": "Back to landing",
+    "pageTitle": "404",
+    "subTitle": "Page not found",
+    "title": "404",
+  },
   "test": Object {
     "simple": "Simple example without params",
     "withParams": "Example with params: {{firstValue}} {{secondValue}}",
