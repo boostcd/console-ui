@@ -14,7 +14,7 @@
     "test": "razzle test --env=jsdom --verbose",
     "test:ci": "razzle test --env=jsdom --silent --runInBand --watchAll=false",
     "lint": "eslint src",
-    "postinstall": "!(test -n \"$POST_INSTALL\") || razzle build"
+    "postinstall": "node ./scripts/postinstall.js"
   },
   "jest": {
     "collectCoverageFrom": [
