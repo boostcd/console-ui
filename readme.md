@@ -40,25 +40,20 @@ OR
 npm run start:dev
 ```
 
-The application will start at [localhost:3000](http://localhost:3000) for development and [localhost:8080](http://localhost:8080) for production. You can change to a desired port by using the **PORT** environment variable.
+The application will start at [localhost:3000](http://localhost:3000) for development and [localhost:8080](http://localhost:8080) for production. The port difference is caused by [this issue](https://github.com/jaredpalmer/razzle/issues/356) in Razzle. You can change to a desired port by using the **PORT** environment variable.
 
 ### Environment variables
 
 [Read more about environment variables here.](env.md)
 
-### Technology
+### Technology stack
 
-[razzle](https://github.com/jaredpalmer/razzle)
-
-[React](https://reactjs.org/)
-
-[Redux](https://react-redux.js.org/)
-
-[Redux-saga](https://redux-saga.js.org/)
-
-[styled-components](https://styled-components.com/)
-
-[@loadable/server, @loadable/component](https://loadable-components.com/)
+- [razzle](https://github.com/jaredpalmer/razzle)
+- [React](https://reactjs.org/)
+- [Redux](https://react-redux.js.org/)
+- [Redux-saga](https://redux-saga.js.org/)
+- [styled-components](https://styled-components.com/)
+- [@loadable/server, @loadable/component](https://loadable-components.com/)
 
 ..and much more 🤫
 
