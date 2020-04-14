@@ -38,7 +38,7 @@ export default styled.button`
   }
 
   /* Using this to prevent only events, but have the same looks for the button */
-  ${ifProp('preventEvents', `pointer-events: none`)};
+  ${ifProp('preventEvents', 'pointer-events: none')};
 
   ${ifProp(
     'isDisabled',

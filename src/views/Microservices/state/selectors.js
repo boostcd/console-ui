@@ -1,5 +1,6 @@
-import { includes } from 'ignore-case';
 import { createSelector } from 'reselect';
+
+import includesIgnoreCase from '../../../utils/includesIgnoreCase';
 
 const getMicroservicesDataSelector = (state) => state.microservices.data;
 const getMicroservicesSearchQuerySelector = (state) => state.microservices.searchQuery;
@@ -20,7 +21,8 @@ export const getMicroservicesSelector = createSelector(
         ...environment,
         apps: environment.apps.filter(
           (app) =>
-            includes(app.name, trimmedSearchQuery) || includes(app.displayName, trimmedSearchQuery)
+            includesIgnoreCase(app.name, trimmedSearchQuery) ||
+            includesIgnoreCase(app.displayName, trimmedSearchQuery)
         ),
       };
     });

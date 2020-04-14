@@ -57,7 +57,7 @@ class BaseApi {
     } catch (error) {
       const message = `${config.method} request to ${config.url} failed with: ${error.message}`;
 
-      ToastService.showError(message);
+      ToastService.error(message);
       throw new RequestError(message);
     }
   }

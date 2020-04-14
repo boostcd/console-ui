@@ -1,10 +1,9 @@
+import { Box, Flex } from '@rebass/grid';
 import debounce from 'debounce';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { connect } from 'react-redux';
-import { toast } from 'react-toastify';
-import { Box, Flex } from 'reflexbox';
 
 import Controls from '../../components/Controls/Controls';
 import DataFallback from '../../components/DataFallback/DataFallback';
@@ -13,7 +12,9 @@ import LastUpdated from '../../components/LastUpdated/LastUpdated';
 import Loader from '../../components/Loader/Loader';
 import PageHeading from '../../components/PageHeading/PageHeading';
 import { DEBOUNCE_DELAY } from '../../constants';
+import { TASK_MANAGEMENT_TITLE } from '../../constants/env';
 import featuresType from '../../types/features';
+import ToastService from '../../utils/ToastService';
 import t from '../../utils/translate';
 import FeaturesItems from './FeaturesItems';
 import { searchFeatures, startPollingFeatures, stopPollingFeatures } from './state/actions';
@@ -55,17 +56,13 @@ class Features extends React.PureComponent {
   // Temporary restarting the polling in order to update the loading state of the actions
   handleStateChange = async (actionTitle, actionFn, ...params) => {
     const action = actionTitle.toLowerCase();
-    const toastId = toast.info(t('common.action.pending', { action }), {
-      autoClose: false,
-    });
+    const toastId = ToastService.info(t('common.action.pending', { action }));
 
     try {
       await actionFn(...params);
-      toast.success(t('common.action.success', { action }), {
-        autoClose: 2500,
-      });
+      ToastService.success(t('common.action.success', { action }));
     } finally {
-      toast.dismiss(toastId);
+      ToastService.dismiss(toastId);
     }
 
     this.props.stopPolling();
@@ -93,14 +90,13 @@ class Features extends React.PureComponent {
     if (loading && !count) return <Loader />;
     if (data && !data.length) return <DataFallback title={t('features.dataFallback')} />;
 
-    const pageTitle = TASK_MANAGEMENT_TITLE ? TASK_MANAGEMENT_TITLE : t('features.pageTitle');
+    const pageTitle = TASK_MANAGEMENT_TITLE || t('features.pageTitle');
 
     return (
       <>
         <Helmet title={pageTitle} />
         <PageHeading title={pageTitle}>
           <Input
-            type='text'
             value={searchQuery}
             placeholder={t('features.searchPlaceholder')}
             onChange={this.handleSearchChange}

@@ -5,6 +5,11 @@ export const InputLabel = styled.label`
   margin-bottom: 0.2rem;
 `;
 
+export const CheckboxLabel = styled.label`
+  margin-left: 0.5rem;
+  vertical-align: middle;
+`;
+
 export const InputError = styled.div`
   color: #dc3545;
   font-size: 0.8rem;

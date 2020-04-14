@@ -1,10 +1,9 @@
+import { Box, Flex } from '@rebass/grid';
 import debounce from 'debounce';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { connect } from 'react-redux';
-import { toast } from 'react-toastify';
-import { Box, Flex } from 'reflexbox';
 
 import Controls from '../../components/Controls/Controls';
 import DataFallback from '../../components/DataFallback/DataFallback';
@@ -14,6 +13,7 @@ import Loader from '../../components/Loader/Loader';
 import PageHeading from '../../components/PageHeading/PageHeading';
 import { DEBOUNCE_DELAY } from '../../constants';
 import microservicesType from '../../types/microservices';
+import ToastService from '../../utils/ToastService';
 import t from '../../utils/translate';
 import MicroservicesApplications from './MicroservicesApplications';
 import {
@@ -59,17 +59,13 @@ class Microservices extends React.PureComponent {
   // Temporary restarting the polling in order to update the loading state of the actions
   handleStateChange = async (actionTitle, actionFn, ...params) => {
     const action = actionTitle.toLowerCase();
-    const toastId = toast.info(t('common.action.pending', { action }), {
-      autoClose: false,
-    });
+    const toastId = ToastService.info(t('common.action.pending', { action }));
 
     try {
       await actionFn(...params);
-      toast.success(t('common.action.success', { action }), {
-        autoClose: 2500,
-      });
+      ToastService.success(t('common.action.success', { action }));
     } finally {
-      toast.dismiss(toastId);
+      ToastService.dismiss(toastId);
     }
 
     this.props.stopPolling();
@@ -102,7 +98,6 @@ class Microservices extends React.PureComponent {
         <Helmet title={t('microservices.pageTitle')} />
         <PageHeading title={t('microservices.pageTitle')}>
           <Input
-            type='text'
             value={searchQuery}
             placeholder={t('microservices.searchPlaceholder')}
             onChange={this.handleSearchChange}

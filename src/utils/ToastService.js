@@ -1,21 +1,62 @@
+import React from 'react';
 import { toast } from 'react-toastify';
 
-import { TOAST_CONFIG } from '../constants';
+import ConfirmToast from '../components/ConfirmToast/ConfirmToast';
+import { TOAST_CONFIG, TOAST_CONTAINERS } from '../constants';
 
 /**
- * Simple utility to limit the visible toastify error notifications
+ * Simple utility to wrap around the toastify functionality
  */
 class ToastService {
-  toasts = [];
+  errorToasts = [];
 
-  showError(message) {
-    if (this.toasts.length >= TOAST_CONFIG.MAX_VISIBLE) {
-      const removeId = this.toasts.shift();
+  dismiss(id) {
+    toast.dismiss(id);
+  }
+
+  success(text) {
+    return toast.success(text, {
+      containerId: TOAST_CONTAINERS.MAIN,
+      autoClose: TOAST_CONFIG.AUTO_CLOSE_SUCCESS,
+    });
+  }
+
+  info(text) {
+    return toast.info(text, {
+      containerId: TOAST_CONTAINERS.MAIN,
+      autoClose: false,
+    });
+  }
+
+  // Limit the visible error toasts and display them in the main container
+  error(message) {
+    if (this.errorToasts.length >= TOAST_CONFIG.MAX_VISIBLE) {
+      const [removeId] = this.errorToasts;
       toast.dismiss(removeId);
     }
 
-    const toastId = toast.error(message);
-    this.toasts.push(toastId);
+    const toastId = toast.error(message, {
+      containerId: TOAST_CONTAINERS.MAIN,
+    });
+
+    this.errorToasts = [...this.errorToasts.slice(1), toastId];
+
+    return toastId;
+  }
+
+  // Display the confirm toasts in the confirm container
+  confirm(params) {
+    const { text, onConfirm, onCancel } = params;
+
+    const component = (
+      <ConfirmToast onConfirm={onConfirm} onCancel={onCancel}>
+        {text}
+      </ConfirmToast>
+    );
+
+    return toast(component, {
+      containerId: TOAST_CONTAINERS.CONFIRM,
+    });
   }
 }
 
