@@ -4,7 +4,7 @@ describe('Utils: translate', () => {
   it('should throw an invariant error [key=undefined]', () => {
     expect(() => {
       t();
-    }).toThrow('Invariant failed: Missing key parameter!');
+    }).toThrow('Invariant failed: Missing argument: key!');
   });
 
   it('should return the default value [no match]', () => {

@@ -1,29 +1,31 @@
 import { applyMiddleware, createStore } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import { createLogger } from 'redux-logger';
 import createSagaMiddleware, { END } from 'redux-saga';
 
 import rootReducer from './rootReducer';
 
-const isDevelopment = process.env.NODE_ENV === 'development';
-
 export default (initialState) => {
   const sagaMiddleware = createSagaMiddleware();
-  const logger = createLogger({
-    collapsed: () => true,
-  });
 
-  // Add development specific middleware
+  let store;
   let middleware = [sagaMiddleware];
-  if (isDevelopment) {
-    middleware.push(logger);
-  }
 
-  const store = createStore(
-    rootReducer,
-    initialState,
-    composeWithDevTools(applyMiddleware(...middleware))
-  );
+  // Conditionally require the tools only for development
+  if (process.env.NODE_ENV === 'development') {
+    const { createLogger } = require('redux-logger');
+    const { composeWithDevTools } = require('redux-devtools-extension');
+
+    const logger = createLogger({
+      collapsed: () => true,
+    });
+
+    store = createStore(
+      rootReducer,
+      initialState,
+      composeWithDevTools(applyMiddleware(...[...middleware, logger]))
+    );
+  } else {
+    store = createStore(rootReducer, initialState, applyMiddleware(...middleware));
+  }
 
   // Extending the store to be able to run sagas from the instance
   store.runSaga = sagaMiddleware.run;

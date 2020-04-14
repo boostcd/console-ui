@@ -1,9 +1,9 @@
+import { Box, Flex } from '@rebass/grid';
 import debounce from 'debounce';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { connect } from 'react-redux';
-import { Box, Flex } from 'reflexbox';
 
 import Controls from '../../components/Controls/Controls';
 import DataFallback from '../../components/DataFallback/DataFallback';

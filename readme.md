@@ -40,7 +40,7 @@ OR
 npm run start:dev
 ```
 
-The application will start at [localhost:8080](http://localhost:8080) by default. You can change to a desired port by using the **PORT** environment variable.
+The application will start at [localhost:3000](http://localhost:3000) for development and [localhost:8080](http://localhost:8080) for production. You can change to a desired port by using the **PORT** environment variable.
 
 ### Environment variables
 

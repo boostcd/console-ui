@@ -1,7 +1,7 @@
+import { Flex } from '@rebass/grid';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Flex } from 'reflexbox';
 
 import gatewayApi from '../../apis/GatewayApi';
 import Button from '../../components/Button/Button';
