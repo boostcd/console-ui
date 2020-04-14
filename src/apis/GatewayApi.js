@@ -1,5 +1,10 @@
+import { GATEWAY_API_SERVICE_URI } from '../constants/env';
 import BaseApi from './BaseApi';
 
+/**
+ * Just a heads up - the endpoints don't follow any specific practices
+ * around naming and structure like REST, etc
+ */
 class GatewayApi extends BaseApi {
   getFeatures = async () => {
     return await this.request({
@@ -56,6 +61,13 @@ class GatewayApi extends BaseApi {
     return await this.request({
       method: 'DELETE',
       url: `/project/${namespace}`,
+    });
+  };
+
+  rebuildEnvironment = async (namespace) => {
+    return await this.request({
+      method: 'POST',
+      url: `/project/${namespace}/rebuild`,
     });
   };
 

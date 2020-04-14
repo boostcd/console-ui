@@ -23,5 +23,5 @@ export default styled.select`
     `
   )};
 
-  ${ifProp('hasError', `border-color: #dc3545;`)};
+  ${ifProp('hasError', 'border-color: #dc3545;')};
 `;
