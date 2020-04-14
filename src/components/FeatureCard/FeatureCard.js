@@ -7,8 +7,12 @@ import * as Styles from './FeatureCard.styled';
 
 class FeatureCard extends React.PureComponent {
   getIconByUrl(url) {
-    if (url.indexOf('trello.com')) return <Styles.TrelloIcon />;
-    if (url.indexOf('jira.com')) return <Styles.JiraIcon />;
+    /**
+     * Note that the displayed feature icon is using the URL
+     * because there is no type field present in the payload
+     */
+    if (url.indexOf('trello.com') !== -1) return <Styles.TrelloIcon />;
+    if (url.indexOf('atlassian.net') !== -1) return <Styles.JiraIcon />;
 
     return <Styles.FeatureIcon />;
   }
