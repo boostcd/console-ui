@@ -5,9 +5,13 @@ let app = require('./server').default;
 const server = http.createServer(app);
 let currentApp = app;
 
-// Loading the port via `PORT` instead of process.env.PORT because razzle is inlining the whole process.env object
-// https://github.com/jaredpalmer/razzle/issues/356
-const port = PORT || 8080;
+/**
+ * Please note that whole process.env object is inlined during build
+ * https://github.com/jaredpalmer/razzle/issues/356
+ * Using this function as a workaround to the problem
+ */
+const getEnv = (name) => process.env[name];
+const port = getEnv('PORT') || 8080;
 
 server.listen(port, (error) => {
   if (error) {

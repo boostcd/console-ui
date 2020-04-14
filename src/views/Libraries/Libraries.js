@@ -2,17 +2,16 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { connect } from 'react-redux';
-import { toast } from 'react-toastify';
 
 import gatewayApi from '../../apis/GatewayApi';
 import Button from '../../components/Button/Button';
 import Card from '../../components/Card/Card';
-import ConfirmToast from '../../components/ConfirmToast/ConfirmToast';
 import DataFallback from '../../components/DataFallback/DataFallback';
 import Loader from '../../components/Loader/Loader';
 import PageHeading from '../../components/PageHeading/PageHeading';
 import Table from '../../components/Table/Table';
 import librariesType from '../../types/libraries';
+import ToastService from '../../utils/ToastService';
 import t from '../../utils/translate';
 import { fetchLibraries } from './state/actions';
 
@@ -52,38 +51,32 @@ class Libraries extends React.PureComponent {
     this.props.fetchLibraries();
   }
 
+  componentWillUnmount() {
+    ToastService.dismiss(this.confirmToastId);
+  }
+
+  handleReleaseCancel = () => {
+    ToastService.dismiss(this.confirmToastId);
+  };
+
   handleRelease = (name) => {
-    this.confirmToastId = toast(
-      <ConfirmToast
-        onConfirm={this.handleReleaseConfirm.bind(null, name)}
-        onCancel={this.handleReleaseCancel}
-      >
-        {t('libraries.actions.release.confirm', { name })}
-      </ConfirmToast>,
-      {
-        position: 'top-center',
-        autoClose: false,
-        closeOnClick: false,
-      }
-    );
+    this.confirmToastId = ToastService.confirm({
+      text: t('libraries.actions.release.confirm', { name }),
+      onConfirm: this.handleReleaseConfirm.bind(null, name),
+      onCancel: this.handleReleaseCancel,
+    });
   };
 
   handleReleaseConfirm = async (name) => {
-    toast.dismiss(this.confirmToastId);
-    const infoToastId = toast.info(t('libraries.actions.release.pending', { name }), {
-      autoClose: false,
-    });
+    ToastService.dismiss(this.confirmToastId);
+    const infoToastId = ToastService.info(t('libraries.actions.release.pending', { name }));
 
     try {
       await gatewayApi.releaseLibrary(name);
-      toast.success(t('libraries.actions.release.success', { name }));
+      ToastService.success(t('libraries.actions.release.success', { name }));
     } finally {
-      toast.dismiss(infoToastId);
+      ToastService.dismiss(infoToastId);
     }
-  };
-
-  handleReleaseCancel = () => {
-    toast.dismiss(this.confirmToastId);
   };
 
   render() {

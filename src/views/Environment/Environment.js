@@ -3,7 +3,6 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
 import gatewayApi from '../../apis/GatewayApi';
 import Button from '../../components/Button/Button';
@@ -13,6 +12,7 @@ import PageHeading from '../../components/PageHeading/PageHeading';
 import { fetchUsers } from '../../store/users/actions';
 import environmentType from '../../types/environment';
 import usersType from '../../types/users';
+import ToastService from '../../utils/ToastService';
 import t from '../../utils/translate';
 import EnvironmentForm from './EnvironmentForm';
 import { fetchEnvironment } from './state/actions';
@@ -57,13 +57,14 @@ class Environment extends React.PureComponent {
       await gatewayApi.editEnvironment(this.namespace, {
         title: data.title,
       });
-      toast.success(t('environment.edit.successMessage'));
+      ToastService.success(t('environment.edit.successMessage'));
     } else {
       await gatewayApi.createEnvironment({
         title: data.title,
         owner: data.owner,
+        test: data.test,
       });
-      toast.success(t('environment.add.successMessage'));
+      ToastService.success(t('environment.add.successMessage'));
     }
 
     // Redirect back to the list page

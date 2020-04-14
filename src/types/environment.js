@@ -6,6 +6,7 @@ export default {
   title: PropTypes.string.isRequired,
   owner: PropTypes.string.isRequired,
   namespace: PropTypes.string.isRequired,
-  status: PropTypes.oneOf([ENVIRONMENT_STATUS.ACTIVE, ENVIRONMENT_STATUS.TERMINATING]),
+  test: PropTypes.bool.isRequired,
+  status: PropTypes.oneOf([ENVIRONMENT_STATUS.ACTIVE, ENVIRONMENT_STATUS.TERMINATING]).isRequired,
   // apps: PropTypes.arrayOf(PropTypes.string),
 };

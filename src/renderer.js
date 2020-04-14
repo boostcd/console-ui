@@ -48,7 +48,7 @@ export default (req, res) => {
       <html lang="en">
         <head>
           <meta charset="utf-8" />
-          <title>${PRODUCT_DESCRIPTION}</title>
+          <title>${process.env.PRODUCT_DESCRIPTION}</title>
           <meta name="description" content="" />
           <meta name="theme-color" content="#2BA2B8" />
           <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -61,6 +61,12 @@ export default (req, res) => {
           ${scriptTags}
           <script>
             window.__PRELOADED_STATE__ = ${JSON.stringify(store.getState())};
+            window.__GLOBALS__= {
+              PRODUCT: ${JSON.stringify(process.env.PRODUCT)},
+              PRODUCT_DESCRIPTION: ${JSON.stringify(process.env.PRODUCT_DESCRIPTION)},
+              TASK_MANAGEMENT_TITLE: ${JSON.stringify(process.env.TASK_MANAGEMENT_TITLE)},
+              GATEWAY_API_SERVICE_URI: ${JSON.stringify(process.env.GATEWAY_API_SERVICE_URI)},
+            };
           </script>
         </body>
       </html>`

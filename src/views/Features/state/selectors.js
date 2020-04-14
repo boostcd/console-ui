@@ -1,5 +1,6 @@
-import { includes } from 'ignore-case';
 import { createSelector } from 'reselect';
+
+import includesIgnoreCase from '../../../utils/includesIgnoreCase';
 
 const getFeaturesDataSelector = (state) => state.features.data;
 const getFeaturesSearchQuerySelector = (state) => state.features.searchQuery;
@@ -19,7 +20,7 @@ export const getFeaturesSelector = createSelector(
       return {
         ...environment,
         features: environment.features.filter((feature) =>
-          includes(feature.title, trimmedSearchQuery)
+          includesIgnoreCase(feature.title, trimmedSearchQuery)
         ),
       };
     });

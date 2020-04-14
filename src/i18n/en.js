@@ -16,6 +16,7 @@ export default {
     promote: 'Promote',
     promoteAll: 'Promote all',
     release: 'Release',
+    rebuild: 'Rebuild',
     goLive: 'Go live!',
     backOut: 'Back out!',
     name: 'Name',
@@ -62,6 +63,11 @@ export default {
         pending: 'Deleting environment {{namespace}}...',
         success: 'Environment {{namespace}} is marked for deletion!',
       },
+      rebuild: {
+        confirm: 'Are you sure you want to rebuild environment - {{namespace}}?',
+        pending: 'Rebuilding environment {{namespace}}...',
+        success: 'Environment {{namespace}} started rebuilding!',
+      },
     },
     tableColumns: {
       title: 'Title',
@@ -79,6 +85,7 @@ export default {
       title: 'Title:',
       owner: 'Owner:',
       namespace: 'Namespace:',
+      test: 'Environment used for testing',
       errors: {
         title: 'Please enter a environment title!',
         owner: 'Please select a environment owner!',
@@ -107,5 +114,11 @@ export default {
       name: 'Name',
       actions: 'Actions',
     },
+  },
+  notFound: {
+    pageTitle: '404',
+    title: '404',
+    subTitle: 'Page not found',
+    backButton: 'Back to landing',
   },
 };

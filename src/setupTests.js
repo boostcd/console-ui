@@ -11,7 +11,7 @@ process.env.TZ = 'UTC';
 
 // Set other global variables used in the tests
 global.noop = () => undefined;
-global.GATEWAY_API_SERVICE_URI = 'http://test.api';
+global.__GLOBALS__ = {};
 
 // Enzyme configuration
 Enzyme.configure({ adapter: new Adapter() });
