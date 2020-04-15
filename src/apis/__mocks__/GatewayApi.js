@@ -13,9 +13,11 @@ class GatewayApi {
   getFeatures = () => mockFeatures;
 
   getMicroservice = () => mockMicroservice;
+
   getMicroservices = () => mockMicroservices;
 
   getEnvironment = () => mockEnvironment;
+
   getEnvironments = () => mockEnvironments;
 
   getUsers = () => mockUsers;

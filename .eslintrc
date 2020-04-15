@@ -19,18 +19,8 @@
       "version": "detect"
     }
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:prettier/recommended"
-  ],
-  "plugins": [
-    "react",
-    "prettier",
-    "better-styled-components",
-    "simple-import-sort",
-    "redux-saga"
-  ],
+  "extends": ["airbnb", "plugin:prettier/recommended"],
+  "plugins": ["prettier", "better-styled-components", "simple-import-sort", "redux-saga"],
   "rules": {
     "prettier/prettier": ["warn", { "singleQuote": true }],
     "simple-import-sort/sort": "warn",
@@ -39,7 +29,7 @@
   },
   "overrides": [
     {
-      "files": ["*.spec.js"],
+      "files": ["*.spec.js", "*.spec.jsx"],
       "globals": {
         "noop": true
       }
