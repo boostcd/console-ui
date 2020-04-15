@@ -1,6 +1,7 @@
 import React from 'react';
 import { format } from 'timeago.js';
 
+import PROMOTE_STATUS from '../../constants/promoteStatus';
 import featureType from '../../types/feature';
 import t from '../../utils/translate';
 import * as Styles from './FeatureCard.styled';
@@ -18,12 +19,17 @@ class FeatureCard extends React.PureComponent {
   }
 
   render() {
-    const { featureId, title, status, url, promoted, waitingSince } = this.props; //description
-    const isActive = !promoted;
+    const { featureId, title, status, url, promoteStatus, waitingSince } = this.props; //description
+
     const icon = this.getIconByUrl(url);
+    const isNotPromoted = promoteStatus === PROMOTE_STATUS.NOT_PROMOTED;
+    const isPartiallyPromoted = promoteStatus === PROMOTE_STATUS.PARTIALLY_PROMOTED;
 
     return (
-      <Styles.Wrapper isActive={isActive}>
+      <Styles.Wrapper isNotPromoted={isNotPromoted}>
+        {isPartiallyPromoted && (
+          <Styles.PartiallyPromotedIcon title={t('features.partiallyPromoted')} />
+        )}
         <Styles.IdSection>
           <span>{icon}</span>
           <Styles.Id>{featureId}</Styles.Id>

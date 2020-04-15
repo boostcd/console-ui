@@ -1,5 +1,5 @@
 import { Jira, Trello } from '@styled-icons/fa-brands';
-import { TicketAlt } from '@styled-icons/fa-solid';
+import { ExclamationCircle, TicketAlt } from '@styled-icons/fa-solid';
 import styled, { css } from 'styled-components';
 import { ifProp } from 'styled-tools';
 
@@ -7,10 +7,13 @@ import { baseColor } from '../../styles/variables/colors';
 import Card from '../Card/Card';
 
 export const Wrapper = styled(Card)`
+  position: relative;
   margin-top: 0.5rem;
+  transition: background 200ms linear;
+  background: ${ifProp('isNotPromoted', '#e5f4f7', 'white')};
 
   &:hover {
-    background: ${ifProp('isActive', '#d9f9ff', '#efefef')};
+    background: ${ifProp('isNotPromoted', '#d9f9ff', '#efefef')};
   }
 `;
 
@@ -56,4 +59,12 @@ export const WaitingSince = styled.div`
 
 export const Status = styled.div`
   font-size: 0.8rem;
+`;
+
+export const PartiallyPromotedIcon = styled(ExclamationCircle)`
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 1rem;
+  color: orange;
 `;

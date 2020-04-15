@@ -40,6 +40,7 @@ export default {
     searchPlaceholder: 'Search for features',
     status: 'Status: {{value}}',
     waitingSince: 'Waiting since: {{value}}',
+    partiallyPromoted: 'Feature is partially promoted!',
   },
   microservices: {
     pageTitle: 'Microservices',
