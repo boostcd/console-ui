@@ -12,7 +12,7 @@ import PageHeading from '../../components/PageHeading/PageHeading';
 import microserviceType from '../../types/microservice';
 import t from '../../utils/translate';
 import * as Styles from './Microservice.styled';
-import { fetchMicroservice } from './state/actions';
+import { fetchMicroservice as fetchMicroserviceAction } from './state/actions';
 
 const mapStateToProps = (state) => ({
   data: state.microservice.data,
@@ -20,17 +20,17 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchMicroservice: (...params) => dispatch(fetchMicroservice(...params)),
+  fetchMicroservice: (...params) => dispatch(fetchMicroserviceAction(...params)),
 });
 
 @connect(mapStateToProps, mapDispatchToProps)
 class Microservice extends React.PureComponent {
   componentDidMount() {
-    const { match } = this.props;
+    const { match, fetchMicroservice } = this.props;
     const { params } = match;
     const { environmentName, appName } = params;
 
-    this.props.fetchMicroservice(environmentName, appName);
+    fetchMicroservice(environmentName, appName);
   }
 
   render() {
@@ -86,10 +86,16 @@ Microservice.propTypes = {
       environmentName: PropTypes.string,
       appName: PropTypes.string,
     }),
-  }),
+  }).isRequired,
   data: PropTypes.shape(microserviceType),
   loading: PropTypes.bool,
+  // eslint-disable-next-line react/require-default-props
   fetchMicroservice: PropTypes.func,
+};
+
+Microservice.defaultProps = {
+  data: {},
+  loading: true,
 };
 
 export default Microservice;

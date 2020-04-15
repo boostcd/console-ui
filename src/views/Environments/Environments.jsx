@@ -95,11 +95,13 @@ class Environments extends React.PureComponent {
   ];
 
   componentDidMount() {
-    this.props.startPolling();
+    const { startPolling } = this.props;
+    startPolling();
   }
 
   componentWillUnmount() {
-    this.props.stopPolling();
+    const { stopPolling } = this.props;
+    stopPolling();
     ToastService.dismiss(this.confirmToastId);
   }
 
@@ -136,6 +138,8 @@ class Environments extends React.PureComponent {
   };
 
   handleDeleteConfirm = async (namespace) => {
+    const { startPolling, stopPolling } = this.props;
+
     ToastService.dismiss(this.confirmToastId);
     const infoToastId = ToastService.info(t('environments.actions.delete.pending', { namespace }));
 
@@ -144,8 +148,8 @@ class Environments extends React.PureComponent {
       ToastService.success(t('environments.actions.delete.success', { namespace }));
 
       // Restarting the polling
-      this.props.stopPolling();
-      this.props.startPolling();
+      stopPolling();
+      startPolling();
     } finally {
       ToastService.dismiss(infoToastId);
     }
@@ -180,8 +184,16 @@ Environments.propTypes = {
   polling: PropTypes.shape({
     count: PropTypes.number,
   }),
+  // eslint-disable-next-line react/require-default-props
   startPolling: PropTypes.func,
+  // eslint-disable-next-line react/require-default-props
   stopPolling: PropTypes.func,
+};
+
+Environments.defaultProps = {
+  data: [],
+  loading: true,
+  polling: {},
 };
 
 export default Environments;

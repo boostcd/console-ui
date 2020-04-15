@@ -12,32 +12,33 @@ import LastUpdated from '../../components/LastUpdated/LastUpdated';
 import Loader from '../../components/Loader/Loader';
 import PageHeading from '../../components/PageHeading/PageHeading';
 import { DEBOUNCE_DELAY } from '../../constants';
-import microservicesType from '../../types/microservices';
+import { TASK_MANAGEMENT_TITLE } from '../../constants/env';
+import featuresType from '../../types/features';
 import ToastService from '../../utils/ToastService';
 import t from '../../utils/translate';
-import MicroservicesApplications from './MicroservicesApplications';
+import FeaturesItems from './FeaturesItems';
 import {
-  searchMicroservices,
-  startPollingMicroservices,
-  stopPollingMicroservices,
+  searchFeatures as searchFeaturesAction,
+  startPollingFeatures,
+  stopPollingFeatures,
 } from './state/actions';
-import { getMicroservicesSelector } from './state/selectors';
+import { getFeaturesSelector } from './state/selectors';
 
 const mapStateToProps = (state) => ({
-  data: getMicroservicesSelector(state),
-  loading: state.microservices.loading,
-  polling: state.microservices.polling,
-  searchQuery: state.microservices.searchQuery,
+  data: getFeaturesSelector(state),
+  loading: state.features.loading,
+  polling: state.features.polling,
+  searchQuery: state.features.searchQuery,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  startPolling: () => dispatch(startPollingMicroservices()),
-  stopPolling: () => dispatch(stopPollingMicroservices()),
-  searchMicroservices: (searchQuery) => dispatch(searchMicroservices(searchQuery)),
+  startPolling: () => dispatch(startPollingFeatures()),
+  stopPolling: () => dispatch(stopPollingFeatures()),
+  searchFeatures: (searchQuery) => dispatch(searchFeaturesAction(searchQuery)),
 });
 
 @connect(mapStateToProps, mapDispatchToProps)
-class Microservices extends React.PureComponent {
+class Features extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -49,15 +50,18 @@ class Microservices extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.props.startPolling();
+    const { startPolling } = this.props;
+    startPolling();
   }
 
   componentWillUnmount() {
-    this.props.stopPolling();
+    const { stopPolling } = this.props;
+    stopPolling();
   }
 
   // Temporary restarting the polling in order to update the loading state of the actions
   handleStateChange = async (actionTitle, actionFn, ...params) => {
+    const { startPolling, stopPolling } = this.props;
     const action = actionTitle.toLowerCase();
     const toastId = ToastService.info(t('common.action.pending', { action }));
 
@@ -68,8 +72,8 @@ class Microservices extends React.PureComponent {
       ToastService.dismiss(toastId);
     }
 
-    this.props.stopPolling();
-    this.props.startPolling();
+    stopPolling();
+    startPolling();
   };
 
   handleSearchChange = (event) => {
@@ -82,7 +86,9 @@ class Microservices extends React.PureComponent {
   };
 
   debounceSearch = () => {
-    this.props.searchMicroservices(this.state.searchQuery);
+    const { searchQuery } = this.state;
+    const { searchFeatures } = this.props;
+    searchFeatures(searchQuery);
   };
 
   render() {
@@ -91,39 +97,57 @@ class Microservices extends React.PureComponent {
     const { count, lastUpdated } = polling;
 
     if (loading && !count) return <Loader />;
-    if (data && !data.length) return <DataFallback title={t('microservices.dataFallback')} />;
+    if (data && !data.length) return <DataFallback title={t('features.dataFallback')} />;
+
+    const pageTitle = TASK_MANAGEMENT_TITLE || t('features.pageTitle');
 
     return (
       <>
-        <Helmet title={t('microservices.pageTitle')} />
-        <PageHeading title={t('microservices.pageTitle')}>
+        <Helmet title={pageTitle} />
+        <PageHeading title={pageTitle}>
           <Input
             value={searchQuery}
-            placeholder={t('microservices.searchPlaceholder')}
+            placeholder={t('features.searchPlaceholder')}
             onChange={this.handleSearchChange}
           />
         </PageHeading>
-        <Controls data={data} itemAccessor='apps' onStateChange={this.handleStateChange} />
+        <Controls
+          data={data}
+          itemAccessor='features'
+          onStateChange={this.handleStateChange}
+          buttonBuildLabel={t('common.build')}
+          buttonPromoteLabel={t('common.promote')}
+        />
         <Flex mt={3} flexDirection='column-reverse'>
           <Box px={2}>{lastUpdated && <LastUpdated date={lastUpdated} loading={loading} />}</Box>
         </Flex>
-        <MicroservicesApplications data={data} onStateChange={this.handleStateChange} />
+        <FeaturesItems data={data} />
       </>
     );
   }
 }
 
-Microservices.propTypes = {
-  data: microservicesType,
+Features.propTypes = {
+  data: featuresType,
   loading: PropTypes.bool,
   polling: PropTypes.shape({
     count: PropTypes.number,
     lastUpdated: PropTypes.instanceOf(Date),
   }),
   searchQuery: PropTypes.string,
+  // eslint-disable-next-line react/require-default-props
   startPolling: PropTypes.func,
+  // eslint-disable-next-line react/require-default-props
   stopPolling: PropTypes.func,
-  searchMicroservices: PropTypes.func,
+  // eslint-disable-next-line react/require-default-props
+  searchFeatures: PropTypes.func,
 };
 
-export default Microservices;
+Features.defaultProps = {
+  data: [],
+  loading: true,
+  polling: {},
+  searchQuery: '',
+};
+
+export default Features;

@@ -25,7 +25,9 @@
     "prettier/prettier": ["warn", { "singleQuote": true }],
     "simple-import-sort/sort": "warn",
     "no-underscore-dangle": ["error", { "allow": ["__GLOBALS__", "__PRELOADED_STATE__"] }],
-    "react/jsx-no-bind": "off"
+    "react/jsx-no-bind": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-wrap-multilines": ["error", { "declaration": false, "assignment": false }]
   },
   "overrides": [
     {
