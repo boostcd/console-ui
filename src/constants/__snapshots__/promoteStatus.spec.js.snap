@@ -2,6 +2,7 @@
 
 exports[`Constants: PROMOTE_STATUS should match the snapshot 1`] = `
 Object {
+  "FULLY_PROMOTED": "FULLY_PROMOTED",
   "NOT_PROMOTED": "NOT_PROMOTED",
   "PARTIALLY_PROMOTED": "PARTIALLY_PROMOTED",
 }
