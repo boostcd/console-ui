@@ -29,7 +29,7 @@ describe('Utils: translate', () => {
   it('should return the text with the passed params [functions]', () => {
     const params = {
       firstValue: (prop) => `test:${prop}`,
-      secondValue: (_prop, params) => Object.keys(params).length,
+      secondValue: (_prop, paramsArg) => Object.keys(paramsArg).length,
     };
 
     expect(t('test.withParams', params)).toBe(`Example with params: test:firstValue 2`);

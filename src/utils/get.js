@@ -16,5 +16,5 @@ export default function get(obj, path, defaultValue) {
     return get(nextObject, keys.slice(1), defaultValue);
   }
 
-  return nextObject ? nextObject : defaultValue;
+  return nextObject || defaultValue;
 }

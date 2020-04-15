@@ -5,6 +5,7 @@ import includesIgnoreCase from '../../../utils/includesIgnoreCase';
 const getFeaturesDataSelector = (state) => state.features.data;
 const getFeaturesSearchQuerySelector = (state) => state.features.searchQuery;
 
+// eslint-disable-next-line import/prefer-default-export
 export const getFeaturesSelector = createSelector(
   getFeaturesDataSelector,
   getFeaturesSearchQuerySelector,

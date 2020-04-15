@@ -5,6 +5,7 @@ import includesIgnoreCase from '../../../utils/includesIgnoreCase';
 const getMicroservicesDataSelector = (state) => state.microservices.data;
 const getMicroservicesSearchQuerySelector = (state) => state.microservices.searchQuery;
 
+// eslint-disable-next-line import/prefer-default-export
 export const getMicroservicesSelector = createSelector(
   getMicroservicesDataSelector,
   getMicroservicesSearchQuerySelector,

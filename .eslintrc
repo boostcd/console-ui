@@ -24,8 +24,8 @@
   "rules": {
     "prettier/prettier": ["warn", { "singleQuote": true }],
     "simple-import-sort/sort": "warn",
-    "no-unused-vars": "warn",
-    "react/jsx-boolean-value": "warn"
+    "no-underscore-dangle": ["error", { "allow": ["__GLOBALS__", "__PRELOADED_STATE__"] }],
+    "react/jsx-no-bind": "off"
   },
   "overrides": [
     {
