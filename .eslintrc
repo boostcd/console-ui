@@ -19,27 +19,19 @@
       "version": "detect"
     }
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:prettier/recommended"
-  ],
-  "plugins": [
-    "react",
-    "prettier",
-    "better-styled-components",
-    "simple-import-sort",
-    "redux-saga"
-  ],
+  "extends": ["airbnb", "plugin:prettier/recommended"],
+  "plugins": ["prettier", "better-styled-components", "simple-import-sort", "redux-saga"],
   "rules": {
     "prettier/prettier": ["warn", { "singleQuote": true }],
     "simple-import-sort/sort": "warn",
-    "no-unused-vars": "warn",
-    "react/jsx-boolean-value": "warn"
+    "no-underscore-dangle": ["error", { "allow": ["__GLOBALS__", "__PRELOADED_STATE__"] }],
+    "react/jsx-no-bind": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-wrap-multilines": ["error", { "declaration": false, "assignment": false }]
   },
   "overrides": [
     {
-      "files": ["*.spec.js"],
+      "files": ["*.spec.js", "*.spec.jsx"],
       "globals": {
         "noop": true
       }

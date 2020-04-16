@@ -9,13 +9,13 @@ import Button from '../../components/Button/Button';
 import Card from '../../components/Card/Card';
 import Loader from '../../components/Loader/Loader';
 import PageHeading from '../../components/PageHeading/PageHeading';
-import { fetchUsers } from '../../store/users/actions';
+import { fetchUsers as fetchUsersAction } from '../../store/users/actions';
 import environmentType from '../../types/environment';
 import usersType from '../../types/users';
 import ToastService from '../../utils/ToastService';
 import t from '../../utils/translate';
 import EnvironmentForm from './EnvironmentForm';
-import { fetchEnvironment } from './state/actions';
+import { fetchEnvironment as fetchEnvironmentAction } from './state/actions';
 
 const mapStateToProps = (state) => ({
   users: state.users.data,
@@ -25,8 +25,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchUsers: () => dispatch(fetchUsers()),
-  fetchEnvironment: (namespace) => dispatch(fetchEnvironment(namespace)),
+  fetchUsers: () => dispatch(fetchUsersAction()),
+  fetchEnvironment: (namespace) => dispatch(fetchEnvironmentAction(namespace)),
 });
 
 @connect(mapStateToProps, mapDispatchToProps)
@@ -43,10 +43,12 @@ class Environment extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.props.fetchUsers();
+    const { fetchUsers, fetchEnvironment } = this.props;
+
+    fetchUsers();
 
     if (this.isEditing) {
-      this.props.fetchEnvironment(this.namespace);
+      fetchEnvironment(this.namespace);
     }
   }
 
@@ -106,16 +108,25 @@ Environment.propTypes = {
     params: PropTypes.shape({
       namespace: PropTypes.string,
     }),
-  }),
+  }).isRequired,
   history: PropTypes.shape({
     push: PropTypes.func,
-  }),
+  }).isRequired,
   users: usersType,
   usersLoading: PropTypes.bool,
   environment: PropTypes.shape(environmentType),
   environmentLoading: PropTypes.bool,
+  // eslint-disable-next-line react/require-default-props
   fetchUsers: PropTypes.func,
+  // eslint-disable-next-line react/require-default-props
   fetchEnvironment: PropTypes.func,
+};
+
+Environment.defaultProps = {
+  users: [],
+  usersLoading: true,
+  environment: {},
+  environmentLoading: true,
 };
 
 export default Environment;

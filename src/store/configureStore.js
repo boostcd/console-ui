@@ -7,11 +7,13 @@ export default (initialState) => {
   const sagaMiddleware = createSagaMiddleware();
 
   let store;
-  let middleware = [sagaMiddleware];
+  const middleware = [sagaMiddleware];
 
   // Conditionally require the tools only for development
   if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line global-require
     const { createLogger } = require('redux-logger');
+    // eslint-disable-next-line global-require
     const { composeWithDevTools } = require('redux-devtools-extension');
 
     const logger = createLogger({
@@ -34,6 +36,7 @@ export default (initialState) => {
   // Hot reload the root reducer
   if (module.hot) {
     module.hot.accept('./rootReducer', () => {
+      // eslint-disable-next-line global-require
       const nextReducer = require('./rootReducer').default;
       store.replaceReducer(nextReducer);
     });

@@ -7,7 +7,7 @@ import t from '../../utils/translate';
 import * as Styles from './FeatureCard.styled';
 
 class FeatureCard extends React.PureComponent {
-  getIconByUrl(url) {
+  static getIconByUrl(url) {
     /**
      * Note that the displayed feature icon is using the URL
      * because there is no type field present in the payload
@@ -19,9 +19,9 @@ class FeatureCard extends React.PureComponent {
   }
 
   render() {
-    const { featureId, title, status, url, promoteStatus, waitingSince } = this.props; //description
+    const { featureId, title, status, url, promoteStatus, waitingSince } = this.props;
 
-    const icon = this.getIconByUrl(url);
+    const icon = FeatureCard.getIconByUrl(url);
     const isNotPromoted = promoteStatus === PROMOTE_STATUS.NOT_PROMOTED;
     const isPartiallyPromoted = promoteStatus === PROMOTE_STATUS.PARTIALLY_PROMOTED;
 
