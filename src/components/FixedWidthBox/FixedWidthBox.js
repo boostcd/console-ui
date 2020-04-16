@@ -7,6 +7,6 @@ import styled from 'styled-components';
  * Using !important to overwrite the default min-width from @rebass/grid
  */
 export default styled(Box)`
-  max-width: 240px;
-  min-width: 240px !important;
+  max-width: 255px;
+  min-width: 255px !important;
 `;
