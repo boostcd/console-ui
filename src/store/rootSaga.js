@@ -3,7 +3,7 @@ import { all, fork } from 'redux-saga/effects';
 import environmentSaga from '../views/Environment/state/saga';
 import environmentsSaga from '../views/Environments/state/saga';
 import featuresSaga from '../views/Features/state/saga';
-// import librariesSaga from '../views/Libraries/state/saga';
+import librariesSaga from '../views/Libraries/state/saga';
 import microserviceSaga from '../views/Microservice/state/saga';
 import microservicesSaga from '../views/Microservices/state/saga';
 import usersSaga from './users/saga';
@@ -16,7 +16,7 @@ const sagas = [
   microservicesSaga,
   environmentSaga,
   environmentsSaga,
-  // librariesSaga,
+  librariesSaga,
 ];
 
 export default function* rootSaga() {

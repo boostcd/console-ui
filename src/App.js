@@ -16,7 +16,7 @@ const Microservices = loadable(() => import('./views/Microservices/Microservices
 const Microservice = loadable(() => import('./views/Microservice/Microservice'));
 const Environments = loadable(() => import('./views/Environments/Environments'));
 const Environment = loadable(() => import('./views/Environment/Environment'));
-// const Libraries = loadable(() => import('./views/Libraries/Libraries'));
+const Libraries = loadable(() => import('./views/Libraries/Libraries'));
 const NotFound = loadable(() => import('./views/NotFound/NotFound'));
 
 const App = () => (
@@ -46,7 +46,7 @@ const App = () => (
           <Route path='/environments/add' component={Environment} />
           <Route path='/environments/:namespace/edit' component={Environment} />
           <Route path='/environments' component={Environments} />
-          {/* <Route path='/libraries' component={Libraries} /> */}
+          <Route path='/libraries' component={Libraries} />
           <Route path='*' component={NotFound} />
         </Switch>
       </Page>
