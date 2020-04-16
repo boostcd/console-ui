@@ -7,7 +7,6 @@ import { baseColor } from '../../styles/variables/colors';
 import Card from '../Card/Card';
 
 export const Wrapper = styled(Card)`
-  position: relative;
   margin-top: 0.5rem;
   transition: background 200ms linear;
   background: ${ifProp('isNotPromoted', '#e5f4f7', 'white')};
@@ -15,6 +14,11 @@ export const Wrapper = styled(Card)`
   &:hover {
     background: ${ifProp('isNotPromoted', '#d9f9ff', '#efefef')};
   }
+`;
+
+export const Heading = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const IdSection = styled.div`
@@ -62,9 +66,6 @@ export const Status = styled.div`
 `;
 
 export const PartiallyPromotedIcon = styled(ExclamationCircle)`
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
   width: 1rem;
   color: orange;
 `;

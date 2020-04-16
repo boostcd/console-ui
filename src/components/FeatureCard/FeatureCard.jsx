@@ -27,13 +27,15 @@ class FeatureCard extends React.PureComponent {
 
     return (
       <Styles.Wrapper isNotPromoted={isNotPromoted}>
-        {isPartiallyPromoted && (
-          <Styles.PartiallyPromotedIcon title={t('features.partiallyPromoted')} />
-        )}
-        <Styles.IdSection>
-          <span>{icon}</span>
-          <Styles.Id>{featureId}</Styles.Id>
-        </Styles.IdSection>
+        <Styles.Heading>
+          <Styles.IdSection>
+            <span>{icon}</span>
+            <Styles.Id>{featureId}</Styles.Id>
+          </Styles.IdSection>
+          {isPartiallyPromoted && (
+            <Styles.PartiallyPromotedIcon title={t('features.partiallyPromoted')} />
+          )}
+        </Styles.Heading>
         <Styles.Title>{title}</Styles.Title>
         <Styles.Status>{t('features.status', { value: status })}</Styles.Status>
         {waitingSince && (
