@@ -1,11 +1,14 @@
 import { CheckCircle, ExclamationCircle } from '@styled-icons/fa-solid';
 import styled, { css } from 'styled-components';
+import { ifProp } from 'styled-tools';
 
 import Card from '../Card/Card';
 
 export const Wrapper = styled(Card)`
   height: 120px;
   margin-top: 0.5rem;
+
+  ${ifProp('isActive', `background: #e5f4f7;`)};
 `;
 
 const testIconStyles = css`

@@ -1,5 +1,5 @@
+import { Flex } from '@rebass/grid';
 import React from 'react';
-import { Flex } from 'reflexbox';
 
 import DataFallback from '../../components/DataFallback/DataFallback';
 import FeatureCard from '../../components/FeatureCard/FeatureCard';
@@ -9,7 +9,7 @@ import t from '../../utils/translate';
 
 class FeaturesItems extends React.PureComponent {
   renderCard = (environment, feature, index) => {
-    const { featureId, title, status, url, description, promoted, waitingSince } = feature;
+    const { featureId, title, status, url, description, promoteStatus, waitingSince } = feature;
     const key = `features:${environment.name}@${featureId}@${index}`;
 
     return (
@@ -26,7 +26,7 @@ class FeaturesItems extends React.PureComponent {
           status={status}
           url={url}
           description={description}
-          promoted={promoted}
+          promoteStatus={promoteStatus}
           waitingSince={waitingSince}
         />
       </a>

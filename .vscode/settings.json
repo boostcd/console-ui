@@ -2,6 +2,8 @@
   "javascript.implicitProjectConfig.experimentalDecorators": true,
   "cSpell.words": [
     "arrow",
+    "atlassian",
+    "bahmutov",
     "boost",
     "build",
     "changelogs",
@@ -25,8 +27,10 @@
     "install",
     "jira",
     "js",
+    "jsx",
     "microservice",
     "microservices",
+    "multilines",
     "node",
     "noopener",
     "noreferrer",
@@ -41,13 +45,13 @@
     "react",
     "rebass",
     "redux",
-    "reflexbox",
     "server",
     "timeago",
     "toastify",
     "trello",
     "ui",
     "unmount",
-    "will"
+    "will",
+    "wrap"
   ]
 }

@@ -2,8 +2,10 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { baseColor } from '../../styles/variables/colors';
+import zIndex from '../../styles/variables/zIndex';
 
 export const Header = styled.div`
+  z-index: ${zIndex.header};
   position: fixed;
   top: 0;
   left: 0;

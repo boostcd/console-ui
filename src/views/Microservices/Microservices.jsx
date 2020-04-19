@@ -1,9 +1,9 @@
+import { Box, Flex } from '@rebass/grid';
 import debounce from 'debounce';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { connect } from 'react-redux';
-import { Box, Flex } from 'reflexbox';
 
 import Controls from '../../components/Controls/Controls';
 import DataFallback from '../../components/DataFallback/DataFallback';
@@ -17,7 +17,7 @@ import ToastService from '../../utils/ToastService';
 import t from '../../utils/translate';
 import MicroservicesApplications from './MicroservicesApplications';
 import {
-  searchMicroservices,
+  searchMicroservices as searchMicroservicesAction,
   startPollingMicroservices,
   stopPollingMicroservices,
 } from './state/actions';
@@ -33,7 +33,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   startPolling: () => dispatch(startPollingMicroservices()),
   stopPolling: () => dispatch(stopPollingMicroservices()),
-  searchMicroservices: (searchQuery) => dispatch(searchMicroservices(searchQuery)),
+  searchMicroservices: (searchQuery) => dispatch(searchMicroservicesAction(searchQuery)),
 });
 
 @connect(mapStateToProps, mapDispatchToProps)
@@ -49,15 +49,18 @@ class Microservices extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.props.startPolling();
+    const { startPolling } = this.props;
+    startPolling();
   }
 
   componentWillUnmount() {
-    this.props.stopPolling();
+    const { stopPolling } = this.props;
+    stopPolling();
   }
 
   // Temporary restarting the polling in order to update the loading state of the actions
   handleStateChange = async (actionTitle, actionFn, ...params) => {
+    const { startPolling, stopPolling } = this.props;
     const action = actionTitle.toLowerCase();
     const toastId = ToastService.info(t('common.action.pending', { action }));
 
@@ -68,8 +71,8 @@ class Microservices extends React.PureComponent {
       ToastService.dismiss(toastId);
     }
 
-    this.props.stopPolling();
-    this.props.startPolling();
+    stopPolling();
+    startPolling();
   };
 
   handleSearchChange = (event) => {
@@ -82,7 +85,9 @@ class Microservices extends React.PureComponent {
   };
 
   debounceSearch = () => {
-    this.props.searchMicroservices(this.state.searchQuery);
+    const { searchQuery } = this.state;
+    const { searchMicroservices } = this.props;
+    searchMicroservices(searchQuery);
   };
 
   render() {
@@ -121,9 +126,19 @@ Microservices.propTypes = {
     lastUpdated: PropTypes.instanceOf(Date),
   }),
   searchQuery: PropTypes.string,
+  // eslint-disable-next-line react/require-default-props
   startPolling: PropTypes.func,
+  // eslint-disable-next-line react/require-default-props
   stopPolling: PropTypes.func,
+  // eslint-disable-next-line react/require-default-props
   searchMicroservices: PropTypes.func,
+};
+
+Microservices.defaultProps = {
+  data: [],
+  loading: true,
+  polling: {},
+  searchQuery: '',
 };
 
 export default Microservices;

@@ -23,7 +23,7 @@ const EnvironmentForm = (props) => {
     },
     onSubmit,
     validate: (values) => {
-      let errors = {};
+      const errors = {};
 
       if (!values.title) {
         errors.title = t('environment.form.errors.title');
@@ -77,7 +77,7 @@ const EnvironmentForm = (props) => {
             hasError={!!formik.errors.owner}
             readOnly={isEditing}
           >
-            <option value=''></option>
+            <option value=''>&nbsp;</option>
             {users.map((user) => (
               <option key={user.name} value={user.name}>
                 {user.name}

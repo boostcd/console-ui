@@ -1,7 +1,9 @@
+/* eslint-disable no-console */
 // TODO: Clean up this whole file wih the HMR functionality
 import http from 'http';
 
 let app = require('./server').default;
+
 const server = http.createServer(app);
 let currentApp = app;
 
@@ -28,6 +30,7 @@ if (module.hot) {
     console.log('🔁  HMR Reloading `./server`...');
 
     try {
+      // eslint-disable-next-line global-require
       app = require('./server').default;
       server.removeListener('request', currentApp);
       server.on('request', app);

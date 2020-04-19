@@ -8,6 +8,11 @@ import logo from './logo.png';
 import * as Styles from './Page.styled';
 
 class Page extends React.PureComponent {
+  isLandingPageActive = (match, location) => {
+    if (!match) return false;
+    return location.pathname === '/';
+  };
+
   render() {
     const { children } = this.props;
 
@@ -20,7 +25,7 @@ class Page extends React.PureComponent {
               <Styles.Slogan>{PRODUCT_DESCRIPTION}</Styles.Slogan>
             </NavLink>
             <Styles.Navigation>
-              <Styles.NavigationItem to='/'>
+              <Styles.NavigationItem to='/' isActive={this.isLandingPageActive}>
                 {TASK_MANAGEMENT_TITLE || t('features.pageTitle')}
               </Styles.NavigationItem>
               <Styles.NavigationItem to='/microservices'>

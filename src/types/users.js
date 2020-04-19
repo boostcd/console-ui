@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
 
-import usersType from './users';
+import userType from './user';
 
-export default PropTypes.arrayOf(PropTypes.shape(usersType));
+export default PropTypes.arrayOf(PropTypes.shape(userType));

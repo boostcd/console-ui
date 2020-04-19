@@ -1,9 +1,11 @@
-import { includes } from 'ignore-case';
 import { createSelector } from 'reselect';
+
+import includesIgnoreCase from '../../../utils/includesIgnoreCase';
 
 const getFeaturesDataSelector = (state) => state.features.data;
 const getFeaturesSearchQuerySelector = (state) => state.features.searchQuery;
 
+// eslint-disable-next-line import/prefer-default-export
 export const getFeaturesSelector = createSelector(
   getFeaturesDataSelector,
   getFeaturesSearchQuerySelector,
@@ -19,7 +21,7 @@ export const getFeaturesSelector = createSelector(
       return {
         ...environment,
         features: environment.features.filter((feature) =>
-          includes(feature.title, trimmedSearchQuery)
+          includesIgnoreCase(feature.title, trimmedSearchQuery)
         ),
       };
     });

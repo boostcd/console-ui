@@ -13,7 +13,7 @@ import Table from '../../components/Table/Table';
 import librariesType from '../../types/libraries';
 import ToastService from '../../utils/ToastService';
 import t from '../../utils/translate';
-import { fetchLibraries } from './state/actions';
+import { fetchLibraries as fetchLibrariesAction } from './state/actions';
 
 const mapStateToProps = (state) => ({
   data: state.libraries.data,
@@ -22,12 +22,13 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchLibraries: () => dispatch(fetchLibraries()),
+  fetchLibraries: () => dispatch(fetchLibrariesAction()),
 });
 
 @connect(mapStateToProps, mapDispatchToProps)
 class Libraries extends React.PureComponent {
   confirmToastId = null;
+
   columns = [
     {
       header: t('libraries.tableColumns.name'),
@@ -48,7 +49,8 @@ class Libraries extends React.PureComponent {
   ];
 
   componentDidMount() {
-    this.props.fetchLibraries();
+    const { fetchLibraries } = this.props;
+    fetchLibraries();
   }
 
   componentWillUnmount() {
@@ -100,7 +102,13 @@ class Libraries extends React.PureComponent {
 Libraries.propTypes = {
   data: librariesType,
   loading: PropTypes.bool,
+  // eslint-disable-next-line react/require-default-props
   fetchLibraries: PropTypes.func,
+};
+
+Libraries.defaultProps = {
+  data: [],
+  loading: true,
 };
 
 export default Libraries;

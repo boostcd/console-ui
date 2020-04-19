@@ -1,7 +1,7 @@
+import { Flex } from '@rebass/grid';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Flex } from 'reflexbox';
 
 import gatewayApi from '../../apis/GatewayApi';
 import Button from '../../components/Button/Button';
@@ -14,6 +14,7 @@ import * as Styles from './MicroservicesApplications.styled';
 
 class MicroservicesApplications extends React.PureComponent {
   renderBuildAction(environment, app) {
+    const { onStateChange } = this.props;
     const { name: environmentName } = environment;
     const { name: appName, state = {} } = app;
 
@@ -21,7 +22,7 @@ class MicroservicesApplications extends React.PureComponent {
       <Button
         variant='primary'
         preventEvents={state.build}
-        onClick={this.props.onStateChange.bind(
+        onClick={onStateChange.bind(
           null,
           t('common.build'),
           gatewayApi.build,
@@ -36,6 +37,7 @@ class MicroservicesApplications extends React.PureComponent {
   }
 
   renderPromoteAction(environment, app) {
+    const { onStateChange } = this.props;
     const { name: environmentName } = environment;
     const { name: appName, state = {} } = app;
 
@@ -43,7 +45,7 @@ class MicroservicesApplications extends React.PureComponent {
       <Button
         variant='primary'
         preventEvents={state.promote}
-        onClick={this.props.onStateChange.bind(
+        onClick={onStateChange.bind(
           null,
           t('common.promote'),
           gatewayApi.promote,

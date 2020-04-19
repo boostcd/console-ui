@@ -1,6 +1,6 @@
+import { Flex } from '@rebass/grid';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Flex } from 'reflexbox';
 
 import gatewayApi from '../../apis/GatewayApi';
 import featuresType from '../../types/features';
@@ -12,14 +12,14 @@ import * as Styles from './Controls.styled';
 
 class Controls extends React.PureComponent {
   renderBuildAction(environment) {
-    const { buttonBuildLabel } = this.props;
+    const { onStateChange, buttonBuildLabel } = this.props;
     const { name, state = {} } = environment;
 
     return (
       <Button
         variant='primary'
         preventEvents={state.build}
-        onClick={this.props.onStateChange.bind(null, buttonBuildLabel, gatewayApi.buildAll, name)}
+        onClick={onStateChange.bind(null, buttonBuildLabel, gatewayApi.buildAll, name)}
       >
         <span>{buttonBuildLabel}</span>
         {state.build && <Styles.StateIcon />}
@@ -28,13 +28,14 @@ class Controls extends React.PureComponent {
   }
 
   renderTestAction(environment) {
+    const { onStateChange } = this.props;
     const { name, state = {} } = environment;
 
     return (
       <Button
         variant='primary'
         preventEvents={state.test}
-        onClick={this.props.onStateChange.bind(null, t('common.testAll'), gatewayApi.testAll, name)}
+        onClick={onStateChange.bind(null, t('common.testAll'), gatewayApi.testAll, name)}
       >
         <span>{t('common.testAll')}</span>
         {state.test && <Styles.StateIcon />}
@@ -43,19 +44,14 @@ class Controls extends React.PureComponent {
   }
 
   renderPromoteAction(environment) {
-    const { buttonPromoteLabel } = this.props;
+    const { onStateChange, buttonPromoteLabel } = this.props;
     const { name, state = {} } = environment;
 
     return (
       <Button
         variant='primary'
         preventEvents={state.promote}
-        onClick={this.props.onStateChange.bind(
-          null,
-          buttonPromoteLabel,
-          gatewayApi.promoteAll,
-          name
-        )}
+        onClick={onStateChange.bind(null, buttonPromoteLabel, gatewayApi.promoteAll, name)}
       >
         <span>{buttonPromoteLabel}</span>
         {state.promote && <Styles.StateIcon />}
@@ -64,13 +60,14 @@ class Controls extends React.PureComponent {
   }
 
   renderGoLiveAction(environment) {
+    const { onStateChange } = this.props;
     const { name, state = {} } = environment;
 
     return (
       <Button
         variant='primary'
         preventEvents={state.goLive}
-        onClick={this.props.onStateChange.bind(null, t('common.goLive'), gatewayApi.goLive, name)}
+        onClick={onStateChange.bind(null, t('common.goLive'), gatewayApi.goLive, name)}
       >
         <span>{t('common.goLive')}</span>
         {state.goLive && <Styles.StateIcon />}
@@ -79,13 +76,14 @@ class Controls extends React.PureComponent {
   }
 
   renderBackOutAction(environment) {
+    const { onStateChange } = this.props;
     const { name, state = {} } = environment;
 
     return (
       <Button
         variant='primary'
         preventEvents={state.backOut}
-        onClick={this.props.onStateChange.bind(null, t('common.backOut'), gatewayApi.backOut, name)}
+        onClick={onStateChange.bind(null, t('common.backOut'), gatewayApi.backOut, name)}
       >
         <span>{t('common.backOut')}</span>
         {state.backOut && <Styles.StateIcon />}

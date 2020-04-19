@@ -21,4 +21,8 @@ PageHeading.propTypes = {
   children: PropTypes.node,
 };
 
+PageHeading.defaultProps = {
+  children: null,
+};
+
 export default PageHeading;

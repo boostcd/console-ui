@@ -2,11 +2,12 @@
 
 exports[`Components: FixedWidthBox it should match the snapshot 1`] = `
 .c0 {
-  max-width: 240px;
-  min-width: 240px !important;
+  box-sizing: border-box;
+  max-width: 255px;
+  min-width: 255px !important;
 }
 
 <div
-  className="c0 css-vurnku"
+  className="src__Box-sc-1sbtrzs-0 c0"
 />
 `;

@@ -1,9 +1,9 @@
+import { Box, Flex } from '@rebass/grid';
 import debounce from 'debounce';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { connect } from 'react-redux';
-import { Box, Flex } from 'reflexbox';
 
 import Controls from '../../components/Controls/Controls';
 import DataFallback from '../../components/DataFallback/DataFallback';
@@ -17,7 +17,11 @@ import featuresType from '../../types/features';
 import ToastService from '../../utils/ToastService';
 import t from '../../utils/translate';
 import FeaturesItems from './FeaturesItems';
-import { searchFeatures, startPollingFeatures, stopPollingFeatures } from './state/actions';
+import {
+  searchFeatures as searchFeaturesAction,
+  startPollingFeatures,
+  stopPollingFeatures,
+} from './state/actions';
 import { getFeaturesSelector } from './state/selectors';
 
 const mapStateToProps = (state) => ({
@@ -30,7 +34,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   startPolling: () => dispatch(startPollingFeatures()),
   stopPolling: () => dispatch(stopPollingFeatures()),
-  searchFeatures: (searchQuery) => dispatch(searchFeatures(searchQuery)),
+  searchFeatures: (searchQuery) => dispatch(searchFeaturesAction(searchQuery)),
 });
 
 @connect(mapStateToProps, mapDispatchToProps)
@@ -46,15 +50,18 @@ class Features extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.props.startPolling();
+    const { startPolling } = this.props;
+    startPolling();
   }
 
   componentWillUnmount() {
-    this.props.stopPolling();
+    const { stopPolling } = this.props;
+    stopPolling();
   }
 
   // Temporary restarting the polling in order to update the loading state of the actions
   handleStateChange = async (actionTitle, actionFn, ...params) => {
+    const { startPolling, stopPolling } = this.props;
     const action = actionTitle.toLowerCase();
     const toastId = ToastService.info(t('common.action.pending', { action }));
 
@@ -65,8 +72,8 @@ class Features extends React.PureComponent {
       ToastService.dismiss(toastId);
     }
 
-    this.props.stopPolling();
-    this.props.startPolling();
+    stopPolling();
+    startPolling();
   };
 
   handleSearchChange = (event) => {
@@ -79,7 +86,9 @@ class Features extends React.PureComponent {
   };
 
   debounceSearch = () => {
-    this.props.searchFeatures(this.state.searchQuery);
+    const { searchQuery } = this.state;
+    const { searchFeatures } = this.props;
+    searchFeatures(searchQuery);
   };
 
   render() {
@@ -126,9 +135,19 @@ Features.propTypes = {
     lastUpdated: PropTypes.instanceOf(Date),
   }),
   searchQuery: PropTypes.string,
+  // eslint-disable-next-line react/require-default-props
   startPolling: PropTypes.func,
+  // eslint-disable-next-line react/require-default-props
   stopPolling: PropTypes.func,
+  // eslint-disable-next-line react/require-default-props
   searchFeatures: PropTypes.func,
+};
+
+Features.defaultProps = {
+  data: [],
+  loading: true,
+  polling: {},
+  searchQuery: '',
 };
 
 export default Features;
