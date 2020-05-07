@@ -140,7 +140,7 @@ class Controls extends React.PureComponent {
               {actions.backOut && this.renderBackOutAction(environment)}
             </>
           ) : (
-            <Styles.NoActions>No actions enabled!</Styles.NoActions>
+            <Styles.NoActions></Styles.NoActions>
           )}
         </Styles.Actions>
       </FixedWidthBox>
