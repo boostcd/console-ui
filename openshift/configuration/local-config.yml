@@ -3,8 +3,6 @@ config_map:
     value: "{{ product.name }}"    
   - name: PRODUCT_DESCRIPTION
     value: "{{ product.description }}"    
-  - name: PRODUCT_DESCRIPTION
-    value: "{{ product.description }}" 
   - name: TASK_MANAGEMENT_TITLE
     value: "{{ task_manager.title }}"
   - name: GATEWAY_API_SERVICE_URI
