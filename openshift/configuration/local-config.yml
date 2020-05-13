@@ -6,4 +6,4 @@ config_map:
   - name: TASK_MANAGEMENT_TITLE
     value: "{{ task_manager.title }}"
   - name: GATEWAY_API_SERVICE_URI
-    value: "http://console-gateway-api-{{ project }}.{{ openshift_host }}" 
+    value: "http://console-gateway-api-{{ project }}.{{ openshift.host }}" 
