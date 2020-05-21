@@ -13,13 +13,13 @@ parameters:
   required: true
 - description: Defines max memory
   name: MAX_MEMORY
-  required: true  
+  required: true
 - description: Defines min memory
   name: MIN_MEMORY
   required: true
 - description: Defines max cpu
   name: MAX_CPU
-  required: true  
+  required: true
 - description: Defines min memory
   name: MIN_CPU
   required: true
@@ -76,23 +76,23 @@ objects:
               - name: PRODUCT
                 valueFrom:
                   configMapKeyRef:
-                    name: ${MICROSERVICE} 
+                    name: ${MICROSERVICE}
                     key: PRODUCT
               - name: PRODUCT_DESCRIPTION
                 valueFrom:
                   configMapKeyRef:
-                    name: ${MICROSERVICE} 
-                    key: PRODUCT_DESCRIPTION                
+                    name: ${MICROSERVICE}
+                    key: PRODUCT_DESCRIPTION
               - name: TASK_MANAGEMENT_TITLE
                 valueFrom:
                   configMapKeyRef:
-                    name: ${MICROSERVICE} 
-                    key: TASK_MANAGEMENT_TITLE                
+                    name: ${MICROSERVICE}
+                    key: TASK_MANAGEMENT_TITLE
               - name: GATEWAY_API_SERVICE_URI
                 valueFrom:
                   configMapKeyRef:
-                    name: ${MICROSERVICE} 
-                    key: GATEWAY_API_SERVICE_URI                
+                    name: ${MICROSERVICE}
+                    key: GATEWAY_API_SERVICE_URI
             image: ${DOCKER_REGISTRY}/${DOCKER_NAMESPACE}/${MICROSERVICE}:${DOCKER_IMAGE_LABEL}
             imagePullPolicy: Always
             name: ${MICROSERVICE}
@@ -135,7 +135,7 @@ objects:
             - ${MICROSERVICE}
           from:
             kind: ImageStreamTag
-            name: "${MICROSERVICE}:${DOCKER_IMAGE_LABEL}"
+            name: ${MICROSERVICE}:${DOCKER_IMAGE_LABEL}
             namespace: ${DOCKER_NAMESPACE}
         type: ImageChange
 - apiVersion: v1
