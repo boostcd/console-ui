@@ -17,8 +17,6 @@ parameters:
   required: true
 - description: Defines the git repository uri within which the microservice resides
   name: MICROSERVICE_REPO_URI
-  value: estafet-openshift-boost-console-ui-react
-  required: true
 - description: Git branch/tag reference
   name: SOURCE_REPOSITORY_REF
   value: master
