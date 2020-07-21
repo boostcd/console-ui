@@ -2,28 +2,24 @@ apiVersion: v1
 kind: Template
 metadata:
   creationTimestamp: null
-  name: console-ui-react-build-config
+  name: boost-ui-react-build-config
 parameters:
 - description: Defines the namespace within which these objects are deployed
   name: NAMESPACE
   required: true
 - description: Defines the namespace for the image stream for builder image
   name: IMAGESTREAM_NAMESPACE
-  value: openshift
   required: true
 - description: Defines name of the microservice
   name: MICROSERVICE
-  value: console-ui-react
   required: true
 - description: Defines the git repository uri within which the microservice resides
   name: MICROSERVICE_REPO_URI
 - description: Git branch/tag reference
   name: SOURCE_REPOSITORY_REF
-  value: master
-  required: false
+  required: true
 - description: Defines docker registry
   name: DOCKER_REGISTRY
-  value: docker-registry.default.svc:5000
   required: true
 - description: Defines docker image label
   name: DOCKER_IMAGE_LABEL

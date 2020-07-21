@@ -2,14 +2,13 @@ apiVersion: v1
 kind: Template
 metadata:
   creationTimestamp: null
-  name: console-ui-react-config
+  name: boost-ui-config
 parameters:
 - description: Defines the namespace within which these objects are deployed
   name: NAMESPACE
   required: true
 - description: Defines name of the microservice
   name: MICROSERVICE
-  value: console-ui-react
   required: true
 - description: Defines max memory
   name: MAX_MEMORY
