@@ -34,9 +34,6 @@ parameters:
 - description: Defines docker registry
   name: DOCKER_IMAGE_LABEL
   required: true
-- description: Defines the product that this template is related to
-  name: PRODUCT
-  required: true
 objects:
 - apiVersion: v1
   kind: DeploymentConfig
