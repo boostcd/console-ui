@@ -34,7 +34,6 @@ objects:
     creationTimestamp: null
     labels:
       app: ${MICROSERVICE}
-      product: ${PRODUCT}
     name: ${MICROSERVICE}
     namespace: ${NAMESPACE}
   spec:
@@ -51,7 +50,6 @@ objects:
     creationTimestamp: null
     labels:
       app: ${MICROSERVICE}
-      product: ${PRODUCT}
     name: ${MICROSERVICE}
     namespace: ${NAMESPACE}
   spec:
