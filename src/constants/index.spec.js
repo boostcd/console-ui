@@ -1,17 +1,6 @@
-import {
-  DEBOUNCE_DELAY,
-  POLLING_DELAY,
-  REQUEST_TIMEOUT,
-  TOAST_CONFIG,
-  TOAST_CONTAINERS,
-} from './index';
+import { DEBOUNCE_DELAY, POLLING_DELAY, TOAST_CONFIG, TOAST_CONTAINERS } from './index';
 
 describe('Constants', () => {
-  it('should have the REQUEST_TIMEOUT defined', () => {
-    expect(REQUEST_TIMEOUT).toBeDefined();
-    expect(typeof REQUEST_TIMEOUT).toBe('number');
-  });
-
   it('should have the DEBOUNCE_DELAY defined', () => {
     expect(DEBOUNCE_DELAY).toBeDefined();
     expect(typeof DEBOUNCE_DELAY).toBe('number');

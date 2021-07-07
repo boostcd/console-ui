@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { REQUEST_TIMEOUT } from '../constants';
+import { REQUEST_RESPONSE_STATUS, REQUEST_TIMEOUT } from '../constants/request';
 import RequestError from '../utils/RequestError';
 import ToastService from '../utils/ToastService';
 
@@ -22,6 +22,24 @@ class BaseApi {
     });
   }
 
+  /**
+   * Extract the data from the standardized response format
+   * https://stackoverflow.com/questions/12806386/standard-json-api-response-format/12979961#12979961
+   */
+  extractData(responseData) {
+    const { status, data, message } = responseData;
+
+    if (status !== REQUEST_RESPONSE_STATUS.SUCCESS && status !== REQUEST_RESPONSE_STATUS.ERROR) {
+      throw new Error('API: Response status not following the established format!');
+    }
+
+    if (status === REQUEST_RESPONSE_STATUS.ERROR) {
+      throw new Error(message || 'API: Response error message not defined!');
+    }
+
+    return data;
+  }
+
   async request(config) {
     try {
       const response = await this.instance.request(config);
@@ -32,10 +50,10 @@ class BaseApi {
       const { 'content-type': contentType } = headers;
 
       if (!contentType || contentType.indexOf('application/json') === -1) {
-        throw new RequestError('Content-Type header is not application/json!');
+        throw new RequestError('API: Content-Type header is not application/json!');
       }
 
-      return data;
+      return this.extractData(data);
     } catch (error) {
       const message = `${config.method} request to ${config.url} failed with: ${error.message}`;
 
